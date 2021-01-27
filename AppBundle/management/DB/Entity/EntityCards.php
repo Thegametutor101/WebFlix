@@ -1,6 +1,6 @@
 <?php
 
-require_once (__DIR__."../Connection.php");
+require_once (__DIR__."/../Connection.php");
 
 class EntityCards
 {
@@ -61,6 +61,44 @@ class EntityCards
         $card = array();
         try {
             $request = "SELECT * FROM cards WHERE Favorite = '$favorite'";
+            $result = $this->connection->query($request);
+            $card = $result->fetchAll();
+
+            return $card;
+        }
+        catch(PDOException $e) {
+            return $card;
+        }
+    }
+
+    /**
+     * @param bool $available
+     * @return array
+     */
+    function getCardByAvailable(bool $available): array
+    {
+        $card = array();
+        try {
+            $request = "SELECT * FROM cards WHERE Available = '$available'";
+            $result = $this->connection->query($request);
+            $card = $result->fetchAll();
+
+            return $card;
+        }
+        catch(PDOException $e) {
+            return $card;
+        }
+    }
+
+    /**
+     * @param string $type
+     * @return array
+     */
+    function getCardByType(string $type): array
+    {
+        $card = array();
+        try {
+            $request = "SELECT * FROM cards WHERE Type = '$type'";
             $result = $this->connection->query($request);
             $card = $result->fetchAll();
 
