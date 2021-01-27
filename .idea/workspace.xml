@@ -2,16 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2acb97a1-cf4c-49d5-b34a-53f8e6d52de6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/AppBundle/management/DB/Entity/EntityAccounts.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AppBundle/management/DB/Entity/EntityCards.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AppBundle/management/DB/Entity/EntityFavorites.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AppBundle/management/DB/Entity/EntitySeries.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AppBundle/management/DB/Entity/EntityTimeSaving.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AppBundle/management/DB/Model/ModelAccounts.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AppBundle/management/DB/Model/ModelCards.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AppBundle/management/DB/Model/ModelFavorites.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AppBundle/management/DB/Model/ModelSeries.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AppBundle/management/DB/Entity/EntityAccounts.php" beforeDir="false" afterPath="$PROJECT_DIR$/AppBundle/management/DB/Entity/EntityAccounts.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AppBundle/management/DB/Entity/EntityCards.php" beforeDir="false" afterPath="$PROJECT_DIR$/AppBundle/management/DB/Entity/EntityCards.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AppBundle/management/DB/Model/ModelAccounts.php" beforeDir="false" afterPath="$PROJECT_DIR$/AppBundle/management/DB/Model/ModelAccounts.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,7 +57,7 @@
       <option name="presentableId" value="Default" />
       <updated>1611624118452</updated>
       <workItem from="1611624119509" duration="1260000" />
-      <workItem from="1611693308401" duration="4038000" />
+      <workItem from="1611693308401" duration="8909000" />
     </task>
     <servers />
   </component>
