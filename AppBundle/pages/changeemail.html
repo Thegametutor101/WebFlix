@@ -171,23 +171,108 @@
     <hr>
     <br>
     <br>
+    <div id = "errormessage" class="alert alert-danger" role="alert"></div>
     <form>
         <div class="box-input">
             <div class="edit">
-                <h3>Ancien courriel </h3><input type="text" value="michaeldumesnil@hotmail.fr" disabled></div>
+                <h3>Ancien courriel </h3><input id ="OldEmail" type="text" value="michaeldumesnil@hotmail.fr" disabled></div>
             <div class="edit">
-                <h3>Nouveau courriel</h3><input type="text" placeholder="Entrez votre nom d'affichage"></div>
+                <h3>Nouveau courriel</h3><input id ="NewEmail" type="email" placeholder="Entrez votre nom d'affichage"></div>
             <div class="edit">
-                <h3>Confirmer nouveau courriel </h3><input type="text" placeholder="Entrez votre nom d'affichage"></div>
+                <h3>Confirmer nouveau courriel </h3><input id ="ConfirmEmail" type="email" placeholder="Entrez votre nom d'affichage"></div>
             <div class="edit">
-                <h3>Confirmer le changement</h3><input type="text" placeholder="Entrez votre mot de passe"></div>
-            <div class="edit"><button type="button">Confirmer</button> <button id="cancel" type="button">Annuler</button></div>
+                <h3>Confirmer le changement</h3><input id = "ConfirmUpdate" type="password" placeholder="Entrez votre mot de passe"></div>
+            <div class="edit"><button id="confirm" type="button">Confirmer</button> <button id="cancel" type="button">Annuler</button></div>
         </div>
     </form>
 </body>
 <script>
-    $("#cancel").click(function () {
-        window.open("myaccount.html", "_self")
-    })
+    let pwd;
+    pwd = sessionStorage.getItem("passwordaccount");
+    $("#OldEmail").val(sessionStorage.getItem("emailaccount"));
+    $(document).ready(function () {
+        oldscreenname = $("#oldScreenName").val();
+        $("#errormessage").hide();
+        $("#confirm").click(function () {
+            let oldemail, newemail, confirmnewemail, confirmupdate;
+            oldemail = $("#OldEmail").val();
+            newemail = $("#NewEmail").val();
+            confirmnewemail = $("#ConfirmEmail").val();
+            confirmupdate = $("#ConfirmUpdate").val();
+
+            if (oldemail.length == 0) {
+                $("#errormessage").text("Le champ ancien email est vide !")
+                $("#errormessage").show();
+            } else if (oldemail.length > 150) {
+                $("#errormessage").text("Le champ ancien email ne peut pas exceder 150 caracteres !")
+                $("#errormessage").show();
+            }
+            else if (newemail.length == 0)
+            {
+                $("#errormessage").text("Le champ nouveau email est vide !")
+                $("#errormessage").show();
+            }
+            else if (newemail.length > 150) {
+            $("#errormessage").text("Le champ nouveau email ne peut pas exceder 150 caracteres !")
+            $("#errormessage").show();
+        }
+
+            else if (newemail == oldemail)
+            {
+                $("#errormessage").text("Le champ nouveau email ne peut pas etre identique a votre ancien courriel !")
+                $("#errormessage").show();
+            }
+            else if (confirmnewemail.length == 0)
+            {
+                $("#errormessage").text("Le champ confirmer le nouveau email est vide !")
+                $("#errormessage").show();
+            }
+            else if (confirmnewemail.length > 150)
+            {
+                $("#errormessage").text("Le champ confirmer le nouveau email ne peut pas exceder 150 caracteres")
+                $("#errormessage").show();
+            }
+            else if (newemail !== confirmnewemail)
+            {
+                $("#errormessage").text("Le champ confirmer le nouveau email ne concorde pas avec le champ nouveau email")
+                $("#errormessage").show();
+            }
+
+            else if (confirmupdate != pwd)
+            {
+                $("#errormessage").text("Le champ confirmer la modification ne concorde pas avec votre mot de passe !")
+                $("#errormessage").show();
+            }
+            else {
+                $.ajax({
+                    url:"../management/updateemail.php",
+                    type:"POST",
+                    data:
+                        {
+                            'email': newemail,
+                            'oldemail': oldemail
+                        },
+                    dataType:"TEXT",
+                    success: function (result) {
+                        console.log(result);
+                        sessionStorage.setItem("emailaccount", newemail);
+                        $("OldEmail").val("");
+                        $("NewEmail").val("");
+                        $("ConfirmEmail").val("");
+                        $("ConfirmUpdate").val("");
+                        window.open("myaccount.html", "_self")
+                    },
+                    error: function (message, error)
+                    {
+                        console.log(message, error);
+
+                    }
+                });
+            }
+        })
+        $("#cancel").click(function () {
+            window.open("myaccount.html", "_self")
+        })
+    });
 </script>
 </htmL>

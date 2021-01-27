@@ -173,18 +173,82 @@
 <hr>
 <br>
 <br>
+<div id = "errormessage" class="alert alert-danger" role="alert"></div>
 <form>
     <div class="box-input">
-        <div class="edit"><h3>Ancien mot de passe </h3><input type="password"></div>
-        <div class="edit"><h3>Nouveau mot de passe </h3><input type="text"></div>
-        <div class="edit"><h3>Confirmer mot de passe </h3><input type="text"></div>
-        <div class="edit"><button type="button">Confirmer</button> <button id="cancel" type="button">Annuler</button></div>
+        <div class="edit"><h3>Ancien mot de passe </h3><input id = "OldPassword" type="password" value="`*********"></div>
+        <div class="edit"><h3>Nouveau mot de passe </h3><input id = "NewPwd" type="password"></div>
+        <div class="edit"><h3>Confirmer mot de passe </h3><input id = "ConfirmNewPwd" type="password"></div>
+        <div class="edit"><h3>Confirmer le changement </h3><input id = "ConfirmUpdate" type="password"></div>
+        <div class="edit"><button id = "confirm" type="button">Confirmer</button> <button id="cancel" type="button">Annuler</button></div>
     </div>
 </form>
 </body>
 <script>
-    $("#cancel").click(function () {
-        window.open("myaccount.html", "_self")
-    })
+    let pwd;
+    pwd = sessionStorage.getItem("passwordaccount");
+    $(document).ready(function (e) {
+        $("#errormessage").hide();
+        $("#confirm").click(function (e) {
+            let newpwd, confirmnewpwd, confirmupdate, email;
+            email = sessionStorage.getItem("emailaccount");
+            newpwd = $("#NewPwd").val();
+            confirmnewpwd = $("#ConfirmNewPwd").val();
+            confirmupdate = $("#ConfirmUpdate").val();
+
+            if (newpwd.length == 0) {
+                $("#errormessage").text("Le champ nouveau mot de passe est vide !")
+                $("#errormessage").show();
+            } else if (newpwd.length > 250) {
+                $("#errormessage").text("Le champ nouveau mot de passe ne peut exceder 250 caracteres")
+                $("#errormessage").show();
+            } else if (newpwd.length < 8) {
+                $("#errormessage").text("Le champ nouveau mot de passe ne peut etre plus petit que 8 caracteres")
+                $("#errormessage").show();
+            } else if (confirmnewpwd.length == 0) {
+                $("#errormessage").text("Le champ confirmer nouveau mot de passe est vide !")
+                $("#errormessage").show();
+            } else if (confirmnewpwd.length > 250) {
+                $("#errormessage").text("Le champ confirmer nouveau mot de passe ne peut exceder 250 caracteres !")
+                $("#errormessage").show();
+            } else if (confirmnewpwd.length < 8) {
+                $("#errormessage").text("Le champ confirmer nouveau mot de passe ne peut etre plus petit que 8 caracteres")
+                $("#errormessage").show();
+            } else if (confirmupdate != pwd) {
+                $("#errormessage").text("Le champ confirmer la modification ne concorde pas avec votre mot de passe actuel !")
+                $("#errormessage").show();
+            } else
+                {
+                $.ajax({
+                    url: "../management/updatepwd.php",
+                    type: "POST",
+                    data:
+                        {
+                            'email': email ,
+                            'pwd': newpwd
+                        },
+                    dataType: "TEXT",
+                    success: function (result) {
+                        console.log(result);
+                        sessionStorage.setItem("passwordaccount", newpwd);
+                        $("OldPassword").val("");
+                        $("NewPwd").val("");
+                        $("ConfirmNewPwd").val("");
+                        $("ConfirmUpdate").val("");
+                        window.open("myaccount.html", "_self")
+                    },
+                    error: function (message, error) {
+                        console.log(message, error);
+
+                    }
+                });
+            }
+        });
+
+        $("#cancel").click(function () {
+            window.open("myaccount.html", "_self")
+        })
+    });
+
 </script>
 </htmL>

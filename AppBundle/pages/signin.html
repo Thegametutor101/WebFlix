@@ -99,14 +99,48 @@
             <form>
                 <div class="box-input">
                     <h2>Connexion</h2>
-                    <input type="email" name="courriel" placeholder="Courriel" required/>
-                    <input type="password" name="password" placeholder="Mot de passe" required/>
-                    <button type="button">Se connecter</button>
+                    <input id = "email" type="email" name="courriel" placeholder="Courriel" required/>
+                    <input id = "password" type="password" name="password" placeholder="Mot de passe" required/>
+                    <button id="connect" type="button">Se connecter</button>
                     <p>Pas encore de compte ? Inscrivez-vous maintenant ! <a href="signup.html">S'inscrire maintenant !</a></p>
                 </div>
             </form>
         </div>
     </div>
 </body>
+<script>
+    $(document).ready(function (e) {
+
+        $("#connect").click(function (e) {
+            let emailcompte, passwordcompte
+            emailcompte = $("#email").val();
+            passwordcompte = $("#password").val();
+
+            $.ajax({
+                url:"../management/connexion.php",
+                type:"POST",
+                data:
+                    {
+                        'email': emailcompte,
+                        'password': passwordcompte
+                    },
+                dataType:"JSON",
+                success: function (result) {
+                    console.log(result);
+                    sessionStorage.setItem("emailaccount", result["Email"]);
+                    sessionStorage.setItem("phoneaccount", result["Phone"]);
+                    sessionStorage.setItem("screennameaccount", result["ScreenName"]);
+                    sessionStorage.setItem("passwordaccount", result["Password"]);
+                    window.open("myaccount.html", "_self");
+                },
+                error: function (message, error)
+                {
+                    console.log(message, error);
+
+                }
+            });
+        });
+    });
+</script>
 
 </html>

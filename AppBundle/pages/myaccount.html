@@ -104,10 +104,10 @@
         <div class="edit"><h3>Photo de profil:</h3> <button id="updateprofilpicture" type="button">Modifier la photo de profil</button></div>
         <img src="https://cdn.onlinewebfonts.com/svg/img_569205.png" alt="Avatar" width="70px" height="70px">
         <br>
-        <div class="edit"><h3>Nom d'affichage : BroadestOdinDev</h3> <button id="updatescreenname" type="button">Modifier le nom d'affichage</button></div>
-        <div class="edit"><h3>Adresse courriel : michaeldumesnil@hotmail.fr</h3><button id="updateemail" type="button">Modifier le courriel</button>
+        <div class="edit"><h3 id ="ScreenNameShow">Nom d'affichage : BroadestOdinDev</h3> <button id="updatescreenname" type="button">Modifier le nom d'affichage</button></div>
+        <div class="edit"><h3 id = "EmailShow">Adresse courriel : michaeldumesnil@hotmail.fr</h3><button id="updateemail" type="button">Modifier le courriel</button>
         </div>
-        <div class="edit"><h3>Telephone : (819) 293-3845</h3>    <button id="updatephone"type="button">Modifier le numero de telephone</button></div>
+        <div class="edit"><h3 id ="PhoneShow">Telephone : (819) 293-3845</h3>    <button id="updatephone"type="button">Modifier le numero de telephone</button></div>
         <div class="edit"><h3>Mot de passe :   * * * * * * * * * *</h3><button id = "changepwd" type="button">Modifier le mot de passe</button></div>
     </div>
     <br>
@@ -117,23 +117,29 @@
 </body>
 
 <script>
-    $("#updatescreenname").click(function () {
-        window.open("changescreenname.html", "_self");
-    })
-    $("#updateemail").click(function () {
-        window.open("changeemail.html", "_self");
-    })
+    $("#ScreenNameShow").text("Nom d'affichage : " + sessionStorage.getItem("screennameaccount"));
+    $("#EmailShow").text("Adresse courriel : " + sessionStorage.getItem("emailaccount"));
+    $("#PhoneShow").text("Telephone  : " + sessionStorage.getItem("phoneaccount"));
+    $(document).ready(function (e) {
+        $("#updatescreenname").click(function () {
+            window.open("changescreenname.html", "_self");
+        })
+        $("#updateemail").click(function () {
+            window.open("changeemail.html", "_self");
+        })
 
-    $("#updatephone").click(function () {
-        window.open("changephone.html", "_self");
-    })
+        $("#updatephone").click(function () {
+            window.open("changephone.html", "_self");
+        })
 
-    $("#updatephone").click(function () {
-        window.open("changephone.html", "_self");
-    })
+        $("#updatephone").click(function () {
+            window.open("changephone.html", "_self");
+        })
 
-    $("#changepwd").click(function () {
-        window.open("changepwd.html", "_self");
-    })
+        $("#changepwd").click(function () {
+            window.open("changepwd.html", "_self");
+        })
+    });
+
 </script>
 </htmL>

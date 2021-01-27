@@ -173,19 +173,111 @@
 <hr>
 <br>
 <br>
+<div id = "errormessage" class="alert alert-danger" role="alert"></div>
 <form>
     <div class="box-input">
-        <div class="edit"><h3>Ancien telephone </h3><input type="text" value="BroadestOdinDev"  disabled></div>
-        <div class="edit"><h3>Nouveau telephone </h3><input type="text" placeholder="Entrez votre nom d'affichage"></div>
-        <div class="edit"><h3>Confirmer telephone </h3><input type="text" placeholder="Entrez votre nom d'affichage"></div>
-        <div class="edit"><h3>Confirmer le changement</h3><input type="text" placeholder="Entrez votre mot de passe"></div>
-        <div class="edit"><button type="button">Confirmer</button> <button id="cancel" type="button">Annuler</button></div>
+        <div class="edit"><h3>Ancien telephone </h3><input id="OldPhone"type="text" value="BroadestOdinDev"  disabled></div>
+        <div class="edit"><h3>Nouveau telephone </h3><input id = "NewPhone" type="phone" placeholder="Entrez votre telephone"></div>
+        <div class="edit"><h3>Confirmer telephone </h3><input id = "ConfirmNewPhone" type="phone" placeholder="Entrez votre telephone"></div>
+        <div class="edit"><h3>Confirmer le changement</h3><input id = "ConfirmUpdate" type="password" placeholder="Entrez votre mot de passe"></div>
+        <div class="edit"><button id = "confirm" type="button">Confirmer</button> <button id="cancel" type="button">Annuler</button></div>
     </div>
 </form>
 </body>
 <script>
-    $("#cancel").click(function () {
-        window.open("myaccount.html", "_self")
-    })
+    let pwd;
+    pwd = sessionStorage.getItem("passwordaccount");
+    $("#OldPhone").val(sessionStorage.getItem("phoneaccount"));
+    $(document).ready(function (e) {
+        $("#errormessage").hide();
+        let oldphone, newphone, confirmnewphone, confirmupdate, email;
+        email = sessionStorage.getItem("emailaccount");
+
+
+        $("#confirm").click(function (e) {
+
+            oldphone = $("#OldPhone").val();
+            newphone = $("#NewPhone").val();
+            confirmnewphone = $("#ConfirmNewPhone").val();
+            confirmupdate = $("#ConfirmUpdate").val();
+
+            if (oldphone.length == 0)
+            {
+                $("#errormessage").text("Le champ ancien telephone est vide !")
+                $("#errormessage").show();
+            }
+            else if (oldphone.length > 18)
+            {
+                $("#errormessage").text("Le champ ancien telephone ne peut exceder 18 caracteres !")
+                $("#errormessage").show();
+            }
+            else if (newphone.length == 0)
+            {
+                $("#errormessage").text("Le champ nouveau telephone est vide !")
+                $("#errormessage").show();
+            }
+
+            else if (newphone.length > 18)
+            {
+                $("#errormessage").text("Le champ nouveau telephone ne peut pas exceder 18 caracteres !")
+                $("#errormessage").show();
+            }
+
+            else if (newphone == oldphone)
+            {
+                $("#errormessage").text("Le nouveau telephone ne peut pas etre identique a l'ancien telephone")
+                $("#errormessage").show();
+            }
+
+            else if (confirmnewphone.length == 0)
+            {
+                $("#errormessage").text("Le champ confirmer le nouveau telephone est vide !")
+                $("#errormessage").show();
+            }
+
+            else if (confirmnewphone.length > 18)
+            {
+                $("#errormessage").text("Le champ confirmer le nouveau telephone ne peut pas exceder 18 caracteres !")
+                $("#errormessage").show();
+            }
+
+            else if (confirmupdate != pwd)
+            {
+                $("#errormessage").text("Le champ confirmer la modification ne concorde pas avec votre mot de passe !")
+                $("#errormessage").show();
+            }
+            else {
+                $.ajax({
+                    url:"../management/updatephone.php",
+                    type:"POST",
+                    data:
+                        {
+                            'email': email,
+                            'phone': newphone
+                        },
+                    dataType:"TEXT",
+                    success: function (result) {
+                        console.log(result);
+                        sessionStorage.setItem("phoneaccount", newphone);
+                        $("OldPhone").val("");
+                        $("NewPhone").val("");
+                        $("ConfirmNewPhone").val("");
+                        $("ConfirmUpdate").val("");
+                        window.open("myaccount.html", "_self")
+                    },
+                    error: function (message, error)
+                    {
+                        console.log(message, error);
+
+                    }
+                });
+            }
+        });
+
+        $("#cancel").click(function () {
+            window.open("myaccount.html", "_self")
+        })
+    });
+
 </script>
 </htmL>

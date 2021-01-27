@@ -180,82 +180,121 @@
         <div class="edit"><h3>Ancien nom d'affichage </h3><input id ="oldScreenName" type="text" value="BroadestOdinDev"  disabled></div>
         <div class="edit"><h3>Nouveau nom d'affichage </h3><input id = "newScreenName"type="text" placeholder="Entrez votre nom d'affichage"></div>
         <div class="edit"><h3>Confirmer le nouveau nom </h3><input id = "confirmNewScreenName"type="text" placeholder="Entrez votre nom d'affichage"></div>
-        <div class="edit"><h3>Confirmer le changement</h3><input id = "confirmUpdate"type="text" placeholder="Entrez votre mot de passe"></div>
+        <div class="edit"><h3>Confirmer le changement</h3><input id = "confirmUpdate"type="password" placeholder="Entrez votre mot de passe"></div>
         <div class="edit"><button id="confirm" type="button">Confirmer</button> <button id="cancel" type="button">Annuler</button></div>
 
     </div>
 </form>
 </body>
 <script>
+    $("#oldScreenName").val(sessionStorage.getItem("screennameaccount"));
     $(document).ready(function () {
+        let  actualpwd, emailcompte;
+        oldscreenname = $("#oldScreenName").val();
+        $.ajax({
+            url:"../management/getpasswordforallupdates.php",
+            type:"POST",
+            data:
+                {
+                    'screenname': oldscreenname
+                },
+            dataType:"JSON",
+            success: function (result) {
+               actualpwd = result["Password"];
+               emailcompte = result["Email"];
+            },
+            error: function (message, error)
+            {
+                console.log(message, error);
+
+            }
+        });
         $("#errormessage").hide();
         $("#confirm").click(function () {
-            let oldscreenname, newscreenname, confirmnewscreenname, confirmupdate, actualpwd;
+            let oldscreenname, newscreenname, confirmnewscreenname, confirmupdate;
             oldscreenname = $("#oldScreenName").val();
             newscreenname = $("#newScreenName").val();
-            confirmnewscreenname = $("confirmNewScreenName").val();
+            confirmnewscreenname = $("#confirmNewScreenName").val();
             confirmupdate = $("#confirmUpdate").val();
-
             if(oldscreenname.length == 0) {
                 $("#errormessage").text("Le champ ancien nom d'affichage est vide !")
-                $("#errormessage").show()
+                $("#errormessage").show();
             }
             else if (oldscreenname.length > 50) {
                 $("#errormessage").text("Le champ ancien nom d'affichage ne peut pas exceder 50 caracteres")
-                $("#errormessage").show()
+                $("#errormessage").show();
             }
 
 
             else if (newscreenname.length == 0)
             {
                 $("#errormessage").text("Le champ nouveau nom d'affichage est vide !")
-                $("#errormessage").show()
+                $("#errormessage").show();
             }
 
             else if (newscreenname.length > 50)
             {
                 $("#errormessage").text("Le champ nouveau nom d'affichage ne peut pas exceder 50 caracteres")
-                $("#errormessage").show()
+                $("#errormessage").show();
             }
             else if (newscreenname == oldscreenname)
             {
                 $("#errormessage").text("Le champ nouveau nom d'affichage ne peut pas etre identique a l'ancien nom d'affichage !")
-                $("#errormessage").show()
+                $("#errormessage").show();
             }
 
             else if (confirmnewscreenname.length == 0)
             {
                 $("#errormessage").text("Le champ confirmer le nouveau nom d'affichage est vide !")
-                $("#errormessage").show()
+                $("#errormessage").show();
             }
 
             else if (confirmnewscreenname.length > 50)
             {
                 $("#errormessage").text("Le champ confirmer le nouveau nouveau nom d'affichage ne peut pas exceder 50 caracteres")
-                $("#errormessage").show()
+                $("#errormessage").show();
             }
             else if (newscreenname != confirmnewscreenname)
             {
                 $("#errormessage").text("Le champ confirmer le nouveau nom d'affichage n'est pas identique au nouveau nom d'affichage !")
-                $("#errormessage").show()
+                $("#errormessage").show();
             }
             else if (confirmupdate.length == 0)
             {
                 $("#errormessage").text("Le champ confirmer le changement ne peut etre vide !")
-                $("#errormessage").show()
+                $("#errormessage").show();
             }
             else if (confirmupdate.length > 250)
             {
                 $("#errormessage").text("Le champ confirmer le changement ne peut exceder 250 caracteres !")
-                $("#errormessage").show()
+                $("#errormessage").show();
             }
-            else if (confirmupdate != actualpwd)
+            else if (confirmupdate !== actualpwd)
             {
                 $("#errormessage").text("Le champ confirmer le changement ne correspond pas a votre mot de passe actuel !")
-                $("#errormessage").show()
+                $("#errormessage").show();
             }
             else
             {
+                $.ajax({
+                    url:"../management/updatescreenname.php",
+                    type:"POST",
+                    data:
+                        {
+                            'email': emailcompte,
+                            'screenname': newscreenname
+                        },
+                    dataType:"TEXT",
+                    success: function (result) {
+                        console.log(result);
+                        sessionStorage.setItem("screennameaccount", newscreenname)
+                    },
+                    error: function (message, error)
+                    {
+                        console.log(message, error);
+
+                    }
+                });
                 $("#oldScreenName").val("");
                 $("#newScreenName").val("");
                 $("#confirmNewScreenName").val("");
