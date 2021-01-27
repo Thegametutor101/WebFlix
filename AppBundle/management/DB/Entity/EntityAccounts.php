@@ -1,6 +1,6 @@
 <?php
 
-require_once (__DIR__."../Connection.php");
+require_once (__DIR__."/../Connection.php");
 
 class EntityAccounts
 {
@@ -44,7 +44,9 @@ class EntityAccounts
             $request = "SELECT * FROM accounts WHERE Email = '$email'";
             $result = $this->connection->query($request);
             $account = $result->fetch();
-
+            if (empty($account))
+                return array();
+            else
             return $account;
         } catch (PDOException $e) {
             return $account;
@@ -94,17 +96,17 @@ class EntityAccounts
     function checkAccountEmailUsed(string $email): bool
     {
         try {
-            $request = "SELECT * FROM accounts WHERE Email = '$email'";
+            $request = "SELECT COUNT(Password) FROM accounts WHERE Email = '$email'";
             $result = $this->connection->query($request);
             $account = $result->fetch();
 
-            if (count($account) > 0) {
+            if ($account !== 0) {
                 return true;
             } else {
                 return false;
             }
         } catch (PDOException $e) {
-            return true;
+            return false;
         }
     }
 }
