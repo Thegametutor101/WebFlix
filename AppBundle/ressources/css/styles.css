@@ -1,0 +1,12 @@
+@font-face {
+    font-family: Montserrat;
+    src: url(https://fonts.googleapis.com/css?family=Montserrat:400,400i,700);
+}
+body {
+    background: #111;
+    font-family: Montserrat, sans-serif;
+    text-align: center;
+}
+.main {
+
+}

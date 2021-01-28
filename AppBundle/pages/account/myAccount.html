@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<htmL>
+<head>
+    <title>Webflix - MonCompte</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../ressources/css/styles.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="main">
+    <div id="logo">
+        <img src="https://canniefish.weebly.com/uploads/1/1/8/3/118361953/webflix_orig.png"
+             alt="Webflix"
+             width="350px"
+             height="150px">
+    </div>
+    <div class="manage">
+        <h2 style="border-bottom: #111111">Gestion du compte</h2>
+    </div>
+    <hr>
+    <div class="manage">
+        <div class="edit">
+            <h3>Photo de profil:</h3>
+            <button id="updateProfilPicture" type="button">Modifier la photo de profil</button>
+        </div>
+        <img src="https://cdn.onlinewebfonts.com/svg/img_569205.png" alt="Avatar" width="70px" height="70px">
+        <br>
+        <div class="edit">
+            <h3 id="screenNameShow">Nom d'affichage : BroadestOdinDev</h3>
+            <button id="updateScreenName" type="button">Modifier le nom d'affichage</button>
+        </div>
+        <div class="edit">
+            <h3 id="emailShow">Adresse courriel : michaeldumesnil@hotmail.fr</h3>
+            <button id="updateEmail" type="button">Modifier le courriel</button>
+        </div>
+        <div class="edit">
+            <h3 id="phoneShow">Telephone : (819) 293-3845</h3>
+            <button id="updatePhone" type="button">Modifier le numéro de téléphone</button>
+        </div>
+        <div class="edit">
+            <h3>Mot de passe :   * * * * * * * * * *</h3>
+            <button id="updatePassword" type="button">Modifier le mot de passe</button>
+        </div>
+    </div>
+    <br>
+    <div class="manage">
+        <h2 style="border-bottom: #111111">Mes favoris</h2>
+    </div>
+    <hr>
+</div>
+</body>
+<script>
+    $("#screenNameShow").text("Nom d'affichage : " + sessionStorage.getItem("screenNameAccount"));
+    $("#emailShow").text("Adresse courriel : " + sessionStorage.getItem("emailAccount"));
+    $("#phoneShow").text("Téléphone  : " + sessionStorage.getItem("phoneAccount"));
+    $(document).ready(function (e) {
+        $("#updateScreenName").click(function () {
+            window.open("changeScreenName.html", "_self");
+        });
+        $("#updateEmail").click(function () {
+            window.open("changeEmail.html", "_self");
+        });
+        $("#updatePhone").click(function () {
+            window.open("changePhone.html", "_self");
+        });
+        $("#updatePassword").click(function () {
+            window.open("changePassword.html", "_self");
+        });
+    });
+</script>
+<style>
+    .manage {
+        display: flex;
+        flex-direction: column;
+        margin-top: 20px;
+        width: auto;
+        height: auto;
+        text-align: left;
+        padding-left: 5px;
+        color: white;
+    }
+    button {
+        width: 325px;
+        height: 40px;
+        margin-top: 10px;
+        background: transparent;
+        text-align: center;
+        cursor: pointer;
+        color: #eee;
+        font-weight: bold;
+        text-transform: uppercase;
+        transition: all 1s ease;
+        border: 1px solid white;
+    }
+    button:hover {
+        background: #D50000;
+        border: none;
+        transition: all 1.5s ease;
+        color: white;
+    }
+    .manage h2 {
+        font-size: 26px;
+        margin: 2px;
+    }
+    .manage h3 {
+        font-size: 18px;
+        margin: 12px 7px 7px;
+        text-align: left;
+    }
+    .manage hr {
+        width: 50%;
+        color: black;
+        margin: 10%;
+    }
+    .edit {
+        display: flex;
+        justify-content: space-between;
+    }
+    img {
+        margin: 0;
+        border-radius: 50%;
+    }
+</style>
+</htmL>
