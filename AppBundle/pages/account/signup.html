@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <Title>Webflix - Inscription</Title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../ressources/css/styles.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="main">
+    <div id="inscription">
+        <div id="logo">
+            <img src="https://canniefish.weebly.com/uploads/1/1/8/3/118361953/webflix_orig.png"
+                 alt="Webflix"
+                 width="350px"
+                 height="200px">
+        </div>
+        <div class="back">
+            <form>
+                <div class="box-input">
+                    <h2>Inscripton</h2>
+                    <input id="username" type="text" name="username" placeholder="Nom d'utilisateur" required/>
+                    <input id="email" type="email" name="email" placeholder="Courriel" required/>
+                    <input id="emailConfirm" type="email" name="emailConfirm" placeholder="Confirmer le courriel"
+                           required/>
+                    <input id="phone" type="tel" name="phone" placeholder="Téléphone" required/>
+                    <input id="password" type="password" name="password" placeholder="Mot de passe" required/>
+                    <input id="passwordConfirm" type="password" name="passwordConfirm"
+                           placeholder="Confirmer le mot de passe" required/>
+                    <button id="signup" type="button">S'inscrire</button>
+                    <p>Vous possedez deja un compte ?
+                        <a href="login.html">Se connecter maintenant !</a>
+                    </p>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+<script>
+    $("#confirminscript").click(function (e) {
+        e.preventDefault();
+        let username = $("#username").val();
+        let email = $("#email").val();
+        let phone = $("#phone").val();
+        let password = $("#password").val();
+    });
+</script>
+<style>
+    #inscription {
+        display: flex;
+        flex-direction: column;
+    }
+    input, button {
+        padding: 10px 3%;
+        background: transparent;
+        font-size: 15px;
+        width: 300px;
+        height: 25px;
+        font-family: 'Montserrat', sans-serif;
+        border: 1px solid transparent;
+        position: relative;
+        color: #eee;
+        margin-bottom: 15px;
+        text-align: left;
+    }
+    input {
+        border-bottom: 1px solid white;
+    }
+    button {
+        width: 325px;
+        height: 40px;
+        margin-top: 10px;
+        background: transparent;
+        text-align: center;
+        cursor: pointer;
+        color: #eee;
+        font-weight: bold;
+        text-transform: uppercase;
+        transition: all 1s ease;
+        border: 1px solid white;
+    }
+    button:hover {
+        background: #D50000;
+        border: none;
+        transition: all 1.5s ease;
+    }
+    .box-input {
+        top: 90px;
+        display: Flex;
+        flex-direction: column;
+        align-content: center;
+        align-items: center;
+        text-align: center;
+    }
+    .back {
+        display: Flex;
+        flex-direction: column;
+        width: 100%;
+        height: 100%;
+    }
+    h2 {
+        color: white;
+    }
+    a {
+        text-decoration: none;
+        color: rgba(190, 190, 190, 0.856);
+    }
+    p {
+        color: white;
+    }
+</style>
+</html>

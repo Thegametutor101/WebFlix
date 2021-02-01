@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<htmL>
+<head>
+    <title>Webflix - Changer le numero de telephone</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../../ressources/css/styles.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="main">
+    <div id="logo">
+        <img src="https://canniefish.weebly.com/uploads/1/1/8/3/118361953/webflix_orig.png"
+             alt="Webflix"
+             width="350px"
+             height="150px">
+    </div>
+    <div class="manage">
+        <h2 style="border-bottom: #111111">Modification du numéro de téléphone</h2>
+    </div>
+    <hr><br><br>
+    <div class="messages"></div>
+    <form id="content">
+        <div class="box-input">
+            <div class="edit">
+                <h3>Ancien téléphone </h3>
+                <input id="oldPhone" type="text" value="BroadestOdinDev" disabled readonly>
+            </div>
+            <div class="edit">
+                <h3>Nouveau téléphone </h3>
+                <input id="newPhone" type="tel" placeholder="819-999-8888" max="18" min="10">
+            </div>
+            <div class="edit">
+                <h3>Confirmer telephone </h3>
+                <input id="confirmNewPhone" type="tel" placeholder="819-999-8888" max="18" min="10">
+            </div>
+            <div class="edit">
+                <h3>Confirmer le changement</h3>
+                <input id="confirmUpdate" type="password" placeholder="Entrez votre mot de passe">
+            </div>
+            <div class="edit">
+                <button id="confirm" type="button">Confirmer</button>
+                <button id="cancel" type="button">Annuler</button>
+            </div>
+        </div>
+    </form>
+</div>
+</body>
+<script>
+    let pwd = sessionStorage.getItem("passwordAccount");
+    $("#oldPhone").val(sessionStorage.getItem("phoneAccount"));
+    $(document).ready(function (e) {
+        // $('#content').keypress(function(event){
+        //     var keycode = (event.keyCode ? event.keyCode : event.which);
+        //     if(keycode === '13'){
+        //         $("#confirm").click();
+        //     }
+        // });
+        let email = sessionStorage.getItem("emailAccount");
+        $("#confirm").click(function (e) {
+            let messages = $(".messages");
+            messages.empty();
+            $("#newPhone").val($("#newPhone").val().replace(/\D/g,''));
+            $("#confirmNewPhone").val($("#confirmNewPhone").val().replace(/\D/g,''));
+            let oldPhone = $("#oldPhone").val();
+            let newPhone = $("#newPhone").val();
+            let confirmNewPhone = $("#confirmNewPhone").val();
+            let confirmUpdate = $("#confirmUpdate").val();
+            if (newPhone.length > 18 || newPhone.length === 0) {
+                messages.append("<div>Veuillez entrer un nouveau " +
+                    "téléphone n'excédant pas 18 caractères.</div><br><hr>");
+            } else if (!newPhone.match(/\d{10}/g)) {
+                messages.append("<div>Veuillez entrer un numéro " +
+                    "de téléphone valide.</div><br><hr>");
+            }  else if (newPhone === oldPhone) {
+                messages.append("<div>Le nouveau telephone ne peut " +
+                    "pas etre identique a l'ancien telephone.</div><br><hr>");
+            } else if (newPhone !== confirmNewPhone) {
+                messages.append("<div>La confirmation du téléphone " +
+                    "ne correspond pas au nouveau téléphone.</div><br><hr>");
+            } else if (confirmUpdate !== pwd) {
+                messages.append("<div>Le champ confirmer la modification " +
+                    "ne concorde pas avec votre mot de passe!</div><br><hr>");
+            } else {
+                newPhone = "(" + newPhone.substr(0, 3) + ") " +
+                    newPhone.substr(3, 3) + "-" + newPhone.substr(6, 4);
+                console.log(newPhone);
+                $.ajax({
+                    url:"../../../management/updatePhone.php",
+                    type:"POST",
+                    data: {
+                            'email': email,
+                            'phone': newPhone
+                        },
+                    dataType:"json",
+                    success: function (result) {
+                        let answer = result["item"];
+                        if (answer === "ok") {
+                            sessionStorage.setItem("phoneAccount", newPhone);
+                            window.open("../myAccount.html", "_self");
+                        } else if (answer === "error") {
+                            messages.append("<div>Il est impossible de compléter " +
+                                "votre requête présentement.<br>Veuillez réessayer plus tard.</div><br><hr>");
+                        } else if (answer === "empty") {
+                            messages.append("<div>Veuillez remplir les champs pour soumettre.</div><br><hr>");
+                        } else {
+                            messages.append("<div>Il est impossible de compléter " +
+                                "votre requête présentement.<br>Veuillez réessayer plus tard.</div><br><hr>");
+                        }
+                    },
+                    error: function (message, error) {
+                        messages.append("<div>Erreur lors de votre requête. " +
+                            "Veuillez réessayer plus tard.</div><br><hr>");
+                        console.log(message, error);
+                    }
+                });
+            }
+        });
+        $("#cancel").click(function () {
+            window.open("../myAccount.html", "_self");
+        });
+    });
+</script>
+<style>
+    button:hover {
+        background: #D50000;
+        border: none;
+        transition: all 1.5s ease;
+        color:white;
+    }
+    .manage {
+        display: flex;
+        flex-direction: column;
+        margin-top: 20px;
+        width: auto;
+        height: auto;
+        text-align: left;
+        padding-left: 5px;
+        color:white;
+    }
+    button {
+        width: 325px;
+        height: 40px;
+        margin-top: 10px;
+        background: transparent;
+        text-align: center;
+        cursor: pointer;
+        color: #eee;
+        font-weight: bold;
+        text-transform: uppercase;
+        transition: all 1s ease;
+        border: 1px solid white;
+    }
+    button:hover {
+        background: #D50000;
+        border: none;
+        transition: all 1.5s ease;
+    }
+    .manage h2 {
+        font-size: 26px;
+        margin:2px;
+    }
+    .manage h3 {
+        font-size: 18px;
+        margin:7px;
+        margin-top:12px;
+        text-align: left;
+    }
+    .manage hr {
+        width:50%;
+        color:black;
+        margin:10%;
+    }
+    .edit {
+        width: 40%;
+        display: flex;
+        justify-content: space-between;
+    }
+    img {
+        margin:0;
+        border-radius: 50%;
+    }
+    input, button {
+        padding: 10px 3%;
+        background: transparent;
+        font-size: 15px;
+        width: 300px;
+        height: 25px;
+        font-family: 'Montserrat', sans-serif;
+        border: 1px solid transparent;
+        position: relative;
+        color: #eee;
+        margin-bottom: 15px;
+        justify-content: space-between;
+        outline:none;
+    }
+    input {
+        border-bottom: 1px solid white;
+        font-size: 20px;
+        align-content: center;
+        vertical-align: middle;
+        margin-top:3.5%;
+    }
+    input :focus {
+        border:none
+    }
+    button {
+        width: 325px;
+        height: 40px;
+        margin-top: 10px;
+        background: transparent;
+        text-align: center;
+        cursor: pointer;
+        color: #eee;
+        font-weight: bold;
+        text-transform: uppercase;
+        transition: all 1s ease;
+        border: 1px solid white;
+        margin-left: 10px;
+    }
+    button:hover {
+        background: #D50000;
+        border: none;
+        transition: all 1.5s ease;
+    }
+    .box-input {
+        top: 90px;
+        display: Flex;
+        flex-direction: column;
+        align-content: center;
+        align-items: center;
+        text-align: center;
+    }
+    h3 {
+        color:white;
+    }
+    .edit {
+        display: flex;
+        justify-content: space-between;
+        text-align: center;
+        margin-top:2%;
+    }
+</style>
+</htmL>
