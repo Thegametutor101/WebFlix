@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<htmL>
+<head>
+    <title>Webflix - Changer nom affichage</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../../../ressources/css/styles.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="main">
+    <div id="logo">
+        <img src="https://canniefish.weebly.com/uploads/1/1/8/3/118361953/webflix_orig.png"
+             alt="Webflix"
+             width="350px"
+             height="150px">
+    </div>
+    <div class="manage">
+        <h2 style="border-bottom: #111111">Modification du nom d'affichage</h2>
+    </div>
+    <hr><br><br>
+    <div id = "errorMessage" class="alert alert-danger" role="alert"></div>
+    <form>
+        <div class="box-input">
+            <div class="edit">
+                <h3>Ancien nom d'affichage </h3>
+                <input id="oldScreenName" type="text" value="BroadestOdinDev" disabled readonly>
+            </div>
+            <div class="edit">
+                <h3>Nouveau nom d'affichage </h3>
+                <input id="newScreenName" type="text" placeholder="Entrez votre nom d'affichage">
+            </div>
+            <div class="edit">
+                <h3>Confirmer le nouveau nom </h3>
+                <input id="confirmNewScreenName" type="text" placeholder="Entrez votre nom d'affichage">
+            </div>
+            <div class="edit">
+                <h3>Confirmer le changement</h3>
+                <input id="confirmUpdate" type="password" placeholder="Entrez votre mot de passe">
+            </div>
+            <div class="edit">
+                <button id="confirm" type="button">Confirmer</button>
+                <button id="cancel" type="button">Annuler</button>
+            </div>
+        </div>
+    </form>
+</div>
+</body>
+<script>
+    $("#oldScreenName").val(sessionStorage.getItem("screenNameAccount"));
+    $(document).ready(function () {
+        let oldScreenName = $("#oldScreenName").val();
+        let password, email;
+        $.ajax({
+            url:"../../../management/getAccountByScreenName.php",
+            type:"POST",
+            data: {
+                    'screenName': oldScreenName
+                },
+            dataType:"json",
+            success: function (result) {
+               password = result["Password"];
+               email = result["Email"];
+            },
+            error: function (message, error) {
+                ///TODO error message when issue fetching account
+                console.log(message, error);
+            }
+        });
+        let message = $("#errormessage");
+        message.hide();
+        $("#confirm").click(function () {
+            let oldScreenName, newScreenName, confirmNewScreenName, confirmUpdate;
+            oldScreenName = $("#oldScreenName").val();
+            newScreenName = $("#newScreenName").val();
+            confirmNewScreenName = $("#confirmNewScreenName").val();
+            confirmUpdate = $("#confirmUpdate").val();
+            ///TODO check username is not already taken
+            if (newScreenName.length > 50 || newScreenName.length === 0) {
+                message.text("Veuillez entrer un nom n'excédant pas 50 caractères.")
+            } else if (newScreenName === oldScreenName) {
+                message.text("Le nouveau nom d'affichage ne peut être identique à l'ancien nom d'affichage !")
+            } else if (newScreenName !== confirmNewScreenName) {
+                message.text("La confirmation du nouveau nom d'affichage ne correspond pas au nouveau nom d'affichage !")
+            } else if (confirmUpdate !== password) {
+                message.text("Le champ confirmer la modification ne concorde pas avec votre mot de passe !")
+            } else {
+                message.text("");
+                $.ajax({
+                    url:"../../../management/updateScreenName.php",
+                    type:"POST",
+                    data: {
+                            'email': email,
+                            'screenName': newScreenName
+                        },
+                    dataType:"json",
+                    success: function (result) {
+                        ///TODO what ???
+                        sessionStorage.setItem("screenNameAccount", newScreenName)
+                    },
+                    error: function (message, error) {
+                        ///TODO messages for error during modification
+                        console.log(message, error);
+                    }
+                });
+                $("#oldScreenName").val("");
+                $("#newScreenName").val("");
+                $("#confirmNewScreenName").val("");
+                $("#confirmUpdate").val("");
+                window.open("myAccount.html", "_self");
+            }
+            message.show();
+        });
+        $("#cancel").click(function () {
+            window.open("myAccount.html", "_self");
+        });
+    });
+</script>
+<style>
+    button:hover {
+        background: #D50000;
+        border: none;
+        transition: all 1.5s ease;
+        color:white;
+    }
+    .manage {
+        display: flex;
+        flex-direction: column;
+        margin-top: 20px;
+        width: auto;
+        height: auto;
+        text-align: left;
+        padding-left: 5px;
+        color:white;
+    }
+    button {
+        width: 325px;
+        height: 40px;
+        margin-top: 10px;
+        background: transparent;
+        text-align: center;
+        cursor: pointer;
+        color: #eee;
+        font-weight: bold;
+        text-transform: uppercase;
+        transition: all 1s ease;
+        border: 1px solid white;
+    }
+    button:hover {
+        background: #D50000;
+        border: none;
+        transition: all 1.5s ease;
+    }
+    .manage h2 {
+        font-size: 26px;
+        margin:2px;
+    }
+    .manage h3 {
+        font-size: 18px;
+        margin:7px;
+        margin-top:12px;
+        text-align: left;
+    }
+    .manage hr {
+        width:50%;
+        color:black;
+        margin:10%;
+    }
+    btn:hover {
+        background-color:white;
+    }
+    .edit {
+        width: 40%;
+        display: flex;
+        justify-content: space-between;
+    }
+    img {
+        margin:0;
+        border-radius: 50%;
+    }
+    input, button {
+        padding: 10px 3%;
+        background: transparent;
+        font-size: 15px;
+        width: 300px;
+        height: 25px;
+        font-family: Montserrat, sans-serif;
+        border: 1px solid transparent;
+        position: relative;
+        color: #eee;
+        margin-bottom: 15px;
+        text-align: center;
+        justify-content: space-between;
+    }
+    input {
+        border-bottom: 1px solid white;
+        font-size: 20px;
+        align-content: center;
+        vertical-align: middle;
+        margin-top:3.5%;
+    }
+    input :focus {
+        border:none
+    }
+    button {
+        width: 325px;
+        height: 40px;
+        margin-top: 10px;
+        background: transparent;
+        text-align: center;
+        cursor: pointer;
+        color: #eee;
+        font-weight: bold;
+        text-transform: uppercase;
+        transition: all 1s ease;
+        border: 1px solid white;
+        margin-left: 10px;
+    }
+    button:hover {
+        background: #D50000;
+        border: none;
+        transition: all 1.5s ease;
+    }
+    .box-input {
+        top: 90px;
+        display: Flex;
+        flex-direction: column;
+        align-content: center;
+        align-items: center;
+        text-align: center;
+    }
+    h3 {
+        color:white;
+    }
+    .edit {
+        display: flex;
+        justify-content: space-between;
+        text-align: center;
+        margin-top:2%;
+    }
+</style>
+</htmL>
