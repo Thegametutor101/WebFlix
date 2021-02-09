@@ -2,8 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2acb97a1-cf4c-49d5-b34a-53f8e6d52de6" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/7199f540-7a54-4d3c-b66a-d3a693ceadff.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/7199f540-7a54-4d3c-b66a-d3a693ceadff.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AppBundle/management/DB/Model/ModelCards.php" beforeDir="false" afterPath="$PROJECT_DIR$/AppBundle/management/DB/Model/ModelCards.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AppBundle/pages/admin/main_menu_admin.html" beforeDir="false" afterPath="$PROJECT_DIR$/AppBundle/pages/admin/main_menu_admin.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -27,6 +28,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/AppBundle/management/DB/Model/ModelCards.php" root0="FORCE_HIGHLIGHTING" root1="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/AppBundle/pages/account/manageAccount/changeEmail.html" root0="SKIP_INSPECTION" />
   </component>
   <component name="ProjectId" id="1naND46FwH2IHRncm2I6eZkUkJa" />
@@ -72,6 +74,9 @@
       <workItem from="1612376340718" duration="15000" />
       <workItem from="1612376416499" duration="4450000" />
       <workItem from="1612790514816" duration="3330000" />
+      <workItem from="1612904851298" duration="40000" />
+      <workItem from="1612907475730" duration="1313000" />
+      <workItem from="1612910220356" duration="1100000" />
     </task>
     <servers />
   </component>
