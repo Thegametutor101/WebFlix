@@ -2,49 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2acb97a1-cf4c-49d5-b34a-53f8e6d52de6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AppBundle/pages/account/login.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AppBundle/pages/account/manageAccount/changeEmail.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AppBundle/pages/account/manageAccount/changePassword.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AppBundle/pages/account/manageAccount/changePhone.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AppBundle/pages/account/manageAccount/changeScreenName.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AppBundle/pages/account/myAccount.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AppBundle/pages/account/signup.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AppBundle/pages/admin/main_menu_admin.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AppBundle/pages/title.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AppBundle/ressources/assets/images/profilePictures/test.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AppBundle/ressources/css/styles.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AppBundle/ressources/images/13.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AppBundle/ressources/images/16.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AppBundle/ressources/images/18.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AppBundle/ressources/images/general.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AppBundle/ressources/images/webflix_orig.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AppBundle/ressources/images/wienerMobile.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AppBundle/ressources/javascript/mainJavaScript.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AppBundle/ressources/videos/video chat 1.mp4" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/AppBundle/ressources/videos/video chat 2.mp4" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/WebFlix.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/WebFlix.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/7199f540-7a54-4d3c-b66a-d3a693ceadff.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/7199f540-7a54-4d3c-b66a-d3a693ceadff.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AppBundle/management/DB/Entity/EntityCards.php" beforeDir="false" afterPath="$PROJECT_DIR$/AppBundle/management/DB/Entity/EntityCards.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AppBundle/management/DB/Entity/EntityFavorites.php" beforeDir="false" afterPath="$PROJECT_DIR$/AppBundle/management/DB/Entity/EntityFavorites.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AppBundle/management/DB/Entity/EntitySeries.php" beforeDir="false" afterPath="$PROJECT_DIR$/AppBundle/management/DB/Entity/EntitySeries.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AppBundle/management/DB/Entity/EntityTimeSaving.php" beforeDir="false" afterPath="$PROJECT_DIR$/AppBundle/management/DB/Entity/EntityTimeSaving.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AppBundle/management/DB/Model/ModelCards.php" beforeDir="false" afterPath="$PROJECT_DIR$/AppBundle/management/DB/Model/ModelCards.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AppBundle/management/DB/Model/ModelFavorites.php" beforeDir="false" afterPath="$PROJECT_DIR$/AppBundle/management/DB/Model/ModelFavorites.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AppBundle/management/DB/Model/ModelSeries.php" beforeDir="false" afterPath="$PROJECT_DIR$/AppBundle/management/DB/Model/ModelSeries.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AppBundle/management/DB/Model/ModelTimeSaving.php" beforeDir="false" afterPath="$PROJECT_DIR$/AppBundle/management/DB/Model/ModelTimeSaving.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AppBundle/management/actionpage.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AppBundle/management/connexion.php" beforeDir="false" afterPath="$PROJECT_DIR$/AppBundle/management/login.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AppBundle/management/getpasswordforallupdates.php" beforeDir="false" afterPath="$PROJECT_DIR$/AppBundle/management/getAccountByScreenName.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AppBundle/pages/changeemail.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AppBundle/pages/changephone.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AppBundle/pages/changepwd.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AppBundle/pages/changescreenname.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AppBundle/pages/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/AppBundle/pages/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/AppBundle/pages/myaccount.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AppBundle/pages/signin.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/AppBundle/pages/signup.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/AppBundle/pages/admin/main_menu_admin.html" beforeDir="false" afterPath="$PROJECT_DIR$/AppBundle/pages/admin/main_menu_admin.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,7 +70,8 @@
       <workItem from="1611693308401" duration="12997000" />
       <workItem from="1611787824033" duration="11285000" />
       <workItem from="1612376340718" duration="15000" />
-      <workItem from="1612376416499" duration="3691000" />
+      <workItem from="1612376416499" duration="4450000" />
+      <workItem from="1612790514816" duration="3330000" />
     </task>
     <servers />
   </component>
