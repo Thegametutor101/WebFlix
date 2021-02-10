@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2acb97a1-cf4c-49d5-b34a-53f8e6d52de6" name="Default Changelist" comment="">
+<<<<<<< HEAD
       <change afterPath="$PROJECT_DIR$/AppBundle/ressources/assets/images/profilePictures/test.txt" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/AppBundle/ressources/css/styles.css" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/AppBundle/ressources/javascript/mainJavaScript.js" afterDir="false" />
@@ -18,6 +19,12 @@
       <change beforePath="$PROJECT_DIR$/AppBundle/pages/myaccount.html" beforeDir="false" afterPath="$PROJECT_DIR$/AppBundle/pages/account/myAccount.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AppBundle/pages/signin.html" beforeDir="false" afterPath="$PROJECT_DIR$/AppBundle/pages/account/login.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AppBundle/pages/signup.html" beforeDir="false" afterPath="$PROJECT_DIR$/AppBundle/pages/account/signup.html" afterDir="false" />
+=======
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/7199f540-7a54-4d3c-b66a-d3a693ceadff.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/7199f540-7a54-4d3c-b66a-d3a693ceadff.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AppBundle/management/DB/Model/ModelCards.php" beforeDir="false" afterPath="$PROJECT_DIR$/AppBundle/management/DB/Model/ModelCards.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/AppBundle/pages/admin/main_menu_admin.html" beforeDir="false" afterPath="$PROJECT_DIR$/AppBundle/pages/admin/main_menu_admin.html" afterDir="false" />
+>>>>>>> Mich
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,6 +47,10 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+<<<<<<< HEAD
+=======
+    <setting file="file://$PROJECT_DIR$/AppBundle/management/DB/Model/ModelCards.php" root0="FORCE_HIGHLIGHTING" root1="SKIP_INSPECTION" />
+>>>>>>> Mich
     <setting file="file://$PROJECT_DIR$/AppBundle/pages/account/manageAccount/changeEmail.html" root0="SKIP_INSPECTION" />
   </component>
   <component name="ProjectId" id="1naND46FwH2IHRncm2I6eZkUkJa" />
@@ -55,6 +66,7 @@
     <property name="DatabaseDriversLRU" value="mysql" />
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/AppBundle/management/DB/Model" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
@@ -81,6 +93,15 @@
       <workItem from="1611624119509" duration="1260000" />
       <workItem from="1611693308401" duration="12997000" />
       <workItem from="1611787824033" duration="11285000" />
+<<<<<<< HEAD
+=======
+      <workItem from="1612376340718" duration="15000" />
+      <workItem from="1612376416499" duration="4450000" />
+      <workItem from="1612790514816" duration="3330000" />
+      <workItem from="1612904851298" duration="40000" />
+      <workItem from="1612907475730" duration="1313000" />
+      <workItem from="1612910220356" duration="1100000" />
+>>>>>>> Mich
     </task>
     <servers />
   </component>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+</head>
+
+<body>
+    <script src="forms/getinfovideo.js"></script>
+    <form id="addvideo">
+        <div style="display: flex; flex-direction:column; margin: 10%; margin-top: 0px;">
+            <div class=" mb-3 ">
+                <h5 for="exampleFormControlInput1 " class="form-label ">Titre du film</h5>
+                <input id="addmovietitle" type="text " class="form-control ">
+            </div>
+            <h5>A quel genre le film sera t-il associe ?</h5>
+            <div class="form-check">
+
+                <label class="form-check-label" for="flexSwitchCheckDefault"><input class="form-check-input genre" type="checkbox" id="movietypeaction">Action</label><br>
+                <label class="form-check-label" for="flexSwitchCheckDefault"><input class="form-check-input genre" type="checkbox" id="movietypeadventure">Aventure</label><br>
+                <label class="form-check-label" for="flexSwitchCheckDefault"><input class="form-check-input genre" type="checkbox" id="movietypecomedy">Comédie</label><br>
+                <label class="form-check-label" for="flexSwitchCheckDefault"><input class="form-check-input genre" type="checkbox" id="movietypecrime">Crime</label><br>
+                <label class="form-check-label" for="flexSwitchCheckDefault"><input class="form-check-input genre" type="checkbox" id="movietypedrama">Drame</label><br>
+                <label class="form-check-label" for="flexSwitchCheckDefault"><input class="form-check-input genre" type="checkbox" id="movietypefantaisy">Fantaisie</label><br>
+                <label class="form-check-label" for="flexSwitchCheckDefault"><input class="form-check-input genre" type="checkbox" id="movietypehistorical">Historique</label><br>
+                <label class="form-check-label" for="flexSwitchCheckDefault"><input class="form-check-input genre" type="checkbox" id="movietypehorror">Horreur</label><br>
+                <label class="form-check-label" for="flexSwitchCheckDefault"><input class="form-check-input genre" type="checkbox" id="movietypemysterie">Mystère</label><br>
+                <label class="form-check-label" for="flexSwitchCheckDefault"><input class="form-check-input genre" type="checkbox" id="movietypephilosophie">Philosophique</label><br>
+                <label class="form-check-label" for="flexSwitchCheckDefault"><input class="form-check-input genre" type="checkbox" id="movietyperomance">Romance</label><br>
+                <label class="form-check-label" for="flexSwitchCheckDefault"><input class="form-check-input genre" type="checkbox" id="movietypescifi">Science-Fiction</label><br>
+                <label class="form-check-label" for="flexSwitchCheckDefault"><input class="form-check-input genre" type="checkbox" id="movietypethriller">Thriller</label><br>
+                <label class="form-check-label" for="flexSwitchCheckDefault"><input class="form-check-input genre" type="checkbox" id="movietypeanimation">Animation</label><br>
+            </div><br>
+            <div class=" mb-3 ">
+                <h5 for="exampleFormControlTextarea1 " class="form-label ">Description du film</h5>
+                <textarea class="form-control " id="addmoviedescription" rows="3 "></textarea>
+            </div><br>
+            <div class="mb-3">
+                <h5 for="formFile" class="form-label">Image du film</h5>
+                <input class="form-control" type="file" id="addmovieimage">
+            </div><br>
+            <div class="mb-3">
+                <h5 for="formFile" class="form-label">Fichier du film</h5>
+                <input class="form-control" type="file" id="addmoviefile">
+            </div><br>
+            <div class=" mb-3 ">
+                <h5 for="exampleFormControlInput1 " class="form-label ">Date de sortie</h5>
+                <input type="date" class="form-control " id="addmoviereleasedate">
+            </div><br>
+            <h5>Le film sera t-il disponible pour les utilisateurs ?</h5>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="exampleRadios" id="addmovievisibleyes" value="1" checked>
+                <label class="form-check-label" for="exampleRadios1">Oui</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="exampleRadios" id="addmovievisibleno" value="0">
+                <label class="form-check-label" for="exampleRadios2">Non</label>
+            </div><br>
+            <h5>Quel est la classification du film ?</h5>
+            <div>
+                <ul class="list-group">
+                    <li id="cgeneral" class="list-group-item" style="display: flex; justify-content: space-between; margin-bottom: 2px;"><img src="../../ressources/images/general.png" width="140px" , height="30px"></li>
+                    <li id="c13" class="list-group-item" style="display: flex; justify-content: space-between; margin-bottom: 2px;"><img src="../../ressources/images/13.png" width="140px" , height="30px"></li>
+                    <li id="c16" class="list-group-item" style="display: flex; justify-content: space-between; margin-bottom: 2px;"><img src="../../ressources/images/16.png" width="140px" , height="30px"></li>
+                    <li id="c18" class="list-group-item" style="display: flex; justify-content: space-between; margin-bottom: 2px;"><img src="../../ressources/images/18.png" width="140px" , height="30px"></li>
+                </ul>
+            </div><br>
+            <h5>S'agit-il d'un film ou d'une serie ?</h5>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="exampleRadios2" id="Addmovietypemovie" value="Movie" checked>
+                <label class="form-check-label" for="exampleRadios1">Film</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="exampleRadios2" id="Addmovietypeserie" value="Serie">
+                <label class="form-check-label" for="exampleRadios2">Serie</label>
+            </div><br>
+            <div class="edit"><button id="confirmaddmovie" type="button" style="margin-right: 10px;">Confirmer</button> <button id="canceladdmovie" type="button">Annuler</button></div>
+        </div>
+    </form>
+    <br>
+</body>
+
+</html>
