@@ -167,6 +167,38 @@
         background-color: #D40039;
     }
     
+    #cgeneraldel:hover {
+        background-color: #0B9545;
+    }
+    
+    #c13del:hover {
+        background-color: #EEAF09;
+    }
+    
+    #c16del:hover {
+        background-color: #0A5491;
+    }
+    
+    #c18del:hover {
+        background-color: #D40039;
+    }
+    
+    .cgeneralactifdel {
+        background-color: #0B9545;
+    }
+    
+    .c13actifdel {
+        background-color: #EEAF09;
+    }
+    
+    .c16actifdel {
+        background-color: #0A5491;
+    }
+    
+    .c18actifdel {
+        background-color: #D40039;
+    }
+    
     .edit {
         width: 60%;
         display: flex;
@@ -297,247 +329,11 @@
                         </div>
                     </div>
                 </div>
-
             </div>
-
 
         </section>
 
-
-
-
-
-
         <section id="formSpace">
-            <!--Formulaire ajout de video-->
-            <form id="addvideo">
-                <div style="display: flex; flex-direction:column; margin: 10%; margin-top: 0px;">
-                    <div class=" mb-3 ">
-                        <h5 for="exampleFormControlInput1 " class="form-label ">Titre du film</h5>
-                        <input id="addmovietitle" type="text " class="form-control ">
-                    </div>
-                    <h5>A quel genre le film sera t-il associe ?</h5>
-                    <div class="form-check">
-
-                        <label class="form-check-label" for="flexSwitchCheckDefault"><input class="form-check-input genre" type="checkbox" id="movietypeaction">Action</label><br>
-                        <label class="form-check-label" for="flexSwitchCheckDefault"><input class="form-check-input genre" type="checkbox" id="movietypeadventure">Aventure</label><br>
-                        <label class="form-check-label" for="flexSwitchCheckDefault"><input class="form-check-input genre" type="checkbox" id="movietypecomedy">Comédie</label><br>
-                        <label class="form-check-label" for="flexSwitchCheckDefault"><input class="form-check-input genre" type="checkbox" id="movietypecrime">Crime</label><br>
-                        <label class="form-check-label" for="flexSwitchCheckDefault"><input class="form-check-input genre" type="checkbox" id="movietypedrama">Drame</label><br>
-                        <label class="form-check-label" for="flexSwitchCheckDefault"><input class="form-check-input genre" type="checkbox" id="movietypefantaisy">Fantaisie</label><br>
-                        <label class="form-check-label" for="flexSwitchCheckDefault"><input class="form-check-input genre" type="checkbox" id="movietypehistorical">Historique</label><br>
-                        <label class="form-check-label" for="flexSwitchCheckDefault"><input class="form-check-input genre" type="checkbox" id="movietypehorror">Horreur</label><br>
-                        <label class="form-check-label" for="flexSwitchCheckDefault"><input class="form-check-input genre" type="checkbox" id="movietypemysterie">Mystère</label><br>
-                        <label class="form-check-label" for="flexSwitchCheckDefault"><input class="form-check-input genre" type="checkbox" id="movietypephilosophie">Philosophique</label><br>
-                        <label class="form-check-label" for="flexSwitchCheckDefault"><input class="form-check-input genre" type="checkbox" id="movietyperomance">Romance</label><br>
-                        <label class="form-check-label" for="flexSwitchCheckDefault"><input class="form-check-input genre" type="checkbox" id="movietypescifi">Science-Fiction</label><br>
-                        <label class="form-check-label" for="flexSwitchCheckDefault"><input class="form-check-input genre" type="checkbox" id="movietypethriller">Thriller</label><br>
-                        <label class="form-check-label" for="flexSwitchCheckDefault"><input class="form-check-input genre" type="checkbox" id="movietypeanimation">Animation</label><br>
-                    </div><br>
-                    <div class=" mb-3 ">
-                        <h5 for="exampleFormControlTextarea1 " class="form-label ">Description du film</h5>
-                        <textarea class="form-control " id="addmoviedescription" rows="3 "></textarea>
-                    </div><br>
-                    <div class="mb-3">
-                        <h5 for="formFile" class="form-label">Image du film</h5>
-                        <input class="form-control" type="file" id="addmovieimage">
-                    </div><br>
-                    <div class="mb-3">
-                        <h5 for="formFile" class="form-label">Fichier du film</h5>
-                        <input class="form-control" type="file" id="addmoviefile">
-                    </div><br>
-                    <div class=" mb-3 ">
-                        <h5 for="exampleFormControlInput1 " class="form-label ">Date de sortie</h5>
-                        <input type="date" class="form-control " id="addmoviereleasedate">
-                    </div><br>
-                    <h5>Le film sera t-il disponible pour les utilisateurs ?</h5>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="exampleRadios" id="addmovievisibleyes" value="1" checked>
-                        <label class="form-check-label" for="exampleRadios1">Oui</label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="exampleRadios" id="addmovievisibleno" value="0">
-                        <label class="form-check-label" for="exampleRadios2">Non</label>
-                    </div><br>
-                    <h5>Quel est la classification du film ?</h5>
-                    <div>
-                        <ul class="list-group">
-                            <li id="cgeneral" class="list-group-item" style="display: flex; justify-content: space-between; margin-bottom: 2px;"><img src="../../ressources/assets/images/videoImages/general.png" width="140px" , height="30px"></li>
-                            <li id="c13" class="list-group-item" style="display: flex; justify-content: space-between; margin-bottom: 2px;"><img src="../../ressources/assets/images/videoImages/13.png" width="140px" , height="30px"></li>
-                            <li id="c16" class="list-group-item" style="display: flex; justify-content: space-between; margin-bottom: 2px;"><img src="../../ressources/assets/images/videoImages/16.png" width="140px" , height="30px"></li>
-                            <li id="c18" class="list-group-item" style="display: flex; justify-content: space-between; margin-bottom: 2px;"><img src="../../ressources/assets/images/videoImages/18.png" width="140px" , height="30px"></li>
-                        </ul>
-                    </div><br>
-                    <h5>S'agit-il d'un film ou d'une serie ?</h5>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="exampleRadios2" id="Addmovietypemovie" value="Movie" checked>
-                        <label class="form-check-label" for="exampleRadios1">Film</label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="exampleRadios2" id="Addmovietypeserie" value="Serie">
-                        <label class="form-check-label" for="exampleRadios2">Serie</label>
-                    </div><br>
-                    <div class="edit"><button id="confirmaddmovie" type="button" style="margin-right: 10px;">Confirmer</button> <button id="canceladdmovie" type="button">Annuler</button></div>
-                </div>
-            </form>
-            <br>
-
-            <!--Formulaire update video-->
-
-            <form id="updatevideo">
-                <div style="display: flex; flex-direction:column; margin: 10%; margin-top: 0px;">
-                    <label>Choissisez le film que vous souhaitez modifier</label>
-                    <select id="selectedupdatevideo" class="form-select" aria-label="Default select example">
-                        <option selected disabled = "disabled"></option>
-                      </select><br>
-                    <div class=" mb-3 ">
-                        <h5 for="exampleFormControlInput1 " class="form-label ">Titre du film</h5>
-                        <input id="updatemovietitle" type="text " class="form-control ">
-                    </div>
-                    <h5>A quel genre le film sera t-il associe ?</h5>
-                    <div class="form-check">
-
-                        <label class="form-check-label" for="flexSwitchCheckDefault"><input class="form-check-input genre" type="checkbox" id="Action" value="Action">Action</label><br>
-                        <label class="form-check-label" for="flexSwitchCheckDefault"><input class="form-check-input genre" type="checkbox" id="Aventure" value="Aventure">Aventure</label><br>
-                        <label class="form-check-label" for="flexSwitchCheckDefault"><input class="form-check-input genre" type="checkbox" id="Comédie" value="Comédie">Comédie</label><br>
-                        <label class="form-check-label" for="flexSwitchCheckDefault"><input class="form-check-input genre" type="checkbox" id="Crime" value="Crime">Crime</label><br>
-                        <label class="form-check-label" for="flexSwitchCheckDefault"><input class="form-check-input genre" type="checkbox" id="Drame" value="Drame">Drame</label><br>
-                        <label class="form-check-label" for="flexSwitchCheckDefault"><input class="form-check-input genre" type="checkbox" id="Fantaisie" value="Fantaisie">Fantaisie</label><br>
-                        <label class="form-check-label" for="flexSwitchCheckDefault"><input class="form-check-input genre" type="checkbox" id="Historique" value="Historique">Historique</label><br>
-                        <label class="form-check-label" for="flexSwitchCheckDefault"><input class="form-check-input genre" type="checkbox" id="Horreur" value="Horreur">Horreur</label><br>
-                        <label class="form-check-label" for="flexSwitchCheckDefault"><input class="form-check-input genre" type="checkbox" id="Mystère" value="Mystère">Mystère</label><br>
-                        <label class="form-check-label" for="flexSwitchCheckDefault"><input class="form-check-input genre" type="checkbox" id="Philosophique" value="Philosophique">Philosophique</label><br>
-                        <label class="form-check-label" for="flexSwitchCheckDefault"><input class="form-check-input genre" type="checkbox" id="Romance" value="Romance">Romance</label><br>
-                        <label class="form-check-label" for="flexSwitchCheckDefault"><input class="form-check-input genre" type="checkbox" id="Science-Fiction" value="Science-Fiction">Science-Fiction</label><br>
-                        <label class="form-check-label" for="flexSwitchCheckDefault"><input class="form-check-input genre" type="checkbox" id="Thriller" value="Thriller">Thriller</label><br>
-                        <label class="form-check-label" for="flexSwitchCheckDefault"><input class="form-check-input genre" type="checkbox" id="Animation" value="Animation">Animation</label><br>
-                    </div><br>
-                    <div class=" mb-3 ">
-                        <h5 for="exampleFormControlTextarea1 " class="form-label ">Description du film</h5>
-                        <textarea class="form-control " id="updatemoviedescription" rows="3 "></textarea>
-                    </div><br>
-                    <div class="mb-3">
-                        <h5 for="formFile" class="form-label">Image du film</h5>
-                        <input class="form-control" type="file" id="updatemovieimage">
-                    </div><br>
-                    <div class="mb-3">
-                        <h5 for="formFile" class="form-label">Fichier du film</h5>
-                        <input class="form-control" type="file" id="updatemoviefile">
-                    </div><br>
-                    <div class=" mb-3 ">
-                        <h5 for="exampleFormControlInput1 " class="form-label ">Date de sortie</h5>
-                        <input type="date" class="form-control " id="updatemoviereleasedate">
-                    </div><br>
-                    <h5>Le film sera t-il disponible pour les utilisateurs ?</h5>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="exampleRadios" id="updatemovievisibleyes" value="1">
-                        <label class="form-check-label" for="exampleRadios1">Oui</label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="exampleRadios" id="updatemovievisibleno" value="0">
-                        <label class="form-check-label" for="exampleRadios2">Non</label>
-                    </div><br>
-                    <h5>Quel est la classification du film ?</h5>
-                    <div>
-                        <ul class="list-group">
-                            <li id="cgeneralup" class="list-group-item" style="display: flex; justify-content: space-between; margin-bottom: 2px;"><img src="../../ressources/assets/images/videoImages/general.png" width="140px" , height="30px"></li>
-                            <li id="c13up" class="list-group-item" style="display: flex; justify-content: space-between; margin-bottom: 2px;"><img src="../../ressources/assets/images/videoImages/13.png" width="140px" , height="30px"></li>
-                            <li id="c16up" class="list-group-item" style="display: flex; justify-content: space-between; margin-bottom: 2px;"><img src="../../ressources/assets/images/videoImages/16.png" width="140px" , height="30px"></li>
-                            <li id="c18up" class="list-group-item" style="display: flex; justify-content: space-between; margin-bottom: 2px;"><img src="../../ressources/assets/images/videoImages/18.png" width="140px" , height="30px"></li>
-                        </ul>
-                    </div><br>
-                    <h5>S'agit-il d'un film ou d'une serie ?</h5>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="exampleRadios2" id="updatemovietypemovie" value="Movie">
-                        <label class="form-check-label" for="exampleRadios1">Film</label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="exampleRadios2" id="updatemovietypeserie" value="Serie">
-                        <label class="form-check-label" for="exampleRadios2">Serie</label>
-                    </div><br>
-                    <div class="edit"><button id="confirmupdatemovie" type="button" style="margin-right: 10px;">Confirmer</button> <button id="canceladdmovie" type="button">Annuler</button></div>
-                </div>
-            </form>
-
-
-            <form id="deletevideo">
-                <div style="display: flex; flex-direction:column; margin: 10%; margin-top: 0px;">
-                    <label>Choissisez le film que vous souhaitez supprimer</label>
-                    <select id="selecteddeletevideo" class="form-select" aria-label="Default select example">
-                        <option selected disabled = "disabled"></option>
-                      </select><br>
-                    <div class=" mb-3 ">
-                        <h5 for="exampleFormControlInput1 " class="form-label ">Titre du film</h5>
-                        <input id="deletemovietitle" type="text " class="form-control ">
-                    </div>
-                    <h5>A quel genre le film sera t-il associe ?</h5>
-                    <div class="form-check">
-
-                        <label class="form-check-label" for="flexSwitchCheckDefault"><input class="form-check-input genre" type="checkbox" id="Action" value="Action">Action</label><br>
-                        <label class="form-check-label" for="flexSwitchCheckDefault"><input class="form-check-input genre" type="checkbox" id="Aventure" value="Aventure">Aventure</label><br>
-                        <label class="form-check-label" for="flexSwitchCheckDefault"><input class="form-check-input genre" type="checkbox" id="Comédie" value="Comédie">Comédie</label><br>
-                        <label class="form-check-label" for="flexSwitchCheckDefault"><input class="form-check-input genre" type="checkbox" id="Crime" value="Crime">Crime</label><br>
-                        <label class="form-check-label" for="flexSwitchCheckDefault"><input class="form-check-input genre" type="checkbox" id="Drame" value="Drame">Drame</label><br>
-                        <label class="form-check-label" for="flexSwitchCheckDefault"><input class="form-check-input genre" type="checkbox" id="Fantaisie" value="Fantaisie">Fantaisie</label><br>
-                        <label class="form-check-label" for="flexSwitchCheckDefault"><input class="form-check-input genre" type="checkbox" id="Historique" value="Historique">Historique</label><br>
-                        <label class="form-check-label" for="flexSwitchCheckDefault"><input class="form-check-input genre" type="checkbox" id="Horreur" value="Horreur">Horreur</label><br>
-                        <label class="form-check-label" for="flexSwitchCheckDefault"><input class="form-check-input genre" type="checkbox" id="Mystère" value="Mystère">Mystère</label><br>
-                        <label class="form-check-label" for="flexSwitchCheckDefault"><input class="form-check-input genre" type="checkbox" id="Philosophique" value="Philosophique">Philosophique</label><br>
-                        <label class="form-check-label" for="flexSwitchCheckDefault"><input class="form-check-input genre" type="checkbox" id="Romance" value="Romance">Romance</label><br>
-                        <label class="form-check-label" for="flexSwitchCheckDefault"><input class="form-check-input genre" type="checkbox" id="Science-Fiction" value="Science-Fiction">Science-Fiction</label><br>
-                        <label class="form-check-label" for="flexSwitchCheckDefault"><input class="form-check-input genre" type="checkbox" id="Thriller" value="Thriller">Thriller</label><br>
-                        <label class="form-check-label" for="flexSwitchCheckDefault"><input class="form-check-input genre" type="checkbox" id="Animation" value="Animation">Animation</label><br>
-                    </div><br>
-                    <div class=" mb-3 ">
-                        <h5 for="exampleFormControlTextarea1 " class="form-label ">Description du film</h5>
-                        <textarea class="form-control " id="deletemoviedescription" rows="3 "></textarea>
-                    </div><br>
-                    <div class="mb-3">
-                        <h5 for="formFile" class="form-label">Image du film</h5>
-                        <input class="form-control" type="file" id="deletemovieimage">
-                    </div><br>
-                    <div class="mb-3">
-                        <h5 for="formFile" class="form-label">Fichier du film</h5>
-                        <input class="form-control" type="file" id="deletemoviefile">
-                    </div><br>
-                    <div class=" mb-3 ">
-                        <h5 for="exampleFormControlInput1 " class="form-label ">Date de sortie</h5>
-                        <input type="date" class="form-control " id="deletemoviereleasedate">
-                    </div><br>
-                    <h5>Le film sera t-il disponible pour les utilisateurs ?</h5>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="exampleRadios" id="deletemovievisibleyes" value="1">
-                        <label class="form-check-label" for="exampleRadios1">Oui</label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="exampleRadios" id="deletemovievisibleno" value="0">
-                        <label class="form-check-label" for="exampleRadios2">Non</label>
-                    </div><br>
-                    <h5>Quel est la classification du film ?</h5>
-                    <div>
-                        <ul class="list-group">
-                            <li id="cgeneraldel" class="list-group-item" style="display: flex; justify-content: space-between; margin-bottom: 2px;"><img src="../../ressources/assets/images/videoImages/general.png" width="140px" , height="30px"></li>
-                            <li id="c13del" class="list-group-item" style="display: flex; justify-content: space-between; margin-bottom: 2px;"><img src="../../ressources/assets/images/videoImages/13.png" width="140px" , height="30px"></li>
-                            <li id="c16del" class="list-group-item" style="display: flex; justify-content: space-between; margin-bottom: 2px;"><img src="../../ressources/assets/images/videoImages/16.png" width="140px" , height="30px"></li>
-                            <li id="c18del" class="list-group-item" style="display: flex; justify-content: space-between; margin-bottom: 2px;"><img src="../../ressources/assets/images/videoImages/18.png" width="140px" , height="30px"></li>
-                        </ul>
-                    </div><br>
-                    <h5>S'agit-il d'un film ou d'une serie ?</h5>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="exampleRadios2" id="deletemovietypemovie" value="Movie">
-                        <label class="form-check-label" for="exampleRadios1">Film</label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="exampleRadios2" id="deletemovietypeserie" value="Serie">
-                        <label class="form-check-label" for="exampleRadios2">Serie</label>
-                    </div><br>
-                    <div class="edit"><button id="confirmdeletemovie" type="button" style="margin-right: 10px;">Confirmer</button> <button id="canceladdmovie" type="button">Annuler</button></div>
-                </div>
-            </form>
-
-
-
-
 
         </section>
 
@@ -550,357 +346,80 @@
 <script>
     $(document).ready(function() {
 
-        $("#addvideo").hide();
-        $("#updatevideo").hide();
-        $("#deletevideo").hide();
-
         $("#laddvideo").click(function(e) {
-            $("#addvideo").show();
-            $("#updatevideo").hide();
-            $("#deletevideo").hide();
+            changePage("forms/addvideo.html");
         })
 
         $("#lupdatevideo").click(function(e) {
-            $("#addvideo").hide();
-            $("#updatevideo").show();
-            $("#deletevideo").hide();
-        })
+            changePage("forms/updatevideo.html");
 
-        $("#ldeletevideo").click(function(e) {
-            $("#addvideo").hide();
-            $("#updatevideo").hide();
-            $("#deletevideo").show();
-        })
-        $(window).scroll(function() {
-            $('header').css("background-color", 'rgba(17, 17, 17, ' + (0.3 + (0.7 * $(window).scrollTop() / 200)) + ')')
-        });
-
-        let postForm = {
-            'req': "Get_Videos_Info"
-        }
-
-        $.ajax({
-            //Process the form using $.ajax()
-            type: 'POST', //Method type
-            url: '../../management/DB/Model/GetInfoCards.php', //Your form processing file URL
-            data: postForm, //Forms name
-            dataType: 'JSON',
-            success: function(data) {
-                for (i = 0; i < data.length; i++) {
-                    $("#selectedupdatevideo").append(`
-                            <option value = "${data[i].ID}">${data[i].Title}</option>`)
-
-                    $("#selecteddeletevideo").append(`
-                            <option value = "${data[i].ID}">${data[i].Title}</option>`)
-                }
-
-            },
-            error: function(erreur, message) {
-                console.log(erreur, message);
+            let postForm = {
+                'req': "Get_Videos_Info"
             }
 
-        });
-
-        $("#selectedupdatevideo").on('change', function() {
-            form_data = new FormData();
-            form_data.append('req', "Get_Video_Info_ID");
-            form_data.append('id', this.value);
             $.ajax({
                 //Process the form using $.ajax()
                 type: 'POST', //Method type
                 url: '../../management/DB/Model/GetInfoCards.php', //Your form processing file URL
-                data: form_data, //Forms name
-                processData: false,
-                contentType: false,
+                data: postForm, //Forms name
                 dataType: 'JSON',
                 success: function(data) {
-                    console.log(data); {
-                        $("#updatemovietitle").val(data[0].Title);
-                        $("#updatemoviedescription").val(data[0].Resume);
-                        $("#updatemoviereleasedate").val(data[0].ReleaseDate);
-
-                        let str = JSON.parse(data[0].Genre);
-                        $(".genre").attr("checked", false);
-                        for (ctr = 0; ctr < str.length; ctr++) {
-                            $("#" + str[ctr]).attr("checked", true);
-
-                        }
-                        if (data[0].Type == "Serie") {
-                            $("#updatemovietypeserie").attr("checked", true);
-                        } else {
-                            $("#updatemovietypemovie").attr("checked", true);
-                        }
-                        if (data[0].Available == 1) {
-                            $("#updatemovievisibleyes").attr("checked", true);
-                        } else {
-                            $("#updatemovievisibleno").attr("checked", true);
-                        }
-
-                        if (data[0].Classification == "G") {
-                            $(".cactifup").removeClass("cactifup");
-                            $("#c13up").removeClass("c13actifup");
-                            $("#c16up").removeClass("c16actifup");
-                            $("#c18up").removeClass("c18actifup");
-                            $("#cgeneralup").addClass("cgeneralactifup");
-                            $("#cgeneralup").addClass("cactifup");
-
-                        } else if (data[0].Classification == "13+") {
-                            $(".cactifup").removeClass("cactifup");
-                            $("#cgeneralup").removeClass("cgeneralactifup");
-                            $("#c16up").removeClass("c16actifup");
-                            $("#c18up").removeClass("c18actifup");
-                            $("#c13up").addClass("c13actifup");
-                            $("#c13up").addClass("cactifup");
-
-                        } else if (data[0].Classification == "16+") {
-                            $(".cactifup").removeClass("cactifup");
-                            $("#cgeneralup").removeClass("cgeneralactifup");
-                            $("#c13up").removeClass("c13actifup");
-                            $("#c18up").removeClass("c18actifup");
-                            $("#c16up").addClass("c16actifup");
-                            $("#c16up").addClass("cactifup");
-                        } else {
-                            $(".cactifup").removeClass("cactifup");
-                            $("#cgeneralup").removeClass("cgeneralactifup");
-                            $("#c13up").removeClass("c13actifup");
-                            $("#c16up").removeClass("c16actifup");
-                            $("#c18up").addClass("c18actifup");
-                            $("#c18up").addClass("cactifup");
-                        }
-
-
-                        sessionStorage.setItem("imgmovie", data[0].Image);
-                        sessionStorage.setItem("videofile", data[0].File);
-                        sessionStorage.setItem("idMovie", data[0].ID);
+                    for (i = 0; i < data.length; i++) {
+                        $("#selectedvideo").append(`
+                            <option value = "${data[i].ID}">${data[i].Title}</option>`)
                     }
+
                 },
                 error: function(erreur, message) {
                     console.log(erreur, message);
                 }
 
-            })
-
-        })
-
-        $("#cgeneralup").click(function() {
-            $(".cactifup").removeClass("cactifup");
-            $("#c13up").removeClass("c13actifup");
-            $("#c16up").removeClass("c16actifup");
-            $("#c18up").removeClass("c18actifup");
-            $("#cgeneralup").addClass("cgeneralactifup");
-            $("#cgeneralup").addClass("cactifup");
-        })
-
-        $("#c13up").click(function() {
-            $(".cactifup").removeClass("cactifup");
-            $("#cgeneralup").removeClass("cgeneralactifup");
-            $("#c16up").removeClass("c16actifup");
-            $("#c18up").removeClass("c18actifup");
-            $("#c13up").addClass("c13actifup");
-            $("#c13up").addClass("cactifup");
-        })
-
-        $("#c16up").click(function() {
-            $(".cactifup").removeClass("cactifup");
-            $("#cgeneralup").removeClass("cgeneralactifup");
-            $("#c13up").removeClass("c13actifup");
-            $("#c18up").removeClass("c18actifup");
-            $("#c16up").addClass("c16actifup");
-            $("#c16up").addClass("cactifup");
-        })
-
-        $("#c18up").click(function() {
-            $(".cactifup").removeClass("cactifup");
-            $("#cgeneralup").removeClass("cgeneralactifup");
-            $("#c13up").removeClass("c13actifup");
-            $("#c16up").removeClass("c16actifup");
-            $("#c18up").addClass("c18actifup");
-            $("#c18up").addClass("cactifup");
-        })
-
-        function getClassification2() {
-            let ID = $(".cactif").attr('id');
-            if (ID == "cgeneral")
-                return "G";
-            else if (ID == "c13")
-                return "13+";
-            else if (ID == "c16")
-                return "16+";
-            else if (ID == "c18")
-                return "18+";
-        }
-
-
-        function getClassification3() {
-            let ID = $(".cactifup").attr('id');
-            if (ID == "cgeneralup")
-                return "G";
-            else if (ID == "c13up")
-                return "13+";
-            else if (ID == "c16up")
-                return "16+";
-            else if (ID == "c18up")
-                return "18+";
-        }
-
-        function getGenres() {
-            let genrefilm = [];
-            $(".genre").each(function() {
-                if ($(this).is(':checked')) {
-                    let parentE = $(this).parent().clone();
-                    parentE.children(".genre").remove();
-                    genrefilm.push(parentE.text());
-                }
             });
-            return genrefilm;
-        }
+        })
+
+        $("#ldeletevideo").click(function(e) {
+            changePage("forms/deletevideo.html");
+            let postForm = {
+                'req': "Get_Videos_Info"
+            }
+
+            $.ajax({
+                //Process the form using $.ajax()
+                type: 'POST', //Method type
+                url: '../../management/DB/Model/GetInfoCards.php', //Your form processing file URL
+                data: postForm, //Forms name
+                dataType: 'JSON',
+                success: function(data) {
+                    for (i = 0; i < data.length; i++) {
+                        $("#selectedvideo").append(`
+                            <option value = "${data[i].ID}">${data[i].Title}</option>`)
+                    }
+
+                },
+                error: function(erreur, message) {
+                    console.log(erreur, message);
+                }
+
+            });
+        })
+        $(window).scroll(function() {
+            $('header').css("background-color", 'rgba(17, 17, 17, ' + (0.3 + (0.7 * $(window).scrollTop() / 200)) + ')')
+        });
+
 
         $("#canceladdmovie").click(function() {
             alert(getClassificiation.length);
         });
 
-        $("#confirmaddmovie").click(function() {
-            let form_data = new FormData();
-            let title, description, movieimage, moviefile, releasedate, visible, type, classification;
-            let genrefilm = getGenres();
-            title = $("#addmovietitle").val();
-            description = $("#addmoviedescription").val();
-            movieimage = $("#addmovieimage").val();
-            moviefile = $("#addmoviefile").val();
-            releasedate = $("#addmoviereleasedate").val();
-            classification = getClassification2();
 
-            if ($("#addmovievisibleyes").is(":checked")) {
-                visible = 1;
-            } else {
-                visible = 0;
-            }
-
-            if ($("#Addmovietypemovie").is(":checked")) {
-                type = "Movie";
-            } else {
-                type = "Serie";
-            }
-
-            if (title.length == 0) {
-                alert("Le champ titre est vide !");
-            } else if (title.length > 250) {
-                alert("Le champ titre ne peut pas exceder 250 caracteres !");
-            } else if (description.length == 0) {
-                alert("Le champ description ne peut pas etre vide !");
-            } else if (movieimage == "") {
-                alert("Aucun fichier d'image n'a ete selectionner dans le champs image du film");
-            } else if (moviefile == "") {
-                alert("Aucun fichier video n'a ete selectionner dans le champs fichier du film");
-            } else if (releasedate.length == 0) {
-                alert("Aucune date n'a ete specifier dans le champs date de sortie");
-            } else if (classification == "") {
-                alert("Aucune classification n'a ete selectionner pour le film");
-            } else {
-                console.log("ok");
-                moviefile = $("#addmoviefile").prop('files')[0];
-                movieimage = $("#addmovieimage").prop('files')[0];
-                form_data.append('title', title);
-                form_data.append('description', description);
-                form_data.append('movieimage', movieimage);
-                form_data.append('moviefile', moviefile);
-                form_data.append('releasedate', releasedate);
-                form_data.append('visible', visible);
-                form_data.append('type', type);
-                form_data.append('genre', JSON.stringify(genrefilm));
-                form_data.append('classificiations', classification);
-
-                $.ajax({
-                    //Process the form using $.ajax()
-                    type: 'POST', //Method type
-                    url: '../../management/addvideo.php', //Your form processing file URL
-                    data: form_data, //Forms name
-                    processData: false,
-                    contentType: false,
-                    dataType: 'JSON',
-                    success: function(data) {
-                        console.log(data);
-                        window.open("main_menu_admin.html", "_self");
-                    },
-                    error: function(message) {
-                        console.log(message);
-                    }
-
-                });
-            }
-        });
-
-        $("#confirmupdatemovie").click(function() {
-            let form_data = new FormData();
-            let title, description, movieimage, moviefile, releasedate, visible, type, classification;
-            let genrefilm = getGenres();
-            title = $("#updatemovietitle").val();
-            description = $("#updatemoviedescription").val();
-            movieimage = $("#updatemovieimage").val();
-            moviefile = $("#updatemoviefile").val();
-            releasedate = $("#updatemoviereleasedate").val();
-            classification = getClassification3();
-
-            if ($("#updatemovievisibleyes").is(":checked")) {
-                visible = 1;
-            } else {
-                visible = 0;
-            }
-
-            if ($("updatemovietypemovie").is(":checked")) {
-                type = "Movie";
-            } else {
-                type = "Serie";
-            }
-
-            if (title.length == 0) {
-                alert("Le champ titre est vide !");
-            } else if (title.length > 250) {
-                alert("Le champ titre ne peut pas exceder 250 caracteres !");
-            } else if (description.length == 0) {
-                alert("Le champ description ne peut pas etre vide !");
-            } else if (movieimage == "") {
-                alert("Aucun fichier d'image n'a ete selectionner dans le champs image du film");
-            } else if (moviefile == "") {
-                alert("Aucun fichier video n'a ete selectionner dans le champs fichier du film");
-            } else if (releasedate.length == 0) {
-                alert("Aucune date n'a ete specifier dans le champs date de sortie");
-            } else if (classification == "") {
-                alert("Aucune classification n'a ete selectionner pour le film");
-            } else {
-                console.log("ok");
-                moviefile = $("#updatemoviefile").prop('files')[0];
-                movieimage = $("#updatemovieimage").prop('files')[0];
-                form_data.append('title', title);
-                form_data.append('description', description);
-                form_data.append('movieimage', movieimage);
-                form_data.append('moviefile', moviefile);
-                form_data.append('releasedate', releasedate);
-                form_data.append('visible', visible);
-                form_data.append('type', type);
-                form_data.append('genre', JSON.stringify(genrefilm));
-                form_data.append('classificiations', classification);
-                form_data.append('id', sessionStorage.getItem("idMovie"));
-
-                $.ajax({
-                    //Process the form using $.ajax()
-                    type: 'POST', //Method type
-                    url: '../../management/updatevideo.php', //Your form processing file URL
-                    data: form_data, //Forms name
-                    processData: false,
-                    contentType: false,
-                    dataType: 'JSON',
-                    success: function(data) {
-                        console.log(data);
-                        window.open("main_menu_admin.html", "_self");
-                    },
-                    error: function(message) {
-                        console.log(message);
-                    }
-
-                });
-            }
-        });
+        function changePage(path) {
+            $.ajax(path, {
+                success: function(response) {
+                    let body = response.replace(/^.*?<body>(.*?)<\/body>.*?$/s, "$1");
+                    $("#formSpace").html(body)
+                }
+            });
+        }
 
     });
 </script>

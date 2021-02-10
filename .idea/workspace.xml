@@ -48,6 +48,7 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/AppBundle/management/DB/Model/ModelCards.php" root0="FORCE_HIGHLIGHTING" root1="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/AppBundle/pages/account/manageAccount/changeEmail.html" root0="SKIP_INSPECTION" />
   </component>
   <component name="ProjectId" id="1naND46FwH2IHRncm2I6eZkUkJa" />

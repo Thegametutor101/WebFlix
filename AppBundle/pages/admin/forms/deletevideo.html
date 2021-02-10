@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Delete video</title>
+</head>
+
+<body>
+    <script src="forms/getinfovideo.js"></script>
+    <form id="deletevideo">
+        <div style="display: flex; flex-direction:column; margin: 10%; margin-top: 0px;">
+            <label>Choissisez le film que vous souhaitez supprimer</label>
+            <select id="selectedvideo" class="form-select" aria-label="Default select example">
+                <option selected disabled = "disabled"></option>
+              </select><br>
+            <div class=" mb-3 ">
+                <h5 for="exampleFormControlInput1 " class="form-label ">Titre du film</h5>
+                <input id="movietitle" type="text " class="form-control" disabled>
+            </div>
+            <h5>A quel genre le film sera t-il associe ?</h5>
+            <div class="form-check">
+
+                <label class="form-check-label" for="flexSwitchCheckDefault"><input class="form-check-input genre" type="checkbox" id="Action" value="Action" disabled>Action</label><br>
+                <label class="form-check-label" for="flexSwitchCheckDefault"><input class="form-check-input genre" type="checkbox" id="Aventure" value="Aventure" disabled>Aventure</label><br>
+                <label class="form-check-label" for="flexSwitchCheckDefault"><input class="form-check-input genre" type="checkbox" id="Comédie" value="Comédie" disabled>Comédie</label><br>
+                <label class="form-check-label" for="flexSwitchCheckDefault"><input class="form-check-input genre" type="checkbox" id="Crime" value="Crime" disabled>Crime</label><br>
+                <label class="form-check-label" for="flexSwitchCheckDefault"><input class="form-check-input genre" type="checkbox" id="Drame" value="Drame" disabled>Drame</label><br>
+                <label class="form-check-label" for="flexSwitchCheckDefault"><input class="form-check-input genre" type="checkbox" id="Fantaisie" value="Fantaisie" disabled>Fantaisie</label><br>
+                <label class="form-check-label" for="flexSwitchCheckDefault"><input class="form-check-input genre" type="checkbox" id="Historique" value="Historique" disabled>Historique</label><br>
+                <label class="form-check-label" for="flexSwitchCheckDefault"><input class="form-check-input genre" type="checkbox" id="Horreur" value="Horreur" disabled>Horreur</label><br>
+                <label class="form-check-label" for="flexSwitchCheckDefault"><input class="form-check-input genre" type="checkbox" id="Mystère" value="Mystère" disabled>Mystère</label><br>
+                <label class="form-check-label" for="flexSwitchCheckDefault"><input class="form-check-input genre" type="checkbox" id="Philosophique" value="Philosophique" disabled>Philosophique</label><br>
+                <label class="form-check-label" for="flexSwitchCheckDefault"><input class="form-check-input genre" type="checkbox" id="Romance" value="Romance" disabled>Romance</label><br>
+                <label class="form-check-label" for="flexSwitchCheckDefault"><input class="form-check-input genre" type="checkbox" id="Science-Fiction" value="Science-Fiction" disabled>Science-Fiction</label><br>
+                <label class="form-check-label" for="flexSwitchCheckDefault"><input class="form-check-input genre" type="checkbox" id="Thriller" value="Thriller" disabled>Thriller</label><br>
+                <label class="form-check-label" for="flexSwitchCheckDefault"><input class="form-check-input genre" type="checkbox" id="Animation" value="Animation" disabled>Animation</label><br>
+            </div><br>
+            <div class=" mb-3 ">
+                <h5 for="exampleFormControlTextarea1 " class="form-label ">Description du film</h5>
+                <textarea class="form-control " id="moviedescription" rows="3" disabled></textarea>
+            </div><br>
+            <div class="mb-3">
+                <h5 for="formFile" class="form-label">Image du film</h5>
+                <input class="form-control" type="file" id="movieimage" disabled>
+            </div><br>
+            <div class="mb-3">
+                <h5 for="formFile" class="form-label">Fichier du film</h5>
+                <input class="form-control" type="file" id="moviefile" disabled>
+            </div><br>
+            <div class=" mb-3 ">
+                <h5 for="exampleFormControlInput1 " class="form-label ">Date de sortie</h5>
+                <input type="date" class="form-control " id="moviereleasedate" disabled>
+            </div><br>
+            <h5>Le film sera t-il disponible pour les utilisateurs ?</h5>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="exampleRadios" id="movievisibleyes" value="1" disabled>
+                <label class="form-check-label" for="exampleRadios1">Oui</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="exampleRadios" id="movievisibleno" value="0" disabled>
+                <label class="form-check-label" for="exampleRadios2">Non</label>
+            </div><br>
+            <h5>Quel est la classification du film ?</h5>
+            <div>
+                <ul class="list-group">
+                    <li id="cgeneral" class="list-group-item" style="display: flex; justify-content: space-between; margin-bottom: 2px;"><img src="../../ressources/images/general.png" width="140px" , height="30px" disabled></li>
+                    <li id="c13" class="list-group-item" style="display: flex; justify-content: space-between; margin-bottom: 2px;"><img src="../../ressources/images/13.png" width="140px" , height="30px" disabled></li>
+                    <li id="c16" class="list-group-item" style="display: flex; justify-content: space-between; margin-bottom: 2px;"><img src="../../ressources/images/16.png" width="140px" , height="30px" disabled></li>
+                    <li id="c18" class="list-group-item" style="display: flex; justify-content: space-between; margin-bottom: 2px;"><img src="../../ressources/images/18.png" width="140px" , height="30px" disabled></li>
+                </ul>
+            </div><br>
+            <h5>S'agit-il d'un film ou d'une serie ?</h5>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="exampleRadios2" id="movietypemovie" value="Movie" disabled>
+                <label class="form-check-label" for="exampleRadios1">Film</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="radio" name="exampleRadios2" id="movietypeserie" value="Serie" disabled>
+                <label class="form-check-label" for="exampleRadios2">Serie</label>
+            </div><br>
+            <div class="edit"><button id="confirmdeletemovie" type="button" style="margin-right: 10px;">Confirmer</button> <button id="canceladdmovie" type="button">Annuler</button></div>
+        </div>
+    </form>
+</body>
+<script>
+    let postForm = {
+        'req': "Get_Videos_Info"
+    }
+
+    $.ajax({
+        //Process the form using $.ajax()
+        type: 'POST', //Method type
+        url: '../../management/DB/Model/GetInfoCards.php', //Your form processing file URL
+        data: postForm, //Forms name
+        dataType: 'JSON',
+        success: function(data) {
+            for (i = 0; i < data.length; i++) {
+                $("#selectedvideo").append(`
+                            <option value = "${data[i].ID}">${data[i].Title}</option>`)
+
+                $("#selectedvideo").append(`
+                            <option value = "${data[i].ID}">${data[i].Title}</option>`)
+            }
+
+        },
+        error: function(erreur, message) {
+            console.log(erreur, message);
+        }
+
+    });
+</script>
+
+</html>

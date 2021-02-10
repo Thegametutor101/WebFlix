@@ -12,6 +12,22 @@ class ModelCards
         $this->connection = $constants->getConnection();
     }
 
+    function deletecard(int $id): bool
+    {
+        try {
+            $request = "DELETE FROM cards WHERE ID = :id";
+
+            $declaration = $this->connection->prepare($request);
+            $declaration->bindParam(':id', $id);
+
+            $declaration->execute();
+            return true;
+        } catch (PDOException $e) {
+            return false;
+        }
+    }
+
+
     function addCard(int $id,
                      string $title,
                      $genre,
