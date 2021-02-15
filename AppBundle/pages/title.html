@@ -113,10 +113,27 @@
     <div>
         <div id="video">
             <video controls>
-            <source src="images\video chat 1.mp4" type="video/mp4">
-        </video>
+            </video>
         </div>
     </div>
 </body>
+
+
+
+<script>
+
+$(document).ready(function(){ 
+
+    let file = sessionStorage.getItem("VideoPath");
+
+
+    $("video").append(`
+    <source src="../${file}" type="video/mp4">
+    `);
+
+
+});
+
+</script>
 
 </html>

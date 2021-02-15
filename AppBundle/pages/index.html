@@ -20,10 +20,15 @@ body::-webkit-scrollbar {
 
 #starringShow {
     width: 100%;
-    height: 350px;
+    height: fit-content;
     background-color: darkgray;
     text-align: center;
     align-items: center;
+}
+
+#starringShow img {
+    max-width: 100%;
+    height: 50vh;
 }
 
 .left{
@@ -141,6 +146,10 @@ color: white;
     border: none;
 }
 
+.card:hover {
+    cursor: pointer;
+}
+
 
 
 
@@ -155,13 +164,13 @@ color: white;
 
     <header>
 
-        <img src="../ressources/assets/images/videoImages/webflix_orig.png">
+        <img src="../ressources/assets/images/webflix_orig.png">
 
     </header>
 
     <section id="starringShow">
 
-        <h1>image placeholder</h1>
+        <img src="../ressources/assets/images/wienerMobile.jpg" alt="">
 
     </section>
 
@@ -269,7 +278,7 @@ color: white;
                         // cards de la liste
                         for(ctrVid = 0; ctrVid < data.length; ctrVid++){
                             $("#"+listeGenres[ctrAjax] + "> .videoList").append(`
-                                <div onclick = "Details(${data[ctrVid].ID})" class="card">
+                                <div onclick = "Details('${data[ctrVid].File}')" class="card">
                                 <img src="${data[ctrVid].Image}" class="card-img">
                                 <div class="card-body">
                                 <h5 class="card-title" id="card1Title">${data[ctrVid].Title}</h5>
@@ -295,8 +304,8 @@ color: white;
 
 
     function Details(ID) {
-        sessionStorage.setItem("IDVideo", ID);
-        window.open("details.html", "_self");
+        sessionStorage.setItem("VideoPath", ID);
+        window.open("title.html", "_self");
     }
     
 
