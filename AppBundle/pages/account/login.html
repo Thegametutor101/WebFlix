@@ -4,10 +4,10 @@
     <Title>Webflix - Connexion</Title>
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="../../ressources/css/styles.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../ressources/css/styles.css">
 </head>
 <body>
 <div class="main">
@@ -19,11 +19,12 @@
                  height="200px">
         </div>
         <div class="back">
+            <div class="messages"></div>
             <form>
                 <div class="box-input">
                     <h2>Connexion</h2>
-                    <input id = "email" type="email" name="courriel" placeholder="Courriel" required/>
-                    <input id = "password" type="password" name="password" placeholder="Mot de passe" required/>
+                    <input id="email" type="email" name="courriel" placeholder="Courriel" required/>
+                    <input id="password" type="password" name="password" placeholder="Mot de passe" required/>
                     <button id="connect" type="button">Se connecter</button>
                     <p>Pas encore de compte ? Inscrivez-vous maintenant !
                         <a href="signup.html">S'inscrire maintenant !</a>
@@ -46,16 +47,31 @@
                         'email': email,
                         'password': password
                     },
-                dataType:"JSON",
+                dataType:"json",
                 success: function (result) {
-                    sessionStorage.setItem("emailAccount", result["Email"]);
-                    sessionStorage.setItem("phoneAccount", result["Phone"]);
-                    sessionStorage.setItem("screenNameAccount", result["ScreenName"]);
-                    sessionStorage.setItem("passwordAccount", result["Password"]);
-                    window.open("myAccount.html", "_self");
+                    let answer = result["item"];
+                    let messages = $(".messages");
+                    messages.empty();
+                    if (answer === "password") {
+                        messages.append("<div>Votre mot de passe est invalide.</div><br><hr>");
+                    } else if (answer === "email") {
+                        messages.append("<div>Votre courriel est invalide.</div><br><hr>");
+                    } else if (answer === "empty") {
+                        messages.append("<div>Veuillez remplir les champs.</div><br><hr>");
+                    } else if (typeof answer[0] !== 'undefined') {
+                        sessionStorage.setItem("emailAccount", answer["Email"]);
+                        sessionStorage.setItem("phoneAccount", answer["Phone"]);
+                        sessionStorage.setItem("screenNameAccount", answer["ScreenName"]);
+                        sessionStorage.setItem("passwordAccount", answer["Password"]);
+                        window.open("myAccount.html", "_self");
+                    } else {
+                        messages.append("<div>Erreur lors de votre requête. " +
+                            "Veuillez réessayer plus tard.</div><br><hr>");
+                    }
                 },
                 error: function (message, error) {
-                    ///TODO add message during error or non valid connection
+                    messages.append("<div>Erreur lors de votre requête. " +
+                        "Veuillez réessayer plus tard.</div><br><hr>");
                     console.log(message, error);
                 }
             });
@@ -63,6 +79,10 @@
     });
 </script>
 <style>
+    .messages {
+        width: 70%;
+        margin: 0 15%;
+    }
     #inscription {
         display: flex;
         flex-direction: column;
@@ -73,7 +93,7 @@
         font-size: 15px;
         width: 300px;
         height: 25px;
-        font-family: "Montserrat";
+        font-family: 'Montserrat', sans-serif;
         border: 1px solid transparent;
         position: relative;
         color: #eee;
