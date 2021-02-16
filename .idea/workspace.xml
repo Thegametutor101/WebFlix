@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+<<<<<<< Updated upstream
     <list default="true" id="2acb97a1-cf4c-49d5-b34a-53f8e6d52de6" name="Default Changelist" comment="">
       <change afterPath="$PROJECT_DIR$/AppBundle/management/signup.php" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/AppBundle/ressources/assets/images/changeImage.png" afterDir="false" />
@@ -19,6 +20,9 @@
       <change beforePath="$PROJECT_DIR$/AppBundle/ressources/css/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/AppBundle/ressources/css/styles.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/AppBundle/ressources/javascript/mainJavaScript.js" beforeDir="false" afterPath="$PROJECT_DIR$/AppBundle/ressources/javascript/mainJavaScript.js" afterDir="false" />
     </list>
+=======
+    <list default="true" id="2acb97a1-cf4c-49d5-b34a-53f8e6d52de6" name="Default Changelist" comment="" />
+>>>>>>> Stashed changes
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -101,24 +105,21 @@
       <updated>1611624118452</updated>
       <workItem from="1611624119509" duration="1260000" />
       <workItem from="1611693308401" duration="12997000" />
-<<<<<<< HEAD
-      <workItem from="1611787824033" duration="11285000" />
-<<<<<<< HEAD
-=======
-      <workItem from="1612376340718" duration="15000" />
-      <workItem from="1612376416499" duration="4450000" />
-      <workItem from="1612790514816" duration="3330000" />
-      <workItem from="1612904851298" duration="40000" />
-      <workItem from="1612907475730" duration="1313000" />
-      <workItem from="1612910220356" duration="1100000" />
->>>>>>> Mich
-=======
       <workItem from="1611787824033" duration="11425000" />
       <workItem from="1612186096159" duration="13636000" />
       <workItem from="1612965497961" duration="305000" />
       <workItem from="1612966845815" duration="8959000" />
       <workItem from="1613055794970" duration="253000" />
       <workItem from="1613404128963" duration="16859000" />
+=======
+      <workItem from="1611787824033" duration="11285000" />
+      <workItem from="1612376340718" duration="15000" />
+      <workItem from="1612376416499" duration="4450000" />
+      <workItem from="1612790514816" duration="3330000" />
+      <workItem from="1612904851298" duration="40000" />
+      <workItem from="1612907475730" duration="1313000" />
+      <workItem from="1612910220356" duration="1189000" />
+>>>>>>> Stashed changes
     </task>
     <servers />
   </component>
