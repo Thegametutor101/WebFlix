@@ -86,7 +86,6 @@
             } else {
                 newPhone = "(" + newPhone.substr(0, 3) + ") " +
                     newPhone.substr(3, 3) + "-" + newPhone.substr(6, 4);
-                console.log(newPhone);
                 $.ajax({
                     url:"../../../management/updatePhone.php",
                     type:"POST",

@@ -8,55 +8,54 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../ressources/css/styles.css">
 </head>
 <body>
 <div class="main">
-    <div id="logo">
-        <img src="https://canniefish.weebly.com/uploads/1/1/8/3/118361953/webflix_orig.png"
-             alt="Webflix"
-             width="350px"
-             height="150px">
+    <div class="header">
+        <div id="logo">
+            <span class="material-icons">arrow_back_ios</span>
+            <img src="https://canniefish.weebly.com/uploads/1/1/8/3/118361953/webflix_orig.png"
+                 alt="Webflix"
+                 width="350px"
+                 height="150px">
+        </div>
     </div>
-    <div class="manage">
-        <h2 style="border-bottom: #111111">Gestion du compte</h2>
-    </div>
+    <h2>Gestion du compte</h2>
     <hr>
-    <div class="manage">
-        <div class="edit">
-            <h3>Photo de profil:</h3>
-            <button id="updateProfilPicture" type="button">Modifier la photo de profil</button>
+    <div class="content">
+        <div class="profile">
+            <img id="profilePicture" src="../../ressources/assets/images/defaultUserProfile.png"
+                 style="height: 250px;border-radius: 10px;width: 100%">
+            <img id="changePicture" src="../../ressources/assets/images/changeImage.png">
+            <input id="profilePic" name="profilePic" type="file" accept="image/jpeg, image/jpg, image/png"
+                   style="display: none">
         </div>
-        <img src="https://cdn.onlinewebfonts.com/svg/img_569205.png" alt="Avatar" width="70px" height="70px">
-        <br>
-        <div class="edit">
-            <h3 id="screenNameShow">Nom d'affichage : BroadestOdinDev</h3>
-            <button id="updateScreenName" type="button">Modifier le nom d'affichage</button>
+        <div class="currentAccountInfo">
+            <h3 id="screenNameShow">Nom d'affichage : </h3>
+            <h3 id="emailShow">Adresse courriel : </h3>
+            <h3 id="phoneShow">Telephone : </h3>
+            <h3>Mot de passe :  * * * * * * * * * *</h3>
         </div>
-        <div class="edit">
-            <h3 id="emailShow">Adresse courriel : michaeldumesnil@hotmail.fr</h3>
-            <button id="updateEmail" type="button">Modifier le courriel</button>
-        </div>
-        <div class="edit">
-            <h3 id="phoneShow">Telephone : (819) 293-3845</h3>
-            <button id="updatePhone" type="button">Modifier le numéro de téléphone</button>
-        </div>
-        <div class="edit">
-            <h3>Mot de passe :   * * * * * * * * * *</h3>
+        <div class="editButtons">
+            <button id="updateScreenName" type="button">Modifier le nom d'affichage</button><br>
+            <button id="updateEmail" type="button">Modifier le courriel</button><br>
+            <button id="updatePhone" type="button">Modifier le numéro de téléphone</button><br>
             <button id="updatePassword" type="button">Modifier le mot de passe</button>
         </div>
     </div>
     <br>
-    <div class="manage">
-        <h2 style="border-bottom: #111111">Mes favoris</h2>
-    </div>
+    <h2>Mes favoris</h2>
     <hr>
 </div>
 </body>
+<script src="../../ressources/javascript/mainJavaScript.js"></script>
 <script>
-    $("#screenNameShow").text("Nom d'affichage : " + sessionStorage.getItem("screenNameAccount"));
-    $("#emailShow").text("Adresse courriel : " + sessionStorage.getItem("emailAccount"));
-    $("#phoneShow").text("Téléphone  : " + sessionStorage.getItem("phoneAccount"));
+    checkConnection();
     $(document).ready(function (e) {
+        $("#screenNameShow").text("Nom d'affichage : " + sessionStorage.getItem("screenNameAccount"));
+        $("#emailShow").text("Adresse courriel : " + sessionStorage.getItem("emailAccount"));
+        $("#phoneShow").text("Téléphone  : " + sessionStorage.getItem("phoneAccount"));
         $("#updateScreenName").click(function () {
             window.open("manageAccount/changeScreenName.html", "_self");
         });
@@ -69,59 +68,66 @@
         $("#updatePassword").click(function () {
             window.open("manageAccount/changePassword.html", "_self");
         });
+        $("#changePicture").click(function() {
+            $("#profilePic").click();
+        });
     });
 </script>
 <style>
-    .manage {
-        display: flex;
-        flex-direction: column;
-        margin-top: 20px;
-        width: auto;
-        height: auto;
-        text-align: left;
-        padding-left: 5px;
-        color: white;
+    .main {
+        margin: 0 2%;
     }
-    button {
-        width: 325px;
-        height: 40px;
-        margin-top: 10px;
-        background: transparent;
-        text-align: center;
-        cursor: pointer;
-        color: #eee;
-        font-weight: bold;
-        text-transform: uppercase;
-        transition: all 1s ease;
-        border: 1px solid white;
+    .header {
+        margin: 0 2%;
     }
-    button:hover {
-        background: #D50000;
-        border: none;
-        transition: all 1.5s ease;
-        color: white;
+    .content {flex-direction: row;}
+    .content div {
+        width: 24%;
+        margin: 20px 3%;
     }
-    .manage h2 {
-        font-size: 26px;
-        margin: 2px;
+    .content .profile {width: 15%;}
+    .content .currentAccountInfo {width: 42%;}
+    h3 {margin-bottom: 36px}
+    #changePicture {
+        height: 250px;
+        border-radius: 10px;
+        display: none;
+        max-height: 100%;
+        max-width: 100%;
+        width: 100%
     }
-    .manage h3 {
-        font-size: 18px;
-        margin: 12px 7px 7px;
-        text-align: left;
+    #profilePicture:hover #changePicture {
+        display: block;
     }
-    .manage hr {
-        width: 50%;
-        color: black;
-        margin: 10%;
-    }
-    .edit {
-        display: flex;
-        justify-content: space-between;
-    }
-    img {
-        margin: 0;
-        border-radius: 50%;
-    }
+    /*.manage {*/
+    /*    display: flex;*/
+    /*    flex-direction: column;*/
+    /*    width: auto;*/
+    /*    height: auto;*/
+    /*    text-align: left;*/
+    /*    margin: 20px 2%;*/
+    /*}*/
+    /*.manage h2 {*/
+    /*    font-size: 26px;*/
+    /*    margin: 2px;*/
+    /*}*/
+    /*.manage h3 {*/
+    /*    font-size: 18px;*/
+    /*    margin: 12px 7px 7px;*/
+    /*    text-align: left;*/
+    /*}*/
+    /*.manage hr {*/
+    /*    width: 50%;*/
+    /*    color: black;*/
+    /*    margin: 10%;*/
+    /*}*/
+    /*.edit {*/
+    /*    display: flex;*/
+    /*    justify-content: space-between;*/
+    /*}*/
+    /*img {*/
+    /*    margin: 0;*/
+    /*    border-radius: 50%;*/
+    /*}*/
 </style>
 </htmL>

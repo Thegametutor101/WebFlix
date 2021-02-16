@@ -8,6 +8,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../ressources/css/styles.css">
 </head>
 <body>
 <div class="main">
@@ -63,7 +64,7 @@
             if (newEmail.length > 150 || newEmail.length === 0) {
                 messages.append("<div>Veuillez entrer un nouveau courriel " +
                     "n'excédant pas 150 caractères.</div><br><hr>");
-            } else if (!newEmail.match(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g)) {
+            } else if (!newEmail.match(/^[\w-\\.]+@([\w-]+\.)+[\w-]{2,4}$/g)) {
                 messages.append("<div>Veuillez entrer un courriel valide.</div><br><hr>");
             }  else if (newEmail === oldEmail) {
                 messages.append("<div>Le champ nouveau email ne peut pas " +

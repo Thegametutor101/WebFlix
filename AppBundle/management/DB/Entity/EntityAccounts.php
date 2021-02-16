@@ -116,7 +116,7 @@ class EntityAccounts
     function checkAccountScreenNameUsed(string $screenName): bool
     {
         try {
-            $request = "SELECT COUNT(Password) as found FROM accounts WHERE upper(ScreenName) = upper('$screenName')";
+            $request = "SELECT COUNT(Password) as found FROM accounts WHERE ScreenName = '$screenName'";
             $result = $this->connection->query($request);
             $account = $result->fetch();
             if ($account['found'] > 0) {
