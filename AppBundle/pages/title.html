@@ -10,70 +10,30 @@
     <link rel="stylesheet" type="text/css" href="../ressources/css/styles.css">
 </head>
 <body>
-<div id="video">
-    <video controls>
-        <source src="../ressources/assets/videos/video chat 1.mp4" type="video/mp4">
-    </video>
-</div>
+    <div>
+        <div id="video">
+            <video controls>
+            </video>
+        </div>
+    </div>
 </body>
-<style>
-body {
-    font-family: "Montserrat", sans-serif;
-    text-align: center;
-    background: #111;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-button:hover {
-    background: #D50000;
-    border: none;
-    transition: all 1.5s ease;
-    color: white;
-}
-button {
-    width: 325px;
-    height: 40px;
-    margin-top: 10px;
-    background: transparent;
-    text-align: center;
-    cursor: pointer;
-    color: #eee;
-    font-weight: bold;
-    text-transform: uppercase;
-    transition: all 1s ease;
-    border: 1px solid white;
-}
-button:hover {
-    background: #D50000;
-    border: none;
-    transition: all 1.5s ease;
-}
-.manage h2 {
-    font-size: 26px;
-    margin: 2px;
-}
-.manage h3 {
-    font-size: 18px;
-    margin: 12px 7px 7px;
-    text-align: left;
-}
-.manage hr {
-    width: 50%;
-    color: black;
-    margin: 10%;
-}
-img {
-    margin: 0;
-    border-radius: 50%;
-}
-#video {
-    background-color: #111;
-}
-video {
-    border: none;
-    width: 99vw;
-    height: 99vh;
-}
-</style>
+
+
+
+<script>
+
+$(document).ready(function(){ 
+
+    let file = sessionStorage.getItem("VideoPath");
+
+
+    $("video").append(`
+    <source src="../${file}" type="video/mp4">
+    `);
+
+
+});
+
+</script>
+
 </html>
