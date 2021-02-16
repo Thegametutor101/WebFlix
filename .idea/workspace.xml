@@ -48,7 +48,14 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
     <setting file="file://$PROJECT_DIR$/AppBundle/management/DB/Model/ModelCards.php" root0="FORCE_HIGHLIGHTING" root1="SKIP_INSPECTION" />
+>>>>>>> Mich
+=======
+    <setting file="file://$PROJECT_DIR$/AppBundle/management/DB/Model/ModelCards.php" root0="FORCE_HIGHLIGHTING" root1="SKIP_INSPECTION" />
+>>>>>>> Dan
     <setting file="file://$PROJECT_DIR$/AppBundle/pages/account/manageAccount/changeEmail.html" root0="SKIP_INSPECTION" />
   </component>
   <component name="ProjectId" id="1naND46FwH2IHRncm2I6eZkUkJa" />
@@ -94,6 +101,18 @@
       <updated>1611624118452</updated>
       <workItem from="1611624119509" duration="1260000" />
       <workItem from="1611693308401" duration="12997000" />
+<<<<<<< HEAD
+      <workItem from="1611787824033" duration="11285000" />
+<<<<<<< HEAD
+=======
+      <workItem from="1612376340718" duration="15000" />
+      <workItem from="1612376416499" duration="4450000" />
+      <workItem from="1612790514816" duration="3330000" />
+      <workItem from="1612904851298" duration="40000" />
+      <workItem from="1612907475730" duration="1313000" />
+      <workItem from="1612910220356" duration="1100000" />
+>>>>>>> Mich
+=======
       <workItem from="1611787824033" duration="11425000" />
       <workItem from="1612186096159" duration="13636000" />
       <workItem from="1612965497961" duration="305000" />
