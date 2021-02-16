@@ -96,11 +96,30 @@ class EntityAccounts
     function checkAccountEmailUsed(string $email): bool
     {
         try {
-            $request = "SELECT COUNT(Password) FROM accounts WHERE Email = '$email'";
+            $request = "SELECT COUNT(Password) as found FROM accounts WHERE Email = '$email'";
             $result = $this->connection->query($request);
             $account = $result->fetch();
+            if ($account['found'] > 0) {
+                return true;
+            } else {
+                return false;
+            }
+        } catch (PDOException $e) {
+            return false;
+        }
+    }
 
-            if ($account !== 0) {
+    /**
+     * @param string $screenName
+     * @return bool
+     */
+    function checkAccountScreenNameUsed(string $screenName): bool
+    {
+        try {
+            $request = "SELECT COUNT(Password) as found FROM accounts WHERE ScreenName = '$screenName'";
+            $result = $this->connection->query($request);
+            $account = $result->fetch();
+            if ($account['found'] > 0) {
                 return true;
             } else {
                 return false;

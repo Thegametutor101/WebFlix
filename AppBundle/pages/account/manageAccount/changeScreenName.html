@@ -21,7 +21,7 @@
         <h2 style="border-bottom: #111111">Modification du nom d'affichage</h2>
     </div>
     <hr><br><br>
-    <div id = "errorMessage" class="alert alert-danger" role="alert"></div>
+    <div class="messages"></div>
     <form>
         <div class="box-input">
             <div class="edit">
@@ -30,11 +30,11 @@
             </div>
             <div class="edit">
                 <h3>Nouveau nom d'affichage </h3>
-                <input id="newScreenName" type="text" placeholder="Entrez votre nom d'affichage">
+                <input id="newScreenName" type="text" placeholder="Entrez votre nom d'affichage" max="50">
             </div>
             <div class="edit">
                 <h3>Confirmer le nouveau nom </h3>
-                <input id="confirmNewScreenName" type="text" placeholder="Entrez votre nom d'affichage">
+                <input id="confirmNewScreenName" type="text" placeholder="Entrez votre nom d'affichage" max="50">
             </div>
             <div class="edit">
                 <h3>Confirmer le changement</h3>
@@ -51,70 +51,61 @@
 <script>
     $("#oldScreenName").val(sessionStorage.getItem("screenNameAccount"));
     $(document).ready(function () {
-        let oldScreenName = $("#oldScreenName").val();
-        let password, email;
-        $.ajax({
-            url:"../../../management/getAccountByScreenName.php",
-            type:"POST",
-            data: {
-                    'screenName': oldScreenName
-                },
-            dataType:"json",
-            success: function (result) {
-               password = result["Password"];
-               email = result["Email"];
-            },
-            error: function (message, error) {
-                ///TODO error message when issue fetching account
-                console.log(message, error);
-            }
-        });
-        let message = $("#errormessage");
-        message.hide();
         $("#confirm").click(function () {
-            let oldScreenName, newScreenName, confirmNewScreenName, confirmUpdate;
-            oldScreenName = $("#oldScreenName").val();
-            newScreenName = $("#newScreenName").val();
-            confirmNewScreenName = $("#confirmNewScreenName").val();
-            confirmUpdate = $("#confirmUpdate").val();
-            ///TODO check username is not already taken
+            let messages = $(".messages");
+            messages.empty();
+            let oldScreenName = $("#oldScreenName").val();
+            let newScreenName = $("#newScreenName").val();
+            let confirmNewScreenName = $("#confirmNewScreenName").val();
+            let confirmUpdate = $("#confirmUpdate").val();
             if (newScreenName.length > 50 || newScreenName.length === 0) {
-                message.text("Veuillez entrer un nom n'excédant pas 50 caractères.")
+                messages.append("<div>Veuillez entrer un nom n'excédant pas 50 caractères.</div><br><hr>");
             } else if (newScreenName === oldScreenName) {
-                message.text("Le nouveau nom d'affichage ne peut être identique à l'ancien nom d'affichage !")
+                messages.append("<div>Le nouveau nom d'affichage ne peut " +
+                    "être identique à l'ancien nom d'affichage!</div><br><hr>");
             } else if (newScreenName !== confirmNewScreenName) {
-                message.text("La confirmation du nouveau nom d'affichage ne correspond pas au nouveau nom d'affichage !")
-            } else if (confirmUpdate !== password) {
-                message.text("Le champ confirmer la modification ne concorde pas avec votre mot de passe !")
+                messages.append("<div>La confirmation du nouveau nom " +
+                    "d'affichage ne correspond pas au nouveau nom d'affichage!</div><br><hr>");
+            } else if (confirmUpdate !== sessionStorage.getItem("passwordAccount")) {
+                messages.append("<div>Le champ confirmer la modification " +
+                    "ne concorde pas avec votre mot de passe!</div><br><hr>");
             } else {
-                message.text("");
                 $.ajax({
                     url:"../../../management/updateScreenName.php",
                     type:"POST",
                     data: {
-                            'email': email,
+                            'email': sessionStorage.getItem("emailAccount"),
                             'screenName': newScreenName
                         },
                     dataType:"json",
                     success: function (result) {
-                        ///TODO what ???
-                        sessionStorage.setItem("screenNameAccount", newScreenName)
+                        let answer = result["item"];
+                        if (answer === "ok") {
+                            sessionStorage.setItem("screenNameAccount", newScreenName);
+                            window.open("../myAccount.html", "_self");
+                        } else if (answer === "error") {
+                            messages.append("<div>Il est impossible de compléter " +
+                                "votre requête présentement.<br>Veuillez réessayer plus tard.</div><br><hr>");
+                        }  else if (answer === "used") {
+                            messages.append("<div>Le nouveau nom d'utilisateur est déja utilisé. " +
+                                "Nous sommes vraiment désolé.</div><br><hr>");
+                        } else if (answer === "empty") {
+                            messages.append("<div>Veuillez remplir les champs pour soumettre.</div><br><hr>");
+                        } else {
+                            messages.append("<div>Il est impossible de compléter " +
+                                "votre requête présentement.<br>Veuillez réessayer plus tard.</div><br><hr>");
+                        }
                     },
                     error: function (message, error) {
-                        ///TODO messages for error during modification
+                        messages.append("<div>Erreur lors de votre requête. " +
+                            "Veuillez réessayer plus tard.</div><br><hr>");
                         console.log(message, error);
                     }
                 });
-                $("#oldScreenName").val("");
-                $("#newScreenName").val("");
-                $("#confirmNewScreenName").val("");
-                $("#confirmUpdate").val("");
-                window.open("myAccount.html", "_self");
             }
-            message.show();
         });
         $("#cancel").click(function () {
-            window.open("myAccount.html", "_self");
+            window.open("../myAccount.html", "_self");
         });
     });
 </script>
@@ -186,7 +177,7 @@
         font-size: 15px;
         width: 300px;
         height: 25px;
-        font-family: Montserrat, sans-serif;
+        font-family: 'Montserrat', sans-serif;
         border: 1px solid transparent;
         position: relative;
         color: #eee;

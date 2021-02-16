@@ -10,10 +10,10 @@ if (!empty($_POST["title"]) && !empty($_POST["description"]) && !empty($_POST["g
     $id = $_POST["id"];
     $genre = $_POST["genre"];
     $classificiations = $_POST["classificiations"];
-    $dossier = 'images/movieimage/';
+    $dossier = __DIR__.'../ressources/assets/images/videoImages/';
     $chemin = $dossier . basename($_FILES['movieimage']['name']);
     if (move_uploaded_file($_FILES['movieimage']['tmp_name'], $chemin)) {
-        $dossier = 'movies/';
+        $dossier = __DIR__.'../ressources/assets/videos/';
         $chemin2 = $dossier . basename($_FILES['moviefile']['name']);
     }
     if (move_uploaded_file($_FILES['moviefile']['tmp_name'], $chemin2)) {
