@@ -111,9 +111,14 @@ color: white;
 .card-text {
     color: rgb(185, 185, 185);
 }
-.card-body a {
-    background-color: rgb(47, 47, 47);
-    border: none;
+.favStar-active {
+    color: yellow;
+    font-size: 35px;
+}
+
+.favStar-non-active {
+    color: darkgray;
+    font-size: 35px;
 }
 
 .card:hover {
@@ -162,6 +167,58 @@ color: white;
             $(this).parent().parent().stop().animate({scrollLeft: "-=750"}, 800);
             return false;
         });
+
+
+
+
+
+        $(document).on("click",".favStar-active",function(event) {
+            $(this).addClass("favStar-non-active");
+            $(this).removeClass("favStar-active");
+        });
+
+        $(document).on("click",".favStar-non-active",function(event) {
+            $(this).addClass("favStar-active");
+            $(this).removeClass("favStar-non-active");
+
+            let classes = $(this).parent().parent().attr("class");
+            var idCard = classes.split(" ");
+
+            console.log(idCard[1]);
+
+            sessionStorage.setItem("emailAccount", "test@test.com");
+
+            let postForm1 = {
+                'email': sessionStorage.getItem("emailAccount"),
+                'idCard': idCard[1]
+            }
+            $.ajax({
+                //Process the form using $.ajax()
+                type: 'POST', //Method type
+                url: '../management/addFavorite.php', //Your form processing file URL
+                data: postForm1, //Forms name
+                dataType: 'JSON',
+                success: function(data) {
+                    console.log(data); {
+                       // window.open("index.html", "_self");
+                    }
+                },
+                error: function(erreur, message) {
+                    console.log(erreur, message);
+                }
+
+            })
+
+
+            //window.open("index.html", "_self");
+        });
+
+
+
+
+
+
+
 
 
 
@@ -237,10 +294,11 @@ color: white;
                         // cards de la liste
                         for(ctrVid = 0; ctrVid < data.length; ctrVid++){
                             $("#"+listeGenres[ctrAjax] + "> .videoList").append(`
-                                <div onclick = "Details('${data[ctrVid].File}')" class="card">
+                                <div class="card ${data[ctrVid].ID}">
                                 <img src="${data[ctrVid].Image}" class="card-img">
                                 <div class="card-body">
                                 <h5 class="card-title" id="card1Title">${data[ctrVid].Title}</h5>
+                                <i class="material-icons favStar-non-active">star</i>
                                 <p class="card-text">${data[ctrVid].Resume}</p>
                                 </div>
                                 </div>`);
@@ -248,6 +306,7 @@ color: white;
 
 
 
+                        //onclick = "Details('${data[ctrVid].File}')"
 
                     // fleche de droite et fin de la liste
                     $("#"+listeGenres[ctrAjax] + "> .videoList").append('<div class="right"><i class="material-icons md-36">arrow_forward_ios</i></div><hr>');

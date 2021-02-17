@@ -12,16 +12,15 @@ class ModelFavorites
         $this->connection = $constants->getConnection();
     }
 
-    function addFavorite(int $id, string $email, int $cardID): string
+    function addFavorite(string $email, int $cardID): string
     {
         try
         {
-            $request = "INSERT INTO favorites VALUES(:id, :email, :cardID)";
+            $request = "INSERT INTO favorites (Email, CardID) VALUES(:Email, :CardID)";
 
             $declaration = $this->connection->prepare($request);
-            $declaration->bindParam(':id', $id);
-            $declaration->bindParam(':email', $email);
-            $declaration->bindParam(':cardID', $cardID);
+            $declaration->bindParam(':Email', $email);
+            $declaration->bindParam(':CardID', $cardID);
 
             $declaration->execute();
             return "ok";
