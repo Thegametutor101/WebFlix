@@ -22,7 +22,7 @@ function login(email, password) {
                 sessionStorage.setItem("phoneAccount", answer["Phone"]);
                 sessionStorage.setItem("screenNameAccount", answer["ScreenName"]);
                 sessionStorage.setItem("passwordAccount", answer["Password"]);
-                window.open("myAccount.html", "_self");
+                window.open("../index.html", "_self");
             } else {
                 messages.append("<div>Erreur lors de votre requête. " +
                     "Veuillez réessayer plus tard.</div><br><hr>");
@@ -55,7 +55,7 @@ function signup(email, password, phone, screenName) {
                 sessionStorage.setItem("phoneAccount", phone);
                 sessionStorage.setItem("screenNameAccount", screenName);
                 sessionStorage.setItem("passwordAccount", password);
-                window.open("myAccount.html", "_self");
+                window.open("../index.html", "_self");
             } else if (answer === "screenName") {
                 messages.append("<div>Malheureusement, ce nom d'utilisateur est déjà pris.</div><br><hr>");
             } else if (answer === "email") {
