@@ -5,6 +5,8 @@
 
 :root {
     --main: #111;
+    --light: #BEBEBE;
+    --lightActive: #d9d9d9;
     --accent: #D50000;
 }
 
@@ -22,11 +24,12 @@
 
 body {
     background: var(--main);
-}
-
-.main {
     width: 100%;
     max-width: 100%;
+}
+.main {
+    width: 96%;
+    margin: 0 2%;
 }
 .header {
     display: flex;
@@ -37,20 +40,6 @@ body {
     margin: 0 auto;
     height: 100%;
 }
-.content {
-    width: 90%;
-    margin: 0 5%;
-    display: flex;
-    flex-direction: column;
-}
-form {
-    width: 50%;
-    margin: 0 25%;
-    text-align: center;
-}
-form input {
-    margin-bottom: 20px;
-}
 .messages div {
     background-color: rgba(244,105,105,0.7);
     border: 2px solid rgba(244,46,46,0.7);
@@ -59,41 +48,33 @@ form input {
     padding: 10px;
     border-radius: 10px;
     text-align: center;
-}
-button {
-    width: 325px;
-    height: 40px;
-    margin-top: 10px;
-    background: transparent;
-    text-align: center;
-    cursor: pointer;
-    font-weight: bold;
-    text-transform: uppercase;
-    transition: all 0.2s ease;
-    margin-bottom: 15px;
-    border: 1px solid white;
-}
-button:hover {
-    background: #D50000;
-    border: none;
-    transition: all 1.5s ease;
-}
-input {
-    padding: 10px 3%;
-    background: transparent;
-    font-size: 15px;
-    width: 300px;
-    height: 25px;
-    font-family: 'Montserrat', sans-serif;
-    border: 1px solid transparent;
-    position: relative;
-    margin-bottom: 15px;
-    text-align: left;
-}
-input {
-    border-bottom: 1px solid white;
+    width: 60%;
+    margin: 10px 20%;
 }
 a {
     text-decoration: none;
-    color: rgba(190, 190, 190, 0.856);
+    color: var(--light);
 }
+a:hover, a:active {
+    text-decoration: none;
+    color: var(--lightActive);
+}
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="tel"] {
+    width: 35%;
+    padding: 5px;
+    background: transparent;
+    font-size: 15px;
+    border: 1px solid transparent;
+    border-bottom: 1px solid white;
+    margin-bottom: 15px;
+    text-align: left;
+    vertical-align: bottom;
+}
+
+.card-title {color: white;}
+.card-text {color: var(--light);}
+.card:hover {cursor: pointer;}
+hr {color: var(--light);}
