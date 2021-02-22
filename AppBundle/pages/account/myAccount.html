@@ -3,11 +3,10 @@
 <head>
     <title>Webflix - MonCompte</title>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="../../ressources/css/styles.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="../../ressources/css/styles.css">
 </head>
 <body>
@@ -47,9 +46,15 @@
     <br>
     <h2>Mes favoris</h2>
     <hr>
+    <div class="category" id="favoris"></div>
 </div>
 </body>
+
+
+
 <script src="../../ressources/javascript/mainJavaScript.js"></script>
+
+
 <script>
     checkConnection();
     $(document).ready(function (e) {
@@ -71,8 +76,94 @@
         $("#changePicture").click(function() {
             $("#profilePic").click();
         });
+
+
+
+
+
+        $.ajax({
+                //Process the form using $.ajax()
+                type: 'POST', //Method type
+                url: '../../management/getFavoriteCards.php', //Your form processing file URL
+                data:{
+                    'email': "test@test.com"
+                },
+                dataType: 'JSON',
+                success: function(data) {
+
+                    // debut de la liste et fleche de gauche
+                    $("#favoris").append('<ul class="videoList"><div class="left"><i class="material-icons md-36">arrow_back_ios</i></div></ul>');
+
+
+                        // cards de la liste
+                        for(ctrVid = 0; ctrVid < data.length; ctrVid++){
+
+                                $("#favoris > .videoList").append(`
+                                <div onclick = "Details('${data[ctrVid].File}')" class="card ${data[ctrVid][0]}">
+                                <img src="../${data[ctrVid].Image}" class="card-img">
+                                <div class="card-body">
+                                <h5 class="card-title" id="card1Title">${data[ctrVid].Title}</h5>
+                                <i class="material-icons favStar-active">star</i>
+                                <p class="card-text">${data[ctrVid].Resume}</p>
+                                </div>
+                                </div>`);
+
+
+                        }
+
+                    // fleche de droite et fin de la liste
+                    $("#favoris > .videoList").append('<div class="right"><i class="material-icons md-36">arrow_forward_ios</i></div>');
+                },
+                error: function(erreur, message) {
+                    console.log(erreur, message);
+                }
+
+        });
+
+
+
+
+
+
+
+        $(document).on("click",".favStar-active",function(event) {
+
+            let classes = $(this).parent().parent().attr("class");
+            var idCard = classes.split(" ");
+
+            console.log(idCard[1]);
+
+            let postForm2 = {
+                'email': "test@test.com",
+                'idCard': idCard[1]
+            }
+            $.ajax({
+                //Process the form using $.ajax()
+                type: 'POST', //Method type
+                url: '../../management/deleteFavorite.php', //Your form processing file URL
+                data: postForm2, //Forms name
+                dataType: 'JSON',
+                success: function(data) {
+
+                },
+                error: function(erreur, message) {
+                    console.log(erreur, message);
+                }
+
+            })
+
+            window.open("myAccount.html", "_self");
+        });
+
+
+
+
     });
 </script>
+
+
+
+
 <style>
     .main {
         margin: 0 2%;
@@ -99,6 +190,82 @@
     #profilePicture:hover #changePicture {
         display: block;
     }
+
+    .card:hover {
+    cursor: pointer;
+    }
+
+    .card-title {
+        color: white;
+    }
+    .card-text {
+        color: rgb(185, 185, 185);
+    }
+    .videoList{
+        display: table;
+        padding: 0;
+        border-spacing: 15px;
+    }
+    .videoList .card{
+        display: table-cell;
+        background-color: #111;
+        border-style: solid;
+        border-width: 1px;
+        border-color: rgb(158, 9, 9);
+        margin: 10px;
+        min-width: 250px;
+        max-width: 250px;
+    }
+    .left{
+        display: table-cell;
+        position: sticky;
+        left: 0;
+        z-index: 2;
+        vertical-align: middle;
+        min-height: 100%;
+        width: fit-content;
+        padding: 3px;
+        align-self: center;
+        background-color: black;
+        opacity: 0.5;
+        transition: 0.5s;
+    }
+    .right{
+        display: table-cell;
+        position: sticky;
+        right: 0;
+        z-index: 2;
+        vertical-align: middle;
+        min-height: 100%;
+        width: fit-content;
+        padding: 3px;
+        align-self: center;
+        background-color: black;
+        opacity: 0.5;
+        transition: 0.5s;
+    }
+    .left:hover {
+        opacity: 1.0;
+    }
+    .right:hover {
+        opacity: 1.0;
+    }
+    #favoris {
+        display: flex;
+        max-width: 100%;
+        overflow-x: scroll;
+        padding: 10px;
+    }
+
+    .favStar-active {
+        color: yellow;
+        font-size: 35px;
+    }
+
+
+
+
+
     /*.manage {*/
     /*    display: flex;*/
     /*    flex-direction: column;*/

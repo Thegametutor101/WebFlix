@@ -101,11 +101,10 @@ header img {
     border-width: 1px;
     border-color: rgb(158, 9, 9);
     margin: 10px;
-    min-width: 16vw;
-    max-width: 16vw;
+    min-width: 250px;
+    max-width: 250px;
 }
 .card-title {
-color: rgb(158, 9, 9);
 color: white;
 }
 .card-text {
@@ -175,7 +174,35 @@ color: white;
         $(document).on("click",".favStar-active",function(event) {
             $(this).addClass("favStar-non-active");
             $(this).removeClass("favStar-active");
+
+            let classes = $(this).parent().parent().attr("class");
+            var idCard = classes.split(" ");
+
+            console.log(idCard[1]);
+
+            let postForm2 = {
+                'email': sessionStorage.getItem("emailAccount"),
+                'idCard': idCard[1]
+            }
+            $.ajax({
+                //Process the form using $.ajax()
+                type: 'POST', //Method type
+                url: '../management/deleteFavorite.php', //Your form processing file URL
+                data: postForm2, //Forms name
+                dataType: 'JSON',
+                success: function(data) {
+
+                },
+                error: function(erreur, message) {
+                    console.log(erreur, message);
+                }
+
+            })
+
+            window.open("index.html", "_self");
         });
+
+
 
         $(document).on("click",".favStar-non-active",function(event) {
             $(this).addClass("favStar-active");
@@ -185,8 +212,6 @@ color: white;
             var idCard = classes.split(" ");
 
             console.log(idCard[1]);
-
-            sessionStorage.setItem("emailAccount", "test@test.com");
 
             let postForm1 = {
                 'email': sessionStorage.getItem("emailAccount"),
@@ -199,9 +224,7 @@ color: white;
                 data: postForm1, //Forms name
                 dataType: 'JSON',
                 success: function(data) {
-                    console.log(data); {
-                       // window.open("index.html", "_self");
-                    }
+
                 },
                 error: function(erreur, message) {
                     console.log(erreur, message);
@@ -210,7 +233,7 @@ color: white;
             })
 
 
-            //window.open("index.html", "_self");
+            window.open("index.html", "_self");
         });
 
 
@@ -226,6 +249,9 @@ color: white;
             $(window).scroll(function(){ 
                 $('header').css("background-color", 'rgba(17, 17, 17, ' + (0.3 + (0.7 * $(window).scrollTop() / 200)) + ')') 
             });
+
+            sessionStorage.setItem("emailAccount", "test@test.com");
+
 
             getGenres();
 
@@ -277,7 +303,8 @@ color: white;
                 type: 'POST', //Method type
                 url: '../management/getVideosByGenre.php', //Your form processing file URL
                 data:{
-                    'genre': listeGenres[ctrAjax]
+                    'genre': listeGenres[ctrAjax],
+                    'email': sessionStorage.getItem("emailAccount")
                 },
                 dataType: 'JSON',
                 success: function(data) {
@@ -293,8 +320,24 @@ color: white;
 
                         // cards de la liste
                         for(ctrVid = 0; ctrVid < data.length; ctrVid++){
-                            $("#"+listeGenres[ctrAjax] + "> .videoList").append(`
-                                <div class="card ${data[ctrVid].ID}">
+
+
+                            if(data[ctrVid][11] != 0){
+
+                                $("#"+listeGenres[ctrAjax] + "> .videoList").append(`
+                                <div onclick = "Details('${data[ctrVid].File}')" class="card ${data[ctrVid][0]}">
+                                <img src="${data[ctrVid].Image}" class="card-img">
+                                <div class="card-body">
+                                <h5 class="card-title" id="card1Title">${data[ctrVid].Title}</h5>
+                                <i class="material-icons favStar-active">star</i>
+                                <p class="card-text">${data[ctrVid].Resume}</p>
+                                </div>
+                                </div>`);
+
+                            } else {
+
+                                $("#"+listeGenres[ctrAjax] + "> .videoList").append(`
+                                <div class="card ${data[ctrVid][0]}">
                                 <img src="${data[ctrVid].Image}" class="card-img">
                                 <div class="card-body">
                                 <h5 class="card-title" id="card1Title">${data[ctrVid].Title}</h5>
@@ -302,11 +345,10 @@ color: white;
                                 <p class="card-text">${data[ctrVid].Resume}</p>
                                 </div>
                                 </div>`);
+
+                            }
+
                         }
-
-
-
-                        //onclick = "Details('${data[ctrVid].File}')"
 
                     // fleche de droite et fin de la liste
                     $("#"+listeGenres[ctrAjax] + "> .videoList").append('<div class="right"><i class="material-icons md-36">arrow_forward_ios</i></div><hr>');
@@ -319,6 +361,11 @@ color: white;
 
         }
     }
+
+
+
+
+
 
 
     function Details(ID) {

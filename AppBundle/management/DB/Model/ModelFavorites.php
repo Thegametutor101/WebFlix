@@ -12,6 +12,29 @@ class ModelFavorites
         $this->connection = $constants->getConnection();
     }
 
+
+
+
+    function deleteFavorite(string $email, int $cardID): bool
+    {
+        try {
+            $request = "DELETE FROM favorites WHERE Email = :Email and CardID = :CardID";
+
+            $declaration = $this->connection->prepare($request);
+            $declaration->bindParam(':Email', $email);
+            $declaration->bindParam(':CardID', $cardID);
+
+            $declaration->execute();
+            return true;
+        } catch (PDOException $e) {
+            return false;
+        }
+    }
+
+
+
+
+
     function addFavorite(string $email, int $cardID): string
     {
         try
