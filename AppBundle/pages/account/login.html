@@ -7,7 +7,8 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="../../ressources/css/styles.css">
+    <link rel="stylesheet" type="text/css" href="../../ressources/css/main.css">
+    <link rel="stylesheet" type="text/css" href="../../ressources/css/account.css">
 </head>
 <body>
 <div class="main">
@@ -18,15 +19,13 @@
     </div>
     <div class="content">
         <div class="messages"></div>
-        <form>
-            <h2 style="padding: 0 20px 15px 20px;">Connexion</h2>
-            <input id="email" type="email" name="courriel" placeholder="Courriel" required><br>
-            <input id="password" type="password" name="password" placeholder="Mot de passe" required><br>
-            <button id="connect">Se connecter</button>
-            <p>Pas encore de compte?
-                <a href="signup.html">Inscrivez-vous maintenant!</a>
-            </p>
-        </form>
+        <h2 style="padding: 0 20px 15px 20px;">Connexion</h2>
+        <input id="email" type="email" name="courriel" placeholder="Courriel" required><br>
+        <input id="password" type="password" name="password" placeholder="Mot de passe" required><br>
+        <button class="confirmButtons" id="connect">Se connecter</button>
+        <p>Pas encore de compte?
+            <a href="signup.html">Inscrivez-vous maintenant!</a>
+        </p>
     </div>
 </div>
 </body>
@@ -40,9 +39,5 @@
     });
 </script>
 <style>
-    .messages {
-        width: 70%;
-        margin: 0 15%;
-    }
 </style>
 </html>

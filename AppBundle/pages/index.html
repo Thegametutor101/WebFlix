@@ -3,13 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <title>Home</title>
+    <!--    Scripts loading  -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
-    <link rel="stylesheet" , href="../ressources/css/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+            crossorigin="anonymous"></script>
+    <!--    Links for functionnality  -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
+          crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <!--    Custom style sheets  -->
+    <link rel="stylesheet" type="text/css" href="../ressources/css/main.css">
+    <link rel="stylesheet" type="text/css" href="../ressources/css/index.css">
 </head>
 <style>
 body::-webkit-scrollbar {
@@ -131,36 +140,39 @@ color: white;
 </style>
 <body>
     <header>
-
-        <img src="../ressources/assets/images/webflix_orig.png">
-
+        <div class="logo">
+            <img src="../ressources/assets/images/webflix_orig.png">
+        </div>
+        <button class="profileBubble">
+            <img src="../ressources/assets/images/defaultUserProfile.png"
+                 alt="../ressources/assets/images/defaultUserProfile.png"
+                 style="display: block;border-radius: 50%">
+        </button>
     </header>
     <section id="starringShow">
 
-        <img src="../ressources/assets/images/wienerMobile.jpg" alt="">
+        <img src="../ressources/assets/images/videoImages/wienerMobile.jpg" alt="">
 
     </section>
     <section id="categoryList">
 
-
     </section>
 
-
-
-
 </body>
-
-
 <script>
-
-        
-
-
+    $(document).ready(function(){ 
+        $(window).scroll(function(){
+            $('header').css("background-color", 'rgba(17, 17, 17, ' + (0.3 + (0.7 * $(window).scrollTop() / 200)) + ')');
+        });
+        getGenres();
+        $(".profileBubble").click(function (e) {
+            window.open("account/myAccount.html", "_self");
+        });
 
         $(".right").click(function(){
             $(this).parent().parent().stop().animate({scrollLeft: "+=750"}, 800);
             return false;
-        }); 
+        });
 
         $(".left").on('click', function(event) {
             $(this).parent().parent().stop().animate({scrollLeft: "-=750"}, 800);
@@ -259,7 +271,7 @@ color: white;
 
 
     function getGenres(){
-        let listeGenres = new Array();
+        let listeGenres = [];
 
         $.ajax({
             //Process the form using $.ajax()
@@ -274,22 +286,17 @@ color: white;
                     currGenres = JSON.parse(data[ctr][0]);
 
                     for(ctrGenres = 0; ctrGenres < currGenres.length; ctrGenres++){
-                        if($.inArray(currGenres[ctrGenres], listeGenres) == -1){
+                        if($.inArray(currGenres[ctrGenres], listeGenres) === -1){
                             listeGenres.push(currGenres[ctrGenres]);
                         }
                     } 
                 }
-
-                
-
-                getVideosByGenre(listeGenres)
+                getVideosByGenre(listeGenres);
             },
             error: function(erreur, message) {
                 console.log(erreur, message);
             }
-
         });
-
     }
 
     function getVideosByGenre(listeGenres){
@@ -310,13 +317,13 @@ color: white;
                 success: function(data) {
                     console.log(listeGenres[ctrAjax]);
 
-
                     // header de categorie
-                    $("#categoryList").append('<h4 class="catTitle">'+listeGenres[ctrAjax]+'</h4><hr><div class="category" id="'+listeGenres[ctrAjax]+'""></div>');
+                    $("#categoryList").append('<h4 class="catTitle">'+listeGenres[ctrAjax]+'</h4>' +
+                        '<hr><div class="category" id="'+listeGenres[ctrAjax]+'""></div>');
 
                     // debut de la liste et fleche de gauche
-                    $("#"+listeGenres[ctrAjax]).append('<ul class="videoList"><div class="left"><i class="material-icons md-36">arrow_back_ios</i></div></ul>');
-
+                    $("#"+listeGenres[ctrAjax]).append('<ul class="videoList"><div class="left">' +
+                        '<i class="material-icons md-36">arrow_back_ios</i></div></ul>');
 
                         // cards de la liste
                         for(ctrVid = 0; ctrVid < data.length; ctrVid++){
@@ -351,7 +358,8 @@ color: white;
                         }
 
                     // fleche de droite et fin de la liste
-                    $("#"+listeGenres[ctrAjax] + "> .videoList").append('<div class="right"><i class="material-icons md-36">arrow_forward_ios</i></div><hr>');
+                    $("#"+listeGenres[ctrAjax] + "> .videoList")
+                        .append('<div class="right"><i class="material-icons md-36">arrow_forward_ios</i></div><hr>');
                 },
                 error: function(erreur, message) {
                     console.log(erreur, message);
