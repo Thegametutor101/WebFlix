@@ -1,6 +1,7 @@
 <?php
 $connexion = new PDO("mysql:host=localhost;dbname=netflix_projet;port=3308", "root", "");
 $connexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+echo json_encode($_POST['title']);
 if (!empty($_POST["title"]) && !empty($_POST["description"]) && !empty($_POST["genre"]) && !empty($_POST["releasedate"]) && isset($_POST["visible"]) && !empty($_POST["type"]) && !empty($_POST["classificiations"]) && ($_FILES['movieimage']['tmp_name'] != "" || $_FILES['movieimage']['size'] != 0) && ($_FILES['moviefile']['tmp_name'] != "" || $_FILES['moviefile']['size'] != 0)) {
     $title = $_POST["title"];
     $description = $_POST["description"];
