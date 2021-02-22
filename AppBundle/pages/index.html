@@ -160,14 +160,14 @@ color: white;
 
 </body>
 <script>
-    $(document).ready(function(){ 
-        $(window).scroll(function(){
-            $('header').css("background-color", 'rgba(17, 17, 17, ' + (0.3 + (0.7 * $(window).scrollTop() / 200)) + ')');
-        });
-        getGenres();
-        $(".profileBubble").click(function (e) {
-            window.open("account/myAccount.html", "_self");
-        });
+    $(document).ready(function() {
+        $(document).on('click', '#idCreerProfil', function (e) {
+            $("#idVideo").html("<video id='idVideo' width='1000' height='500' controls autoplay>");
+            $("#idSource").html("<source id='idSource' src='' type='video/mp4'></video>");
+        })
+    })
+
+
 
         $(".right").click(function(){
             $(this).parent().parent().stop().animate({scrollLeft: "+=750"}, 800);
