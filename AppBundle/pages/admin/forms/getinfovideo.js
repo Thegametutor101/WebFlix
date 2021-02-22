@@ -270,8 +270,7 @@ $(document).ready(function() {
                 data: form_data, //Forms name
                 processData: false,
                 contentType: false,
-                cache: false,
-                dataType: 'TEXT',
+                dataType: 'JSON',
                 success: function(data) {
                     console.log(data);
                 },
