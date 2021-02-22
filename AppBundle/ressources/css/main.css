@@ -16,7 +16,7 @@
 * {
     font-family: Montserrat, sans-serif;
     color: white;
-    overflow-x: hidden;
+    /* overflow-x: hidden; */
 }
 *:focus {
     outline: none;
