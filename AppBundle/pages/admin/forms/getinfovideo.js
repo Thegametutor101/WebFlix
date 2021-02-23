@@ -214,7 +214,6 @@ $(document).ready(function() {
     }
 
     $("#confirmaddmovie").click(function(e) {
-        e.preventDefault();
         let form_data = new FormData();
         let title, description, movieimage, moviefile, releasedate, visible, type, classification;
         let genrefilm = getGenres();
