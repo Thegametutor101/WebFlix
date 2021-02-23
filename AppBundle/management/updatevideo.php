@@ -10,10 +10,10 @@ if (!empty($_POST["title"]) && !empty($_POST["description"]) && !empty($_POST["g
     $id = $_POST["id"];
     $genre = $_POST["genre"];
     $classificiations = $_POST["classificiations"];
-    $dossier = __DIR__.'../ressources/assets/images/videoImages/';
+    $dossier = '../ressources/assets/images/videoImages/';
     $chemin = $dossier . basename($_FILES['movieimage']['name']);
     if (move_uploaded_file($_FILES['movieimage']['tmp_name'], $chemin)) {
-        $dossier = __DIR__.'../ressources/assets/videos/';
+        $dossier = '../ressources/assets/videos/';
         $chemin2 = $dossier . basename($_FILES['moviefile']['name']);
     }
     if (move_uploaded_file($_FILES['moviefile']['tmp_name'], $chemin2)) {
@@ -33,6 +33,6 @@ function updatevideo($title, $genre, $description, $releasedate, $visible, $type
         $requete = "update cards set Title = '$title', Genre = '$genre', Resume = '$description', Image = '$chemin', File = '$chemin2', ReleaseDate = '$releasedate', Available = '$visible', Classification = '$classificiations', Type = '$type' where ID = '$id'";
         $connexion->exec($requete);
     } catch (PDOException $e) {
-        echo "Échec de connexion à la base de données: " . $e->getMessage();
+        echo json_encode("Échec de connexion à la base de données: " . $e->getMessage());
     }
 }

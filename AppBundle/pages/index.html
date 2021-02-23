@@ -26,7 +26,7 @@ body::-webkit-scrollbar {
 }
 #starringShow {
     width: 100%;
-    height: fit-content;
+    height: 250px;
     background-color: darkgray;
     text-align: center;
     align-items: center;
@@ -344,7 +344,7 @@ color: white;
                             } else {
 
                                 $("#"+listeGenres[ctrAjax] + "> .videoList").append(`
-                                <div class="card ${data[ctrVid][0]}">
+                                <div onclick = "Details('${data[ctrVid].File}')" class="card ${data[ctrVid][0]}">
                                 <img src="${data[ctrVid].Image}" class="card-img">
                                 <div class="card-body">
                                 <h5 class="card-title" id="card1Title">${data[ctrVid].Title}</h5>
@@ -378,7 +378,7 @@ color: white;
 
     function Details(ID) {
         sessionStorage.setItem("VideoPath", ID);
-        window.open("title.html", "_self");
+        window.open("video.html", "_self");
     }
     
 

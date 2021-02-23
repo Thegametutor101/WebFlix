@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Visionnement</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../ressources/css/main.css">
+</head>
+<body>
+    <div>
+        <div id="video">
+            <video id="video1" controls>
+            </video>
+        </div>
+        <p id="timer">allo</p>
+    </div>
+</body>
+
+
+
+<script>
+
+$(document).ready(function(){ 
+
+    let file = sessionStorage.getItem("VideoPath");
+
+
+    $("video").append(`
+    <source src="${file}" type="video/mp4">
+    `);
+
+
+    var vid = document.getElementById("video1");
+
+// Attach a timeupdate event to the video element, and execute a function if the current playback position has changed
+vid.addEventListener("timeupdate", myFunction);
+
+function myFunction() {
+  // Display the current position of the video in a p element with id="demo"
+  document.getElementById("timer").innerHTML = vid.currentTime;
+}
+
+});
+
+window.addEventListener('beforeunload', function(event) {
+    console.log('I am the 1 one.');
+      });
+      window.addEventListener('unload', function(event) {
+        console.log('I am the 3rd one.');
+      });
+
+</script>
+
+</html>
