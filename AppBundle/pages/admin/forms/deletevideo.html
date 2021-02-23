@@ -4,6 +4,8 @@
 <head>
     <meta charset="utf-8">
     <title>Delete video</title>
+    <link rel="stylesheet" href="../../../ressources/css/main.css">
+    <link rel="stylesheet" href="../../../ressources/css/admin.css">
 </head>
 
 <body>
@@ -11,7 +13,7 @@
     <form id="deletevideo">
         <div style="display: flex; flex-direction:column; margin: 10%; margin-top: 0px;">
             <label>Choissisez le film que vous souhaitez supprimer</label>
-            <select id="selectedvideo" class="form-select" aria-label="Default select example">
+            <select id="selectedvideo" class="form-select" aria-label="Default select example" style="color:black;">
                 <option selected disabled = "disabled"></option>
               </select><br>
             <div class=" mb-3 ">
@@ -21,20 +23,20 @@
             <h5>A quel genre le film sera t-il associe ?</h5>
             <div class="form-check">
 
-                <label class="form-check-label" for="flexSwitchCheckDefault"><input class="form-check-input genre" type="checkbox" id="Action" value="Action" disabled>Action</label><br>
-                <label class="form-check-label" for="flexSwitchCheckDefault"><input class="form-check-input genre" type="checkbox" id="Aventure" value="Aventure" disabled>Aventure</label><br>
-                <label class="form-check-label" for="flexSwitchCheckDefault"><input class="form-check-input genre" type="checkbox" id="Comédie" value="Comédie" disabled>Comédie</label><br>
-                <label class="form-check-label" for="flexSwitchCheckDefault"><input class="form-check-input genre" type="checkbox" id="Crime" value="Crime" disabled>Crime</label><br>
-                <label class="form-check-label" for="flexSwitchCheckDefault"><input class="form-check-input genre" type="checkbox" id="Drame" value="Drame" disabled>Drame</label><br>
-                <label class="form-check-label" for="flexSwitchCheckDefault"><input class="form-check-input genre" type="checkbox" id="Fantaisie" value="Fantaisie" disabled>Fantaisie</label><br>
-                <label class="form-check-label" for="flexSwitchCheckDefault"><input class="form-check-input genre" type="checkbox" id="Historique" value="Historique" disabled>Historique</label><br>
-                <label class="form-check-label" for="flexSwitchCheckDefault"><input class="form-check-input genre" type="checkbox" id="Horreur" value="Horreur" disabled>Horreur</label><br>
-                <label class="form-check-label" for="flexSwitchCheckDefault"><input class="form-check-input genre" type="checkbox" id="Mystère" value="Mystère" disabled>Mystère</label><br>
-                <label class="form-check-label" for="flexSwitchCheckDefault"><input class="form-check-input genre" type="checkbox" id="Philosophique" value="Philosophique" disabled>Philosophique</label><br>
-                <label class="form-check-label" for="flexSwitchCheckDefault"><input class="form-check-input genre" type="checkbox" id="Romance" value="Romance" disabled>Romance</label><br>
-                <label class="form-check-label" for="flexSwitchCheckDefault"><input class="form-check-input genre" type="checkbox" id="Science-Fiction" value="Science-Fiction" disabled>Science-Fiction</label><br>
-                <label class="form-check-label" for="flexSwitchCheckDefault"><input class="form-check-input genre" type="checkbox" id="Thriller" value="Thriller" disabled>Thriller</label><br>
-                <label class="form-check-label" for="flexSwitchCheckDefault"><input class="form-check-input genre" type="checkbox" id="Animation" value="Animation" disabled>Animation</label><br>
+                <label class="form-check-label">Action</label><input class="form-check-input genre" type="checkbox" id="Action" value="Action" disabled><br>
+                <label class="form-check-label">Aventure</label><input class="form-check-input genre" type="checkbox" id="Aventure" value="Aventure" disabled><br>
+                <label class="form-check-label">Comédie</label><input class="form-check-input genre" type="checkbox" id="Comédie" value="Comédie" disabled><br>
+                <label class="form-check-label">Crime</label><input class="form-check-input genre" type="checkbox" id="Crime" value="Crime" disabled><br>
+                <label class="form-check-label">Drame</label><input class="form-check-input genre" type="checkbox" id="Drame" value="Drame" disabled><br>
+                <label class="form-check-label">Fantaisie</label><input class="form-check-input genre" type="checkbox" id="Fantaisie" value="Fantaisie" disabled><br>
+                <label class="form-check-label">Historique</label><input class="form-check-input genre" type="checkbox" id="Historique" value="Historique" disabled><br>
+                <label class="form-check-label">Horreur</label><input class="form-check-input genre" type="checkbox" id="Horreur" value="Horreur" disabled><br>
+                <label class="form-check-label">Mystère</label><input class="form-check-input genre" type="checkbox" id="Mystère" value="Mystère" disabled><br>
+                <label class="form-check-label">Philosophique</label><input class="form-check-input genre" type="checkbox" id="Philosophique" value="Philosophique" disabled><br>
+                <label class="form-check-label">Romance</label><input class="form-check-input genre" type="checkbox" id="Romance" value="Romance" disabled><br>
+                <label class="form-check-label">Science-Fiction</label><input class="form-check-input genre" type="checkbox" id="Science-Fiction" value="Science-Fiction" disabled><br>
+                <label class="form-check-label">Thriller</label><input class="form-check-input genre" type="checkbox" id="Thriller" value="Thriller" disabled><br>
+                <label class="form-check-label">Animation</label><input class="form-check-input genre" type="checkbox" id="Animation" value="Animation" disabled><br>
             </div><br>
             <div class=" mb-3 ">
                 <h5 for="exampleFormControlTextarea1 " class="form-label ">Description du film</h5>
@@ -96,8 +98,8 @@
         dataType: 'JSON',
         success: function(data) {
             for (i = 0; i < data.length; i++) {
-                $("#selectedvideo").append(`
-                            <option value = "${data[i].ID}">${data[i].Title}</option>`)
+                /* $("#selectedvideo").append(`
+                             <option value = "${data[i].ID}">${data[i].Title}</option>`)*/
 
                 $("#selectedvideo").append(`
                             <option value = "${data[i].ID}">${data[i].Title}</option>`)

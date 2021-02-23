@@ -213,7 +213,8 @@ $(document).ready(function() {
             return "18+";
     }
 
-    $("#confirmaddmovie").click(function() {
+    $("#confirmaddmovie").click(function(e) {
+        e.preventDefault();
         let form_data = new FormData();
         let title, description, movieimage, moviefile, releasedate, visible, type, classification;
         let genrefilm = getGenres();
@@ -251,19 +252,17 @@ $(document).ready(function() {
         } else if (classification == "") {
             alert("Aucune classification n'a ete selectionner pour le film");
         } else {
-            console.log("ok");
             moviefile = $("#addmoviefile").prop('files')[0];
             movieimage = $("#addmovieimage").prop('files')[0];
             form_data.append('title', title);
             form_data.append('description', description);
-            form_data.append('movieimage', movieimage);
-            form_data.append('moviefile', moviefile);
             form_data.append('releasedate', releasedate);
             form_data.append('visible', visible);
             form_data.append('type', type);
             form_data.append('genre', JSON.stringify(genrefilm));
             form_data.append('classificiations', classification);
-
+            form_data.append('movieimage', movieimage);
+            form_data.append('moviefile', moviefile);
             $.ajax({
                 //Process the form using $.ajax()
                 type: 'POST', //Method type
@@ -274,7 +273,6 @@ $(document).ready(function() {
                 dataType: 'JSON',
                 success: function(data) {
                     console.log(data);
-                    window.open("main_menu_admin.html", "_self");
                 },
                 error: function(message) {
                     console.log(message);

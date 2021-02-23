@@ -2,7 +2,17 @@
 <html>
 
 <head>
-
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+    <link rel="stylesheet" , href="../../ressources/css/main.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="../../ressources/css/main.css">
+    <link rel="stylesheet" href="../../ressources/css/admin.css">
 </head>
 
 <body>
@@ -16,20 +26,22 @@
             <h5>A quel genre le film sera t-il associe ?</h5>
             <div class="form-check">
 
-                <label class="form-check-label" for="flexSwitchCheckDefault"><input class="form-check-input genre" type="checkbox" id="movietypeaction">Action</label><br>
-                <label class="form-check-label" for="flexSwitchCheckDefault"><input class="form-check-input genre" type="checkbox" id="movietypeadventure">Aventure</label><br>
-                <label class="form-check-label" for="flexSwitchCheckDefault"><input class="form-check-input genre" type="checkbox" id="movietypecomedy">Comédie</label><br>
-                <label class="form-check-label" for="flexSwitchCheckDefault"><input class="form-check-input genre" type="checkbox" id="movietypecrime">Crime</label><br>
-                <label class="form-check-label" for="flexSwitchCheckDefault"><input class="form-check-input genre" type="checkbox" id="movietypedrama">Drame</label><br>
-                <label class="form-check-label" for="flexSwitchCheckDefault"><input class="form-check-input genre" type="checkbox" id="movietypefantaisy">Fantaisie</label><br>
-                <label class="form-check-label" for="flexSwitchCheckDefault"><input class="form-check-input genre" type="checkbox" id="movietypehistorical">Historique</label><br>
-                <label class="form-check-label" for="flexSwitchCheckDefault"><input class="form-check-input genre" type="checkbox" id="movietypehorror">Horreur</label><br>
-                <label class="form-check-label" for="flexSwitchCheckDefault"><input class="form-check-input genre" type="checkbox" id="movietypemysterie">Mystère</label><br>
-                <label class="form-check-label" for="flexSwitchCheckDefault"><input class="form-check-input genre" type="checkbox" id="movietypephilosophie">Philosophique</label><br>
-                <label class="form-check-label" for="flexSwitchCheckDefault"><input class="form-check-input genre" type="checkbox" id="movietyperomance">Romance</label><br>
-                <label class="form-check-label" for="flexSwitchCheckDefault"><input class="form-check-input genre" type="checkbox" id="movietypescifi">Science-Fiction</label><br>
-                <label class="form-check-label" for="flexSwitchCheckDefault"><input class="form-check-input genre" type="checkbox" id="movietypethriller">Thriller</label><br>
-                <label class="form-check-label" for="flexSwitchCheckDefault"><input class="form-check-input genre" type="checkbox" id="movietypeanimation">Animation</label><br>
+                <label class="form-check-label" for="movietypeaction"><input class="form-check-input genre" type="checkbox" id="movietypeaction">Action</label>
+                <!-- <input class="form-check-input genre" type="checkbox" id="movietypeaction"> -->
+                <br>
+                <label class="form-check-label">Aventure</label><input class="form-check-input genre" type="checkbox" id="movietypeadventure"><br>
+                <label class="form-check-label">Comédie</label><input class="form-check-input genre" type="checkbox" id="movietypecomedy"><br>
+                <label class="form-check-label">Crime</label><input class="form-check-input genre" type="checkbox" id="movietypecrime"><br>
+                <label class="form-check-label">Drame</label><input class="form-check-input genre" type="checkbox" id="movietypedrama"><br>
+                <label class="form-check-label">Fantaisie</label><input class="form-check-input genre" type="checkbox" id="movietypefantaisy"><br>
+                <label class="form-check-label">Historique</label><input class="form-check-input genre" type="checkbox" id="movietypehistorical"><br>
+                <label class="form-check-label">Horreur</label><input class="form-check-input genre" type="checkbox" id="movietypehorror"><br>
+                <label class="form-check-label">Mystère</label><input class="form-check-input genre" type="checkbox" id="movietypemysterie"><br>
+                <label class="form-check-label">Philosophique</label><input class="form-check-input genre" type="checkbox" id="movietypephilosophie"><br>
+                <label class="form-check-label">Romance</label><input class="form-check-input genre" type="checkbox" id="movietyperomance"><br>
+                <label class="form-check-label">Science-Fiction</label><input class="form-check-input genre" type="checkbox" id="movietypescifi"><br>
+                <label class="form-check-label">Thriller</label><input class="form-check-input genre" type="checkbox" id="movietypethriller"><br>
+                <label class="form-check-label">Animation</label><input class="form-check-input genre" type="checkbox" id="movietypeanimation"><br>
             </div><br>
             <div class=" mb-3 ">
                 <h5 for="exampleFormControlTextarea1 " class="form-label ">Description du film</h5>
@@ -50,29 +62,29 @@
             <h5>Le film sera t-il disponible pour les utilisateurs ?</h5>
             <div class="form-check">
                 <input class="form-check-input" type="radio" name="exampleRadios" id="addmovievisibleyes" value="1" checked>
-                <label class="form-check-label" for="exampleRadios1">Oui</label>
+                <label class="form-check-label">Oui</label>
             </div>
             <div class="form-check">
                 <input class="form-check-input" type="radio" name="exampleRadios" id="addmovievisibleno" value="0">
-                <label class="form-check-label" for="exampleRadios2">Non</label>
+                <label class="form-check-label">Non</label>
             </div><br>
             <h5>Quel est la classification du film ?</h5>
             <div>
                 <ul class="list-group">
-                    <li id="cgeneral" class="list-group-item" style="display: flex; justify-content: space-between; margin-bottom: 2px;"><img src="../../ressources/images/general.png" width="140px" , height="30px"></li>
-                    <li id="c13" class="list-group-item" style="display: flex; justify-content: space-between; margin-bottom: 2px;"><img src="../../ressources/images/13.png" width="140px" , height="30px"></li>
-                    <li id="c16" class="list-group-item" style="display: flex; justify-content: space-between; margin-bottom: 2px;"><img src="../../ressources/images/16.png" width="140px" , height="30px"></li>
-                    <li id="c18" class="list-group-item" style="display: flex; justify-content: space-between; margin-bottom: 2px;"><img src="../../ressources/images/18.png" width="140px" , height="30px"></li>
+                    <li id="cgeneral" class="list-group-item" style="display: flex; justify-content: space-between; margin-bottom: 2px;"><img src="../../ressources/assets/images/general.png" width="140px" , height="30px"></li>
+                    <li id="c13" class="list-group-item" style="display: flex; justify-content: space-between; margin-bottom: 2px;"><img src="../../ressources/assets/images/13.png" width="140px" , height="30px"></li>
+                    <li id="c16" class="list-group-item" style="display: flex; justify-content: space-between; margin-bottom: 2px;"><img src="../../ressources/assets/images/16.png" width="140px" , height="30px"></li>
+                    <li id="c18" class="list-group-item" style="display: flex; justify-content: space-between; margin-bottom: 2px;"><img src="../../ressources/assets/images/18.png" width="140px" , height="30px"></li>
                 </ul>
             </div><br>
             <h5>S'agit-il d'un film ou d'une serie ?</h5>
             <div class="form-check">
                 <input class="form-check-input" type="radio" name="exampleRadios2" id="Addmovietypemovie" value="Movie" checked>
-                <label class="form-check-label" for="exampleRadios1">Film</label>
+                <label class="form-check-label">Film</label>
             </div>
             <div class="form-check">
                 <input class="form-check-input" type="radio" name="exampleRadios2" id="Addmovietypeserie" value="Serie">
-                <label class="form-check-label" for="exampleRadios2">Serie</label>
+                <label class="form-check-label">Serie</label>
             </div><br>
             <div class="edit"><button id="confirmaddmovie" type="button" style="margin-right: 10px;">Confirmer</button> <button id="canceladdmovie" type="button">Annuler</button></div>
         </div>
