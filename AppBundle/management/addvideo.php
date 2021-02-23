@@ -1,7 +1,10 @@
 <?php
 $connexion = new PDO("mysql:host=localhost;dbname=netflix_projet;port=3308", "root", "");
 $connexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-echo json_encode($_POST['title']);
+
+
+
+
 if (!empty($_POST["title"]) && !empty($_POST["description"]) && !empty($_POST["genre"]) && !empty($_POST["releasedate"]) && isset($_POST["visible"]) && !empty($_POST["type"]) && !empty($_POST["classificiations"]) && ($_FILES['movieimage']['tmp_name'] != "" || $_FILES['movieimage']['size'] != 0) && ($_FILES['moviefile']['tmp_name'] != "" || $_FILES['moviefile']['size'] != 0)) {
     $title = $_POST["title"];
     $description = $_POST["description"];
@@ -10,10 +13,10 @@ if (!empty($_POST["title"]) && !empty($_POST["description"]) && !empty($_POST["g
     $type = $_POST["type"];
     $genre = $_POST["genre"];
     $classificiations = $_POST["classificiations"];
-    $dossier = __DIR__.'/../ressources/assets/images/videoImages/';
+    $dossier = '../ressources/assets/images/videoImages/';
     $chemin = $dossier . basename($_FILES['movieimage']['name']);
     if (move_uploaded_file($_FILES['movieimage']['tmp_name'], $chemin)) {
-        $dossier = __DIR__.'/../ressources/assets/videos/';
+        $dossier = '../ressources/assets/videos/';
         $chemin2 = $dossier . basename($_FILES['moviefile']['name']);
     }
     if (move_uploaded_file($_FILES['moviefile']['tmp_name'], $chemin2)) {
@@ -24,7 +27,7 @@ if (!empty($_POST["title"]) && !empty($_POST["description"]) && !empty($_POST["g
     }
 }
 else
-    echo json_encode("FUCK OFF");
+    echo json_encode($_POST);
 
 
 function addvideo($title, $genre, $description, $releasedate, $visible, $type, $classificiations, $chemin, $chemin2, $connexion)
