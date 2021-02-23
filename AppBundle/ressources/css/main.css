@@ -13,11 +13,13 @@
 ::-webkit-scrollbar {
     display: none;
 }
+
 * {
     font-family: Montserrat, sans-serif;
     color: white;
     /* overflow-x: hidden; */
 }
+
 *:focus {
     outline: none;
 }
@@ -27,19 +29,23 @@ body {
     width: 100%;
     max-width: 100%;
 }
+
 .main {
     width: 96%;
     margin: 0 2%;
 }
+
 .header {
     display: flex;
     flex-direction: row;
     height: 200px;
 }
+
 .header img {
     margin: 0 auto;
     height: 100%;
 }
+
 .messages div {
     background-color: rgba(244,105,105,0.7);
     border: 2px solid rgba(244,46,46,0.7);
@@ -51,14 +57,17 @@ body {
     width: 60%;
     margin: 10px 20%;
 }
+
 a {
     text-decoration: none;
     color: var(--light);
 }
+
 a:hover, a:active {
     text-decoration: none;
     color: var(--lightActive);
 }
+
 input[type="text"],
 input[type="password"],
 input[type="email"],
