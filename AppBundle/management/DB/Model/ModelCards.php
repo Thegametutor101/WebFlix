@@ -28,8 +28,7 @@ class ModelCards
     }
 
 
-    function addCard(int $id,
-                     string $title,
+    function addCard(string $title,
                      $genre,
                      string $resume,
                      string $image,
@@ -43,8 +42,19 @@ class ModelCards
     {
         try
         {
-            $request = "INSERT INTO cards VALUES(:id, 
-                            :title, 
+            $request = "INSERT INTO cards 
+                            (Title, 
+                             Genre, 
+                             Resume, 
+                             Image, 
+                             File, 
+                             ReleaseDate, 
+                             Favorite,
+                             Available, 
+                             Classification, 
+                             Duration, 
+                             Type)
+                        VALUES(:title, 
                             :genre, 
                             :resume, 
                             :image, 
@@ -57,7 +67,6 @@ class ModelCards
                             :type)";
 
             $declaration = $this->connection->prepare($request);
-            $declaration->bindParam(':id', $id);
             $declaration->bindParam(':title', $title);
             $declaration->bindParam(':genre', $genre);
             $declaration->bindParam(':resume', $resume);
