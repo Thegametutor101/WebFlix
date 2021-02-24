@@ -20,18 +20,27 @@ class ModelAccounts
      * @param string $password
      * @param string $phone
      * @param string $screenName
+     * @param string $profile
+     * @param int $admin
      * @return string
      */
-    function addAccount(string $email, string $password, string $phone, string $screenName): string
+    function addAccount(string $email,
+                        string $password,
+                        string $phone,
+                        string $screenName,
+                        string $profile,
+                        int $admin): string
     {
         try {
-            $request = "INSERT INTO accounts VALUES(:email, :password, :phone, :screenName)";
+            $request = "INSERT INTO accounts VALUES(:email, :password, :phone, :screenName, :profile, :admin)";
 
             $declaration = $this->connection->prepare($request);
             $declaration->bindParam(':email', $email);
             $declaration->bindParam(':password', $password);
             $declaration->bindParam(':phone', $phone);
             $declaration->bindParam(':screenName', $screenName);
+            $declaration->bindParam(':profile', $profile);
+            $declaration->bindParam(':admin', $admin);
 
             $declaration->execute();
             return "ok";

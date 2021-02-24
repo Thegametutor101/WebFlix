@@ -4,126 +4,45 @@
     <Title>Webflix - Connexion</Title>
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="../../ressources/css/styles.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../ressources/css/styles.css">
 </head>
 <body>
 <div class="main">
-    <div id="inscription">
-        <div id="logo">
-            <img src="https://canniefish.weebly.com/uploads/1/1/8/3/118361953/webflix_orig.png"
-                 alt="Webflix"
-                 width="350px"
-                 height="200px">
-        </div>
-        <div class="back">
-            <form>
-                <div class="box-input">
-                    <h2>Connexion</h2>
-                    <input id = "email" type="email" name="courriel" placeholder="Courriel" required/>
-                    <input id = "password" type="password" name="password" placeholder="Mot de passe" required/>
-                    <button id="connect" type="button">Se connecter</button>
-                    <p>Pas encore de compte ? Inscrivez-vous maintenant !
-                        <a href="signup.html">S'inscrire maintenant !</a>
-                    </p>
-                </div>
-            </form>
-        </div>
+    <div class="header">
+        <img class="logo-center"
+             src="https://canniefish.weebly.com/uploads/1/1/8/3/118361953/webflix_orig.png"
+             alt="Webflix">
+    </div>
+    <div class="content">
+        <div class="messages"></div>
+        <form>
+            <h2 style="padding: 0 20px 15px 20px;">Connexion</h2>
+            <input id="email" type="email" name="courriel" placeholder="Courriel" required><br>
+            <input id="password" type="password" name="password" placeholder="Mot de passe" required><br>
+            <button id="connect">Se connecter</button>
+            <p>Pas encore de compte?
+                <a href="signup.html">Inscrivez-vous maintenant!</a>
+            </p>
+        </form>
     </div>
 </div>
 </body>
+<script src="../../ressources/javascript/account.js"></script>
 <script>
     $(document).ready(function (e) {
         $("#connect").click(function (e) {
-            let email = $("#email").val();
-            let password = $("#password").val();
-            $.ajax({
-                url:"../../management/login.php",
-                type:"POST",
-                data: {
-                        'email': email,
-                        'password': password
-                    },
-                dataType:"JSON",
-                success: function (result) {
-                    sessionStorage.setItem("emailAccount", result["Email"]);
-                    sessionStorage.setItem("phoneAccount", result["Phone"]);
-                    sessionStorage.setItem("screenNameAccount", result["ScreenName"]);
-                    sessionStorage.setItem("passwordAccount", result["Password"]);
-                    window.open("myAccount.html", "_self");
-                },
-                error: function (message, error) {
-                    ///TODO add message during error or non valid connection
-                    console.log(message, error);
-                }
-            });
+            e.preventDefault();
+            login($("#email").val(), $("#password").val())
         });
     });
 </script>
 <style>
-    #inscription {
-        display: flex;
-        flex-direction: column;
-    }
-    input, button {
-        padding: 10px 3%;
-        background: transparent;
-        font-size: 15px;
-        width: 300px;
-        height: 25px;
-        font-family: "Montserrat";
-        border: 1px solid transparent;
-        position: relative;
-        color: #eee;
-        margin-bottom: 15px;
-        text-align: left;
-    }
-    input {
-        border-bottom: 1px solid white;
-    }
-    button {
-        width: 325px;
-        height: 40px;
-        margin-top: 10px;
-        background: transparent;
-        text-align: center;
-        cursor: pointer;
-        color: #eee;
-        font-weight: bold;
-        text-transform: uppercase;
-        transition: all 1s ease;
-        border: 1px solid white;
-    }
-    button:hover {
-        background: #D50000;
-        border: none;
-        transition: all 1.5s ease;
-    }
-    .box-input {
-        top: 90px;
-        display: Flex;
-        flex-direction: column;
-        align-content: center;
-        align-items: center;
-        text-align: center;
-    }
-    .back {
-        display: Flex;
-        flex-direction: column;
-        width: 100%;
-        height: 100%;
-    }
-    h2 {
-        color: white;
-    }
-    a {
-        text-decoration: none;
-        color: rgba(190, 190, 190, 0.856);
-    }
-    p {
-        color: white;
+    .messages {
+        width: 70%;
+        margin: 0 15%;
     }
 </style>
 </html>

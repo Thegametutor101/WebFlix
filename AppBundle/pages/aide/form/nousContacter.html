@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Contacter nous</title>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+          crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="cssProjetSGBD.css">
+</head>
+<body>
+
+<div style="width:80%; margin:0 auto;">
+
+  <form action="mailto:support@Webflix.com" method="post">
+    <div class="form-group" style="">
+      <br>
+      <label >Nom*</label>
+      <div/>
+      <input style="width:60%;" type="text" class="form-control" id="idEmail" aria-describedby="emailHelp" placeholder="Titre">
+      <small id="emailHelp" class="form-text text-muted"></small>
+    </div>
+    <br>
+    <div class="form-group">
+      <label>Email*</label>
+      <input  style="width:60%;" type="text" class="form-control" id="idPlatform" placeholder="test123@domaine.com">
+    </div>
+    <br>
+    <div class="form-group">
+      <label class="titre">Raison*</label>
+      <br>
+      <select name="raisonContacter" id="idraisonContacter">
+        <option value="besoin dassitance">Besoin d'assitance</option>
+        <option value="un code derreur qui affiche">Il y a un code d'erreur qui affiche</option>
+        <option value="Question général">Question général</option>
+        <option value="Autre">Autre</option>
+      </select>
+    </div>
+    <br>
+
+    <div class="form-group">
+      <label class="titre">Description*</label>
+      <br>
+      <textarea id="idDescription" name="description" rows="4" cols="60%"></textarea>
+    </div>
+    <br>
+    <p style="color: white">Vous allez être redirigé vers votre application de courriel
+    Appuyer sur Envoyé/Send pour nous faire parvenir votre demande</p>
+    <br>
+    <button type="submit">Envoyer</button>
+  </form>
+</div>
+</body>
+<footer>
+
+  <hr>
+  <div class="row" style="background-color:black;">
+
+    <div class="col-md-4">
+
+      <h2 class="titre-lien">Gérer mon compte</h2>
+
+      <ul class="quick-links">
+        <li class="top-article">
+          <a  class="sous-lien"
+              href="WebFlix\AppBundle\management\updateemail.php" data-beacon-anchor="action=titlesuggestion">
+            Mettre à jour des informations du compte
+          </a>
+        </li>
+
+        <li class="top-article">
+          <a class="sous-lien" href="WebFlix\AppBundle\management\updateemail.php" data-beacon="action=UpdateEmailLink" target="_blank" rel="noopener">
+            Mettre à jour l&#39;adresse courriel
+          </a>
+        </li>
+
+        <li class="top-article">
+          <a class="sous-lien" href="WebFlix\AppBundle\management\updatepwd.php" data-beacon="action=UpdatePasswdLink" target="_blank" rel="noopener">
+            Mettre à jour le mot de passe
+          </a>
+        </li>
+
+        <li class="top-article">
+          <a class="sous-lien" href="hWebFlix\AppBundle\management\updatephone.php" data-beacon="action=UpdatePaymentLink" target="_blank"
+             rel="noopener">
+            Mettre à jour le numero de contact
+          </a>
+        </li>
+        <li class="top-article">
+          <a class="sous-lien" href="WebFlix\AppBundle\management\updatescreenname.php" data-beacon="action=CancelMembershipLink" target="_blank"
+             rel="noopener">
+            Mettre a jour le nom d'affichage
+          </a>
+        </li>
+      </ul>
+    </div>
+
+
+    <div class="col-md-4">
+      <h2 class="titre-lien">Impossible de visionner du contenu</h2>
+
+      <ul class="quick-links">
+
+        <li class="top-article">
+          <a class="sous-lien" href="https://netflix.com/email" data-beacon="action=UpdateEmailLink" target="_blank" rel="noopener">
+            Exigence minimal pour visioner des titres
+          </a>
+        </li>
+
+        <li class="top-article">
+          <a class="sous-lien" href="https://netflix.com/password" data-beacon="action=UpdatePasswdLink" target="_blank" rel="noopener">
+            Code erreur et autre référance
+          </a>
+        </li>
+
+
+      </ul>
+    </div>
+
+    <div class="col-md-4">
+
+      <h2 class="titre-lien">FAQ</h2>
+
+      <ul class="quick-links">
+        <li class="top-article">
+          <a class="sous-lien" href="/fr-ca/titlerequest?ui_action=title-suggestion-quicklinks" data-beacon-anchor="action=titlesuggestion">
+            Comment demander un nouveau contenu
+          </a>
+        </li>
+
+        <li class="top-article">
+          <a class="sous-lien" href="https://netflix.com/email" data-beacon="action=UpdateEmailLink" target="_blank" rel="noopener">
+            Comment utiliser le site
+          </a>
+        </li>
+
+        <li class="top-article">
+          <a class="sous-lien" href="https://netflix.com/password" data-beacon="action=UpdatePasswdLink" target="_blank" rel="noopener">
+            À propos de nous
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+</footer>
+</html>

@@ -11,21 +11,25 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
-
 <style>
-
 body::-webkit-scrollbar {
     display: none;
 }
 
-#starringShow {
+.starringShow {
+    width: 100%;
+    height: fit-content;
+    background-color: darkgray;
+    text-align: center;
+    align-items: center;
+}
+#rightShow {
     width: 100%;
     height: 350px;
     background-color: darkgray;
     text-align: center;
     align-items: center;
 }
-
 .left{
     display: table-cell;
     position: sticky;
@@ -40,7 +44,6 @@ body::-webkit-scrollbar {
     opacity: 0.5;
     transition: 0.5s;
 }
-
 .right{
     display: table-cell;
     position: sticky;
@@ -55,34 +58,20 @@ body::-webkit-scrollbar {
     opacity: 0.5;
     transition: 0.5s;
 }
-
 .left:hover {
     opacity: 1.0;
 }
-
 .right:hover {
     opacity: 1.0;
 }
-
-.material-icons {
-    color: white;
-}
-
-.arrow_background {
-    height: 100%;
-}
-
+.material-icons {color: white;}
 .catTitle {
     margin-left: 7%;
     margin-top: 10px;
-    color: rgb(158, 9, 9);
+    /*color: rgb(158, 9, 9);*/
     color: white;
 }
-
-hr {
-    color: darkgray;
-}
-
+hr {color: darkgray;}
 header {
     position: fixed;
     top: 0;
@@ -90,32 +79,23 @@ header {
     width: 100%;
     background-color: rgba(17, 17, 17, 0.3);
 }
-
 header img {
     z-index: 4;
     width: 150px;
     height: 90px;
-
 }
-
-
 .category {
     display: flex;
     max-width: 100%;
     overflow-x: scroll;
     padding: 10px;
 }
-
-.category::-webkit-scrollbar {
-    display: none;
-}
-
+.category::-webkit-scrollbar {display: none;}
 .videoList{
     display: table;
-    padding: 0px;
+    padding: 0;
     border-spacing: 15px;
 }
-
 .videoList .card{
     display: table-cell;
     background-color: #111;
@@ -126,315 +106,81 @@ header img {
     min-width: 16vw;
     max-width: 16vw;
 }
-
 .card-title {
 color: rgb(158, 9, 9);
 color: white;
 }
-
 .card-text {
     color: rgb(185, 185, 185);
 }
-
 .card-body a {
     background-color: rgb(47, 47, 47);
     border: none;
 }
 
+.card:hover {
+    cursor: pointer;
+}
+
+
+.menuAccesRapide{
+    font-size: 20px;
+    color: darkred;
+    text-align: center;
+
+    float: right;
+}
 
 
 
+<header>
+    <div class="row">
+        <div class="col-md-2">
+        <img src="../ressources/images/webflix_orig.png">
+        </div>
+        <div class="col-md-6">
+            </div>
 
-</style>
+
+        <div class="col-md-1">
+            <br>
+        <a class="menuAccesRapide"> Accueil </a>
+            </div>
+
+        <div class="col-md-1">
+            <br>
+            <a class="menuAccesRapide"> Film </a>
+            </div>
+        <div class="col-md-1">
+            <br>
+            <a class="menuAccesRapide"> Série </a>
+        </div>
 
 
+        </div>
+        <div class="col-md-1">
 
+        </div>
+    </div>
+
+
+</header>
 
 
 <body>
 
-    <header>
 
-        <img src="../ressources/images/webflix_orig.png">
 
-    </header>
 
-    <section id="starringShow">
 
-        <h1>image placeholder</h1>
+    <section id="rightShow">
+
+        <h1>image holder</h1>
 
     </section>
 
 
-
-
     <section id="categoryList">
-        
-
-
-        <h4 class="catTitle">category title</h4>
-        <hr>
-
-        <div class="category">
-
-            <ul class="videoList">
-
-                <div class="left">
-                    <i class="material-icons md-36">arrow_back_ios</i>
-                </div>
-
-                <div class="card">
-                    <img src="../ressources/images/wienerMobile.jpg" class="card-img">
-                    <div class="card-body">
-                    <h5 class="card-title" id="card1Title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-
-
-                <div class="card">
-                    <img src="../ressources/images/wienerMobile.jpg" class="card-img">
-                    <div class="card-body">
-                    <h5 class="card-title">Card title2</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-
-
-                <div class="card">
-                    <img src="../ressources/images/wienerMobile.jpg" class="card-img">
-                    <div class="card-body">
-                    <h5 class="card-title">Card title3</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-
-
-                <div class="card">
-                    <img src="../ressources/images/wienerMobile.jpg" class="card-img">
-                    <div class="card-body">
-                    <h5 class="card-title">Card title4</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-
-
-                <div class="card">
-                    <img src="../ressources/images/wienerMobile.jpg" class="card-img">
-                    <div class="card-body">
-                    <h5 class="card-title">Card title5</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <img src="../ressources/images/wienerMobile.jpg" class="card-img">
-                    <div class="card-body">
-                    <h5 class="card-title">Card title6</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-
-
-                <div class="card">
-                    <img src="../ressources/images/wienerMobile.jpg" class="card-img">
-                    <div class="card-body">
-                    <h5 class="card-title">Card title7</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-
-
-                <div class="card">
-                    <img src="../ressources/images/wienerMobile.jpg" class="card-img">
-                    <div class="card-body">
-                    <h5 class="card-title">Card title8</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <img src="../ressources/images/wienerMobile.jpg" class="card-img">
-                    <div class="card-body">
-                    <h5 class="card-title">Card title9</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-
-
-                <div class="card">
-                    <img src="../ressources/images/wienerMobile.jpg" class="card-img">
-                    <div class="card-body">
-                    <h5 class="card-title">Card title10</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-
-
-                <div class="card">
-                    <img src="../ressources/images/wienerMobile.jpg" class="card-img">
-                    <div class="card-body">
-                    <h5 class="card-title">Card title11</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-
-                <div class="right">
-                    <i class="material-icons md-36">arrow_forward_ios</i>
-                </div>
-
-            </ul>
-
-        </div>
-        <hr>
-
-
-
-
-
-
-
-
-
-        <h4 class="catTitle">category title</h4>
-        <hr>
-
-        <div class="category">
-
-            <ul class="videoList">
-
-                <div class="left">
-                    <i class="material-icons md-36">arrow_back_ios</i>
-                </div>
-
-                <div class="card">
-                    <img src="../ressources/images/wienerMobile.jpg" class="card-img">
-                    <div class="card-body">
-                    <h5 class="card-title" id="card1Title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-
-
-                <div class="card">
-                    <img src="../ressources/images/wienerMobile.jpg" class="card-img">
-                    <div class="card-body">
-                    <h5 class="card-title">Card title2</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-
-
-                <div class="card">
-                    <img src="../ressources/images/wienerMobile.jpg" class="card-img">
-                    <div class="card-body">
-                    <h5 class="card-title">Card title3</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-
-
-                <div class="card">
-                    <img src="../ressources/images/wienerMobile.jpg" class="card-img">
-                    <div class="card-body">
-                    <h5 class="card-title">Card title4</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-
-
-                <div class="card">
-                    <img src="../ressources/images/wienerMobile.jpg" class="card-img">
-                    <div class="card-body">
-                    <h5 class="card-title">Card title5</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <img src="../ressources/images/wienerMobile.jpg" class="card-img">
-                    <div class="card-body">
-                    <h5 class="card-title">Card title6</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-
-
-                <div class="card">
-                    <img src="../ressources/images/wienerMobile.jpg" class="card-img">
-                    <div class="card-body">
-                    <h5 class="card-title">Card title7</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-
-
-                <div class="card">
-                    <img src="../ressources/images/wienerMobile.jpg" class="card-img">
-                    <div class="card-body">
-                    <h5 class="card-title">Card title8</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-
-                <div class="card">
-                    <img src="../ressources/images/wienerMobile.jpg" class="card-img">
-                    <div class="card-body">
-                    <h5 class="card-title">Card title9</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-
-
-                <div class="card">
-                    <img src="../ressources/images/wienerMobile.jpg" class="card-img">
-                    <div class="card-body">
-                    <h5 class="card-title">Card title10</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-
-
-                <div class="card">
-                    <img src="../ressources/images/wienerMobile.jpg" class="card-img">
-                    <div class="card-body">
-                    <h5 class="card-title">Card title11</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </div>
-
-                <div class="right">
-                    <i class="material-icons md-36">arrow_forward_ios</i>
-                </div>
-
-            </ul>
-
-        </div>
-        <hr>
-
-
 
 
     </section>
@@ -446,6 +192,9 @@ color: white;
 
 
 <script>
+
+        
+
 
 
         $(".right").click(function(){
@@ -460,14 +209,108 @@ color: white;
 
 
 
-        $(document).ready(function(){ 
+    $(document).ready(function(){ 
             $(window).scroll(function(){ 
                 $('header').css("background-color", 'rgba(17, 17, 17, ' + (0.3 + (0.7 * $(window).scrollTop() / 200)) + ')') 
             });
+
+            getGenres();
+
+    });
+
+
+    function getGenres(){
+        let listeGenres = new Array();
+
+        $.ajax({
+            //Process the form using $.ajax()
+            type: 'POST', //Method type
+            url: '../management/getGenres.php', //Your form processing file URL
+            dataType: 'JSON',
+            success: function(data) {
+
+                let currGenres;
+                
+                for(ctr = 0; ctr < data.length; ctr++){
+                    currGenres = JSON.parse(data[ctr][0]);
+
+                    for(ctrGenres = 0; ctrGenres < currGenres.length; ctrGenres++){
+                        if($.inArray(currGenres[ctrGenres], listeGenres) == -1){
+                            listeGenres.push(currGenres[ctrGenres]);
+                        }
+                    } 
+                }
+
+                
+
+                getVideosByGenre(listeGenres)
+            },
+            error: function(erreur, message) {
+                console.log(erreur, message);
+            }
+
         });
 
+    }
+
+    function getVideosByGenre(listeGenres){
+
+        for(ctr = 0; ctr < listeGenres.length; ctr++){
+
+            let ctrAjax = ctr;
+
+            $.ajax({
+                //Process the form using $.ajax()
+                type: 'POST', //Method type
+                url: '../management/getVideosByGenre.php', //Your form processing file URL
+                data:{
+                    'genre': listeGenres[ctrAjax]
+                },
+                dataType: 'JSON',
+                success: function(data) {
+                    console.log(listeGenres[ctrAjax]);
+
+
+                    // header de categorie
+                    $("#categoryList").append('<h4 class="catTitle">'+listeGenres[ctrAjax]+'</h4><hr><div class="category" id="'+listeGenres[ctrAjax]+'""></div>');
+
+                    // debut de la liste et fleche de gauche
+                    $("#"+listeGenres[ctrAjax]).append('<ul class="videoList"><div class="left"><i class="material-icons md-36">arrow_back_ios</i></div></ul>');
+
+
+                        // cards de la liste
+                        for(ctrVid = 0; ctrVid < data.length; ctrVid++){
+                            $("#"+listeGenres[ctrAjax] + "> .videoList").append(`
+                                <div onclick = "Details('${data[ctrVid].File}')" class="card">
+                                <img src="${data[ctrVid].Image}" class="card-img">
+                                <div class="card-body">
+                                <h5 class="card-title" id="card1Title">${data[ctrVid].Title}</h5>
+                                <p class="card-text">${data[ctrVid].Resume}</p>
+                                </div>
+                                </div>`);
+                        }
+
+
+
+
+                    // fleche de droite et fin de la liste
+                    $("#"+listeGenres[ctrAjax] + "> .videoList").append('<div class="right"><i class="material-icons md-36">arrow_forward_ios</i></div><hr>');
+                },
+                error: function(erreur, message) {
+                    console.log(erreur, message);
+                }
+
+            });
+
+        }
+    }
+
+
+    function Details(ID) {
+        sessionStorage.setItem("VideoPath", ID);
+        window.open("title.html", "_self");
+    }
+    
+
 </script>
-
-
-
 </html>

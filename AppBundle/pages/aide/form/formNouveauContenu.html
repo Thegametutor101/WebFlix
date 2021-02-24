@@ -1,0 +1,191 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Formulaire nouveau contenu</title>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+          crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="cssProjetSGBD.css">
+</head>
+
+<body>
+
+
+
+
+<div style="width:80%; margin:0 auto;">
+
+<form>
+    <div class="form-group" style="">
+<br>
+    <label >Titre du contenu*</label>
+        <div/>
+    <input style="width:60%;" type="text" class="form-control" id="idTitre"  placeholder="Titre" >
+    <small id="emailHelp" class="form-text text-muted"></small>
+  </div>
+  <br>
+  <div class="form-group">
+    <label>Platform trouvé*</label>
+    <input  style="width:60%;" type="text" class="form-control" id="idPlatform" placeholder="Ex:Youtube,AmazonVideo,DailyMotion etc"  >
+  </div>
+<br>
+  <div class="form-group">
+    <label class="titre" >Type de contenue*</label>
+    <select name="typeVideo" id="typeVideo" >
+      <option value="video">Video</option>
+      <option value="film">Film</option>
+      <option value="Serie">Serie-télévisé</option>r
+    </select>
+  </div>
+  <br>
+  <div class="form-group">
+    <label class="titre">Lien direct*</label>
+    <input  style="width:60%;" type="text" class="form-control" id="idLien" placeholder="https://www.youtube.com/watch?v=dQw4w9WgXcQ" >
+  </div>
+<br>
+  <div class="form-check">
+    <input type="checkbox" class="form-check-input" id="exampleCheck1" >
+    <label class="form-check-label" for="exampleCheck1" style="color:white">J'ai lu et accepte que Webflix n'a aucune obligation d'ajouter le contenue. Ceci n'est qu'une suggestion.Chaque publication sera révisé par l'équipe et ajouter si tous nos critères sont respectés </label>
+  </div>
+<h2>
+
+</h2>
+  <br>
+  <button type="button" id ="IdButtonSoumettre">Soumettre</button>
+</form>
+</div>
+<!--basdepageaveclien-->
+
+<hr>
+<div class="row" style="background-color:black;">
+
+  <div class="col-md-4">
+
+    <h2 class="titre-lien">Gérer mon compte</h2>
+
+    <ul class="quick-links">
+      <li class="top-article">
+        <a  class="sous-lien"
+            href="Webflix\AppBundle\pages\Account\myAccount.html" data-beacon-anchor="action=titlesuggestion">
+          Mettre à jour des informations du compte
+        </a>
+      </li>
+
+      <li class="top-article">
+        <a class="sous-lien" href="Webflix\AppBundle\pages\Account\manageAccount\changeEmail.html"  target="_blank" rel="noopener">
+          Mettre à jour l&#39;adresse courriel
+        </a>
+      </li>
+
+      <li class="top-article">
+        <a class="sous-lien" href="Webflix\AppBundle\pages\Account\manageAccount\changePassword.html"  target="_blank" rel="noopener">
+          Mettre à jour le mot de passe
+        </a>
+      </li>
+
+      <li class="top-article">
+        <a class="sous-lien" href="Webflix\AppBundle\pages\Account\manageAccount\changePhone.html" data-beacon="action=UpdatePaymentLink" target="_blank"
+           rel="noopener">
+          Mettre à jour le numero de contact
+        </a>
+      </li>
+      <li class="top-article">
+        <a class="sous-lien" href="Webflix\AppBundle\pages\Account\manageAccount\changeScreenName.html" data-beacon="action=CancelMembershipLink" target="_blank"
+           rel="noopener">
+          Mettre a jour le nom d'affichage
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+  <div class="col-md-4">
+    <h2 class="titre-lien">Impossible de visionner du contenu</h2>
+
+    <ul class="quick-links">
+
+      <li class="top-article">
+        <a class="sous-lien" href="C:\wamp64\www\WebFlix\AppBundle\pages\aide\exigenceMin.html"  >
+          Exigence minimal pour visioner des titres
+        </a>
+      </li>
+
+      <li class="top-article">
+        <a class="sous-lien" href="C:\wamp64\www\WebFlix\AppBundle\pages\aide\codeErr"  >
+          Code erreur et autre référance
+        </a>
+      </li>
+
+
+    </ul>
+  </div>
+
+  <div class="col-md-4">
+
+    <h2 class="titre-lien">FAQ</h2>
+
+    <ul class="quick-links">
+      <li class="top-article">
+        <a class="sous-lien" href="">
+          Comment demander un nouveau contenu
+        </a>
+      </li>
+
+      <li class="top-article">
+        <a class="sous-lien" href="C:\wamp64\www\WebFlix\AppBundle\pages\aide\tutorialWebflix.html" >
+          Comment utiliser le site
+        </a>
+      </li>
+
+      <li class="top-article">
+        <a class="sous-lien" href="C:\wamp64\www\WebFlix\AppBundle\pages\aide\aPropos.html" >
+          À propos de nous
+        </a>
+      </li>
+    </ul>
+  </div>
+</div>
+</body>
+
+<script>
+  $(document).ready(function (e) {
+    $("#IdButtonSoumettre").click(function (e) {
+e.preventDefault();
+console.log($("#idPlatform").val());
+      console.log($("#idlien").val());
+      $.ajax({
+        url:"formNouveauContenuAdd.php",
+        type:"POST",
+        data: {
+          'titre': $("#idTitre").val(),
+          'platform': $("#idPlatform").val(),
+          'typeVideo': $("#typeVideo").val(),
+          'lien': $("#idLien").val()
+        },
+        dataType:"JSON",
+        success: function (result) {
+
+        // console.log(result["item"]);
+         console.log(result);
+        },
+        error: function (message, error) {
+          ///TODO add message during error or non valid connection
+          console.log(message, error);
+        }
+      });
+    });
+  });
+</script>
+
+
+
+</html>
