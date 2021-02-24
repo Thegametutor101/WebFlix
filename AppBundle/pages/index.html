@@ -20,124 +20,11 @@
     <link rel="stylesheet" type="text/css" href="../ressources/css/main.css">
     <link rel="stylesheet" type="text/css" href="../ressources/css/index.css">
 </head>
-<style>
-body::-webkit-scrollbar {
-    display: none;
-}
-#starringShow {
-    width: 100%;
-    height: 250px;
-    background-color: darkgray;
-    text-align: center;
-    align-items: center;
-}
-
-#starringShow img {
-    max-width: 100%;
-    height: 50vh;
-}
-
-.left{
-    display: table-cell;
-    position: sticky;
-    left: 0;
-    z-index: 2;
-    vertical-align: middle;
-    min-height: 100%;
-    width: fit-content;
-    padding: 3px;
-    align-self: center;
-    background-color: black;
-    opacity: 0.5;
-    transition: 0.5s;
-}
-.right{
-    display: table-cell;
-    position: sticky;
-    right: 0;
-    z-index: 2;
-    vertical-align: middle;
-    min-height: 100%;
-    width: fit-content;
-    padding: 3px;
-    align-self: center;
-    background-color: black;
-    opacity: 0.5;
-    transition: 0.5s;
-}
-.left:hover {
-    opacity: 1.0;
-}
-.right:hover {
-    opacity: 1.0;
-}
-.material-icons {color: white;}
-.catTitle {
-    margin-left: 7%;
-    margin-top: 10px;
-    /*color: rgb(158, 9, 9);*/
-    color: white;
-}
-hr {color: darkgray;}
-header {
-    position: fixed;
-    top: 0;
-    z-index: 3;
-    width: 100%;
-    background-color: rgba(17, 17, 17, 0.3);
-}
-header img {
-    z-index: 4;
-    width: 150px;
-    height: 90px;
-}
-.category {
-    display: flex;
-    max-width: 100%;
-    overflow-x: scroll;
-    padding: 10px;
-}
-.category::-webkit-scrollbar {display: none;}
-.videoList{
-    display: table;
-    padding: 0;
-    border-spacing: 15px;
-}
-.videoList .card{
-    display: table-cell;
-    background-color: #111;
-    border-style: solid;
-    border-width: 1px;
-    border-color: rgb(158, 9, 9);
-    margin: 10px;
-    min-width: 250px;
-    max-width: 250px;
-}
-.card-title {
-color: white;
-}
-.card-text {
-    color: rgb(185, 185, 185);
-}
-.favStar-active {
-    color: yellow;
-    font-size: 35px;
-}
-
-.favStar-non-active {
-    color: darkgray;
-    font-size: 35px;
-}
-
-.card:hover {
-    cursor: pointer;
-}
 
 
 
 
 
-</style>
 <body>
     <header>
         <div class="logo">
@@ -156,20 +43,31 @@ color: white;
     <section id="categoryList"></section>
 </body>
 <script src="../ressources/javascript/mainJavaScript.js"></script>
+
+
+
+
+
+
+
+
 <script>
     checkConnection();
     console.log(sessionStorage.getItem("adminAccount"));
     if (sessionStorage.getItem("adminAccount") === "1") {
         $(".adminSection").css("visibility", "visible");
     }
+
+
     $(document).ready(function(){ 
-        $(window).scroll(function(){
-            $('header').css("background-color", 'rgba(17, 17, 17, ' + (0.3 + (0.7 * $(window).scrollTop() / 200)) + ')');
-        });
         getGenres();
         $(".profileBubble").click(function (e) {
             window.open("account/myAccount.html", "_self");
         });
+        $(window).scroll(function(){
+            $('header').css("background-color", 'rgba(17, 17, 17, ' + (0.3 + (0.7 * $(window).scrollTop() / 200)) + ')');
+        });
+
         $(document).on('click', '#idCreerProfil', function (e) {
             $("#idVideo").html("<video id='idVideo' width='1000' height='500' controls autoplay>");
             $("#idSource").html("<source id='idSource' src='' type='video/mp4'></video>");
@@ -189,95 +87,82 @@ color: white;
             window.open("admin/adminMenu.html", "_self");
         });
 
-
-
-
-
-        $(document).on("click",".favStar-active",function(event) {
-            $(this).addClass("favStar-non-active");
-            $(this).removeClass("favStar-active");
-
-            let classes = $(this).parent().parent().attr("class");
-            var idCard = classes.split(" ");
-
-            console.log(idCard[1]);
-
-            let postForm2 = {
-                'email': sessionStorage.getItem("emailAccount"),
-                'idCard': idCard[1]
-            }
-            $.ajax({
-                //Process the form using $.ajax()
-                type: 'POST', //Method type
-                url: '../management/deleteFavorite.php', //Your form processing file URL
-                data: postForm2, //Forms name
-                dataType: 'JSON',
-                success: function(data) {
-
-                },
-                error: function(erreur, message) {
-                    console.log(erreur, message);
-                }
-
-            })
-
-            window.open("index.html", "_self");
-        });
-
-
-
-        $(document).on("click",".favStar-non-active",function(event) {
-            $(this).addClass("favStar-active");
-            $(this).removeClass("favStar-non-active");
-
-            let classes = $(this).parent().parent().attr("class");
-            var idCard = classes.split(" ");
-
-            console.log(idCard[1]);
-
-            let postForm1 = {
-                'email': sessionStorage.getItem("emailAccount"),
-                'idCard': idCard[1]
-            }
-            $.ajax({
-                //Process the form using $.ajax()
-                type: 'POST', //Method type
-                url: '../management/addFavorite.php', //Your form processing file URL
-                data: postForm1, //Forms name
-                dataType: 'JSON',
-                success: function(data) {
-
-                },
-                error: function(erreur, message) {
-                    console.log(erreur, message);
-                }
-
-            })
-
-
-            window.open("index.html", "_self");
-        });
-
-
-
-
-
-
-
-
-
-
-    $(document).ready(function(){ 
-            $(window).scroll(function(){ 
-                $('header').css("background-color", 'rgba(17, 17, 17, ' + (0.3 + (0.7 * $(window).scrollTop() / 200)) + ')') 
-            });
-
-            sessionStorage.setItem("emailAccount", "test@test.com");
-
-
-            getGenres();
-
     });
+
+
+
+
+
+
+
+    $(document).on("click",".favStar-active",function(event) {
+        $(this).addClass("favStar-non-active");
+        $(this).removeClass("favStar-active");
+
+        let classes = $(this).parent().parent().attr("class");
+        var idCard = classes.split(" ");
+
+        console.log(idCard[1]);
+
+        let postForm2 = {
+            'email': sessionStorage.getItem("emailAccount"),
+            'idCard': idCard[1]
+        }
+        $.ajax({
+            //Process the form using $.ajax()
+            type: 'POST', //Method type
+            url: '../management/deleteFavorite.php', //Your form processing file URL
+            data: postForm2, //Forms name
+            dataType: 'JSON',
+            success: function(data) {
+
+            },
+            error: function(erreur, message) {
+                console.log(erreur, message);
+            }
+
+        })
+
+        window.open("index.html", "_self");
+    });
+
+
+
+    $(document).on("click",".favStar-non-active",function(event) {
+        $(this).addClass("favStar-active");
+        $(this).removeClass("favStar-non-active");
+
+        let classes = $(this).parent().parent().attr("class");
+        var idCard = classes.split(" ");
+
+        console.log(idCard[1]);
+
+        let postForm1 = {
+            'email': sessionStorage.getItem("emailAccount"),
+            'idCard': idCard[1]
+        }
+        $.ajax({
+            //Process the form using $.ajax()
+            type: 'POST', //Method type
+            url: '../management/addFavorite.php', //Your form processing file URL
+            data: postForm1, //Forms name
+            dataType: 'JSON',
+            success: function(data) {
+
+            },
+            error: function(erreur, message) {
+                console.log(erreur, message);
+            }
+
+        })
+
+
+        window.open("index.html", "_self");
+    });
+
+
+
+
     function getGenres(){
         let listeGenres = [];
         $.ajax({
@@ -371,27 +256,6 @@ color: white;
         sessionStorage.setItem("idCard", ID);
         window.open("video.html", "_self");
     }
+
 </script>
-<style>
-    .adminSection {
-        width: 5%;
-        margin: auto;
-        padding: 5px 2px;
-        background: transparent;
-        text-align: center;
-        font-weight: bold;
-        text-transform: uppercase;
-        transition: all 0.2s ease;
-        border: 1px solid white;
-    }
-    .adminSection:hover {
-        background: var(--accent);
-        border: 1px solid var(--accent);
-        transition: all 1.5s ease;
-        cursor: pointer;
-    }
-    .adminSection:active {
-        transform: scale(0.98);
-    }
-</style>
 </html>

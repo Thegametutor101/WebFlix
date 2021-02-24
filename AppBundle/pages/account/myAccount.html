@@ -65,6 +65,11 @@
         $("#screenNameShow").text("Nom d'affichage : " + sessionStorage.getItem("screenNameAccount"));
         $("#emailShow").text("Adresse courriel : " + sessionStorage.getItem("emailAccount"));
         $("#phoneShow").text("Téléphone  : " + sessionStorage.getItem("phoneAccount"));
+
+        $('.card').find('img').each(function(){
+            $(this).css({"width":"100%", "height":"100%"});
+        });
+
         $("#updateScreenName").click(function () {
             window.open("manageAccount/changeScreenName.html", "_self");
         });
@@ -93,7 +98,7 @@
                 type: 'POST', //Method type
                 url: '../../management/getFavoriteCards.php', //Your form processing file URL
                 data:{
-                    'email': "test@test.com"
+                    'email': sessionStorage.getItem("emailAccount")
                 },
                 dataType: 'JSON',
                 success: function(data) {
@@ -141,7 +146,7 @@
             console.log(idCard[1]);
 
             let postForm2 = {
-                'email': "test@test.com",
+                'email': sessionStorage.getItem("emailAccount"),
                 'idCard': idCard[1]
             }
             $.ajax({
@@ -163,6 +168,7 @@
         });
 
 
+        
 
 
     });
@@ -230,6 +236,11 @@
         min-width: 250px;
         max-width: 250px;
     }
+
+    .videoList .card img{
+        width: 248px;
+    }
+
     .left{
         display: table-cell;
         position: sticky;
