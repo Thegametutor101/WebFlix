@@ -57,7 +57,7 @@ header {
 }
 .logo {
     z-index: 4;
-    width: 90%;
+    width: 92%;
 }
 .logo img {width: 150px;}
 .category {
@@ -81,9 +81,12 @@ header {
     min-width: 16vw;
     max-width: 16vw;
 }
-.profileBubble {
+.profileBubble img {
     margin: auto;
-    float: right;
+}
+.profileBubble {
+    width: 3%;
+    margin: auto 20px;
     border: none;
     border-radius: 50%;
     padding: 5px;

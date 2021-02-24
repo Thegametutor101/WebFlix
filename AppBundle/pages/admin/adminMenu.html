@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+    <link rel="stylesheet" , href="../../ressources/css/main.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+</head>
+
+<style>
+    body {
+        color: lightgrey;
+        overflow-x: hidden;
+    }
+    
+    ul {
+        list-style-type: none;
+        padding: 5px;
+        margin: 0px;
+        line-height: 2.5;
+    }
+    
+    li:hover {
+        color: rgb(158, 9, 9);
+        cursor: pointer;
+    }
+    
+    hr {
+        color: darkgray;
+    }
+    
+    header {
+        position: sticky;
+        top: 0;
+        z-index: 3;
+        width: 100%;
+        background-color: rgba(17, 17, 17, 0.3);
+    }
+    
+    header img {
+        z-index: 4;
+        width: 150px;
+        height: 90px;
+    }
+    
+    #menuOptions {
+        width: 275px;
+        position: sticky;
+        left: 0;
+        height: fit-content;
+    }
+    
+    .accordion-item {
+        border-style: solid;
+        border-width: 1px;
+        border-color: rgb(44, 44, 44);
+        border-radius: 7px;
+    }
+    
+    .accordion-button:not(.collapsed) {
+        color: white;
+        background-color: rgba(59, 59, 59, 0.7)
+    }
+    
+    .accordion-item button {
+        color: white;
+    }
+    
+    .accordion-body {
+        color: white;
+    }
+    
+    #bodySection {
+        display: flex;
+    }
+    
+    #formSpace {
+        width: 100%;
+        max-width: 100%;
+        max-height: 90%;
+        overflow-y: scroll;
+    }
+    
+    #formSpace::-webkit-scrollbar {
+        display: none;
+    }
+    
+    #formSpace div {
+        color: white;
+    }
+    
+    body h5 {
+        color: white;
+    }
+    
+    input {
+        background-color: rgb(184, 184, 184);
+    }
+    
+    #cgeneral:hover {
+        background-color: #0B9545;
+    }
+    
+    #c13:hover {
+        background-color: #EEAF09;
+    }
+    
+    #c16:hover {
+        background-color: #0A5491;
+    }
+    
+    #c18:hover {
+        background-color: #D40039;
+    }
+    
+    .cgeneralactif {
+        background-color: #0B9545;
+    }
+    
+    .c13actif {
+        background-color: #EEAF09;
+    }
+    
+    .c16actif {
+        background-color: #0A5491;
+    }
+    
+    .c18actif {
+        background-color: #D40039;
+    }
+    
+    #cgeneralup:hover {
+        background-color: #0B9545;
+    }
+    
+    #c13up:hover {
+        background-color: #EEAF09;
+    }
+    
+    #c16up:hover {
+        background-color: #0A5491;
+    }
+    
+    #c18up:hover {
+        background-color: #D40039;
+    }
+    
+    .cgeneralactifup {
+        background-color: #0B9545;
+    }
+    
+    .c13actifup {
+        background-color: #EEAF09;
+    }
+    
+    .c16actifup {
+        background-color: #0A5491;
+    }
+    
+    .c18actifup {
+        background-color: #D40039;
+    }
+    
+    #cgeneraldel:hover {
+        background-color: #0B9545;
+    }
+    
+    #c13del:hover {
+        background-color: #EEAF09;
+    }
+    
+    #c16del:hover {
+        background-color: #0A5491;
+    }
+    
+    #c18del:hover {
+        background-color: #D40039;
+    }
+    
+    .cgeneralactifdel {
+        background-color: #0B9545;
+    }
+    
+    .c13actifdel {
+        background-color: #EEAF09;
+    }
+    
+    .c16actifdel {
+        background-color: #0A5491;
+    }
+    
+    .c18actifdel {
+        background-color: #D40039;
+    }
+    
+    .edit {
+        width: 60%;
+        display: flex;
+        justify-content: space-between;
+    }
+    
+    form button {
+        width: 325px;
+        height: 40px;
+        margin-top: 10px;
+        background: transparent;
+        text-align: center;
+        cursor: pointer;
+        color: #eee;
+        font-weight: bold;
+        text-transform: uppercase;
+        transition: all 1s ease;
+        border: 1px solid white;
+    }
+    
+    form button:hover {
+        background: #D50000;
+        border: none;
+        transition: all 1.5s ease;
+    }
+</style>
+
+
+
+
+
+<body>
+
+    <header>
+
+        <img src="../../ressources/assets/images/webflix_orig.png">
+
+    </header>
+
+    <section id="bodySection">
+
+        <section id="menuOptions">
+
+
+            <div class="accordion accordion-flush" id="accordionFlushExample">
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-headingOne">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+                        films
+                    </button>
+                    </h2>
+                    <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body">
+                            <ul>
+                                <li id="laddvideo">Ajouter un film</li>
+                                <li id="lupdatevideo">Modifier un film</li>
+                                <li id="ldeletevideo">Supprimer un film</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-headingThree">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+                        tags
+                    </button>
+                    </h2>
+                    <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body">
+                            <ul>
+                                <li>Ajouter un tag</li>
+                                <li>Modifier un tag</li>
+                                <li>Supprimer un tag</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-headingFour">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
+                        genres
+                    </button>
+                    </h2>
+                    <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body">
+                            <ul>
+                                <li>Ajouter un genre</li>
+                                <li>Modifier un genre</li>
+                                <li>Supprimer un genre</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-headingFive">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFive" aria-expanded="false" aria-controls="flush-collapseFive">
+                        comptes
+                    </button>
+                    </h2>
+                    <div id="flush-collapseFive" class="accordion-collapse collapse" aria-labelledby="flush-headingFive" data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body">
+                            <ul>
+                                <li>Modifier un compte</li>
+                                <li>Supprimer un compte</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-headingSix">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseSix" aria-expanded="false" aria-controls="flush-collapseSix">
+                        stats
+                    </button>
+                    </h2>
+                    <div id="flush-collapseSix" class="accordion-collapse collapse" aria-labelledby="flush-headingSix" data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body">
+                            <ul>
+                                <li>Regarder les stats</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <section id="formSpace">
+
+        </section>
+
+    </section>
+
+
+</body>
+
+
+<script>
+    $(document).ready(function() {
+
+        $("#laddvideo").click(function(e) {
+            changePage("forms/addvideo.html");
+        })
+
+        $("#lupdatevideo").click(function(e) {
+            changePage("forms/updatevideo.html");
+
+            let postForm = {
+                'req': "Get_Videos_Info"
+            }
+
+            $.ajax({
+                //Process the form using $.ajax()
+                type: 'POST', //Method type
+                url: '../../management/DB/Model/GetInfoCards.php', //Your form processing file URL
+                data: postForm, //Forms name
+                dataType: 'JSON',
+                success: function(data) {
+                    for (i = 0; i < data.length; i++) {
+                        $("#selectedvideo").append(`
+                            <option value = "${data[i].ID}">${data[i].Title}</option>`)
+                    }
+
+                },
+                error: function(erreur, message) {
+                    console.log(erreur, message);
+                }
+
+            });
+        })
+
+        $("#ldeletevideo").click(function(e) {
+            changePage("forms/deletevideo.html");
+            let postForm = {
+                'req': "Get_Videos_Info"
+            }
+
+            $.ajax({
+                //Process the form using $.ajax()
+                type: 'POST', //Method type
+                url: '../../management/DB/Model/GetInfoCards.php', //Your form processing file URL
+                data: postForm, //Forms name
+                dataType: 'JSON',
+                success: function(data) {
+                    for (i = 0; i < data.length; i++) {
+                        $("#selectedvideo").append(`
+                            <option value = "${data[i].ID}">${data[i].Title}</option>`)
+                    }
+
+                },
+                error: function(erreur, message) {
+                    console.log(erreur, message);
+                }
+
+            });
+        })
+        $(window).scroll(function() {
+            $('header').css("background-color", 'rgba(17, 17, 17, ' + (0.3 + (0.7 * $(window).scrollTop() / 200)) + ')')
+        });
+
+
+        $("#canceladdmovie").click(function() {
+            alert(getClassificiation.length);
+        });
+
+
+        function changePage(path) {
+            $.ajax(path, {
+                success: function(response) {
+                    let body = response.replace(/^.*?<body>(.*?)<\/body>.*?$/s, "$1");
+                    $("#formSpace").html(body)
+                }
+            });
+        }
+
+    });
+</script>
+
+
+
+</html>

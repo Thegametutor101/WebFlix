@@ -143,6 +143,7 @@ color: white;
         <div class="logo">
             <img src="../ressources/assets/images/webflix_orig.png">
         </div>
+        <button class="adminSection" style="visibility: hidden">admin</button>
         <button class="profileBubble">
             <img src="../ressources/assets/images/defaultUserProfile.png"
                  alt="../ressources/assets/images/defaultUserProfile.png"
@@ -150,22 +151,29 @@ color: white;
         </button>
     </header>
     <section id="starringShow">
-
         <img src="../ressources/assets/images/videoImages/wienerMobile.jpg" alt="">
-
     </section>
-    <section id="categoryList">
-
-    </section>
-
+    <section id="categoryList"></section>
 </body>
+<script src="../ressources/javascript/mainJavaScript.js"></script>
 <script>
-    $(document).ready(function() {
+    checkConnection();
+    console.log(sessionStorage.getItem("adminAccount"));
+    if (sessionStorage.getItem("adminAccount") === "1") {
+        $(".adminSection").css("visibility", "visible");
+    }
+    $(document).ready(function(){ 
+        $(window).scroll(function(){
+            $('header').css("background-color", 'rgba(17, 17, 17, ' + (0.3 + (0.7 * $(window).scrollTop() / 200)) + ')');
+        });
+        getGenres();
+        $(".profileBubble").click(function (e) {
+            window.open("account/myAccount.html", "_self");
+        });
         $(document).on('click', '#idCreerProfil', function (e) {
             $("#idVideo").html("<video id='idVideo' width='1000' height='500' controls autoplay>");
             $("#idSource").html("<source id='idSource' src='' type='video/mp4'></video>");
         })
-    })
 
 
 
@@ -173,10 +181,12 @@ color: white;
             $(this).parent().parent().stop().animate({scrollLeft: "+=750"}, 800);
             return false;
         });
-
         $(".left").on('click', function(event) {
             $(this).parent().parent().stop().animate({scrollLeft: "-=750"}, 800);
             return false;
+        });
+        $(".adminSection").click(function (e) {
+            window.open("admin/adminMenu.html", "_self");
         });
 
 
@@ -268,20 +278,15 @@ color: white;
             getGenres();
 
     });
-
-
     function getGenres(){
         let listeGenres = [];
-
         $.ajax({
             //Process the form using $.ajax()
             type: 'POST', //Method type
             url: '../management/getGenres.php', //Your form processing file URL
             dataType: 'JSON',
             success: function(data) {
-
                 let currGenres;
-                
                 for(ctr = 0; ctr < data.length; ctr++){
                     currGenres = JSON.parse(data[ctr][0]);
 
@@ -298,13 +303,9 @@ color: white;
             }
         });
     }
-
     function getVideosByGenre(listeGenres){
-
         for(ctr = 0; ctr < listeGenres.length; ctr++){
-
             let ctrAjax = ctr;
-
             $.ajax({
                 //Process the form using $.ajax()
                 type: 'POST', //Method type
@@ -315,16 +316,12 @@ color: white;
                 },
                 dataType: 'JSON',
                 success: function(data) {
-                    console.log(listeGenres[ctrAjax]);
-
                     // header de categorie
                     $("#categoryList").append('<h4 class="catTitle">'+listeGenres[ctrAjax]+'</h4>' +
                         '<hr><div class="category" id="'+listeGenres[ctrAjax]+'""></div>');
-
                     // debut de la liste et fleche de gauche
                     $("#"+listeGenres[ctrAjax]).append('<ul class="videoList"><div class="left">' +
                         '<i class="material-icons md-36">arrow_back_ios</i></div></ul>');
-
                         // cards de la liste
                         for(ctrVid = 0; ctrVid < data.length; ctrVid++){
 
@@ -356,7 +353,6 @@ color: white;
                             }
 
                         }
-
                     // fleche de droite et fin de la liste
                     $("#"+listeGenres[ctrAjax] + "> .videoList")
                         .append('<div class="right"><i class="material-icons md-36">arrow_forward_ios</i></div><hr>');
@@ -364,15 +360,9 @@ color: white;
                 error: function(erreur, message) {
                     console.log(erreur, message);
                 }
-
             });
-
         }
     }
-
-
-
-
 
 
 
@@ -381,7 +371,27 @@ color: white;
         sessionStorage.setItem("idCard", ID);
         window.open("video.html", "_self");
     }
-    
-
 </script>
+<style>
+    .adminSection {
+        width: 5%;
+        margin: auto;
+        padding: 5px 2px;
+        background: transparent;
+        text-align: center;
+        font-weight: bold;
+        text-transform: uppercase;
+        transition: all 0.2s ease;
+        border: 1px solid white;
+    }
+    .adminSection:hover {
+        background: var(--accent);
+        border: 1px solid var(--accent);
+        transition: all 1.5s ease;
+        cursor: pointer;
+    }
+    .adminSection:active {
+        transform: scale(0.98);
+    }
+</style>
 </html>
