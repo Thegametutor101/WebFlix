@@ -142,7 +142,7 @@ $(document).ready(function() {
                 dataType: 'JSON',
                 success: function(data) {
                     console.log(data);
-                    window.open("main_menu_admin.html", "_self");
+                    window.open("adminMenu.html", "_self");
                 },
                 error: function(message) {
                     console.log(message);
@@ -167,7 +167,7 @@ $(document).ready(function() {
             dataType: 'JSON',
             success: function(data) {
                 console.log(data);
-                window.open("main_menu_admin.html", "_self");
+                window.open("adminMenu.html", "_self");
             },
             error: function(message) {
                 console.log(message);
@@ -274,7 +274,7 @@ $(document).ready(function() {
                 dataType: 'JSON',
                 success: function(data) {
                     console.log(data);
-                    window.open("main_menu_admin.html", "_self");
+                    window.open("adminMenu.html", "_self");
                 },
                 error: function(message) {
                     console.log(message);
