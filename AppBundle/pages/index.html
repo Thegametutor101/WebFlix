@@ -332,7 +332,7 @@ color: white;
                             if(data[ctrVid][11] != 0){
 
                                 $("#"+listeGenres[ctrAjax] + "> .videoList").append(`
-                                <div onclick = "Details('${data[ctrVid].File}')" class="card ${data[ctrVid][0]}">
+                                <div onclick = "Details('${data[ctrVid].File}', '${data[ctrVid][0]}')" class="card ${data[ctrVid][0]}">
                                 <img src="${data[ctrVid].Image}" class="card-img">
                                 <div class="card-body">
                                 <h5 class="card-title" id="card1Title">${data[ctrVid].Title}</h5>
@@ -344,7 +344,7 @@ color: white;
                             } else {
 
                                 $("#"+listeGenres[ctrAjax] + "> .videoList").append(`
-                                <div onclick = "Details('${data[ctrVid].File}')" class="card ${data[ctrVid][0]}">
+                                <div onclick = "Details('${data[ctrVid].File}', '${data[ctrVid][0]}')" class="card ${data[ctrVid][0]}">
                                 <img src="${data[ctrVid].Image}" class="card-img">
                                 <div class="card-body">
                                 <h5 class="card-title" id="card1Title">${data[ctrVid].Title}</h5>
@@ -376,8 +376,9 @@ color: white;
 
 
 
-    function Details(ID) {
-        sessionStorage.setItem("VideoPath", ID);
+    function Details(file, ID) {
+        sessionStorage.setItem("VideoPath", file);
+        sessionStorage.setItem("idCard", ID);
         window.open("video.html", "_self");
     }
     

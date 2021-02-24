@@ -16,12 +16,10 @@ class ModelTimeSaving
     {
         try
         {
-            $request = "INSERT INTO timesaving VALUES(:id, :cardID, :seriesID, :email, :timestamp)";
+            $request = "INSERT INTO timesaving VALUES(:cardID, :email, :timestamp)";
 
             $declaration = $this->connection->prepare($request);
-            $declaration->bindParam(':id', $id);
             $declaration->bindParam(':cardID', $cardID);
-            $declaration->bindParam(':seriesID', $seriesID);
             $declaration->bindParam(':email', $email);
             $declaration->bindParam(':timestamp', $timeStamp);
 

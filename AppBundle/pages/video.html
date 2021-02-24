@@ -39,18 +39,40 @@ $(document).ready(function(){
 vid.addEventListener("timeupdate", myFunction);
 
 function myFunction() {
-  // Display the current position of the video in a p element with id="demo"
-  document.getElementById("timer").innerHTML = vid.currentTime;
+   //document.getElementById("timer").innerHTML = vid.currentTime;
+
 }
 
 });
 
 window.addEventListener('beforeunload', function(event) {
-    console.log('I am the 1 one.');
-      });
-      window.addEventListener('unload', function(event) {
-        console.log('I am the 3rd one.');
-      });
+    var vid = document.getElementById("video1");
+    console.log(vid.currentTime);
+
+    $.ajax({
+                //Process the form using $.ajax()
+                type: 'POST', //Method type
+                url: '../management/timeStamp.php', //Your form processing file URL
+                data:{
+                    'cardID': sessionStorage.getItem("idCard"),
+                    'email': sessionStorage.getItem("emailAccount")
+                },
+                dataType: 'JSON',
+                success: function(data) {
+
+                    console.log("success");
+
+                },
+                error: function(erreur, message) {
+                    console.log(erreur, message);
+                }
+
+            });
+
+
+
+
+});
 
 </script>
 
