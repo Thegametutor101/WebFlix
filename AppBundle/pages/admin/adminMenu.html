@@ -222,18 +222,17 @@
         border: none;
         transition: all 1.5s ease;
     }
+    li {
+        transition: 0.2s all;
+        cursor: pointer;
+    }
+    li:hover {transform: scale(1.02)}
+    li:active {transform: scale(0.98)}
+    #topLeftLogo:hover {cursor: pointer}
 </style>
-
-
-
-
-
 <body>
-
     <header>
-
-        <img src="../../ressources/assets/images/webflix_orig.png">
-
+        <img id="topLeftLogo" src="../../ressources/assets/images/webflix_orig.png" alt="Webflix Logo">
     </header>
 
     <section id="bodySection">
@@ -259,25 +258,6 @@
                         </div>
                     </div>
                 </div>
-
-                <div class="accordion-item">
-                    <h2 class="accordion-header" id="flush-headingThree">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
-                        tags
-                    </button>
-                    </h2>
-                    <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
-                        <div class="accordion-body">
-                            <ul>
-                                <li>Ajouter un tag</li>
-                                <li>Modifier un tag</li>
-                                <li>Supprimer un tag</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="flush-headingFour">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
@@ -287,15 +267,11 @@
                     <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample">
                         <div class="accordion-body">
                             <ul>
-                                <li>Ajouter un genre</li>
-                                <li>Modifier un genre</li>
-                                <li>Supprimer un genre</li>
+                                <li id="linkGenre">Catégories de films</li>
                             </ul>
                         </div>
                     </div>
                 </div>
-
-
                 <div class="accordion-item">
                     <h2 class="accordion-header" id="flush-headingFive">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFive" aria-expanded="false" aria-controls="flush-collapseFive">
@@ -305,8 +281,7 @@
                     <div id="flush-collapseFive" class="accordion-collapse collapse" aria-labelledby="flush-headingFive" data-bs-parent="#accordionFlushExample">
                         <div class="accordion-body">
                             <ul>
-                                <li>Modifier un compte</li>
-                                <li>Supprimer un compte</li>
+                                <li id="linkAccounts">Gestion des comptes</li>
                             </ul>
                         </div>
                     </div>
@@ -322,7 +297,7 @@
                     <div id="flush-collapseSix" class="accordion-collapse collapse" aria-labelledby="flush-headingSix" data-bs-parent="#accordionFlushExample">
                         <div class="accordion-body">
                             <ul>
-                                <li>Regarder les stats</li>
+                                <li id="linkStats">Regarder les stats</li>
                             </ul>
                         </div>
                     </div>
@@ -346,7 +321,19 @@
 
         $("#laddvideo").click(function(e) {
             changePage("forms/addvideo.html");
-        })
+        });
+        $("#linkStats").click(function (e) {
+            changePage("forms/stats.html");
+        });
+        $("#linkAccounts").click(function (e) {
+            changePage("forms/updateaccount.html");
+        });
+        $("#linkGenre").click(function (e) {
+            changePage("forms/viewGenre.html");
+        });
+        $("#topLeftLogo").click(function (e) {
+            window.open("../index.html");
+        });
 
         $("#lupdatevideo").click(function(e) {
             changePage("forms/updatevideo.html");
@@ -373,7 +360,7 @@
                 }
 
             });
-        })
+        });
 
         $("#ldeletevideo").click(function(e) {
             changePage("forms/deletevideo.html");
@@ -405,9 +392,9 @@
         });
 
 
-        $("#canceladdmovie").click(function() {
-            alert(getClassificiation.length);
-        });
+        // $("#canceladdmovie").click(function() {
+        //     alert(getClassificiation.length);
+        // });
 
 
         function changePage(path) {
