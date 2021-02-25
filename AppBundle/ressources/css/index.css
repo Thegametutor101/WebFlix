@@ -1,6 +1,7 @@
 #starringShow {
     width: 100%;
     height: fit-content;
+    min-height: 200px;
     background-color: var(--light);
     text-align: center;
     align-items: center;
@@ -49,6 +50,7 @@
 header {
     display: flex;
     flex-direction: row;
+    background-color: rgba(17, 17, 17, 0.3);
     position: fixed;
     top: 0;
     z-index: 3;
@@ -66,12 +68,12 @@ header {
     overflow-x: scroll;
     padding: 10px;
 }
-.videoList{
+.videoList {
     display: table;
     padding: 0;
     border-spacing: 15px;
 }
-.videoList .card{
+.videoList .card {
     display: table-cell;
     background-color: var(--main);
     border-style: solid;
@@ -81,6 +83,17 @@ header {
     min-width: 16vw;
     max-width: 16vw;
 }
+
+.favStar-active {
+    color: yellow;
+    font-size: 35px;
+}
+
+.favStar-non-active {
+    color: darkgray;
+    font-size: 35px;
+}
+
 .profileBubble img {
     margin: auto;
 }
@@ -94,7 +107,7 @@ header {
     transition: 0.2s all;
 }
 .profileBubble:hover {
-    box-shadow: 7px 6px 18px 1px var(--accent);
+    /* box-shadow: 7px 6px 18px 1px var(--accent); */
     cursor: pointer;
     outline: none;
     transform: scale(1.02);
@@ -104,4 +117,24 @@ header {
     /* Scaling button to 0.98 to its original size */
     box-shadow: 3px 2px 12px 1px var(--accent);
     /* Lowering the shadow */
+}
+.adminSection {
+    width: 5%;
+    margin: auto;
+    padding: 5px 2px;
+    background: transparent;
+    text-align: center;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: all 0.2s ease;
+    border: 1px solid white;
+}
+.adminSection:hover {
+    background: var(--accent);
+    border: 1px solid var(--accent);
+    transition: all 1.5s ease;
+    cursor: pointer;
+}
+.adminSection:active {
+    transform: scale(0.98);
 }

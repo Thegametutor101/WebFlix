@@ -50,15 +50,26 @@
     <br>
     <h2>Mes favoris</h2>
     <hr>
+    <div class="category" id="favoris"></div>
 </div>
 </body>
+
+
+
 <script src="../../ressources/javascript/mainJavaScript.js"></script>
+
+
 <script>
     checkConnection();
     $(document).ready(function (e) {
         $("#screenNameShow").text("Nom d'affichage : " + sessionStorage.getItem("screenNameAccount"));
         $("#emailShow").text("Adresse courriel : " + sessionStorage.getItem("emailAccount"));
         $("#phoneShow").text("Téléphone  : " + sessionStorage.getItem("phoneAccount"));
+
+        $('.card').find('img').each(function(){
+            $(this).css({"width":"100%", "height":"100%"});
+        });
+
         $("#updateScreenName").click(function () {
             window.open("manageAccount/changeScreenName.html", "_self");
         });
@@ -77,8 +88,95 @@
         $("#back").click(function (e) {
             window.open("../index.html", "_self");
         });
+
+
+
+
+
+        $.ajax({
+                //Process the form using $.ajax()
+                type: 'POST', //Method type
+                url: '../../management/getFavoriteCards.php', //Your form processing file URL
+                data:{
+                    'email': sessionStorage.getItem("emailAccount")
+                },
+                dataType: 'JSON',
+                success: function(data) {
+
+                    // debut de la liste et fleche de gauche
+                    $("#favoris").append('<ul class="videoList"><div class="left"><i class="material-icons md-36">arrow_back_ios</i></div></ul>');
+
+
+                        // cards de la liste
+                        for(ctrVid = 0; ctrVid < data.length; ctrVid++){
+
+                                $("#favoris > .videoList").append(`
+                                <div onclick = "Details('${data[ctrVid].File}')" class="card ${data[ctrVid][0]}">
+                                <img src="../${data[ctrVid].Image}" class="card-img">
+                                <div class="card-body">
+                                <h5 class="card-title" id="card1Title">${data[ctrVid].Title}</h5>
+                                <i class="material-icons favStar-active">star</i>
+                                <p class="card-text">${data[ctrVid].Resume}</p>
+                                </div>
+                                </div>`);
+
+
+                        }
+
+                    // fleche de droite et fin de la liste
+                    $("#favoris > .videoList").append('<div class="right"><i class="material-icons md-36">arrow_forward_ios</i></div>');
+                },
+                error: function(erreur, message) {
+                    console.log(erreur, message);
+                }
+
+        });
+
+
+
+
+
+
+
+        $(document).on("click",".favStar-active",function(event) {
+
+            let classes = $(this).parent().parent().attr("class");
+            var idCard = classes.split(" ");
+
+            console.log(idCard[1]);
+
+            let postForm2 = {
+                'email': sessionStorage.getItem("emailAccount"),
+                'idCard': idCard[1]
+            }
+            $.ajax({
+                //Process the form using $.ajax()
+                type: 'POST', //Method type
+                url: '../../management/deleteFavorite.php', //Your form processing file URL
+                data: postForm2, //Forms name
+                dataType: 'JSON',
+                success: function(data) {
+
+                },
+                error: function(erreur, message) {
+                    console.log(erreur, message);
+                }
+
+            })
+
+            window.open("myAccount.html", "_self");
+        });
+
+
+        
+
+
     });
 </script>
+
+
+
+
 <style>
     .confirmButtons {width: 100%;}
     .confirmButtons:hover {transform: scale(1.1);}
@@ -93,6 +191,136 @@
         text-align: center;
         margin: auto
     }
+    .content {flex-direction: row;}
+    .content div {
+        width: 24%;
+        margin: 20px 3%;
+    }
+    .content .profile {width: 15%;}
+    .content .currentAccountInfo {width: 42%;}
+    h3 {margin-bottom: 36px}
+    #changePicture {
+        height: 250px;
+        border-radius: 10px;
+        display: none;
+        max-height: 100%;
+        max-width: 100%;
+        width: 100%
+    }
+    #profilePicture:hover #changePicture {
+        display: block;
+    }
+
+    .card:hover {
+    cursor: pointer;
+    }
+
+    .card-title {
+        color: white;
+    }
+    .card-text {
+        color: rgb(185, 185, 185);
+    }
+    .videoList{
+        display: table;
+        padding: 0;
+        border-spacing: 15px;
+    }
+    .videoList .card{
+        display: table-cell;
+        background-color: #111;
+        border-style: solid;
+        border-width: 1px;
+        border-color: rgb(158, 9, 9);
+        margin: 10px;
+        min-width: 250px;
+        max-width: 250px;
+    }
+
+    .videoList .card img{
+        width: 248px;
+    }
+
+    .left{
+        display: table-cell;
+        position: sticky;
+        left: 0;
+        z-index: 2;
+        vertical-align: middle;
+        min-height: 100%;
+        width: fit-content;
+        padding: 3px;
+        align-self: center;
+        background-color: black;
+        opacity: 0.5;
+        transition: 0.5s;
+    }
+    .right{
+        display: table-cell;
+        position: sticky;
+        right: 0;
+        z-index: 2;
+        vertical-align: middle;
+        min-height: 100%;
+        width: fit-content;
+        padding: 3px;
+        align-self: center;
+        background-color: black;
+        opacity: 0.5;
+        transition: 0.5s;
+    }
+    .left:hover {
+        opacity: 1.0;
+    }
+    .right:hover {
+        opacity: 1.0;
+    }
+    #favoris {
+        display: flex;
+        max-width: 100%;
+        overflow-x: scroll;
+        padding: 10px;
+    }
+
+    .favStar-active {
+        color: yellow;
+        font-size: 35px;
+    }
+
+
+
+
+
+    /*.manage {*/
+    /*    display: flex;*/
+    /*    flex-direction: column;*/
+    /*    width: auto;*/
+    /*    height: auto;*/
+    /*    text-align: left;*/
+    /*    margin: 20px 2%;*/
+    /*}*/
+    /*.manage h2 {*/
+    /*    font-size: 26px;*/
+    /*    margin: 2px;*/
+    /*}*/
+    /*.manage h3 {*/
+    /*    font-size: 18px;*/
+    /*    margin: 12px 7px 7px;*/
+    /*    text-align: left;*/
+    /*}*/
+    /*.manage hr {*/
+    /*    width: 50%;*/
+    /*    color: black;*/
+    /*    margin: 10%;*/
+    /*}*/
+    /*.edit {*/
+    /*    display: flex;*/
+    /*    justify-content: space-between;*/
+    /*}*/
+    /*img {*/
+    /*    margin: 0;*/
+    /*    border-radius: 50%;*/
+    /*}*/
     #back:hover {transform: scale(1.2);}
     #back:active {transform: scale(0.98);}
 </style>

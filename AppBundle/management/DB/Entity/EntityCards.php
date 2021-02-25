@@ -133,11 +133,11 @@ class EntityCards
      * @param string $genre
      * @return array
      */
-    function getCardByGenre(string $genre): array
+    function getCardByGenre(string $genre, string $email): array
     {
         $card = array();
         try {
-            $request = "SELECT * FROM cards WHERE Genre like '%$genre%'";
+            $request = "SELECT *, (select count(*) from favorites f where f.CardID = c.ID and f.Email = '$email') as FAVORIS from cards c WHERE Genre like '%$genre%'";
             $result = $this->connection->query($request);
             $card = $result->fetchAll();
 
@@ -148,6 +148,21 @@ class EntityCards
         }
     }
 
+
+    function getCardMyFavorites(string $email): array
+    {
+        $card = array();
+        try {
+            $request = "SELECT * from cards c INNER JOIN favorites f on c.ID = f.CardID WHERE email = '$email'";
+            $result = $this->connection->query($request);
+            $card = $result->fetchAll();
+
+            return $card;
+        }
+        catch(PDOException $e) {
+            return $card;
+        }
+    }
 
 
 

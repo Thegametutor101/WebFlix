@@ -12,11 +12,11 @@ if (!empty($_POST["title"]) &&
     $type = $_POST["type"];
     $genre = $_POST["genre"];
     $classificiations = $_POST["classificiations"];
-    $dossier = __DIR__.'/../ressources/assets/images/videoImages/';
+    $dossier = '../ressources/assets/images/videoImages/';
     $chemin = $dossier . basename($_FILES['movieimage']['name']);
     $duration = $_FILES['moviefile']['playtime_string'];
     if (move_uploaded_file($_FILES['movieimage']['tmp_name'], $chemin)) {
-        $dossier = __DIR__.'/../ressources/assets/videos/';
+        $dossier = '../ressources/assets/videos/';
         $chemin2 = $dossier . basename($_FILES['moviefile']['name']);
     }
     if (move_uploaded_file($_FILES['moviefile']['tmp_name'], $chemin2)) {

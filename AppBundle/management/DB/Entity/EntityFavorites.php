@@ -26,4 +26,5 @@ class EntityFavorites
             return $lines;
         }
     }
+
 }

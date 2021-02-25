@@ -20,6 +20,11 @@
     <link rel="stylesheet" type="text/css" href="../ressources/css/main.css">
     <link rel="stylesheet" type="text/css" href="../ressources/css/index.css">
 </head>
+
+
+
+
+
 <body>
     <header>
         <div class="logo">
@@ -38,20 +43,38 @@
     <section id="categoryList"></section>
 </body>
 <script src="../ressources/javascript/mainJavaScript.js"></script>
+
+
+
+
+
+
+
+
 <script>
     checkConnection();
     console.log(sessionStorage.getItem("adminAccount"));
     if (sessionStorage.getItem("adminAccount") === "1") {
         $(".adminSection").css("visibility", "visible");
     }
+
+
     $(document).ready(function(){ 
-        $(window).scroll(function(){
-            $('header').css("background-color", 'rgba(17, 17, 17, ' + (0.3 + (0.7 * $(window).scrollTop() / 200)) + ')');
-        });
         getGenres();
         $(".profileBubble").click(function (e) {
             window.open("account/myAccount.html", "_self");
         });
+        $(window).scroll(function(){
+            $('header').css("background-color", 'rgba(17, 17, 17, ' + (0.3 + (0.7 * $(window).scrollTop() / 200)) + ')');
+        });
+
+        $(document).on('click', '#idCreerProfil', function (e) {
+            $("#idVideo").html("<video id='idVideo' width='1000' height='500' controls autoplay>");
+            $("#idSource").html("<source id='idSource' src='' type='video/mp4'></video>");
+        })
+
+
+
         $(".right").click(function(){
             $(this).parent().parent().stop().animate({scrollLeft: "+=750"}, 800);
             return false;
@@ -63,7 +86,83 @@
         $(".adminSection").click(function (e) {
             window.open("admin/adminMenu.html", "_self");
         });
+
     });
+
+
+
+
+
+
+
+    $(document).on("click",".favStar-active",function(event) {
+        $(this).addClass("favStar-non-active");
+        $(this).removeClass("favStar-active");
+
+        let classes = $(this).parent().parent().attr("class");
+        var idCard = classes.split(" ");
+
+        console.log(idCard[1]);
+
+        let postForm2 = {
+            'email': sessionStorage.getItem("emailAccount"),
+            'idCard': idCard[1]
+        }
+        $.ajax({
+            //Process the form using $.ajax()
+            type: 'POST', //Method type
+            url: '../management/deleteFavorite.php', //Your form processing file URL
+            data: postForm2, //Forms name
+            dataType: 'JSON',
+            success: function(data) {
+
+            },
+            error: function(erreur, message) {
+                console.log(erreur, message);
+            }
+
+        })
+
+        window.open("index.html", "_self");
+    });
+
+
+
+    $(document).on("click",".favStar-non-active",function(event) {
+        $(this).addClass("favStar-active");
+        $(this).removeClass("favStar-non-active");
+
+        let classes = $(this).parent().parent().attr("class");
+        var idCard = classes.split(" ");
+
+        console.log(idCard[1]);
+
+        let postForm1 = {
+            'email': sessionStorage.getItem("emailAccount"),
+            'idCard': idCard[1]
+        }
+        $.ajax({
+            //Process the form using $.ajax()
+            type: 'POST', //Method type
+            url: '../management/addFavorite.php', //Your form processing file URL
+            data: postForm1, //Forms name
+            dataType: 'JSON',
+            success: function(data) {
+
+            },
+            error: function(erreur, message) {
+                console.log(erreur, message);
+            }
+
+        })
+
+
+        window.open("index.html", "_self");
+    });
+
+
+
+
     function getGenres(){
         let listeGenres = [];
         $.ajax({
@@ -96,7 +195,10 @@
                 //Process the form using $.ajax()
                 type: 'POST', //Method type
                 url: '../management/getVideosByGenre.php', //Your form processing file URL
-                data: { 'genre': listeGenres[ctrAjax] },
+                data:{
+                    'genre': listeGenres[ctrAjax],
+                    'email': sessionStorage.getItem("emailAccount")
+                },
                 dataType: 'JSON',
                 success: function(data) {
                     // header de categorie
@@ -107,14 +209,34 @@
                         '<i class="material-icons md-36">arrow_back_ios</i></div></ul>');
                         // cards de la liste
                         for(ctrVid = 0; ctrVid < data.length; ctrVid++){
-                            $("#"+listeGenres[ctrAjax] + "> .videoList").append(`
-                                <div onclick = "Details('${data[ctrVid].File}')" class="card">
+
+
+                            if(data[ctrVid][11] != 0){
+
+                                $("#"+listeGenres[ctrAjax] + "> .videoList").append(`
+                                <div onclick = "Details('${data[ctrVid].File}', '${data[ctrVid][0]}')" class="card ${data[ctrVid][0]}">
                                 <img src="${data[ctrVid].Image}" class="card-img">
                                 <div class="card-body">
                                 <h5 class="card-title" id="card1Title">${data[ctrVid].Title}</h5>
+                                <i class="material-icons favStar-active">star</i>
                                 <p class="card-text">${data[ctrVid].Resume}</p>
                                 </div>
                                 </div>`);
+
+                            } else {
+
+                                $("#"+listeGenres[ctrAjax] + "> .videoList").append(`
+                                <div onclick = "Details('${data[ctrVid].File}', '${data[ctrVid][0]}')" class="card ${data[ctrVid][0]}">
+                                <img src="${data[ctrVid].Image}" class="card-img">
+                                <div class="card-body">
+                                <h5 class="card-title" id="card1Title">${data[ctrVid].Title}</h5>
+                                <i class="material-icons favStar-non-active">star</i>
+                                <p class="card-text">${data[ctrVid].Resume}</p>
+                                </div>
+                                </div>`);
+
+                            }
+
                         }
                     // fleche de droite et fin de la liste
                     $("#"+listeGenres[ctrAjax] + "> .videoList")
@@ -126,31 +248,14 @@
             });
         }
     }
-    function Details(ID) {
-        sessionStorage.setItem("VideoPath", ID);
-        window.open("title.html", "_self");
+
+
+
+    function Details(file, ID) {
+        sessionStorage.setItem("VideoPath", file);
+        sessionStorage.setItem("idCard", ID);
+        window.open("video.html", "_self");
     }
+
 </script>
-<style>
-    .adminSection {
-        width: 5%;
-        margin: auto;
-        padding: 5px 2px;
-        background: transparent;
-        text-align: center;
-        font-weight: bold;
-        text-transform: uppercase;
-        transition: all 0.2s ease;
-        border: 1px solid white;
-    }
-    .adminSection:hover {
-        background: var(--accent);
-        border: 1px solid var(--accent);
-        transition: all 1.5s ease;
-        cursor: pointer;
-    }
-    .adminSection:active {
-        transform: scale(0.98);
-    }
-</style>
 </html>
