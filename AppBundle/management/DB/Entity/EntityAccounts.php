@@ -22,7 +22,7 @@ class EntityAccounts
     {
         $accounts = array();
         try {
-            $request = "SELECT * FROM accounts";
+            $request = "SELECT * FROM accounts WHERE Email NOT LIKE 'super_M4n4ger.system@cegeptr.qc.ca'";
             $result = $this->connection->query($request);
             $accounts = $result->fetchAll();
 

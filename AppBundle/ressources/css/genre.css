@@ -1,0 +1,34 @@
+.main button {
+    width: 160px;
+    margin: 5px 10px;
+    padding: 5px 2px;
+    background: transparent;
+    text-align: center;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: all 0.2s ease;
+    border: 1px solid white;
+}
+.main button:hover {
+    background: var(--accent);
+    border: 1px solid var(--accent);
+    transition: all 1.5s ease;
+    cursor: pointer;
+}
+.main button:active {transform: scale(0.98);}
+#genreList {
+    width: 90%;
+    margin: 5px 5%;
+}
+.genreItem {
+    display: flex;
+    flex-direction: row;
+    width: 60%;
+}
+.genreItem span {width: 50%}
+.deleteGenre {
+    width: 50%;
+    max-width: 120px;
+    padding: 2px 1px;
+    z-index: 5;
+}
