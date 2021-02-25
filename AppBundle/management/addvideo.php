@@ -1,11 +1,10 @@
 <?php
-$connexion = new PDO("mysql:host=localhost;dbname=netflix_projet;port=3308", "root", "");
-$connexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-
-
-
-if (!empty($_POST["title"]) && !empty($_POST["description"]) && !empty($_POST["genre"]) && !empty($_POST["releasedate"]) && isset($_POST["visible"]) && !empty($_POST["type"]) && !empty($_POST["classificiations"]) && ($_FILES['movieimage']['tmp_name'] != "" || $_FILES['movieimage']['size'] != 0) && ($_FILES['moviefile']['tmp_name'] != "" || $_FILES['moviefile']['size'] != 0)) {
+require_once ('DB/Model/ModelCards.php');
+$modelCards = new ModelCards();
+if (!empty($_POST["title"]) &&
+    !empty($_POST["description"]) &&
+    !empty($_POST["genre"]) &&
+    !empty($_POST["releasedate"])) {
     $title = $_POST["title"];
     $description = $_POST["description"];
     $releasedate = $_POST["releasedate"];
@@ -15,27 +14,16 @@ if (!empty($_POST["title"]) && !empty($_POST["description"]) && !empty($_POST["g
     $classificiations = $_POST["classificiations"];
     $dossier = '../ressources/assets/images/videoImages/';
     $chemin = $dossier . basename($_FILES['movieimage']['name']);
+    $duration = $_FILES['moviefile']['playtime_string'];
     if (move_uploaded_file($_FILES['movieimage']['tmp_name'], $chemin)) {
         $dossier = '../ressources/assets/videos/';
         $chemin2 = $dossier . basename($_FILES['moviefile']['name']);
     }
     if (move_uploaded_file($_FILES['moviefile']['tmp_name'], $chemin2)) {
-        addvideo($title, $genre, $description, $releasedate, $visible, $type, $classificiations, $chemin, $chemin2, $connexion);
         echo json_encode("OK");
     } else {
         echo json_encode("Une erreur s'est produite");
     }
 }
 else
-    echo json_encode($_POST);
-
-
-function addvideo($title, $genre, $description, $releasedate, $visible, $type, $classificiations, $chemin, $chemin2, $connexion)
-{
-    try {
-        $requete = "INSERT INTO cards (Title, Genre, Resume, Image, File, ReleaseDate, Available, Classification, Duration, Type) VALUES ('$title', '$genre', '$description', '$chemin', '$chemin2', '$releasedate', '$visible', '$classificiations', 0, '$type')";
-        $connexion->exec($requete);
-    } catch (PDOException $e) {
-        echo "Échec de connexion à la base de données: " . $e->getMessage();
-    }
-}
+    echo json_encode("FUCK OFF");

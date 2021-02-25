@@ -15,7 +15,6 @@
             <video id="video1" controls>
             </video>
         </div>
-        <p id="timer">allo</p>
     </div>
 </body>
 
@@ -35,22 +34,61 @@ $(document).ready(function(){
 
     var vid = document.getElementById("video1");
 
-// Attach a timeupdate event to the video element, and execute a function if the current playback position has changed
-vid.addEventListener("timeupdate", myFunction);
 
-function myFunction() {
-  // Display the current position of the video in a p element with id="demo"
-  document.getElementById("timer").innerHTML = vid.currentTime;
-}
+    // set the video time to the last saved timestamp when page is loaded
+    var vid = document.getElementById("video1");
+
+    let postformGetTime = {
+        'cardID': sessionStorage.getItem("idCard"),
+        'email': sessionStorage.getItem("emailAccount")
+    }
+
+    $.ajax({
+        type: 'POST',
+        url: '../management/getTimeStamp.php',
+        data: postformGetTime,
+        dataType: 'JSON',
+        success: function(data) {
+            vid.currentTime = data;
+        },
+        error: function(erreur, message) {
+            console.log(erreur, message);
+        }
+    });
+
+// fin du document.ready
+});
+
+
+
+
+window.addEventListener('beforeunload', function(event) {
+    var vid = document.getElementById("video1");
+    console.log(vid.currentTime);
+
+    let postformSetTime = {
+        'cardID': sessionStorage.getItem("idCard"),
+        'email': sessionStorage.getItem("emailAccount"),
+        'time': vid.currentTime
+    }
+
+    $.ajax({
+        //Process the form using $.ajax()
+        type: 'POST', //Method type
+        url: '../management/setTimeStamp.php', //Your form processing file URL
+        data: postformSetTime,
+        dataType: 'JSON',
+        success: function(data) {
+
+        },
+        error: function(erreur, message) {
+            console.log(erreur, message);
+        }
+
+    });
 
 });
 
-window.addEventListener('beforeunload', function(event) {
-    console.log('I am the 1 one.');
-      });
-      window.addEventListener('unload', function(event) {
-        console.log('I am the 3rd one.');
-      });
 
 </script>
 
