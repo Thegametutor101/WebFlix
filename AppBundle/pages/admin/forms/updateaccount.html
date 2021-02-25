@@ -221,7 +221,7 @@
             $.ajax({
                 //Process the form using $.ajax()
                 type: 'POST', //Method type
-                url: '../../management/getAccountForManagement.php', //Your form processing file URL
+                url: '../../../management/getAccountForManagement.php', //Your form processing file URL
                 dataType: 'JSON',
                 success: function(data) {
                     console.log("ggg" + data);
@@ -261,7 +261,7 @@
                 $.ajax({
                     //Process the form using $.ajax()
                     type: 'POST', //Method type
-                    url: '../../management/updateadminaccount.php', //Your form processing file URL
+                    url: '../../../management/updateadminaccount.php', //Your form processing file URL
                     data: postForm1, //Forms name
                     dataType: 'JSON',
                     success: function(data) {
@@ -289,7 +289,7 @@
                 $.ajax({
                     //Process the form using $.ajax()
                     type: 'POST', //Method type
-                    url: '../../management/deleteaccounts.php', //Your form processing file URL
+                    url: '../../../management/deleteaccounts.php', //Your form processing file URL
                     data: postForm, //Forms name
                     dataType: 'JSON',
                     success: function(data) {
@@ -307,4 +307,5 @@
         });
     </script>
 </body>
+
 </html>
