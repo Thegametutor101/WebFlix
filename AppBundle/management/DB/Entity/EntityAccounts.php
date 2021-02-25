@@ -89,6 +89,34 @@ class EntityAccounts
         }
     }
 
+    function getNbrAdminAccount(): array
+    {
+        $account = array();
+        try {
+            $request = "SELECT count(*) FROM accounts WHERE Admin = 1";
+            $result = $this->connection->query($request);
+            $account = $result->fetch();
+
+            return $account;
+        } catch (PDOException $e) {
+            return $account;
+        }
+    }
+
+    function getNbrAccount(): array
+    {
+        $account = array();
+        try {
+            $request = "SELECT count(*) FROM accounts";
+            $result = $this->connection->query($request);
+            $account = $result->fetch();
+
+            return $account;
+        } catch (PDOException $e) {
+            return $account;
+        }
+    }
+
     /**
      * @param string $email
      * @return bool
