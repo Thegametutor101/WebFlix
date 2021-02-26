@@ -22,7 +22,7 @@ class EntityAccounts
     {
         $accounts = array();
         try {
-            $request = "SELECT * FROM accounts";
+            $request = "SELECT * FROM accounts WHERE Email NOT LIKE 'super_M4n4ger.system@cegeptr.qc.ca'";
             $result = $this->connection->query($request);
             $accounts = $result->fetchAll();
 
@@ -80,6 +80,34 @@ class EntityAccounts
         $account = array();
         try {
             $request = "SELECT * FROM accounts WHERE ScreenName = '$screenName'";
+            $result = $this->connection->query($request);
+            $account = $result->fetch();
+
+            return $account;
+        } catch (PDOException $e) {
+            return $account;
+        }
+    }
+
+    function getNbrAdminAccount(): array
+    {
+        $account = array();
+        try {
+            $request = "SELECT count(*) FROM accounts WHERE Admin = 1";
+            $result = $this->connection->query($request);
+            $account = $result->fetch();
+
+            return $account;
+        } catch (PDOException $e) {
+            return $account;
+        }
+    }
+
+    function getNbrAccount(): array
+    {
+        $account = array();
+        try {
+            $request = "SELECT count(*) FROM accounts";
             $result = $this->connection->query($request);
             $account = $result->fetch();
 

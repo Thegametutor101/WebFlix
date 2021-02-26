@@ -9,21 +9,30 @@ if (!empty($_POST["title"]) &&
     $description = $_POST["description"];
     $releasedate = $_POST["releasedate"];
     $visible = $_POST["visible"];
-    $type = $_POST["type"];
+//    $type = $_POST["type"];
     $genre = $_POST["genre"];
     $classificiations = $_POST["classificiations"];
-    $dossier = '../ressources/assets/images/videoImages/';
+    $dossier = __DIR__.'/../ressources/assets/images/videoImages/';
     $chemin = $dossier . basename($_FILES['movieimage']['name']);
     $duration = $_FILES['moviefile']['playtime_string'];
     if (move_uploaded_file($_FILES['movieimage']['tmp_name'], $chemin)) {
-        $dossier = '../ressources/assets/videos/';
+        $dossier = __DIR__.'/../ressources/assets/videos/';
         $chemin2 = $dossier . basename($_FILES['moviefile']['name']);
     }
     if (move_uploaded_file($_FILES['moviefile']['tmp_name'], $chemin2)) {
+        $modelCards->addCard($title,
+            $genre,
+            $description,
+            $chemin,
+            $chemin2,
+            $releasedate,
+            $visible,
+            $classificiations,
+            $duration);
         echo json_encode("OK");
     } else {
         echo json_encode("Une erreur s'est produite");
     }
+} else {
+    echo json_encode("error adding video to system");
 }
-else
-    echo json_encode("FUCK OFF");

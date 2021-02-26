@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <script src="forms/getinfovideo.js"></script>
+    <script src="../../ressources/javascript/getInfoVideo.js"></script>
     <form id="deletevideo">
         <div style="display: flex; flex-direction:column; margin: 10%; margin-top: 0px;">
             <label>Choissisez le film que vous souhaitez supprimer</label>
@@ -57,29 +57,45 @@
             <h5>Le film sera t-il disponible pour les utilisateurs ?</h5>
             <div class="form-check">
                 <input class="form-check-input" type="radio" name="exampleRadios" id="movievisibleyes" value="1" disabled>
-                <label class="form-check-label" for="exampleRadios1">Oui</label>
+                <label class="form-check-label">Oui</label>
             </div>
             <div class="form-check">
                 <input class="form-check-input" type="radio" name="exampleRadios" id="movievisibleno" value="0" disabled>
-                <label class="form-check-label" for="exampleRadios2">Non</label>
+                <label class="form-check-label">Non</label>
             </div><br>
             <h5>Quel est la classification du film ?</h5>
             <div>
                 <ul class="list-group">
-                    <li id="cgeneral" class="list-group-item" style="display: flex; justify-content: space-between; margin-bottom: 2px;"><img src="../../ressources/assets/images/general.png" width="140px" , height="30px" disabled></li>
-                    <li id="c13" class="list-group-item" style="display: flex; justify-content: space-between; margin-bottom: 2px;"><img src="../../ressources/assets/images/13.png" width="140px" , height="30px" disabled></li>
-                    <li id="c16" class="list-group-item" style="display: flex; justify-content: space-between; margin-bottom: 2px;"><img src="../../ressources/assets/images/16.png" width="140px" , height="30px" disabled></li>
-                    <li id="c18" class="list-group-item" style="display: flex; justify-content: space-between; margin-bottom: 2px;"><img src="../../ressources/assets/images/18.png" width="140px" , height="30px" disabled></li>
+                    <li class="list-group-item" id="ageG" style="display: flex;
+                                                                justify-content: space-between;
+                                                                margin-bottom: 2px;">
+                        <img src="../../ressources/assets/images/ageG.png" alt="Publique général">
+                    </li>
+                    <li class="list-group-item" id="age13" style="display: flex;
+                                                                    justify-content: space-between;
+                                                                    margin-bottom: 2px;">
+                        <img src="../../ressources/assets/images/age13.png" alt="Jeunes de 13+ ans">
+                    </li>
+                    <li class="list-group-item" id="age16" style="display: flex;
+                                                                justify-content: space-between;
+                                                                margin-bottom: 2px;">
+                        <img src="../../ressources/assets/images/age16.png" alt="Adolescents 16+ ans">
+                    </li>
+                    <li class="list-group-item" id="age18" style="display: flex;
+                                                                justify-content: space-between;
+                                                                margin-bottom: 2px;">
+                        <img src="../../ressources/assets/images/age18.png" alt="Adultes 18+">
+                    </li>
                 </ul>
             </div><br>
             <h5>S'agit-il d'un film ou d'une serie ?</h5>
             <div class="form-check">
                 <input class="form-check-input" type="radio" name="exampleRadios2" id="movietypemovie" value="Movie" disabled>
-                <label class="form-check-label" for="exampleRadios1">Film</label>
+                <label class="form-check-label">Film</label>
             </div>
             <div class="form-check">
                 <input class="form-check-input" type="radio" name="exampleRadios2" id="movietypeserie" value="Serie" disabled>
-                <label class="form-check-label" for="exampleRadios2">Serie</label>
+                <label class="form-check-label">Serie</label>
             </div><br>
             <div class="edit"><button id="confirmdeletemovie" type="button" style="margin-right: 10px;">Confirmer</button> <button id="canceladdmovie" type="button">Annuler</button></div>
         </div>

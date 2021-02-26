@@ -20,11 +20,6 @@
     <link rel="stylesheet" type="text/css" href="../ressources/css/main.css">
     <link rel="stylesheet" type="text/css" href="../ressources/css/index.css">
 </head>
-
-
-
-
-
 <body>
     <header>
         <div class="logo">
@@ -43,22 +38,12 @@
     <section id="categoryList"></section>
 </body>
 <script src="../ressources/javascript/mainJavaScript.js"></script>
-
-
-
-
-
-
-
-
 <script>
     checkConnection();
     console.log(sessionStorage.getItem("adminAccount"));
     if (sessionStorage.getItem("adminAccount") === "1") {
         $(".adminSection").css("visibility", "visible");
     }
-
-
     $(document).ready(function(){ 
         getGenres();
         $(".profileBubble").click(function (e) {
@@ -67,14 +52,10 @@
         $(window).scroll(function(){
             $('header').css("background-color", 'rgba(17, 17, 17, ' + (0.3 + (0.7 * $(window).scrollTop() / 200)) + ')');
         });
-
         $(document).on('click', '#idCreerProfil', function (e) {
             $("#idVideo").html("<video id='idVideo' width='1000' height='500' controls autoplay>");
             $("#idSource").html("<source id='idSource' src='' type='video/mp4'></video>");
-        })
-
-
-
+        });
         $(".right").click(function(){
             $(this).parent().parent().stop().animate({scrollLeft: "+=750"}, 800);
             return false;
@@ -86,24 +67,12 @@
         $(".adminSection").click(function (e) {
             window.open("admin/adminMenu.html", "_self");
         });
-
     });
-
-
-
-
-
-
-
     $(document).on("click",".favStar-active",function(event) {
         $(this).addClass("favStar-non-active");
         $(this).removeClass("favStar-active");
-
         let classes = $(this).parent().parent().attr("class");
         var idCard = classes.split(" ");
-
-        console.log(idCard[1]);
-
         let postForm2 = {
             'email': sessionStorage.getItem("emailAccount"),
             'idCard': idCard[1]
@@ -120,23 +89,14 @@
             error: function(erreur, message) {
                 console.log(erreur, message);
             }
-
-        })
-
+        });
         window.open("index.html", "_self");
     });
-
-
-
     $(document).on("click",".favStar-non-active",function(event) {
         $(this).addClass("favStar-active");
         $(this).removeClass("favStar-non-active");
-
         let classes = $(this).parent().parent().attr("class");
         var idCard = classes.split(" ");
-
-        console.log(idCard[1]);
-
         let postForm1 = {
             'email': sessionStorage.getItem("emailAccount"),
             'idCard': idCard[1]
@@ -153,16 +113,9 @@
             error: function(erreur, message) {
                 console.log(erreur, message);
             }
-
-        })
-
-
+        });
         window.open("index.html", "_self");
     });
-
-
-
-
     function getGenres(){
         let listeGenres = [];
         $.ajax({
@@ -209,10 +162,7 @@
                         '<i class="material-icons md-36">arrow_back_ios</i></div></ul>');
                         // cards de la liste
                         for(ctrVid = 0; ctrVid < data.length; ctrVid++){
-
-
                             if(data[ctrVid][11] != 0){
-
                                 $("#"+listeGenres[ctrAjax] + "> .videoList").append(`
                                 <div onclick = "Details('${data[ctrVid].File}', '${data[ctrVid][0]}')" class="card ${data[ctrVid][0]}">
                                 <img src="${data[ctrVid].Image}" class="card-img">
@@ -222,9 +172,7 @@
                                 <p class="card-text">${data[ctrVid].Resume}</p>
                                 </div>
                                 </div>`);
-
                             } else {
-
                                 $("#"+listeGenres[ctrAjax] + "> .videoList").append(`
                                 <div onclick = "Details('${data[ctrVid].File}', '${data[ctrVid][0]}')" class="card ${data[ctrVid][0]}">
                                 <img src="${data[ctrVid].Image}" class="card-img">
@@ -234,9 +182,7 @@
                                 <p class="card-text">${data[ctrVid].Resume}</p>
                                 </div>
                                 </div>`);
-
                             }
-
                         }
                     // fleche de droite et fin de la liste
                     $("#"+listeGenres[ctrAjax] + "> .videoList")
@@ -248,14 +194,10 @@
             });
         }
     }
-
-
-
     function Details(file, ID) {
         sessionStorage.setItem("VideoPath", file);
         sessionStorage.setItem("idCard", ID);
         window.open("video.html", "_self");
     }
-
 </script>
 </html>

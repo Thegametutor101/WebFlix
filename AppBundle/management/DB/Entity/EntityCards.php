@@ -71,6 +71,36 @@ class EntityCards
         }
     }
 
+    function getCardMovieVisible(): array
+    {
+        $card = array();
+        try {
+            $request = "SELECT count(*) FROM cards WHERE Available = 1";
+            $result = $this->connection->query($request);
+            $card = $result->fetchAll();
+
+            return $card;
+        }
+        catch(PDOException $e) {
+            return $card;
+        }
+    }
+
+    function getCardMovieNoVisible(): array
+    {
+        $card = array();
+        try {
+            $request = "SELECT count(*) FROM cards WHERE Available = 0";
+            $result = $this->connection->query($request);
+            $card = $result->fetchAll();
+
+            return $card;
+        }
+        catch(PDOException $e) {
+            return $card;
+        }
+    }
+
     /**
      * @param bool $available
      * @return array

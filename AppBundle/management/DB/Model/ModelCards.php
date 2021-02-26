@@ -34,11 +34,9 @@ class ModelCards
                      string $image,
                      string $file,
                      $releaseDate,
-                     bool $favorite,
                      bool $available,
                      string $classification,
-                     string $duration,
-                     string $type): string
+                     string $duration): string
     {
         try
         {
@@ -49,22 +47,18 @@ class ModelCards
                              Image, 
                              File, 
                              ReleaseDate, 
-                             Favorite,
                              Available, 
                              Classification, 
-                             Duration, 
-                             Type)
+                             Duration)
                         VALUES(:title, 
                             :genre, 
                             :resume, 
                             :image, 
                             :file, 
                             :releaseDate, 
-                            :favorite, 
                             :available, 
                             :classification, 
-                            :duration, 
-                            :type)";
+                            :duration)";
 
             $declaration = $this->connection->prepare($request);
             $declaration->bindParam(':title', $title);
@@ -73,11 +67,9 @@ class ModelCards
             $declaration->bindParam(':image', $image);
             $declaration->bindParam(':file', $file);
             $declaration->bindParam(':releaseDate', $releaseDate);
-            $declaration->bindParam(':favorite', $favorite);
             $declaration->bindParam(':available', $available);
             $declaration->bindParam(':classification', $classification);
             $declaration->bindParam(':duration', $duration);
-            $declaration->bindParam(':type', $type);
 
             $declaration->execute();
             return "ok";
