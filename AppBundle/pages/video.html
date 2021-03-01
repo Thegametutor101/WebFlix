@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Visionnement</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../ressources/css/main.css">
+</head>
+<body>
+    <div>
+        <div id="video">
+            <video id="video1" controls>
+            </video>
+        </div>
+    </div>
+</body>
+
+
+
+<script>
+
+$(document).ready(function(){ 
+
+    let file = sessionStorage.getItem("VideoPath");
+
+
+    $("video").append(`
+    <source src="${file}" type="video/mp4">
+    `);
+
+
+    var vid = document.getElementById("video1");
+
+
+    // set the video time to the last saved timestamp when page is loaded
+    var vid = document.getElementById("video1");
+
+    let postformGetTime = {
+        'cardID': sessionStorage.getItem("idCard"),
+        'email': sessionStorage.getItem("emailAccount")
+    }
+
+    $.ajax({
+        type: 'POST',
+        url: '../management/getTimeStamp.php',
+        data: postformGetTime,
+        dataType: 'JSON',
+        success: function(data) {
+            vid.currentTime = data;
+        },
+        error: function(erreur, message) {
+            console.log(erreur, message);
+        }
+    });
+
+// fin du document.ready
+});
+
+
+
+
+window.addEventListener('beforeunload', function(event) {
+    var vid = document.getElementById("video1");
+    console.log(vid.currentTime);
+
+    let postformSetTime = {
+        'cardID': sessionStorage.getItem("idCard"),
+        'email': sessionStorage.getItem("emailAccount"),
+        'time': vid.currentTime
+    }
+
+    $.ajax({
+        //Process the form using $.ajax()
+        type: 'POST', //Method type
+        url: '../management/setTimeStamp.php', //Your form processing file URL
+        data: postformSetTime,
+        dataType: 'JSON',
+        success: function(data) {
+
+        },
+        error: function(erreur, message) {
+            console.log(erreur, message);
+        }
+
+    });
+
+});
+
+
+</script>
+
+</html>

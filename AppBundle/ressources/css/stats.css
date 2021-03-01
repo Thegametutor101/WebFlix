@@ -1,0 +1,45 @@
+p {
+    color: black;
+    font-size: 20px;
+}
+
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    box-sizing: border-box;
+    background-color: lightgrey;
+}
+
+#global {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top: 5%;
+    margin-left: 3%;
+}
+
+.AccountStats {
+    margin-top: 2%;
+    margin-left: 3%;
+    margin-right: 3%;
+    min-width: 700px;
+    min-height: 300px;
+    max-height: fit-content;
+    background-color: white;
+    text-align: center;
+}
+
+.NbrAccounts {
+    text-align: center;
+    justify-content: center;
+    margin-top: 6%;
+    font-size: 35px;
+    color: black;
+}
+
+h2 {
+    color: black;
+}

@@ -3,314 +3,201 @@
 <head>
     <meta charset="UTF-8">
     <title>Home</title>
+    <!--    Scripts loading  -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
-    <link rel="stylesheet" , href="../ressources/css/styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+            crossorigin="anonymous"></script>
+    <!--    Links for functionnality  -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
+          crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <!--    Custom style sheets  -->
+    <link rel="stylesheet" type="text/css" href="../ressources/css/main.css">
+    <link rel="stylesheet" type="text/css" href="../ressources/css/index.css">
 </head>
-<style>
-body::-webkit-scrollbar {
-    display: none;
-}
-
-.starringShow {
-    width: 100%;
-    height: fit-content;
-    background-color: darkgray;
-    text-align: center;
-    align-items: center;
-}
-#rightShow {
-    width: 100%;
-    height: 350px;
-    background-color: darkgray;
-    text-align: center;
-    align-items: center;
-}
-.left{
-    display: table-cell;
-    position: sticky;
-    left: 0;
-    z-index: 2;
-    vertical-align: middle;
-    min-height: 100%;
-    width: fit-content;
-    padding: 3px;
-    align-self: center;
-    background-color: black;
-    opacity: 0.5;
-    transition: 0.5s;
-}
-.right{
-    display: table-cell;
-    position: sticky;
-    right: 0;
-    z-index: 2;
-    vertical-align: middle;
-    min-height: 100%;
-    width: fit-content;
-    padding: 3px;
-    align-self: center;
-    background-color: black;
-    opacity: 0.5;
-    transition: 0.5s;
-}
-.left:hover {
-    opacity: 1.0;
-}
-.right:hover {
-    opacity: 1.0;
-}
-.material-icons {color: white;}
-.catTitle {
-    margin-left: 7%;
-    margin-top: 10px;
-    /*color: rgb(158, 9, 9);*/
-    color: white;
-}
-hr {color: darkgray;}
-header {
-    position: fixed;
-    top: 0;
-    z-index: 3;
-    width: 100%;
-    background-color: rgba(17, 17, 17, 0.3);
-}
-header img {
-    z-index: 4;
-    width: 150px;
-    height: 90px;
-}
-.category {
-    display: flex;
-    max-width: 100%;
-    overflow-x: scroll;
-    padding: 10px;
-}
-.category::-webkit-scrollbar {display: none;}
-.videoList{
-    display: table;
-    padding: 0;
-    border-spacing: 15px;
-}
-.videoList .card{
-    display: table-cell;
-    background-color: #111;
-    border-style: solid;
-    border-width: 1px;
-    border-color: rgb(158, 9, 9);
-    margin: 10px;
-    min-width: 16vw;
-    max-width: 16vw;
-}
-.card-title {
-color: rgb(158, 9, 9);
-color: white;
-}
-.card-text {
-    color: rgb(185, 185, 185);
-}
-.card-body a {
-    background-color: rgb(47, 47, 47);
-    border: none;
-}
-
-.card:hover {
-    cursor: pointer;
-}
-
-
-.menuAccesRapide{
-    font-size: 20px;
-    color: darkred;
-    text-align: center;
-
-    float: right;
-}
-
-
-
-<header>
-    <div class="row">
-        <div class="col-md-2">
-        <img src="../ressources/images/webflix_orig.png">
-        </div>
-        <div class="col-md-6">
-            </div>
-
-
-        <div class="col-md-1">
-            <br>
-        <a class="menuAccesRapide"> Accueil </a>
-            </div>
-
-        <div class="col-md-1">
-            <br>
-            <a class="menuAccesRapide"> Film </a>
-            </div>
-        <div class="col-md-1">
-            <br>
-            <a class="menuAccesRapide"> Série </a>
-        </div>
-
-
-        </div>
-        <div class="col-md-1">
-
-        </div>
-    </div>
-
-
-</header>
-
-
 <body>
-
-
-
-
-
-    <section id="rightShow">
-
-        <h1>image holder</h1>
-
+    <header>
+        <div class="logo">
+            <img src="../ressources/assets/images/webflix_orig.png">
+        </div>
+        <button class="adminSection" style="visibility: hidden">admin</button>
+        <button class="profileBubble">
+            <img src="../ressources/assets/images/defaultUserProfile.png"
+                 alt="../ressources/assets/images/defaultUserProfile.png"
+                 style="display: block;border-radius: 50%">
+        </button>
+    </header>
+    <section id="starringShow">
+        <img src="../ressources/assets/images/videoImages/wienerMobile.jpg" alt="">
     </section>
-
-
-    <section id="categoryList">
-
-
-    </section>
-
-
-
-
+    <section id="categoryList"></section>
 </body>
-
-
+<script src="../ressources/javascript/mainJavaScript.js"></script>
 <script>
-
-        
-
-
-
+    checkConnection();
+    console.log(sessionStorage.getItem("adminAccount"));
+    if (sessionStorage.getItem("adminAccount") === "1") {
+        $(".adminSection").css("visibility", "visible");
+    }
+    $(document).ready(function(){ 
+        getGenres();
+        $(".profileBubble").click(function (e) {
+            window.open("account/myAccount.html", "_self");
+        });
+        $(window).scroll(function(){
+            $('header').css("background-color", 'rgba(17, 17, 17, ' + (0.3 + (0.7 * $(window).scrollTop() / 200)) + ')');
+        });
+        $(document).on('click', '#idCreerProfil', function (e) {
+            $("#idVideo").html("<video id='idVideo' width='1000' height='500' controls autoplay>");
+            $("#idSource").html("<source id='idSource' src='' type='video/mp4'></video>");
+        });
         $(".right").click(function(){
             $(this).parent().parent().stop().animate({scrollLeft: "+=750"}, 800);
             return false;
-        }); 
-
+        });
         $(".left").on('click', function(event) {
             $(this).parent().parent().stop().animate({scrollLeft: "-=750"}, 800);
             return false;
         });
-
-
-
-    $(document).ready(function(){ 
-            $(window).scroll(function(){ 
-                $('header').css("background-color", 'rgba(17, 17, 17, ' + (0.3 + (0.7 * $(window).scrollTop() / 200)) + ')') 
-            });
-
-            getGenres();
-
+        $(".adminSection").click(function (e) {
+            window.open("admin/adminMenu.html", "_self");
+        });
     });
+    $(document).on("click",".favStar-active",function(event) {
+        $(this).addClass("favStar-non-active");
+        $(this).removeClass("favStar-active");
+        let classes = $(this).parent().parent().attr("class");
+        var idCard = classes.split(" ");
+        let postForm2 = {
+            'email': sessionStorage.getItem("emailAccount"),
+            'idCard': idCard[1]
+        }
+        $.ajax({
+            //Process the form using $.ajax()
+            type: 'POST', //Method type
+            url: '../management/deleteFavorite.php', //Your form processing file URL
+            data: postForm2, //Forms name
+            dataType: 'JSON',
+            success: function(data) {
 
+            },
+            error: function(erreur, message) {
+                console.log(erreur, message);
+            }
+        });
+        window.open("index.html", "_self");
+    });
+    $(document).on("click",".favStar-non-active",function(event) {
+        $(this).addClass("favStar-active");
+        $(this).removeClass("favStar-non-active");
+        let classes = $(this).parent().parent().attr("class");
+        var idCard = classes.split(" ");
+        let postForm1 = {
+            'email': sessionStorage.getItem("emailAccount"),
+            'idCard': idCard[1]
+        }
+        $.ajax({
+            //Process the form using $.ajax()
+            type: 'POST', //Method type
+            url: '../management/addFavorite.php', //Your form processing file URL
+            data: postForm1, //Forms name
+            dataType: 'JSON',
+            success: function(data) {
 
+            },
+            error: function(erreur, message) {
+                console.log(erreur, message);
+            }
+        });
+        window.open("index.html", "_self");
+    });
     function getGenres(){
-        let listeGenres = new Array();
-
+        let listeGenres = [];
         $.ajax({
             //Process the form using $.ajax()
             type: 'POST', //Method type
             url: '../management/getGenres.php', //Your form processing file URL
             dataType: 'JSON',
             success: function(data) {
-
                 let currGenres;
-                
                 for(ctr = 0; ctr < data.length; ctr++){
                     currGenres = JSON.parse(data[ctr][0]);
 
                     for(ctrGenres = 0; ctrGenres < currGenres.length; ctrGenres++){
-                        if($.inArray(currGenres[ctrGenres], listeGenres) == -1){
+                        if($.inArray(currGenres[ctrGenres], listeGenres) === -1){
                             listeGenres.push(currGenres[ctrGenres]);
                         }
                     } 
                 }
-
-                
-
-                getVideosByGenre(listeGenres)
+                getVideosByGenre(listeGenres);
             },
             error: function(erreur, message) {
                 console.log(erreur, message);
             }
-
         });
-
     }
-
     function getVideosByGenre(listeGenres){
-
         for(ctr = 0; ctr < listeGenres.length; ctr++){
-
             let ctrAjax = ctr;
-
             $.ajax({
                 //Process the form using $.ajax()
                 type: 'POST', //Method type
                 url: '../management/getVideosByGenre.php', //Your form processing file URL
                 data:{
-                    'genre': listeGenres[ctrAjax]
+                    'genre': listeGenres[ctrAjax],
+                    'email': sessionStorage.getItem("emailAccount")
                 },
                 dataType: 'JSON',
                 success: function(data) {
-                    console.log(listeGenres[ctrAjax]);
-
-
                     // header de categorie
-                    $("#categoryList").append('<h4 class="catTitle">'+listeGenres[ctrAjax]+'</h4><hr><div class="category" id="'+listeGenres[ctrAjax]+'""></div>');
-
+                    $("#categoryList").append('<h4 class="catTitle">'+listeGenres[ctrAjax]+'</h4>' +
+                        '<hr><div class="category" id="'+listeGenres[ctrAjax]+'""></div>');
                     // debut de la liste et fleche de gauche
-                    $("#"+listeGenres[ctrAjax]).append('<ul class="videoList"><div class="left"><i class="material-icons md-36">arrow_back_ios</i></div></ul>');
-
-
+                    $("#"+listeGenres[ctrAjax]).append('<ul class="videoList"><div class="left">' +
+                        '<i class="material-icons md-36">arrow_back_ios</i></div></ul>');
                         // cards de la liste
                         for(ctrVid = 0; ctrVid < data.length; ctrVid++){
-                            $("#"+listeGenres[ctrAjax] + "> .videoList").append(`
-                                <div onclick = "Details('${data[ctrVid].File}')" class="card">
+                            if(data[ctrVid][11] != 0){
+                                $("#"+listeGenres[ctrAjax] + "> .videoList").append(`
+                                <div onclick = "Details('${data[ctrVid].File}', '${data[ctrVid][0]}')" class="card ${data[ctrVid][0]}">
                                 <img src="${data[ctrVid].Image}" class="card-img">
                                 <div class="card-body">
                                 <h5 class="card-title" id="card1Title">${data[ctrVid].Title}</h5>
+                                <i class="material-icons favStar-active">star</i>
                                 <p class="card-text">${data[ctrVid].Resume}</p>
                                 </div>
                                 </div>`);
+                            } else {
+                                $("#"+listeGenres[ctrAjax] + "> .videoList").append(`
+                                <div onclick = "Details('${data[ctrVid].File}', '${data[ctrVid][0]}')" class="card ${data[ctrVid][0]}">
+                                <img src="${data[ctrVid].Image}" class="card-img">
+                                <div class="card-body">
+                                <h5 class="card-title" id="card1Title">${data[ctrVid].Title}</h5>
+                                <i class="material-icons favStar-non-active">star</i>
+                                <p class="card-text">${data[ctrVid].Resume}</p>
+                                </div>
+                                </div>`);
+                            }
                         }
-
-
-
-
                     // fleche de droite et fin de la liste
-                    $("#"+listeGenres[ctrAjax] + "> .videoList").append('<div class="right"><i class="material-icons md-36">arrow_forward_ios</i></div><hr>');
+                    $("#"+listeGenres[ctrAjax] + "> .videoList")
+                        .append('<div class="right"><i class="material-icons md-36">arrow_forward_ios</i></div><hr>');
                 },
                 error: function(erreur, message) {
                     console.log(erreur, message);
                 }
-
             });
-
         }
     }
-
-
-    function Details(ID) {
-        sessionStorage.setItem("VideoPath", ID);
-        window.open("title.html", "_self");
+    function Details(file, ID) {
+        sessionStorage.setItem("VideoPath", file);
+        sessionStorage.setItem("idCard", ID);
+        window.open("video.html", "_self");
     }
-    
-
 </script>
 </html>

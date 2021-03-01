@@ -1,0 +1,89 @@
+@font-face {
+    font-family: Montserrat;
+    src: url("https://fonts.googleapis.com/css?family=Montserrat:400,400i,700");
+}
+
+:root {
+    --main: #111;
+    --light: #BEBEBE;
+    --lightActive: #d9d9d9;
+    --accent: #D50000;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+* {
+    font-family: Montserrat, sans-serif;
+    color: white;
+    /* overflow-x: hidden; */
+}
+
+*:focus {
+    outline: none;
+}
+
+body {
+    background: var(--main);
+    width: 100%;
+    max-width: 100%;
+}
+
+.main {
+    width: 96%;
+    margin: 0 2%;
+}
+
+.header {
+    display: flex;
+    flex-direction: row;
+    height: 200px;
+}
+
+.header img {
+    margin: 0 auto;
+    height: 100%;
+}
+
+.messages div {
+    background-color: rgba(244,105,105,0.7);
+    border: 2px solid rgba(244,46,46,0.7);
+    font-size: 18px;
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 10px;
+    text-align: center;
+    width: 60%;
+    margin: 10px 20%;
+}
+
+a {
+    text-decoration: none;
+    color: var(--light);
+}
+
+a:hover, a:active {
+    text-decoration: none;
+    color: var(--lightActive);
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+input[type="tel"] {
+    width: 35%;
+    padding: 5px;
+    background: transparent;
+    font-size: 15px;
+    border: 1px solid transparent;
+    border-bottom: 1px solid white;
+    margin-bottom: 15px;
+    text-align: left;
+    vertical-align: bottom;
+}
+
+.card-title {color: white;}
+.card-text {color: var(--light);}
+.card:hover {cursor: pointer;}
+hr {color: var(--light);}

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<link rel="stylesheet" type="text/css" href="../../ressources/css/genre.css">
+<link rel="stylesheet" type="text/css" href="../../ressources/css/main.css">
+<div class="main">
+    <div class="topBar">
+        <input id="newCategory" name="newCategory" type="text" placeholder="Nom de catégorie à ajouter">
+        <button id="addGenre">Ajouter</button>
+    </div>
+    <ul id="genreList"></ul>
+</div>
+<script>
+    $.ajax({
+        url: "../../management/getGenreList.php",
+        type: "POST",
+        dataType: "json",
+        success: function (result) {
+            for (i = 0; i < result.length; i++) {
+                $("#genreList").append("<li class='genreItem'>" +
+                                            "<span>" + result[i][1] + "</span>" +
+                                            "<button class='deleteGenre' id='" + result[i][0] + "'>Suprimer</button>" +
+                                        "</li>");
+            }
+        },
+        error: function (message, error) {
+            console.log(message + " : " + error);
+        }
+    });
+    $(document).ready(function (e) {
+        $("#genreList").click(function (e) {
+            $.ajax({
+                url: "../../management/deleteGenre.php",
+                type: "POST",
+                data: {"id": e.target.id},
+                dataType: "json",
+                success: function (result) {
+                    if (result) {
+                        location.reload();
+                    }
+                },
+                error: function (message, error) {
+                    console.log(message + " : " + error);
+                }
+            });
+        });
+        $("#addGenre").click(function (e) {
+            let value = $("#newCategory").val();
+            if (value !== "") {
+                $.ajax({
+                    url: "../../management/addGenre.php",
+                    type: "POST",
+                    data: {"name": value},
+                    dataType: "json",
+                    success: function (result) {
+                        if (result) {
+                            location.reload();
+                        }
+                    },
+                    error: function (message, error) {
+                        console.log(message + " : " + error);
+                    }
+                });
+            }
+        })
+    });
+</script>
+</body>
+</html>

@@ -3,18 +3,21 @@
 <head>
     <title>Webflix - MonCompte</title>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="../../ressources/css/styles.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--    Scripts loading  -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="../../ressources/css/styles.css">
+    <!--    Links for functionnality  -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--    Custom style sheets  -->
+    <link rel="stylesheet" type="text/css" href="../../ressources/css/main.css">
+    <link rel="stylesheet" type="text/css" href="../../ressources/css/account.css">
 </head>
 <body>
 <div class="main">
     <div class="header">
         <div id="logo">
-            <span class="material-icons">arrow_back_ios</span>
+            <span class="material-icons" id="back">arrow_back_ios</span>
             <img src="https://canniefish.weebly.com/uploads/1/1/8/3/118361953/webflix_orig.png"
                  alt="Webflix"
                  width="350px"
@@ -23,8 +26,8 @@
     </div>
     <h2>Gestion du compte</h2>
     <hr>
-    <div class="content">
-        <div class="profile">
+    <div class="userProfile">
+        <div id="left">
             <img id="profilePicture" src="../../ressources/assets/images/defaultUserProfile.png"
                  style="height: 250px;border-radius: 10px;width: 100%">
             <img id="changePicture" src="../../ressources/assets/images/changeImage.png">
@@ -38,24 +41,35 @@
             <h3>Mot de passe :  * * * * * * * * * *</h3>
         </div>
         <div class="editButtons">
-            <button id="updateScreenName" type="button">Modifier le nom d'affichage</button><br>
-            <button id="updateEmail" type="button">Modifier le courriel</button><br>
-            <button id="updatePhone" type="button">Modifier le numéro de téléphone</button><br>
-            <button id="updatePassword" type="button">Modifier le mot de passe</button>
+            <button class="confirmButtons" id="updateScreenName" type="button">Modifier le nom d'affichage</button><br>
+            <button class="confirmButtons" id="updateEmail" type="button">Modifier le courriel</button><br>
+            <button class="confirmButtons" id="updatePhone" type="button">Modifier le numéro de téléphone</button><br>
+            <button class="confirmButtons" id="updatePassword" type="button">Modifier le mot de passe</button>
         </div>
     </div>
     <br>
     <h2>Mes favoris</h2>
     <hr>
+    <div class="category" id="favoris"></div>
 </div>
 </body>
+
+
+
 <script src="../../ressources/javascript/mainJavaScript.js"></script>
+
+
 <script>
     checkConnection();
     $(document).ready(function (e) {
         $("#screenNameShow").text("Nom d'affichage : " + sessionStorage.getItem("screenNameAccount"));
         $("#emailShow").text("Adresse courriel : " + sessionStorage.getItem("emailAccount"));
         $("#phoneShow").text("Téléphone  : " + sessionStorage.getItem("phoneAccount"));
+
+        $('.card').find('img').each(function(){
+            $(this).css({"width":"100%", "height":"100%"});
+        });
+
         $("#updateScreenName").click(function () {
             window.open("manageAccount/changeScreenName.html", "_self");
         });
@@ -71,14 +85,111 @@
         $("#changePicture").click(function() {
             $("#profilePic").click();
         });
+        $("#back").click(function (e) {
+            window.open("../index.html", "_self");
+        });
+
+
+
+
+
+        $.ajax({
+                //Process the form using $.ajax()
+                type: 'POST', //Method type
+                url: '../../management/getFavoriteCards.php', //Your form processing file URL
+                data:{
+                    'email': sessionStorage.getItem("emailAccount")
+                },
+                dataType: 'JSON',
+                success: function(data) {
+
+                    // debut de la liste et fleche de gauche
+                    $("#favoris").append('<ul class="videoList"><div class="left"><i class="material-icons md-36">arrow_back_ios</i></div></ul>');
+
+
+                        // cards de la liste
+                        for(ctrVid = 0; ctrVid < data.length; ctrVid++){
+
+                                $("#favoris > .videoList").append(`
+                                <div onclick = "Details('${data[ctrVid].File}')" class="card ${data[ctrVid][0]}">
+                                <img src="../${data[ctrVid].Image}" class="card-img">
+                                <div class="card-body">
+                                <h5 class="card-title" id="card1Title">${data[ctrVid].Title}</h5>
+                                <i class="material-icons favStar-active">star</i>
+                                <p class="card-text">${data[ctrVid].Resume}</p>
+                                </div>
+                                </div>`);
+
+
+                        }
+
+                    // fleche de droite et fin de la liste
+                    $("#favoris > .videoList").append('<div class="right"><i class="material-icons md-36">arrow_forward_ios</i></div>');
+                },
+                error: function(erreur, message) {
+                    console.log(erreur, message);
+                }
+
+        });
+
+
+
+
+
+
+
+        $(document).on("click",".favStar-active",function(event) {
+
+            let classes = $(this).parent().parent().attr("class");
+            var idCard = classes.split(" ");
+
+            console.log(idCard[1]);
+
+            let postForm2 = {
+                'email': sessionStorage.getItem("emailAccount"),
+                'idCard': idCard[1]
+            }
+            $.ajax({
+                //Process the form using $.ajax()
+                type: 'POST', //Method type
+                url: '../../management/deleteFavorite.php', //Your form processing file URL
+                data: postForm2, //Forms name
+                dataType: 'JSON',
+                success: function(data) {
+
+                },
+                error: function(erreur, message) {
+                    console.log(erreur, message);
+                }
+
+            })
+
+            window.open("myAccount.html", "_self");
+        });
+
+
+        
+
+
     });
 </script>
+
+
+
+
 <style>
-    .main {
-        margin: 0 2%;
+    .confirmButtons {width: 100%;}
+    .confirmButtons:hover {transform: scale(1.1);}
+    #logo {
+        display: flex;
+        flex-direction: row;
     }
-    .header {
-        margin: 0 2%;
+    #back {
+        cursor: pointer;
+        width: 30px;
+        vertical-align: center;
+        text-align: center;
+        margin: auto
     }
     .content {flex-direction: row;}
     .content div {
@@ -99,6 +210,87 @@
     #profilePicture:hover #changePicture {
         display: block;
     }
+
+    .card:hover {
+    cursor: pointer;
+    }
+
+    .card-title {
+        color: white;
+    }
+    .card-text {
+        color: rgb(185, 185, 185);
+    }
+    .videoList{
+        display: table;
+        padding: 0;
+        border-spacing: 15px;
+    }
+    .videoList .card{
+        display: table-cell;
+        background-color: #111;
+        border-style: solid;
+        border-width: 1px;
+        border-color: rgb(158, 9, 9);
+        margin: 10px;
+        min-width: 250px;
+        max-width: 250px;
+    }
+
+    .videoList .card img{
+        width: 248px;
+    }
+
+    .left{
+        display: table-cell;
+        position: sticky;
+        left: 0;
+        z-index: 2;
+        vertical-align: middle;
+        min-height: 100%;
+        width: fit-content;
+        padding: 3px;
+        align-self: center;
+        background-color: black;
+        opacity: 0.5;
+        transition: 0.5s;
+    }
+    .right{
+        display: table-cell;
+        position: sticky;
+        right: 0;
+        z-index: 2;
+        vertical-align: middle;
+        min-height: 100%;
+        width: fit-content;
+        padding: 3px;
+        align-self: center;
+        background-color: black;
+        opacity: 0.5;
+        transition: 0.5s;
+    }
+    .left:hover {
+        opacity: 1.0;
+    }
+    .right:hover {
+        opacity: 1.0;
+    }
+    #favoris {
+        display: flex;
+        max-width: 100%;
+        overflow-x: scroll;
+        padding: 10px;
+    }
+
+    .favStar-active {
+        color: yellow;
+        font-size: 35px;
+    }
+
+
+
+
+
     /*.manage {*/
     /*    display: flex;*/
     /*    flex-direction: column;*/
@@ -129,5 +321,7 @@
     /*    margin: 0;*/
     /*    border-radius: 50%;*/
     /*}*/
+    #back:hover {transform: scale(1.2);}
+    #back:active {transform: scale(0.98);}
 </style>
 </htmL>

@@ -12,16 +12,14 @@ class ModelTimeSaving
         $this->connection = $constants->getConnection();
     }
 
-    function addTimeSaving(int $id, int $cardID, int $seriesID, string $email, $timeStamp): string
+    function addTimeSaving(int $cardID, string $email, string $timeStamp): string
     {
         try
         {
-            $request = "INSERT INTO timesaving VALUES(:id, :cardID, :seriesID, :email, :timestamp)";
+            $request = "INSERT INTO timesaving (CardID, Email, TimeStamp) VALUES(:cardID, :email, :timestamp)";
 
             $declaration = $this->connection->prepare($request);
-            $declaration->bindParam(':id', $id);
             $declaration->bindParam(':cardID', $cardID);
-            $declaration->bindParam(':seriesID', $seriesID);
             $declaration->bindParam(':email', $email);
             $declaration->bindParam(':timestamp', $timeStamp);
 
@@ -32,4 +30,28 @@ class ModelTimeSaving
             return $e;
         }
     }
+
+
+    function updateTimeSaving(int $cardID, string $email, string $timeStamp): string
+    {
+        try
+        {
+            $request = "UPDATE timesaving set TimeStamp = :timestamp where CardID = :cardID and Email = :email";
+
+            $declaration = $this->connection->prepare($request);
+            $declaration->bindParam(':cardID', $cardID);
+            $declaration->bindParam(':email', $email);
+            $declaration->bindParam(':timestamp', $timeStamp);
+
+            $declaration->execute();
+            return "ok";
+        }
+        catch(PDOException $e) {
+            return $e;
+        }
+    }
+
+
+
+
 }

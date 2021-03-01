@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Statistiques</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../../ressources/css/main.css">
+    <link rel="stylesheet" href="../../../ressources/css/stats.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div id="global" style="display: flex;">
+        <div class="AccountStats" style="display: flex; flex-direction: column;">
+            <div style="display: flex; flex-direction: row; justify-content: space-around; margin:2%;">
+                <h2 style="margin-top:2%;">Statistiques des comptes</h2>
+                <i class="material-icons md-48" style="color:black; font-size:90px; opacity: 20%;">group</i></div>
+            <div style="display: flex; flex-direction: row; justify-content: space-evenly;">
+                <div style="display: flex; flex-direction: column; margin-top:2%;">
+                    <p>Nombre de compte admin</p>
+                    <div class="NbrAccounts" id="nbrAdminAccount">9</div>
+                </div>
+                <div style="display: flex; flex-direction: column; margin-top:2%;">
+                    <p>Nombre de compte inscrit</p>
+                    <div class="NbrAccounts" id="nbrAllAccounts">1</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="AccountStats" style="display: flex; flex-direction: column;">
+            <div style="display: flex; flex-direction: row; justify-content: space-around; margin:2%;">
+                <h2 style="margin-top:2%;">Statistiques des contenus</h2>
+                <i class="material-icons md-48" style="color:black; font-size:90px; opacity: 20%;">ondemand_video</i>
+            </div>
+            <div style="display: flex; flex-direction: row; justify-content: space-evenly;">
+                <div style="display: flex; flex-direction: column; margin-top:2%;">
+                    <p>Nombre de films en ligne</p>
+                    <div class="NbrAccounts" id="NbrMovieOnline">1</div>
+                </div>
+                <div style="display: flex; flex-direction: column; margin-top:2%;">
+                    <p>Nombre de séries en ligne</p>
+                    <div class="NbrAccounts" id="NbrSeriesOnline">0</div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="AccountStats" style="display: flex; flex-direction: column;">
+            <div style="display: flex; flex-direction: row; justify-content: space-around; margin:2%;">
+                <h2 style="margin-top:2%;">Statistiques des favoris</h2>
+                <i class="material-icons md-48" style="color:black; font-size:90px; opacity: 20%;">favorite</i>
+            </div>
+            <div style="display: flex; flex-direction: row; justify-content: space-evenly; flex-wrap: wrap;">
+                <div style="display: flex; flex-direction: column; margin-top:2%;">
+                    <p>Film le plus aimé</p>
+                    <div class="NbrAccounts">
+                        <h3 style="margin-top:3.5%;" id="MostFavoriteMovieName">La revanche des chats !</h3>
+                    </div>
+                </div>
+                <div style="display: flex; flex-direction: column; margin-top:2%;">
+                    <p>Nombre de fois mis en favoris</p>
+                    <div class="NbrAccounts" id="NbrMovieNameCtr">1</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="AccountStats" style="display: flex; flex-direction: column;">
+            <div style="display: flex; flex-direction: row; justify-content: space-around; margin:2%;">
+                <h2 style="margin-top:2%;">Statistiques des contenus cachés</h2>
+                <i class="material-icons md-48" style="color:black; font-size:90px; opacity: 20%;">personal_video</i>
+            </div>
+            <div style="display: flex; flex-direction: row; justify-content: space-evenly; flex-wrap: wrap;">
+                <div style="display: flex; flex-direction: column; margin-top:2%;">
+                    <p>Nombre de film cachés</p>
+                    <div class="NbrAccounts" id="NbrMovieOffline">2</div>
+                </div>
+                <div style="display: flex; flex-direction: column; margin-top:2%;">
+                    <p>Nombre de séries cachés</p>
+                    <div class="NbrAccounts" id="NbrSerieOffline">0</div>
+                </div>
+            </div>
+        </div>
+</body>
+<script>
+    $(document).ready(function() {
+        $.ajax({
+            //Process the form using $.ajax()
+            type: 'POST', //Method type
+            url: '../../../management/getNbrAdminAccount.php', //Your form processing file URL
+            dataType: 'JSON',
+            success: function(data) {
+                $("#nbrAdminAccount").html(data[0][0]);
+            },
+            error: function(erreur, message) {
+                console.log(erreur, message);
+            }
+        });
+
+        $.ajax({
+            //Process the form using $.ajax()
+            type: 'POST', //Method type
+            url: '../../../management/getNbrAllAccount.php', //Your form processing file URL
+            dataType: 'JSON',
+            success: function(data) {
+                $("#nbrAllAccounts").html(data[0][0]);
+            },
+            error: function(erreur, message) {
+                console.log(erreur, message);
+            }
+        });
+
+        $.ajax({
+            //Process the form using $.ajax()
+            type: 'POST', //Method type
+            url: '../../../management/getNbrMovieAvailable.php', //Your form processing file URL
+            dataType: 'JSON',
+            success: function(data) {
+                $("#NbrMovieOnline").html(data[0][0]);
+            },
+            error: function(erreur, message) {
+                console.log(erreur, message);
+            }
+        });
+
+        $.ajax({
+            //Process the form using $.ajax()
+            type: 'POST', //Method type
+            url: '../../../management/getNbrMovieNoAvailable.php', //Your form processing file URL
+            dataType: 'JSON',
+            success: function(data) {
+                $("#NbrMovieOffline").html(data[0][0]);
+            },
+            error: function(erreur, message) {
+                console.log(erreur, message);
+            }
+        });
+
+
+        $.ajax({
+            //Process the form using $.ajax()
+            type: 'POST', //Method type
+            url: '../../../management/getFavoriteStats.php', //Your form processing file URL
+            dataType: 'JSON',
+            success: function(data) {
+                $("#MostFavoriteMovieName").html(data[0][0]);
+                $("#NbrMovieNameCtr").html(data[0][1]);
+            },
+            error: function(erreur, message) {
+                console.log(erreur, message);
+            }
+        });
+    })
+</script>
+
+</html>

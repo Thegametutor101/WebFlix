@@ -3,57 +3,62 @@
 <head>
     <title>Webflix - Changer email</title>
     <meta charset="utf-8">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="../../../ressources/css/styles.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--    Scripts loading  -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="../../ressources/css/styles.css">
+    <!--    Links for functionnality  -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--    Custom style sheets  -->
+    <link rel="stylesheet" type="text/css" href="../../../ressources/css/main.css">
+    <link rel="stylesheet" type="text/css" href="../../../ressources/css/account.css">
 </head>
 <body>
 <div class="main">
-    <div id="logo">
-        <img src="https://canniefish.weebly.com/uploads/1/1/8/3/118361953/webflix_orig.png"
-             alt="Webflix"
-             width="350px"
-             height="150px">
+    <div class="header">
+        <div id="logo">
+            <span class="material-icons" id="back">arrow_back_ios</span>
+            <img src="https://canniefish.weebly.com/uploads/1/1/8/3/118361953/webflix_orig.png"
+                 alt="Webflix"
+                 width="350px"
+                 height="150px">
+        </div>
     </div>
     <div class="manage">
         <h2 style="border-bottom: #111111">Modification du courriel</h2>
     </div>
     <hr><br><br>
     <div class="messages"></div>
-    <form>
-        <div class="box-input">
-            <div class="edit">
+    <div class="content">
+        <div id="edit_top">
+            <div id="edit_left">
                 <h3>Ancien courriel</h3>
-                <input id="oldEmail" type="email" value="email" disabled readonly>
-            </div>
-            <div class="edit">
                 <h3>Nouveau courriel</h3>
-                <input id="newEmail" type="email" placeholder="Nouvelle adresse courriel">
-            </div>
-            <div class="edit">
                 <h3>Confirmer nouveau courriel</h3>
-                <input id="confirmEmail" type="email" placeholder="Confirmer la nouvelle adresse">
-            </div>
-            <div class="edit">
                 <h3>Confirmer le changement</h3>
+            </div>
+            <div id="edit_right">
+                <input id="oldEmail" type="email" value="email" disabled readonly><br>
+                <input id="newEmail" type="email" placeholder="Nouvelle adresse courriel"><br>
+                <input id="confirmEmail" type="email" placeholder="Confirmer la nouvelle adresse"><br>
                 <input id="confirmUpdate" type="password" placeholder="Entrez votre mot de passe">
             </div>
-            <div class="edit">
-                <button id="confirm" type="button">Confirmer</button>
-                <button id="cancel" type="button">Annuler</button>
-            </div>
         </div>
-    </form>
+        <div id="edit_bottom">
+            <button class="confirmButtons" id="confirm" type="button">Confirmer</button>
+            <button class="confirmButtons" id="cancel" type="button">Annuler</button>
+        </div>
+    </div>
 </div>
 </body>
 <script>
     let pwd = sessionStorage.getItem("passwordAccount");
     $("#oldEmail").val(sessionStorage.getItem("emailAccount"));
+    $("#newEmail").focus();
     $(document).ready(function () {
-        let oldScreenName = $("#oldScreenName").val();
+        $("#back").click(function (e) {
+            window.open("../myAccount.html", "_self");
+        });
         $("#confirm").click(function () {
             let messages = $(".messages");
             messages.empty();
@@ -116,128 +121,18 @@
     });
 </script>
 <style>
-    button:hover {
-        background: #D50000;
-        border: none;
-        transition: all 1.5s ease;
-        color: white;
-    }
-    .manage {
+    #logo {
         display: flex;
-        flex-direction: column;
-        margin-top: 20px;
-        width: auto;
-        height: auto;
-        text-align: left;
-        padding-left: 5px;
-        color: white;
+        flex-direction: row;
     }
-    button {
-        width: 325px;
-        height: 40px;
-        margin-top: 10px;
-        background: transparent;
-        text-align: center;
+    #back {
         cursor: pointer;
-        color: #eee;
-        font-weight: bold;
-        text-transform: uppercase;
-        transition: all 1s ease;
-        border: 1px solid white;
-    }
-    button:hover {
-        background: #D50000;
-        border: none;
-        transition: all 1.5s ease;
-    }
-    .manage h2 {
-        font-size: 26px;
-        margin: 2px;
-    }
-    .manage h3 {
-        font-size: 18px;
-        margin: 7px;
-        margin-top: 12px;
-        text-align: left;
-    }
-    .manage hr {
-        width: 50%;
-        color: black;
-        margin: 10%;
-    }
-    btn:hover {
-        background-color: white;
-    }
-    .edit {
-        width: 40%;
-        display: flex;
-        justify-content: space-between;
-    }
-    img {
-        margin: 0px;
-        border-radius: 50%;
-    }
-    input, button {
-        padding: 10px 3%;
-        background: transparent;
-        font-size: 15px;
-        width: 300px;
-        height: 25px;
-        font-family: 'Montserrat', sans-serif;
-        border: 1px solid transparent;
-        position: relative;
-        color: #eee;
-        margin-bottom: 15px;
-        justify-content: space-between;
-        outline: none;
-    }
-    input {
-        border-bottom: 1px solid white;
-        font-size: 20px;
-        align-content: center;
-        vertical-align: middle;
-        margin-top: 3.5%;
-        outline: none;
-    }
-    input :focus {
-        border: none;
-        outline: none;
-    }
-    button {
-        width: 325px;
-        height: 40px;
-        margin-top: 10px;
-        background: transparent;
+        width: 30px;
+        vertical-align: center;
         text-align: center;
-        cursor: pointer;
-        color: #eee;
-        font-weight: bold;
-        text-transform: uppercase;
-        transition: all 1s ease;
-        border: 1px solid white;
-        margin-left: 10px;
+        margin: auto
     }
-    button:hover {
-        background: #D50000;
-        border: none;
-        transition: all 1.5s ease;
-    }
-    .box-input {
-        top: 90px;
-        display: Flex;
-        flex-direction: column;
-        align-content: center;
-        align-items: center;
-        text-align: center;
-    }
-    h3 {
-        color: white;
-    }
-    .edit {
-        display: flex;
-        justify-content: space-between;
-        text-align: center;
-        margin-top: 2%;
-    }
+    #back:hover {transform: scale(1.2);}
+    #back:active {transform: scale(0.98);}
 </style>
 </htmL>

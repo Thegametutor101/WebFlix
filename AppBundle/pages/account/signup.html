@@ -4,10 +4,12 @@
     <Title>Webflix - Inscription</Title>
     <meta charset="utf-8">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="../../ressources/css/styles.css">
+    <link rel="stylesheet" type="text/css" href="../../ressources/css/main.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../../ressources/css/main.css">
+    <link rel="stylesheet" type="text/css" href="../../ressources/css/account.css">
 </head>
 <body>
 <div class="main">
@@ -15,6 +17,26 @@
         <img class="logo-center"
              src="https://canniefish.weebly.com/uploads/1/1/8/3/118361953/webflix_orig.png"
              alt="Webflix">
+    </div>
+    <div class="content">
+        <div class="messages"></div>
+        <div class="center-block">
+            <h2>Inscripton</h2>
+            <input id="screenName" type="text" name="screenName" placeholder="Nom d'utilisateur" required
+                   max="50"><br>
+            <input id="email" type="email" name="email" placeholder="Courriel" required max="150"><br>
+            <input id="emailConfirm" type="email" name="emailConfirm" placeholder="Confirmer le courriel"
+                   required max="150"><br>
+            <input id="phone" type="tel" name="phone" placeholder="Téléphone" max="18"><br>
+            <input id="password" type="password" name="password" placeholder="Mot de passe" required
+                   max="250"><br>
+            <input id="passwordConfirm" type="password" name="passwordConfirm"
+                   placeholder="Confirmer le mot de passe" required max="250"><br>
+            <button class="confirmButtons" id="signup">S'inscrire</button><br>
+            <p>Vous possedez deja un compte ?
+                <a href="login.html">Se connecter maintenant !</a>
+            </p>
+        </div>
     </div>
     <div class="content">
         <div class="messages"></div>

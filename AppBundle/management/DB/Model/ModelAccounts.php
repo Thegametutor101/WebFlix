@@ -99,6 +99,7 @@ class ModelAccounts
         }
     }
 
+
     /**
      * @param string $email
      * @param string $password
@@ -114,6 +115,29 @@ class ModelAccounts
             $declaration = $this->connection->prepare($request);
             $declaration->bindParam(':email', $email);
             $declaration->bindParam(':password', $password);
+
+            $declaration->execute();
+            return "ok";
+        } catch(PDOException $e) {
+            return $e;
+        }
+    }
+
+    /**
+     * @param string $email
+     * @param int $admin
+     * @return string
+     */
+    function updateAccountAdmin(string $email, int $admin): string
+    {
+        try {
+            $request = "UPDATE accounts 
+                        SET Admin = :admin
+                        WHERE Email = :email";
+
+            $declaration = $this->connection->prepare($request);
+            $declaration->bindParam(':email', $email);
+            $declaration->bindParam(':admin', $admin);
 
             $declaration->execute();
             return "ok";

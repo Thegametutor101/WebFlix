@@ -28,47 +28,48 @@ class ModelCards
     }
 
 
-    function addCard(int $id,
-                     string $title,
+    function addCard(string $title,
                      $genre,
                      string $resume,
                      string $image,
                      string $file,
                      $releaseDate,
-                     bool $favorite,
                      bool $available,
                      string $classification,
-                     string $duration,
-                     string $type): string
+                     string $duration): string
     {
         try
         {
-            $request = "INSERT INTO cards VALUES(:id, 
-                            :title, 
+            $request = "INSERT INTO cards 
+                            (Title, 
+                             Genre, 
+                             Resume, 
+                             Image, 
+                             File, 
+                             ReleaseDate, 
+                             Available, 
+                             Classification, 
+                             Duration)
+                        VALUES(:title, 
                             :genre, 
                             :resume, 
                             :image, 
                             :file, 
                             :releaseDate, 
-                            :favorite, 
                             :available, 
                             :classification, 
-                            :duration, 
-                            :type)";
+                            :duration)";
 
             $declaration = $this->connection->prepare($request);
-            $declaration->bindParam(':id', $id);
             $declaration->bindParam(':title', $title);
             $declaration->bindParam(':genre', $genre);
             $declaration->bindParam(':resume', $resume);
             $declaration->bindParam(':image', $image);
             $declaration->bindParam(':file', $file);
             $declaration->bindParam(':releaseDate', $releaseDate);
-            $declaration->bindParam(':favorite', $favorite);
             $declaration->bindParam(':available', $available);
             $declaration->bindParam(':classification', $classification);
             $declaration->bindParam(':duration', $duration);
-            $declaration->bindParam(':type', $type);
 
             $declaration->execute();
             return "ok";
