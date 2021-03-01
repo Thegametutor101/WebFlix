@@ -15,7 +15,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <style>
-        #managementaccount {
+        #idnouveauContenuDiv {
             margin-left: 0.2%;
         }
     </style>
@@ -25,7 +25,7 @@
 <body>
 </script>
 <form id="management" class="m-3"><br>
-    <table id="managementaccount" class="table table-striped table-bordered" style="width:100%">
+    <table id="idNouveauContenuDiv" style="width: 100%;" class="table table-striped table-bordered" style="width:100%">
         <thead style="text-align: center;">
         <tr>
             <th>idNouveauContenue</th>
@@ -36,7 +36,7 @@
             <th></th>
         </tr>
         </thead>
-        <tbody id="bodyaccount" style="text-align: center;">
+        <tbody id="idBodyNouveau" style="text-align: center;">
         </tbody>
     </table>
 </form>
@@ -53,7 +53,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
+            <div class="modal-body" style="width: 100%;">
                 <p id="modalbody">Êtes-vous certain de vouloir supprimer l'utilisateur ?</p>
             </div>
             <div class="modal-footer">
@@ -67,7 +67,7 @@
 <script>
     $(document).ready(function() {
         function table2() {
-            $('#managementaccount').DataTable({
+            $('#idNouveauContenuDiv').DataTable({
                 "language": {
                     "emptyTable": "Aucune donnée disponible dans le tableau",
                     "lengthMenu": "Afficher _MENU_ éléments",
@@ -228,17 +228,19 @@
             url: '../../../management/SelectNouveauContenu.php', //Your form processing file URL
             dataType: 'JSON',
             success: function(data) {
-                console.log(data);
-                for (ctr = 0; ctr < data['item'].length; ctr++) {
-                    let admin;
-                    $("#bodyaccount").append(`
+              //  console.log(data);
+
+                for (let ctr = 0; ctr < data.length; ctr++) {
+
+
+                    $("#idBodyNouveau").append(`
                     <tr>
-                    <td>${data['item'][ctr].idNouveaucontenu}</td>
-                    <td >${data['item'][ctr].Titre}</td>
-                    <td>${data['item'][ctr].Platform}</td>
-                    <td>${data['item'][ctr].LienDirect}</td>
-                    <td>${data['item'][ctr].DateSoumis}</td>
-                    <td><button type="button" class="btn btn-danger delete" value = "${data['item'][ctr].idNouveaucontenu}" >Supprimer</button></td>
+                    <td>${data[ctr].idNouveauContenu}</td>
+                    <td >${data[ctr].Titre}</td>
+                    <td>${data[ctr].Platform}</td>
+                    <td>${data[ctr].LienDirect}</td>
+                    <td>${data[ctr].DateSoumis}</td>
+                    <td><button type="button" class="btn btn-danger delete" value = "${data[0][ctr].idNouveaucontenu}" >Supprimer</button></td>
                     </tr>
                     `)
                 }

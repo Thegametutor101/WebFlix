@@ -21,7 +21,7 @@ class EntityNewContent
     {
         $NewContent = array();
         try {
-            $request = "SELECT * FROM formnouveaucontenu";
+            $request = "SELECT * FROM formnouveaucontenu;";
             $result = $this->connection->query($request);
             $NewContent = $result->fetchAll();
 
@@ -65,60 +65,5 @@ class EntityNewContent
         }
     }
 
-
-    /**
-     * @param string $type
-     * @return array
-     */
-    function getCardByType(string $type): array
-    {
-        $card = array();
-        try {
-            $request = "SELECT * FROM cards WHERE Type = '$type'";
-            $result = $this->connection->query($request);
-            $card = $result->fetchAll();
-
-            return $card;
-        } catch (PDOException $e) {
-            return $card;
-        }
-    }
-
-
-    /**
-     * @return array
-     */
-    function getGenreCards(): array
-    {
-        $genres = array();
-        try {
-            $request = "SELECT Genre FROM cards";
-            $result = $this->connection->query($request);
-            $genres = $result->fetchAll();
-
-            return $genres;
-        } catch (PDOException $e) {
-            return $genres;
-        }
-    }
-
-
-    /**
-     * @param string $genre
-     * @return array
-     */
-    function getCardByGenre(string $genre): array
-    {
-        $card = array();
-        try {
-            $request = "SELECT * FROM cards WHERE Genre like '%$genre%'";
-            $result = $this->connection->query($request);
-            $card = $result->fetchAll();
-
-            return $card;
-        } catch (PDOException $e) {
-            return $card;
-        }
-    }
 
 }
