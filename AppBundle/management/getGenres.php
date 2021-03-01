@@ -1,5 +1,4 @@
 <?php
-require_once (__DIR__."/DB/Entity/EntityCards.php");
-$objet = new EntityCards();
-
-        echo json_encode($objet->getGenreCards());
+require_once ('DB/Entity/EntityGenre.php');
+$entityGenre = new EntityGenre();
+echo json_encode($entityGenre->getGenre());
