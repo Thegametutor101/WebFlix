@@ -6,7 +6,7 @@ class Connection
     public function __construct()
     {
         try {
-            $this->connection = new PDO("mysql:host=localhost;dbname=netflix_projet;port=3308,charset=utf8",
+            $this->connection = new PDO("mysql:host=localhost;dbname=netflix_projet;port=3306,charset=utf8",
                 "root",
                 "");
             $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
