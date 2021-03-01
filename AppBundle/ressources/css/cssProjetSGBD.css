@@ -1,0 +1,188 @@
+
+
+
+.sous-lien {color:whitesmoke;
+  font-size:15px;
+}
+.sous-lien:hover{
+  color:#D50000;
+}
+.titre-lien {color:#D50000;
+font-size:25px;
+  text-align: left;
+}
+.titreBlanc
+{color:white;
+font-size: 25px;}
+.paragrapheBlanc{
+  color: whitesmoke;
+  font-size: 15px;
+}
+.titre {color:white;
+  font-size:25px;
+}
+label{
+  color:white;
+  font-size:25px;
+}
+footer {
+  position: fixed;
+  height: 200px;
+  bottom: 0;
+  width: 100%;
+}
+button {
+  width: 325px;
+  height: 40px;
+  margin-top: 10px;
+  background: transparent;
+  text-align: center;
+  cursor: pointer;
+  color: #eee;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: all 1s ease;
+  border: 1px solid white;
+}
+button:hover {
+  background: #D50000;
+  border: none;
+  transition: all 1.5s ease;
+  color: white;
+}
+body{
+  background-color: #111111;
+}
+ul {
+  list-style: none;
+  text-decoration: none;
+}
+
+ul li::before {
+  content: "\2022";
+  color: darkred;
+  font-weight: bold;
+  display: inline-block;
+  width: 1em;
+  margin-left: -1em;
+
+}
+a{
+  text-decoration: none;
+}
+#bottomMenuSelection{
+  position: fixed;
+  left: 50%;
+  bottom: 0px;
+  transform: translate(-50%, -50%);
+  margin: 0 auto;
+}
+ a:hover
+ {
+	 color: red;
+ }
+
+
+
+.flex-item-left {
+  background-color: #f1f1f1;
+  padding: 10px;
+  flex: 50%;
+}
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+  text-align: center;
+}
+ul {
+  list-style-type: none;
+  padding: 5px;
+  margin: 0px;
+  line-height: 2.5;
+}
+
+li:hover {
+  color: rgb(158, 9, 9);
+  cursor: pointer;
+}
+
+hr {
+  color: darkgray;
+}
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 3;
+  width: 100%;
+  background-color: rgba(17, 17, 17, 0.3);
+}
+
+header img {
+  z-index: 4;
+  width: 150px;
+  height: 90px;
+}
+
+#menuOptions {
+  width: 275px;
+  position: sticky;
+  left: 0;
+  height: fit-content;
+}
+
+.accordion-item {
+  border-style: solid;
+  border-width: 1px;
+  border-color: rgb(44, 44, 44);
+  border-radius: 7px;
+}
+
+.accordion-button:not(.collapsed) {
+  color: white;
+  background-color: rgba(59, 59, 59, 0.7)
+}
+
+.accordion-item button {
+  color: white;
+}
+
+.accordion-body {
+  color: white;
+}
+
+
+
+#formSpace div {
+  color: white;
+}
+
+body h5 {
+  color: white;
+}
+
+input {
+  background-color: rgb(184, 184, 184);
+}
+
+form button {
+  width: 325px;
+  height: 40px;
+  margin-top: 10px;
+  background: transparent;
+  text-align: center;
+  cursor: pointer;
+  color: #eee;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: all 1s ease;
+  border: 1px solid white;
+}
+
+form button:hover {
+  background: #D50000;
+  border: none;
+  transition: all 1.5s ease;
+}
+
+ 

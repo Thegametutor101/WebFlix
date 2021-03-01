@@ -66,6 +66,9 @@
             let newEmail = $("#newEmail").val();
             let confirmNewEmail = $("#confirmEmail").val();
             let confirmUpdate = $("#confirmUpdate").val();
+
+
+
             if (newEmail.length > 150 || newEmail.length === 0) {
                 messages.append("<div>Veuillez entrer un nouveau courriel " +
                     "n'excédant pas 150 caractères.</div><br><hr>");
@@ -119,6 +122,10 @@
             window.open("../myAccount.html", "_self");
         });
     });
+
+
+
+
 </script>
 <style>
     #logo {
