@@ -12,6 +12,9 @@ class EntityGenre
         $this->connection = $constants->getConnection();
     }
 
+    /**
+     * @return array
+     */
     function getGenre():array
     {
         $lines = array();
@@ -24,6 +27,27 @@ class EntityGenre
         }
         catch(PDOException $e) {
             return $lines;
+        }
+    }
+
+    /**
+     * @param $name
+     * @return bool
+     */
+    function checkGenreUsed($name):bool
+    {
+        try {
+            $request = "SELECT COUNT(ID) as found FROM genre WHERE Name = '$name'";
+            $result = $this->connection->query($request);
+            $genre = $result->fetch();
+            if ($genre['found'] > 0) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        catch(PDOException $e) {
+            return false;
         }
     }
 }
