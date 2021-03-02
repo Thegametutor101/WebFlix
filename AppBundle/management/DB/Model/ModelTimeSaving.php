@@ -52,16 +52,11 @@ class ModelTimeSaving
     }
 
 
-    /*
-    Vérifier le bind param. Sans le bind param, c'est ok pour l'update
-    Avec le bind param, incapable de procéder à l'update. 
-    */
-    
     function updateTimeSavingWhenEmailChange(string $email, string $oldemail): string
     {
         try
         {
-            $request = "UPDATE timesaving set Email = '$email' where Email = '$oldemail'";
+            $request = "UPDATE timesaving set Email = :email where Email = :oldemail";
 
             $declaration = $this->connection->prepare($request);
             $declaration->bindParam(':email', $email);
