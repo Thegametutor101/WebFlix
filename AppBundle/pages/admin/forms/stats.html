@@ -6,10 +6,10 @@
     <title>Statistiques</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="../../../ressources/css/main.css">
-    <link rel="stylesheet" href="../../../ressources/css/stats.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="../../../../AppBundle/ressources/css/stats.css">
     <style>
 
     </style>
@@ -92,7 +92,7 @@
         $.ajax({
             //Process the form using $.ajax()
             type: 'POST', //Method type
-            url: '../../../management/getNbrAdminAccount.php', //Your form processing file URL
+            url: '../../management/getNbrAdminAccount.php', //Your form processing file URL
             dataType: 'JSON',
             success: function(data) {
                 $("#nbrAdminAccount").html(data[0][0]);
@@ -105,7 +105,7 @@
         $.ajax({
             //Process the form using $.ajax()
             type: 'POST', //Method type
-            url: '../../../management/getNbrAllAccount.php', //Your form processing file URL
+            url: '../../management/getNbrAllAccount.php', //Your form processing file URL
             dataType: 'JSON',
             success: function(data) {
                 $("#nbrAllAccounts").html(data[0][0]);
@@ -118,7 +118,7 @@
         $.ajax({
             //Process the form using $.ajax()
             type: 'POST', //Method type
-            url: '../../../management/getNbrMovieAvailable.php', //Your form processing file URL
+            url: '../../management/getNbrMovieAvailable.php', //Your form processing file URL
             dataType: 'JSON',
             success: function(data) {
                 $("#NbrMovieOnline").html(data[0][0]);
@@ -131,7 +131,7 @@
         $.ajax({
             //Process the form using $.ajax()
             type: 'POST', //Method type
-            url: '../../../management/getNbrMovieNoAvailable.php', //Your form processing file URL
+            url: '../../management/getNbrMovieNoAvailable.php', //Your form processing file URL
             dataType: 'JSON',
             success: function(data) {
                 $("#NbrMovieOffline").html(data[0][0]);
@@ -145,7 +145,7 @@
         $.ajax({
             //Process the form using $.ajax()
             type: 'POST', //Method type
-            url: '../../../management/getFavoriteStats.php', //Your form processing file URL
+            url: '../../management/getFavoriteStats.php', //Your form processing file URL
             dataType: 'JSON',
             success: function(data) {
                 $("#MostFavoriteMovieName").html(data[0][0]);

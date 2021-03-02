@@ -1,3 +1,59 @@
 option {
     color: black;
 }
+
+body {
+    height: 100vh;
+}
+
+#bodySection {
+    height: 100%;
+}
+
+#formSpace {
+    height: 100%;
+}
+
+.AccountStats {
+    margin-top: 2%;
+    margin-left: 1%;
+    margin-right: 1%;
+    width: 46%;
+    min-height: 300px;
+    max-height: fit-content;
+    background-color: white;
+    text-align: center;
+}
+
+.AccountStats div {
+    color: black;
+}
+
+#global {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top: 5%;
+    margin-left: 3%;
+}
+
+p {
+    color: black;
+    font-size: 20px;
+}
+
+h2 {
+    color: black;
+}
+
+.NbrAccounts {
+    text-align: center;
+    justify-content: center;
+    margin-top: 6%;
+    font-size: 35px;
+    color: black;
+}
+
+#MostFavoriteMovieName {
+    color: black;
+}
