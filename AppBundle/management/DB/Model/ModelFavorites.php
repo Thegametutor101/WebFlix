@@ -50,20 +50,16 @@ class ModelFavorites
         }
     }
 
-    /*
-    Vérifier le bind param. Sans le bind param, c'est ok pour l'update
-    Avec le bind param, incapable de procéder à l'update. 
-    */
 
     function updateFavorite(string $oldemail, string $email): string
     {
         try
         {
-            $request = "UPDATE favorites SET Email = '$email' WHERE Email = '$oldemail'";
+            $request = "UPDATE favorites SET Email = :email WHERE Email = :oldemail";
 
             $declaration = $this->connection->prepare($request);
             $declaration->bindParam(':email', $email);
-            $declaration->bindParam(':oldEmail', $oldemail);
+            $declaration->bindParam(':oldemail', $oldemail);
 
             $declaration->execute();
             return "ok";

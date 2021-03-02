@@ -93,6 +93,7 @@
                         },
                     dataType:"json",
                     success: function (result) {
+                        console.log(result);
                         let answer = result["item"];
                         if (answer === "ok") {
                             sessionStorage.setItem("emailAccount", newEmail);
