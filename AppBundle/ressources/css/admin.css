@@ -25,10 +25,6 @@ body {
     text-align: center;
 }
 
-.AccountStats div {
-    color: black;
-}
-
 #global {
     display: flex;
     flex-direction: row;
@@ -56,4 +52,255 @@ h2 {
 
 #MostFavoriteMovieName {
     color: black;
+}
+
+.close span {
+    color: black;
+}
+
+body {
+    color: lightgrey;
+    overflow-x: hidden;
+}
+ul {
+    list-style-type: none;
+    padding: 5px;
+    margin: 0px;
+    line-height: 2.5;
+}
+li:hover {
+    color: rgb(158, 9, 9);
+    cursor: pointer;
+}
+hr {
+    color: darkgray;
+}
+header {
+    position: sticky;
+    top: 0;
+    z-index: 3;
+    width: 100%;
+    background-color: rgba(17, 17, 17, 0.3);
+}
+header img {
+    z-index: 4;
+    width: 150px;
+    height: 90px;
+}
+#menuOptions {
+    width: 275px;
+    position: sticky;
+    left: 0;
+    height: fit-content;
+}
+.accordion-item {
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgb(44, 44, 44);
+    border-radius: 7px;
+}
+.accordion-button:not(.collapsed) {
+    color: white;
+    background-color: rgba(59, 59, 59, 0.7)
+}
+.accordion-item button {
+    color: white;
+}
+.accordion-body {
+    color: white;
+}
+#bodySection {
+    height: 100%;
+    display: flex;
+}
+#formSpace {
+    width: 100%;
+    max-width: 100%;
+    max-height: 90%;
+    overflow-y: scroll;
+}
+#formSpace::-webkit-scrollbar {
+    display: none;
+}
+
+body h5 {
+    color: white;
+}
+input {
+    background-color: rgb(184, 184, 184);
+}
+#cgeneral:hover {
+    background-color: #0B9545;
+}
+
+#c13:hover {
+    background-color: #EEAF09;
+}
+
+#c16:hover {
+    background-color: #0A5491;
+}
+
+#c18:hover {
+    background-color: #D40039;
+}
+
+.cgeneralactif {
+    background-color: #0B9545;
+}
+
+.c13actif {
+    background-color: #EEAF09;
+}
+
+.c16actif {
+    background-color: #0A5491;
+}
+
+.c18actif {
+    background-color: #D40039;
+}
+
+#cgeneralup:hover {
+    background-color: #0B9545;
+}
+
+#c13up:hover {
+    background-color: #EEAF09;
+}
+
+#c16up:hover {
+    background-color: #0A5491;
+}
+
+#c18up:hover {
+    background-color: #D40039;
+}
+
+.cgeneralactifup {
+    background-color: #0B9545;
+}
+
+.c13actifup {
+    background-color: #EEAF09;
+}
+
+.c16actifup {
+    background-color: #0A5491;
+}
+
+.c18actifup {
+    background-color: #D40039;
+}
+
+#cgeneraldel:hover {
+    background-color: #0B9545;
+}
+
+#c13del:hover {
+    background-color: #EEAF09;
+}
+
+#c16del:hover {
+    background-color: #0A5491;
+}
+
+#c18del:hover {
+    background-color: #D40039;
+}
+
+.cgeneralactifdel {
+    background-color: #0B9545;
+}
+
+.c13actifdel {
+    background-color: #EEAF09;
+}
+
+.c16actifdel {
+    background-color: #0A5491;
+}
+
+.c18actifdel {
+    background-color: #D40039;
+}
+
+.edit {
+    width: 60%;
+    display: flex;
+    justify-content: space-between;
+}
+
+form button {
+    width: 325px;
+    height: 40px;
+    /*margin-top: 10px;*/
+    background: transparent;
+    text-align: center;
+    cursor: pointer;
+    color: #eee;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: all 1s ease;
+    border: 1px solid white;
+}
+
+form button:hover {
+    background: #D50000;
+    border: none;
+    transition: all 1.5s ease;
+}
+
+li {
+    transition: 0.2s all;
+    cursor: pointer;
+}
+
+li:hover {
+    transform: scale(1.02)
+}
+
+li:active {
+    transform: scale(0.98)
+}
+
+#topLeftLogo:hover {
+    cursor: pointer
+}
+
+.NbrAccounts{
+    color: black;
+}
+
+#management{
+    width: fit-content;
+    margin: auto;
+}
+
+.dataTables_length{
+    text-align: left;
+}
+
+.dataTables_filter{
+    text-align: right;
+}
+
+.dataTables_info{
+    text-align: left;
+}
+
+.dataTables_paginate{
+    display: flex;
+    justify-content: flex-end;
+}
+
+td {
+    text-align: left;
+    vertical-align: middle;
+}
+
+td input[type=checkbox]{
+    width: 25px;
+    height: 25px;
+    margin-bottom: 0px;
 }
