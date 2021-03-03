@@ -1,3 +1,7 @@
+*{
+    overflow-x: visible;
+}
+
 option {
     color: black;
 }
@@ -272,7 +276,7 @@ li:active {
     color: black;
 }
 
-#management{
+#mancment{
     width: fit-content;
     margin: auto;
 }
@@ -303,4 +307,14 @@ td input[type=checkbox]{
     width: 25px;
     height: 25px;
     margin-bottom: 0px;
+}
+
+input {
+    padding: 0px;
+    height: fit-content;
+}
+
+.form-check-input {
+width: 15px;
+height: 15px;
 }
