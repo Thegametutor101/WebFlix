@@ -217,6 +217,7 @@
 
         $("#ldeletevideo").click(function(e) {
             changePage("forms/deletevideo.html");
+            
             let postForm = {
                 'req': "Get_Videos_Info"
             }
@@ -239,7 +240,8 @@
                 }
 
             });
-        })
+        });
+        
         $(window).scroll(function() {
             $('header').css("background-color", 'rgba(17, 17, 17, ' + (0.3 + (0.7 * $(window).scrollTop() / 200)) + ')')
         });

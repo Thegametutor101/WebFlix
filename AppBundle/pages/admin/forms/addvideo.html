@@ -12,7 +12,7 @@
                 <input class="form-control" id="addMovieTitle" type="text">
             </div>
             <h5>A quel genre le film sera t-il associe ?</h5>
-            <div class="form-check"></div><br>
+            <div class="form-check" id="listeGenres"></div><br>
             <div class="mb-3">
                 <h5 class="form-label">Description du film</h5>
                 <textarea class="form-control" id="description" rows="3"></textarea>
@@ -31,32 +31,32 @@
             </div><br>
             <h5>Le film sera t-il disponible pour les utilisateurs ?</h5>
             <div class="form-check">
-                <input class="form-check-input" id="visibleYes" type="radio" name="visibleYes" checked>
+                <input style="float: none;" class="form-check-input" id="visibleYes" type="radio" name="visibleYes" checked>
                 <label class="form-check-label">Oui</label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" id="visibleNo" type="radio" name="visibleNo">
+                <input style="float: none;" class="form-check-input" id="visibleNo" type="radio" name="visibleNo">
                 <label class="form-check-label">Non</label>
             </div><br>
             <h5>Quel est la classification du film ?</h5>
             <div>
                 <ul class="list-group">
-                    <li class="list-group-item" id="ageG" style="display: flex;
+                    <li class="list-group-item" id="cgeneral" style="display: flex;
                                                                 justify-content: space-between;
                                                                 margin-bottom: 2px;">
                         <img src="../../ressources/assets/images/ageG.png" alt="Publique général">
                     </li>
-                    <li class="list-group-item" id="age13" style="display: flex;
+                    <li class="list-group-item" id="c13" style="display: flex;
                                                                     justify-content: space-between;
                                                                     margin-bottom: 2px;">
                         <img src="../../ressources/assets/images/age13.png" alt="Jeunes de 13+ ans">
                     </li>
-                    <li class="list-group-item" id="age16" style="display: flex;
+                    <li class="list-group-item" id="c16" style="display: flex;
                                                                 justify-content: space-between;
                                                                 margin-bottom: 2px;">
                         <img src="../../ressources/assets/images/age16.png" alt="Adolescents 16+ ans">
                     </li>
-                    <li class="list-group-item" id="age18" style="display: flex;
+                    <li class="list-group-item" id="c18" style="display: flex;
                                                                 justify-content: space-between;
                                                                 margin-bottom: 2px;">
                         <img src="../../ressources/assets/images/age18.png" alt="Adultes 18+">
@@ -86,9 +86,10 @@
         dataType: "json",
         success: function (result) {
             for (i = 0; i < result.length; i++) {
-                $(".form-check").append("<label class='form-check-label' for='" + result[i][1] + "'>" +
+                $("#listeGenres").append("<label class='form-check-label' for='" + result[i][1] + "'>" +
+                    result[i][1] +
                         "<input class='form-check-input genre' type='checkbox' id='" + result[i][1] + "'>" +
-                    result[i][1] + "</label><br>");
+                      "</label><br>");
             }
         },
         error: function (message, error) {
