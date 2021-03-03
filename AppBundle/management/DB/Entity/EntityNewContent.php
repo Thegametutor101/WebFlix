@@ -21,7 +21,7 @@ class EntityNewContent
     {
         $NewContent = array();
         try {
-            $request = "SELECT * FROM formnouveaucontenu;";
+            $request = "SELECT * FROM formnouveaucontenu where Status='';";
             $result = $this->connection->query($request);
             $NewContent = $result->fetchAll();
 
@@ -30,7 +30,18 @@ class EntityNewContent
             return $NewContent;
         }
     }
-
+    function getNewContentApprouve(): array
+    {
+        $NewContent = array();
+        try {
+            $request = "SELECT * FROM formnouveaucontenu where Status='Approuve';";
+            $result = $this->connection->query($request);
+            $NewContent = $result->fetchAll();
+            return $NewContent;
+        } catch (PDOException $e) {
+            return $NewContent;
+        }
+    }
     /**
      * @param int $id
      * @return array

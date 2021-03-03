@@ -77,3 +77,10 @@ function checkConnection() {
 //         }
 //     });
 // }
+
+
+function checkConnection() {
+    if (sessionStorage.getItem("emailAccount") === null) {
+        window.location.href = baseUrl + "/pages/account/login.html";
+    }
+}

@@ -70,12 +70,15 @@
 
 <script>
   $(document).ready(function (e) {
+
     $("#IdButtonSoumettre").click(function (e) {
 e.preventDefault();
-console.log($("#idPlatform").val());
-      console.log($("#idlien").val());
+      alert($("#idTitre").val());
+      console.log($("#idPlatform").val());
+      console.log($("#typeVideo").val());
+      console.log($("#idLien").val());
       $.ajax({
-        url:"formNouveauContenuAdd.php",
+        url:"Webflix/AppBundle/management/formNouveauContenuAdd.php",
         type:"POST",
         data: {
           'titre': $("#idTitre").val(),
@@ -85,13 +88,14 @@ console.log($("#idPlatform").val());
         },
         dataType:"JSON",
         success: function (result) {
-
+          location.reload();
         // console.log(result["item"]);
          console.log(result);
         },
         error: function (message, error) {
           ///TODO add message during error or non valid connection
           console.log(message, error);
+          alert("Une erreur est survenu veuillez réessayer")
         }
       });
     });
