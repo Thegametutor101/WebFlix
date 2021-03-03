@@ -66,6 +66,9 @@
             let newEmail = $("#newEmail").val();
             let confirmNewEmail = $("#confirmEmail").val();
             let confirmUpdate = $("#confirmUpdate").val();
+
+
+
             if (newEmail.length > 150 || newEmail.length === 0) {
                 messages.append("<div>Veuillez entrer un nouveau courriel " +
                     "n'excédant pas 150 caractères.</div><br><hr>");
@@ -90,6 +93,7 @@
                         },
                     dataType:"json",
                     success: function (result) {
+                        console.log(result);
                         let answer = result["item"];
                         if (answer === "ok") {
                             sessionStorage.setItem("emailAccount", newEmail);
@@ -119,6 +123,10 @@
             window.open("../myAccount.html", "_self");
         });
     });
+
+
+
+
 </script>
 <style>
     #logo {

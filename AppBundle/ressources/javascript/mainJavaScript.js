@@ -48,6 +48,35 @@ function checkConnection() {
     }
   };
 
+// TODO  function updateProfilePicture() {
+//     $("#profilePic").change(function () {
+//         let formData = new FormData();
+//         let files = $('#profilePic')[0].files;
+//         if(files.length > 0 ) {
+//             formData.append('profile', files[0]);
+//             formData.append('id', getUrlParameter('isLoggedIn'));
+//             $.ajax({
+//                 url: "../../Management/updateProfilePicture.php",
+//                 type: "POST",
+//                 data: formData,
+//                 dataType: "json",
+//                 cache: false,
+//                 contentType: false,
+//                 processData: false,
+//                 success:function (result) {
+//                     window.location.href = baseUrl + "/Pages/UserPages/userProfile.html";
+//                     location.reload();
+//                 },
+//                 error:function (message, er) {
+//                     window.location.href = baseUrl + "/Pages/UserPages/userProfile.html";
+//                     location.reload();
+//                 }
+//             });
+//         } else {
+//             alert("Veuillez soumettre une image valide.");
+//         }
+//     });
+// }
 
 
 function checkConnection() {

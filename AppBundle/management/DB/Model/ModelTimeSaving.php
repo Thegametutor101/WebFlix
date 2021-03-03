@@ -52,6 +52,22 @@ class ModelTimeSaving
     }
 
 
+    function updateTimeSavingWhenEmailChange(string $email, string $oldemail): string
+    {
+        try
+        {
+            $request = "UPDATE timesaving set Email = :email where Email = :oldemail";
 
+            $declaration = $this->connection->prepare($request);
+            $declaration->bindParam(':email', $email);
+            $declaration->bindParam(':oldemail', $oldemail);
+
+            $declaration->execute();
+            return "ok";
+        }
+        catch(PDOException $e) {
+            return $e;
+        }
+    }
 
 }

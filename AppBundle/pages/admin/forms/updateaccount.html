@@ -10,7 +10,7 @@
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/plug-ins/1.10.22/i18n/French.json"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="../../../ressources/css/">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
@@ -18,19 +18,27 @@
         #managementaccount {
             margin-left: 0.2%;
         }
+        
+        .dataTables_length {
+            margin-left: -40%;
+        }
+        
+        .dataTables_info {
+            margin-left: 24%;
+        }
     </style>
     <meta charset="utf-8">
     <title>thing</title>
 </head>
 
 <body>
-    <form id="management" class="m-3"><br>
-        <table id="managementaccount" class="table table-striped table-bordered" style="width:100%">
+    <form id="management" class="m-3" style="width: auto;"><br>
+        <table id="managementaccount" class="table table-striped table-bordered" style="width:auto; margin: auto;">
             <thead style="text-align: center;">
                 <tr>
                     <th>Nom d'affichage</th>
                     <th>Courriel</th>
-                    <th>Telephone</th>
+                    <th style="width: fit-content;">Telephone</th>
                     <th>Gestion</th>
                     <th></th>
                 </tr>
@@ -221,7 +229,7 @@
             $.ajax({
                 //Process the form using $.ajax()
                 type: 'POST', //Method type
-                url: '../../../management/getAccountForManagement.php', //Your form processing file URL
+                url: '../../../AppBundle/management/getAccountForManagement.php', //Your form processing file URL
                 dataType: 'JSON',
                 success: function(data) {
                     console.log("ggg" + data);
@@ -230,9 +238,9 @@
                     <tr>
                     <td>${data['item'][ctr].ScreenName}</td>
                     <td class = "Email">${data['item'][ctr].Email}</td>
-                    <td>${data['item'][ctr].Phone}</td>
-                    <td>${data['item'][ctr].Admin.replace(0, "<input type='checkbox' class='admin'>")
-                            .replace(1, "<input type='checkbox' class='admin' checked>")}</td>
+                    <td style="width:175px;">${data['item'][ctr].Phone}</td>
+                    <td style="text-align: center;vertical-align: middle;">${data['item'][ctr].Admin.replace(0, "<input type='checkbox' class='admin' style='width:25px;>")
+                            .replace(1, "<input type='checkbox' class='admin' style='width:25px; text-align:'center' checked>")}</td>
                     <td><button type="button" class="btn btn-danger delete" value = "${data['item'][ctr].Email}">Supprimer</button></td>
                     </tr>`);
                     }
@@ -261,12 +269,12 @@
                 $.ajax({
                     //Process the form using $.ajax()
                     type: 'POST', //Method type
-                    url: '../../../management/updateadminaccount.php', //Your form processing file URL
+                    url: '../../../AppBundle/management/updateadminaccount.php', //Your form processing file URL
                     data: postForm1, //Forms name
                     dataType: 'JSON',
                     success: function(data) {
                         console.log(data); {
-                            window.open("updateaccount.html", "_self");
+                            window.open("adminMenu.html", "_self");
                         }
                     },
                     error: function(erreur, message) {
@@ -289,13 +297,13 @@
                 $.ajax({
                     //Process the form using $.ajax()
                     type: 'POST', //Method type
-                    url: '../../../management/deleteaccounts.php', //Your form processing file URL
+                    url: '../../../AppBundle/management/deleteaccounts.php', //Your form processing file URL
                     data: postForm, //Forms name
                     dataType: 'JSON',
                     success: function(data) {
                         console.log(data); {
                             sessionStorage.setItem("emaildelete", "");
-                            window.open("updateaccount.html", "_self");
+                            window.open("adminMenu.html", "_self");
                         }
                     },
                     error: function(erreur, message) {

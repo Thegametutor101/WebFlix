@@ -1,15 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <title>Home</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../../ressources/css/main.css">
+    <link rel="stylesheet" href="../../ressources/css/styles.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="../../ressources/css/admin.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.23/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" language="javascript" src="https://cdn.datatables.net/1.10.23/js/dataTables.bootstrap4.min.js"></script>
 </head>
 <style>
     body {
@@ -64,6 +69,7 @@
         color: white;
     }
     #bodySection {
+        height: 100%;
         display: flex;
     }
     #formSpace {
@@ -189,7 +195,7 @@
     form button {
         width: 325px;
         height: 40px;
-        margin-top: 10px;
+        /*margin-top: 10px;*/
         background: transparent;
         text-align: center;
         cursor: pointer;
@@ -205,14 +211,25 @@
         border: none;
         transition: all 1.5s ease;
     }
+    
     li {
         transition: 0.2s all;
         cursor: pointer;
     }
-    li:hover {transform: scale(1.02)}
-    li:active {transform: scale(0.98)}
-    #topLeftLogo:hover {cursor: pointer}
+    
+    li:hover {
+        transform: scale(1.02)
+    }
+    
+    li:active {
+        transform: scale(0.98)
+    }
+    
+    #topLeftLogo:hover {
+        cursor: pointer
+    }
 </style>
+
 <body>
     <header>
         <img id="topLeftLogo" src="../../ressources/assets/images/webflix_orig.png" alt="Webflix Logo">
@@ -305,16 +322,82 @@
         $("#laddvideo").click(function(e) {
             changePage("forms/addvideo.html");
         });
-        $("#linkStats").click(function (e) {
+        $("#linkStats").click(function(e) {
             changePage("forms/stats.html");
+            $.ajax({
+                //Process the form using $.ajax()
+                type: 'POST', //Method type
+                url: '../../management/getNbrAdminAccount.php', //Your form processing file URL
+                dataType: 'JSON',
+                success: function(data) {
+                    $("#nbrAdminAccount").html(data[0][0]);
+                },
+                error: function(erreur, message) {
+                    console.log(erreur, message);
+                }
+            });
+
+            $.ajax({
+                //Process the form using $.ajax()
+                type: 'POST', //Method type
+                url: '../../management/getNbrAllAccount.php', //Your form processing file URL
+                dataType: 'JSON',
+                success: function(data) {
+                    $("#nbrAllAccounts").html(data[0][0]);
+                },
+                error: function(erreur, message) {
+                    console.log(erreur, message);
+                }
+            });
+
+            $.ajax({
+                //Process the form using $.ajax()
+                type: 'POST', //Method type
+                url: '../../management/getNbrMovieAvailable.php', //Your form processing file URL
+                dataType: 'JSON',
+                success: function(data) {
+                    $("#NbrMovieOnline").html(data[0][0]);
+                },
+                error: function(erreur, message) {
+                    console.log(erreur, message);
+                }
+            });
+
+            $.ajax({
+                //Process the form using $.ajax()
+                type: 'POST', //Method type
+                url: '../../management/getNbrMovieNoAvailable.php', //Your form processing file URL
+                dataType: 'JSON',
+                success: function(data) {
+                    $("#NbrMovieOffline").html(data[0][0]);
+                },
+                error: function(erreur, message) {
+                    console.log(erreur, message);
+                }
+            });
+
+
+            $.ajax({
+                //Process the form using $.ajax()
+                type: 'POST', //Method type
+                url: '../../management/getFavoriteStats.php', //Your form processing file URL
+                dataType: 'JSON',
+                success: function(data) {
+                    $("#MostFavoriteMovieName").html(data[0][0]);
+                    $("#NbrMovieNameCtr").html(data[0][1]);
+                },
+                error: function(erreur, message) {
+                    console.log(erreur, message);
+                }
+            });
         });
-        $("#linkAccounts").click(function (e) {
+        $("#linkAccounts").click(function(e) {
             changePage("forms/updateaccount.html");
         });
-        $("#linkGenre").click(function (e) {
+        $("#linkGenre").click(function(e) {
             changePage("forms/viewGenre.html");
         });
-        $("#topLeftLogo").click(function (e) {
+        $("#topLeftLogo").click(function(e) {
             window.open("../index.html");
         });
 

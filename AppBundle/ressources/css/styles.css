@@ -11,11 +11,13 @@
 ::-webkit-scrollbar {
     display: none;
 }
+
 * {
     font-family: Montserrat, sans-serif;
     color: white;
     overflow-x: hidden;
 }
+
 *:focus {
     outline: none;
 }
@@ -28,38 +30,45 @@ body {
     width: 100%;
     max-width: 100%;
 }
+
 .header {
     display: flex;
     flex-direction: row;
     height: 200px;
 }
+
 .header img {
     margin: 0 auto;
     height: 100%;
 }
+
 .content {
     width: 90%;
     margin: 0 5%;
     display: flex;
     flex-direction: column;
 }
+
 form {
     width: 50%;
     margin: 0 25%;
     text-align: center;
 }
+
 form input {
     margin-bottom: 20px;
 }
+
 .messages div {
-    background-color: rgba(244,105,105,0.7);
-    border: 2px solid rgba(244,46,46,0.7);
+    background-color: rgba(244, 105, 105, 0.7);
+    border: 2px solid rgba(244, 46, 46, 0.7);
     font-size: 18px;
     font-weight: bold;
     padding: 10px;
     border-radius: 10px;
     text-align: center;
 }
+
 button {
     width: 325px;
     height: 40px;
@@ -73,11 +82,13 @@ button {
     margin-bottom: 15px;
     border: 1px solid white;
 }
+
 button:hover {
     background: #D50000;
     border: none;
     transition: all 1.5s ease;
 }
+
 input {
     padding: 10px 3%;
     background: transparent;
@@ -90,9 +101,11 @@ input {
     margin-bottom: 15px;
     text-align: left;
 }
+
 input {
     border-bottom: 1px solid white;
 }
+
 a {
     text-decoration: none;
     color: rgba(190, 190, 190, 0.856);
