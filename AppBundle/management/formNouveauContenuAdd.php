@@ -11,8 +11,8 @@
 //if(!empty($_POST["Titre"]))
 //  $Titre = $_POST["Titre"];
 try {
-  $request = "INSERT INTO formnouveaucontenu(Titre, Platform, TypeVideo, LienDirect, DateSoumis) VALUES(:titre, :platform, :typeVideo, :lien,CURRENT_DATE())";
 
+  $request = "INSERT INTO formnouveaucontenu(Titre, Platform, TypeVideo, LienDirect, DateSoumis) VALUES(:titre, :platform, :typeVideo, :lien,CURRENT_DATE())";
   $declaration = $connection->prepare($request);
   $declaration->bindParam(':titre', $_POST["titre"]);
   $declaration->bindParam(':platform', $_POST["platform"]);
