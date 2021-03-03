@@ -9,8 +9,13 @@ p {
 }
 
 body {
+    height: 100%;
     box-sizing: border-box;
     background-color: lightgrey;
+}
+
+#formSpace {
+    height: 100%;
 }
 
 #global {
@@ -25,7 +30,7 @@ body {
     margin-top: 2%;
     margin-left: 3%;
     margin-right: 3%;
-    min-width: 700px;
+    width: 50%;
     min-height: 300px;
     max-height: fit-content;
     background-color: white;
