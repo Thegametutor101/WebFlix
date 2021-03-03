@@ -24,7 +24,8 @@
         </div>
         <button class="adminSection" style="visibility: hidden">admin</button>
         <button class="profileBubble">
-            <img src="../ressources/assets/images/defaultUserProfile.png"
+            <img id="profilePicture"
+                 src="../ressources/assets/images/defaultUserProfile.png"
                  alt="../ressources/assets/images/defaultUserProfile.png"
                  style="display: block;border-radius: 50%">
         </button>
@@ -46,7 +47,10 @@
     if (sessionStorage.getItem("adminAccount") === "1") {
         $(".adminSection").css("visibility", "visible");
     }
-    $(document).ready(function() {
+    $(document).ready(function(){
+        if (sessionStorage.getItem("profile") !== null) {
+            $("#profilePicture").attr("src", "../" + sessionStorage.getItem("profile"));
+        }
         getGenres();
         $(".profileBubble").click(function(e) {
             window.open("account/myAccount.html", "_self");

@@ -76,3 +76,41 @@ function signup(email, password, phone, screenName) {
         }
     });
 }
+function updateProfilePicture() {
+    $("#profilePic").change(function () {
+        let formData = new FormData();
+        let files = $('#profilePic')[0].files;
+        let messages = $(".messages");
+        messages.empty();
+        if(files.length > 0 ) {
+            formData.append('profile', files[0]);
+            formData.append('email', sessionStorage.getItem("emailAccount"));
+            $.ajax({
+                url: "../../management/updateProfilePicture.php",
+                type: "POST",
+                data: formData,
+                dataType: "json",
+                cache: false,
+                contentType: false,
+                processData: false,
+                success:function (result) {
+                    if (result["message"] === "file delete error" ||
+                        result["message"] === "file upload error") {
+                        messages.append("<div>Une erreur est survenue lors de la gestion de votre fichier<br>" +
+                            "Veuillez éssayer de nouveau plus tard.</div><br><hr>");
+                    } else if (result["message"] === "ok") {
+                        sessionStorage.setItem("profile", result["link"]);
+                        location.reload();
+                    }
+                },
+                error:function (message, er) {
+                    messages.append("<div>Une erreur est survenue lors de la gestion de votre fichier<br>" +
+                        "Veuillez éssayer de nouveau plus tard.</div><br><hr>");
+                }
+            });
+        } else {
+            messages.append("<div>Veuillez soumettre une image valide<br>" +
+                "Sous format jpeg, jpg ou png.</div><br><hr>");
+        }
+    });
+}
