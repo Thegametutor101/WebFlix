@@ -9,29 +9,29 @@
         <div style="display: flex; flex-direction:column; margin: 0 10% 10%;">
             <div class="mb-3">
                 <h5 class="form-label ">Titre du film</h5>
-                <input class="form-control" id="addMovieTitle" type="text">
+                <input class="form-control" id="addmovietitle" type="text">
             </div>
             <h5>A quel genre le film sera t-il associe ?</h5>
             <div class="form-check" id="listeGenres"></div><br>
             <div class="mb-3">
                 <h5 class="form-label">Description du film</h5>
-                <textarea class="form-control" id="description" rows="3"></textarea>
+                <textarea class="form-control" id="addmoviedescription" rows="3"></textarea>
             </div><br>
             <div class="mb-3">
                 <h5 class="form-label">Image du film</h5>
-                <input class="form-control" id="movieImage" type="file">
+                <input class="form-control" id="addmovieimage" type="file">
             </div><br>
             <div class="mb-3">
                 <h5 class="form-label">Fichier du film</h5>
-                <input class="form-control" id="movieFile" type="file">
+                <input class="form-control" id="addmoviefile" type="file">
             </div><br>
             <div class="mb-3">
                 <h5 class="form-label">Date de sortie</h5>
-                <input class="form-control" id="releaseDate" type="date">
+                <input class="form-control" id="addmoviereleasedate" type="date">
             </div><br>
             <h5>Le film sera t-il disponible pour les utilisateurs ?</h5>
             <div class="form-check">
-                <input style="float: none;" class="form-check-input" id="visibleYes" type="radio" name="visibleYes" checked>
+                <input style="float: none;" class="form-check-input" id="addmovievisibleyes" type="radio" name="visibleYes" checked>
                 <label class="form-check-label">Oui</label>
             </div>
             <div class="form-check">
@@ -63,15 +63,15 @@
                     </li>
                 </ul>
             </div><br>
-<!--            <h5>S'agit-il d'un film ou d'une serie ?</h5>-->
-<!--            <div class="form-check">-->
-<!--                <input class="form-check-input" type="radio" name="exampleRadios2" id="typeMovie" checked>-->
-<!--                <label class="form-check-label">Film</label>-->
-<!--            </div>-->
-<!--            <div class="form-check">-->
-<!--                <input class="form-check-input" type="radio" name="exampleRadios2" id="Addmovietypeserie">-->
-<!--                <label class="form-check-label">Serie</label>-->
-<!--            </div><br>-->
+           <h5>S'agit-il d'un film ou d'une serie ?</h5>
+           <div class="form-check">
+               <input class="form-check-input" type="radio" name="exampleRadios2" id="typeMovie" checked>
+               <label class="form-check-label">Film</label>
+           </div>
+           <div class="form-check">
+               <input class="form-check-input" type="radio" name="exampleRadios2" id="Addmovietypeserie">
+               <label class="form-check-label">Serie</label>
+           </div><br>
             <div class="edit">
                 <button id="confirmaddmovie" type="button" style="margin-right: 10px;">Confirmer</button>
                 <button id="canceladdmovie" type="button">Annuler</button>

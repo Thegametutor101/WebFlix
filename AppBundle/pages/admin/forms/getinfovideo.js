@@ -223,6 +223,7 @@ $(document).ready(function() {
         moviefile = $("#addmoviefile").val();
         releasedate = $("#addmoviereleasedate").val();
         classification = getClassification2();
+        type = "Movie";
 
         if ($("#addmovievisibleyes").is(":checked")) {
             visible = 1;
@@ -230,11 +231,6 @@ $(document).ready(function() {
             visible = 0;
         }
 
-        if ($("#addmovietypemovie").is(":checked")) {
-            type = "Movie";
-        } else {
-            type = "Serie";
-        }
 
         if (title.length == 0) {
             alert("Le champ titre est vide !");
