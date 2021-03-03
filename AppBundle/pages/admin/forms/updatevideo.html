@@ -24,23 +24,7 @@
                 <input id="movietitle" type="text" class="form-control">
             </div>
             <h5>A quel genre le film sera t-il associe ?</h5>
-            <div class="form-check">
-
-                <label class="form-check-label" for="Action"><input class="form-check-input genre" type="checkbox" id="Action" value="Action">Action</label><br>
-                <label class="form-check-label" for="Aventure"><input class="form-check-input genre" type="checkbox" id="Aventure" value="Aventure">Aventure</label><br>
-                <label class="form-check-label" for="Comédie"><input class="form-check-input genre" type="checkbox" id="Comédie" value="Comédie">Comédie</label><br>
-                <label class="form-check-label" for="Crime"><input class="form-check-input genre" type="checkbox" id="Crime" value="Crime">Crime</label><br>
-                <label class="form-check-label" for="Drame"><input class="form-check-input genre" type="checkbox" id="Drame" value="Drame">Drame</label><br>
-                <label class="form-check-label" for="Fantaisie"><input class="form-check-input genre" type="checkbox" id="Fantaisie" value="Fantaisie">Fantaisie</label><br>
-                <label class="form-check-label" for="Historique"><input class="form-check-input genre" type="checkbox" id="Historique" value="Historique">Historique</label><br>
-                <label class="form-check-label" for="Horreur"><input class="form-check-input genre" type="checkbox" id="Horreur" value="Horreur">Horreur</label><br>
-                <label class="form-check-label" for="Mystère"><input class="form-check-input genre" type="checkbox" id="Mystère" value="Mystère">Mystère</label><br>
-                <label class="form-check-label" for="Philosophique"><input class="form-check-input genre" type="checkbox" id="Philosophique" value="Philosophique">Philosophique</label><br>
-                <label class="form-check-label" for="Romance"><input class="form-check-input genre" type="checkbox" id="Romance" value="Romance">Romance</label><br>
-                <label class="form-check-label" for="Science-Fiction"><input class="form-check-input genre" type="checkbox" id="Science-Fiction" value="Science-Fiction">Science-Fiction</label><br>
-                <label class="form-check-label" for="Thriller"><input class="form-check-input genre" type="checkbox" id="Thriller" value="Thriller">Thriller</label><br>
-                <label class="form-check-label" for="Animation"><input class="form-check-input genre" type="checkbox" id="Animation" value="Animation">Animation</label><br>
-            </div><br>
+            <div class="form-check"></div><br>
             <div class=" mb-3 ">
                 <h5 for="exampleFormControlTextarea1 " class="form-label ">Description du film</h5>
                 <textarea class="form-control " id="moviedescription" rows="3 "></textarea>
@@ -103,6 +87,22 @@
             <div class="edit"><button id="confirmupdatemovie" type="button" style="margin-right: 10px;">Confirmer</button> <button id="canceladdmovie" type="button">Annuler</button></div>
         </div>
     </form>
-</body>
+<script>
+    $.ajax({
+        url: "../../management/getGenres.php",
+        type: "post",
+        dataType: "json",
+        success: function (result) {
+            for (i = 0; i < result.length; i++) {
+                $(".form-check").append("<label class='form-check-label' for='" + result[i][1] + "'>" +
+                    "<input class='form-check-input genre' type='checkbox' id='" + result[i][1] + "'>" +
+                    result[i][1] + "</label><br>");
+            }
+        },
+        error: function (message, error) {
 
+        }
+    });
+</script>
+</body>
 </html>

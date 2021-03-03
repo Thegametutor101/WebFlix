@@ -32,9 +32,6 @@ class ModelFavorites
     }
 
 
-
-
-
     function addFavorite(string $email, int $cardID): string
     {
         try
@@ -44,6 +41,25 @@ class ModelFavorites
             $declaration = $this->connection->prepare($request);
             $declaration->bindParam(':Email', $email);
             $declaration->bindParam(':CardID', $cardID);
+
+            $declaration->execute();
+            return "ok";
+        }
+        catch(PDOException $e) {
+            return $e;
+        }
+    }
+
+
+    function updateFavorite(string $oldemail, string $email): string
+    {
+        try
+        {
+            $request = "UPDATE favorites SET Email = :email WHERE Email = :oldemail";
+
+            $declaration = $this->connection->prepare($request);
+            $declaration->bindParam(':email', $email);
+            $declaration->bindParam(':oldemail', $oldemail);
 
             $declaration->execute();
             return "ok";

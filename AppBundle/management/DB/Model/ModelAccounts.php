@@ -194,6 +194,29 @@ class ModelAccounts
 
     /**
      * @param string $email
+     * @param string $directory
+     * @return string
+     */
+    function updateProfile(string $email, string $directory): string
+    {
+        try {
+            $request = "UPDATE accounts 
+                        SET Profile = :directory
+                        WHERE Email = :email";
+
+            $declaration = $this->connection->prepare($request);
+            $declaration->bindParam(':email', $email);
+            $declaration->bindParam(':directory', $directory);
+
+            $declaration->execute();
+            return "ok";
+        } catch(PDOException $e) {
+            return $e;
+        }
+    }
+
+    /**
+     * @param string $email
      * @return bool
      */
     function removeAccountByEmail(string $email): bool

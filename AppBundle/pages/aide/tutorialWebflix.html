@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>tutoriel</title>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+  <link rel="stylesheet" , href="../../ressources/css/styles.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" type="text/css" href="../../ressources/css/cssProjetSGBD.css">
+  <style>
+
+
+  </style>
+</head>
+<body style="background: darkred">
+
+<h2>Comment utiliser le site Webflix.</h2>
+
+<div class="flex-container">
+  <div class="flex-item-left">1
+
+      <video id="idVideo" width="80%" height="90%" controls>
+       <source id="idSource"  type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+<!--    </div>-->
+<!--  <div class="flex-item-right">2-->
+  </div>
+
+<section style="background: #111111" id="menuOptions">
+
+  <div class="accordion accordion-flush" id="accordionFlushExample">
+
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="flush-headingOne">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+         Introduction
+        </button>
+      </h2>
+      <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+        <div class="accordion-body">
+          <ul>
+            <li ><a id="idCreerProfil" >Créer un profil</a></li>
+            <li><a id="idModifInfo">Modifier mes informations</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="flush-headingTwo">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+         Visionnement
+        </button>
+      </h2>
+      <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+        <div class="accordion-body">
+          <ul>
+            <li> <a id="idNavigation" >Navigation </a></li>
+            <li> <a id="idVisionner" >Visionner un video</a></li>
+            <li><a id="idAjouterFavoris" >Ajouter des favoris </a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="flush-headingThree">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+          Formulaire et autre demande
+        </button>
+      </h2>
+      <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+        <div class="accordion-body">
+          <ul>
+
+            <li><a id="idNouveauContenu">Demander un nouveau contenu</a></li>
+            <li><a id="idContacterEquipe" >Contacter l'équipe </a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="flush-headingSix">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseSix" aria-expanded="false" aria-controls="flush-collapseSix">
+          stats
+        </button>
+      </h2>
+      <div id="flush-collapseSix" class="accordion-collapse collapse" aria-labelledby="flush-headingSix" data-bs-parent="#accordionFlushExample">
+        <div class="accordion-body">
+          <ul>
+            <li>Regarder les stats</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <p>Ceci est a titre educatif seulement, si vous avez besoin d'aide supplémentaire <br> Utiliser la section nous rejoindre <br> au bas de la page.</p>
+</section>
+  </div>
+
+</div>
+<!--include le footer-->
+
+
+<script src="../../ressources/javascript/mainJavaScript.js"></script>
+<div w3-include-html="basDePage.html"></div>
+<script>
+  includeHTML();
+</script>
+</body>
+
+<script>
+  $(document).ready(function() {
+     $("#idSource").attr("src", "filemp4.mp4");
+    $("#idVideo").get(0).load();
+
+    $("#idCreerProfil").click(function (e) {
+      //sessionStorage.setItem("urlVideo","mp4test.mp4");
+      $("#idSource").attr("src", "video/mp4test.mp4");
+      $("#idVideo").get(0).load();
+    });
+
+    $("#idModifInfo").click(function (e) {
+      //sessionStorage.setItem("urlVideo","mp4test.mp4");
+      $("#idSource").attr("src", "video/filemp4.mp4");
+      $("#idVideo").get(0).load();
+    });
+
+    $("#idNavigation").click(function (e) {
+      //sessionStorage.setItem("urlVideo","mp4test.mp4");
+      $("#idSource").attr("src", "video/mp4test2.mp4");
+      $("#idVideo").get(0).load();
+    });
+    $("#idVisionner").click(function (e) {
+      //sessionStorage.setItem("urlVideo","mp4test.mp4");
+      $("#idSource").attr("src", "Visionner.mp4");
+      $("#idVideo").get(0).load();
+    });
+
+    $("#idAjouterFavoris").click(function (e) {
+      //sessionStorage.setItem("urlVideo","mp4test.mp4");
+      $("#idSource").attr("src", "AjouterFavoris.mp4");
+      $("#idVideo").get(0).load();
+    });
+
+    $("#idNouveauContenu").click(function (e) {
+      //sessionStorage.setItem("urlVideo","mp4test.mp4");
+      $("#idSource").attr("src", "NouveauContenu.mp4");
+      $("#idVideo").get(0).load();
+    });
+
+    $("#idContacterEquipe").click(function (e) {
+      //sessionStorage.setItem("urlVideo","mp4test.mp4");
+      $("#idSource").attr("src", "ContacterEquipe.mp4");
+      $("#idVideo").get(0).load();
+    });
+
+  });
+
+
+</script>
+
+</html>
