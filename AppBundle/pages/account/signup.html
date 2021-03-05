@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <Title>Webflix - Inscription</Title>
     <meta charset="utf-8">
@@ -10,76 +11,55 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <link rel="stylesheet" type="text/css" href="../../ressources/css/main.css">
     <link rel="stylesheet" type="text/css" href="../../ressources/css/account.css">
+    <script src="../../ressources/javascript/account.js"></script>
 </head>
+
 <body>
-<div class="main">
-    <div class="header">
-        <img class="logo-center"
-             src="https://canniefish.weebly.com/uploads/1/1/8/3/118361953/webflix_orig.png"
-             alt="Webflix">
-    </div>
-    <div class="content">
-        <div class="messages"></div>
-        <div class="center-block">
-            <h2>Inscripton</h2>
-            <input id="screenName" type="text" name="screenName" placeholder="Nom d'utilisateur" required
-                   max="50"><br>
-            <input id="email" type="email" name="email" placeholder="Courriel" required max="150"><br>
-            <input id="emailConfirm" type="email" name="emailConfirm" placeholder="Confirmer le courriel"
-                   required max="150"><br>
-            <input id="phone" type="tel" name="phone" placeholder="Téléphone" max="18"><br>
-            <input id="password" type="password" name="password" placeholder="Mot de passe" required
-                   max="250"><br>
-            <input id="passwordConfirm" type="password" name="passwordConfirm"
-                   placeholder="Confirmer le mot de passe" required max="250"><br>
-            <button class="confirmButtons" id="signup">S'inscrire</button><br>
-            <p>Vous possedez deja un compte ?
-                <a href="login.html">Se connecter maintenant !</a>
-            </p>
+    <div class="main">
+        <div class="header">
+            <img class="logo-center" src="https://canniefish.weebly.com/uploads/1/1/8/3/118361953/webflix_orig.png" alt="Webflix">
+        </div>
+        <div class="content">
+            <div class="messages"></div>
+            <div class="center-block">
+                <h2>Inscripton</h2>
+                <input id="screenName" type="text" name="screenName" placeholder="Nom d'utilisateur" required max="50"><br>
+                <input id="email" type="email" name="email" placeholder="Courriel" required max="150"><br>
+                <input id="emailConfirm" type="email" name="emailConfirm" placeholder="Confirmer le courriel" required max="150"><br>
+                <input id="phone" type="tel" name="phone" placeholder="Téléphone" max="18"><br>
+                <input id="password" type="password" name="password" placeholder="Mot de passe" required max="250"><br>
+                <input id="passwordConfirm" type="password" name="passwordConfirm" placeholder="Confirmer le mot de passe" required max="250"><br>
+                <button class="confirmButtons" id="signup">S'inscrire</button><br>
+                <p>Vous possedez deja un compte ?
+                    <a href="login.html">Se connecter maintenant !</a>
+                </p>
+            </div>
         </div>
     </div>
-    <div class="content">
-        <div class="messages"></div>
-        <form>
-            <h2>Inscripton</h2>
-            <input id="screenName" type="text" name="screenName" placeholder="Nom d'utilisateur" required
-                   max="50"><br>
-            <input id="email" type="email" name="email" placeholder="Courriel" required max="150"><br>
-            <input id="emailConfirm" type="email" name="emailConfirm" placeholder="Confirmer le courriel"
-                   required max="150"><br>
-            <input id="phone" type="tel" name="phone" placeholder="Téléphone" max="18"><br>
-            <input id="password" type="password" name="password" placeholder="Mot de passe" required
-                   max="250"><br>
-            <input id="passwordConfirm" type="password" name="passwordConfirm"
-                   placeholder="Confirmer le mot de passe" required max="250"><br>
-            <button id="signup">S'inscrire</button><br>
-            <p>Vous possedez deja un compte ?
-                <a href="login.html">Se connecter maintenant !</a>
-            </p>
-        </form>
-    </div>
-</div>
 </body>
 <script>
-    $("#signup").click(function (e) {
-        let screenName = $("#username").val();
-        let email = $("#email").val();
-        let phone = $("#phone").val($("#phone").val().replace(/\D/g,''));
-        let password = $("#password").val();
-        let messages = $(".messages");
-        messages.empty();
-        if (!email.match(/^[\w-\\.]+@([\w-]+\.)+[\w-]{2,4}$/g)) {
-            messages.append("<div>Veuillez entrer un courriel valide.</div><br><hr>");
-        } else if (email !== $("#emailConfirm").val()) {
-            messages.append("<div>La confirmation de votre courriel ne concorde pas.</div><br><hr>");
-        } else if (phone.length() !== 10 || phone.length() !== 0) {
-            messages.append("<div>Veuillez entrer un téléphone valide.</div><br><hr>");
-        } else if (password !== $("#passwordConfirm").val()) {
-            messages.append("<div>La confirmation de votre mot de passe ne concorde pas.</div><br><hr>");
-        } else {
-            phone = "(" + phone.substr(0, 3) + ") " + phone.substr(3, 3) + "-" + phone.substr(6, 4);
-            signup(email, password, phone, screenName);
-        }
-    });
+    $(document).ready(function() {
+        $("#signup").click(function(e) {
+            let screenName = $("#screenName").val();
+            let email = $("#email").val();
+            let phone = $("#phone").val().replace(/\D/g, '');
+            let password = $("#password").val();
+            let messages = $(".messages");
+            messages.empty();
+            if (!email.match(/^[\w-\\.]+@([\w-]+\.)+[\w-]{2,4}$/g)) {
+                messages.append("<div>Veuillez entrer un courriel valide.</div><br><hr>");
+            } else if (email !== $("#emailConfirm").val()) {
+                messages.append("<div>La confirmation de votre courriel ne concorde pas.</div><br><hr>");
+            } else if (phone.length !== 10 && phone.length !== 0) {
+                messages.append("<div>Veuillez entrer un téléphone valide.</div><br><hr>");
+            } else if (password !== $("#passwordConfirm").val()) {
+                messages.append("<div>La confirmation de votre mot de passe ne concorde pas.</div><br><hr>");
+            } else {
+                phone = "(" + phone.substr(0, 3) + ") " + phone.substr(3, 3) + "-" + phone.substr(6, 4);
+                signup(email, password, phone, screenName);
+            }
+        });
+    })
 </script>
+
 </html>
