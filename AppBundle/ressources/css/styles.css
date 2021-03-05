@@ -110,3 +110,12 @@ a {
     text-decoration: none;
     color: rgba(190, 190, 190, 0.856);
 }
+
+#profilePicture{
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    max-width: 36px;
+    max-height: 36px;
+    object-fit: cover;
+}

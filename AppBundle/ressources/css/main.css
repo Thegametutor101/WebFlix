@@ -87,3 +87,13 @@ input[type="tel"] {
 .card-text {color: var(--light);}
 .card:hover {cursor: pointer;}
 hr {color: var(--light);}
+
+#profilePicture{
+    display: block;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    max-width: 36px;
+    max-height: 36px;
+    object-fit: cover;
+}
