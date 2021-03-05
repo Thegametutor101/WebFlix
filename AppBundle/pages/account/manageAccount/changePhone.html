@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <htmL>
+
 <head>
     <title>Webflix - Changer le numero de telephone</title>
     <meta charset="utf-8">
@@ -13,69 +14,67 @@
     <link rel="stylesheet" type="text/css" href="../../../ressources/css/main.css">
     <link rel="stylesheet" type="text/css" href="../../../ressources/css/account.css">
 </head>
+
 <body>
-<div class="main">
-    <div class="header">
-        <div id="logo">
-            <span class="material-icons" id="back">arrow_back_ios</span>
-            <img src="https://canniefish.weebly.com/uploads/1/1/8/3/118361953/webflix_orig.png"
-                 alt="Webflix"
-                 width="350px"
-                 height="150px">
-        </div>
-    </div>
-    <div class="manage">
-        <h2 style="border-bottom: #111111">Modification du numéro de téléphone</h2>
-    </div>
-    <hr><br><br>
-    <div class="messages"></div>
-    <div class="content">
-        <div id="edit_top">
-            <div id="edit_left">
-                <h3>Ancien téléphone </h3>
-                <h3>Nouveau téléphone </h3>
-                <h3>Confirmer telephone </h3>
-                <h3>Confirmer le changement</h3>
-            </div>
-            <div id="edit_right">
-                <input id="oldPhone" type="text" value="BroadestOdinDev" disabled readonly><br>
-                <input id="newPhone" type="tel" placeholder="819-999-8888" max="18" min="10"><br>
-                <input id="confirmNewPhone" type="tel" placeholder="819-999-8888" max="18" min="10"><br>
-                <input id="confirmUpdate" type="password" placeholder="Entrez votre mot de passe">
+    <div class="main">
+        <div class="header">
+            <div id="logo">
+                <span class="material-icons" id="back">arrow_back_ios</span>
+                <img src="https://canniefish.weebly.com/uploads/1/1/8/3/118361953/webflix_orig.png" alt="Webflix" width="350px" height="150px">
             </div>
         </div>
-        <div id="edit_bottom">
-            <button class="confirmButtons" id="confirm" type="button">Confirmer</button>
-            <button class="confirmButtons" id="cancel" type="button">Annuler</button>
+        <div class="manage">
+            <h2 style="border-bottom: #111111">Modification du numéro de téléphone</h2>
+        </div>
+        <hr><br><br>
+        <div class="messages"></div>
+        <div class="content">
+            <div id="edit_top">
+                <div id="edit_left">
+                    <h3>Ancien téléphone </h3>
+                    <h3>Nouveau téléphone </h3>
+                    <h3>Confirmer telephone </h3>
+                    <h3>Confirmer le changement</h3>
+                </div>
+                <div id="edit_right">
+                    <input id="oldPhone" type="text" value="BroadestOdinDev" disabled readonly><br>
+                    <input id="newPhone" type="tel" placeholder="8199998888" maxlength="18" minlength="10"><br>
+                    <input id="confirmNewPhone" type="tel" placeholder="8199998888" maxlength="18" minlength="10"><br>
+                    <input id="confirmUpdate" type="password" placeholder="Entrez votre mot de passe" maxlength="250">
+                </div>
+            </div>
+            <div id="edit_bottom">
+                <button class="confirmButtons" id="confirm" type="button">Confirmer</button>
+                <button class="confirmButtons" id="cancel" type="button">Annuler</button>
+            </div>
         </div>
     </div>
-</div>
 </body>
 <script>
     let pwd = sessionStorage.getItem("passwordAccount");
     $("#oldPhone").val(sessionStorage.getItem("phoneAccount"));
     $("#newPhone").focus();
-    $(document).ready(function (e) {
-        $("#back").click(function (e) {
+    $(document).ready(function(e) {
+        $("#back").click(function(e) {
             window.open("../myAccount.html", "_self");
         });
         let email = sessionStorage.getItem("emailAccount");
-        $("#confirm").click(function (e) {
+        $("#confirm").click(function(e) {
             let messages = $(".messages");
             messages.empty();
-            $("#newPhone").val($("#newPhone").val().replace(/\D/g,''));
-            $("#confirmNewPhone").val($("#confirmNewPhone").val().replace(/\D/g,''));
-            let oldPhone = $("#oldPhone").val();
-            let newPhone = $("#newPhone").val();
-            let confirmNewPhone = $("#confirmNewPhone").val();
-            let confirmUpdate = $("#confirmUpdate").val();
+            $("#newPhone").val().trim().replace(/\D/g, '');
+            $("#confirmNewPhone").val().trim().replace(/\D/g, '');
+            let oldPhone = $("#oldPhone").val().trim();
+            let newPhone = $("#newPhone").val().trim();
+            let confirmNewPhone = $("#confirmNewPhone").val().trim();
+            let confirmUpdate = $("#confirmUpdate").val().trim();
             if (newPhone.length > 18 || newPhone.length === 0) {
                 messages.append("<div>Veuillez entrer un nouveau " +
                     "téléphone n'excédant pas 18 caractères.</div><br><hr>");
             } else if (!newPhone.match(/\d{10}/g)) {
                 messages.append("<div>Veuillez entrer un numéro " +
                     "de téléphone valide.</div><br><hr>");
-            }  else if (newPhone === oldPhone) {
+            } else if (newPhone === oldPhone) {
                 messages.append("<div>Le nouveau telephone ne peut " +
                     "pas etre identique a l'ancien telephone.</div><br><hr>");
             } else if (newPhone !== confirmNewPhone) {
@@ -88,14 +87,14 @@
                 newPhone = "(" + newPhone.substr(0, 3) + ") " +
                     newPhone.substr(3, 3) + "-" + newPhone.substr(6, 4);
                 $.ajax({
-                    url:"../../../management/updatePhone.php",
-                    type:"POST",
+                    url: "../../../management/updatePhone.php",
+                    type: "POST",
                     data: {
-                            'email': email,
-                            'phone': newPhone
-                        },
-                    dataType:"json",
-                    success: function (result) {
+                        'email': email,
+                        'phone': newPhone
+                    },
+                    dataType: "json",
+                    success: function(result) {
                         let answer = result["item"];
                         if (answer === "ok") {
                             sessionStorage.setItem("phoneAccount", newPhone);
@@ -110,7 +109,7 @@
                                 "votre requête présentement.<br>Veuillez réessayer plus tard.</div><br><hr>");
                         }
                     },
-                    error: function (message, error) {
+                    error: function(message, error) {
                         messages.append("<div>Erreur lors de votre requête. " +
                             "Veuillez réessayer plus tard.</div><br><hr>");
                         console.log(message, error);
@@ -118,7 +117,7 @@
                 });
             }
         });
-        $("#cancel").click(function () {
+        $("#cancel").click(function() {
             window.open("../myAccount.html", "_self");
         });
     });
@@ -128,6 +127,7 @@
         display: flex;
         flex-direction: row;
     }
+    
     #back {
         cursor: pointer;
         width: 30px;
@@ -135,7 +135,14 @@
         text-align: center;
         margin: auto
     }
-    #back:hover {transform: scale(1.2);}
-    #back:active {transform: scale(0.98);}
+    
+    #back:hover {
+        transform: scale(1.2);
+    }
+    
+    #back:active {
+        transform: scale(0.98);
+    }
 </style>
+
 </htmL>

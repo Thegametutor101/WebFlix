@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <htmL>
+
 <head>
     <title>Webflix - Changer nom affichage</title>
     <meta charset="utf-8">
@@ -13,58 +14,56 @@
     <link rel="stylesheet" type="text/css" href="../../../ressources/css/main.css">
     <link rel="stylesheet" type="text/css" href="../../../ressources/css/account.css">
 </head>
+
 <body>
-<div class="main">
-    <div class="header">
-        <div id="logo">
-            <span class="material-icons" id="back">arrow_back_ios</span>
-            <img src="https://canniefish.weebly.com/uploads/1/1/8/3/118361953/webflix_orig.png"
-                 alt="Webflix"
-                 width="350px"
-                 height="150px">
-        </div>
-    </div>
-    <div class="manage">
-        <h2 style="border-bottom: #111111">Modification du nom d'affichage</h2>
-    </div>
-    <hr><br><br>
-    <div class="messages"></div>
-    <div class="content">
-        <div id="edit_top">
-            <div id="edit_left">
-                <h3>Ancien nom d'affichage </h3>
-                <h3>Nouveau nom d'affichage </h3>
-                <h3>Confirmer le nouveau nom </h3>
-                <h3>Confirmer le changement</h3>
-            </div>
-            <div id="edit_right">
-                <input id="oldScreenName" type="text" value="BroadestOdinDev" disabled readonly><br>
-                <input id="newScreenName" type="text" placeholder="Entrez votre nom d'affichage" max="50"><br>
-                <input id="confirmNewScreenName" type="text" placeholder="Entrez votre nom d'affichage" max="50"><br>
-                <input id="confirmUpdate" type="password" placeholder="Entrez votre mot de passe">
+    <div class="main">
+        <div class="header">
+            <div id="logo">
+                <span class="material-icons" id="back">arrow_back_ios</span>
+                <img src="https://canniefish.weebly.com/uploads/1/1/8/3/118361953/webflix_orig.png" alt="Webflix" width="350px" height="150px">
             </div>
         </div>
-        <div id="edit_bottom">
-            <button class="confirmButtons" id="confirm" type="button">Confirmer</button>
-            <button class="confirmButtons" id="cancel" type="button">Annuler</button>
+        <div class="manage">
+            <h2 style="border-bottom: #111111">Modification du nom d'affichage</h2>
+        </div>
+        <hr><br><br>
+        <div class="messages"></div>
+        <div class="content">
+            <div id="edit_top">
+                <div id="edit_left">
+                    <h3>Ancien nom d'affichage </h3>
+                    <h3>Nouveau nom d'affichage </h3>
+                    <h3>Confirmer le nouveau nom </h3>
+                    <h3>Confirmer le changement</h3>
+                </div>
+                <div id="edit_right">
+                    <input id="oldScreenName" type="text" value="BroadestOdinDev" disabled readonly><br>
+                    <input id="newScreenName" type="text" placeholder="Entrez votre nom d'affichage" maxlength="50"><br>
+                    <input id="confirmNewScreenName" type="text" placeholder="Entrez votre nom d'affichage" maxlength="50"><br>
+                    <input id="confirmUpdate" type="password" placeholder="Entrez votre mot de passe" maxlength="250">
+                </div>
+            </div>
+            <div id="edit_bottom">
+                <button class="confirmButtons" id="confirm" type="button">Confirmer</button>
+                <button class="confirmButtons" id="cancel" type="button">Annuler</button>
+            </div>
         </div>
     </div>
-</div>
 </body>
 <script>
     $("#oldScreenName").val(sessionStorage.getItem("screenNameAccount"));
     $("#newScreenName").focus();
-    $(document).ready(function () {
-        $("#back").click(function (e) {
+    $(document).ready(function() {
+        $("#back").click(function(e) {
             window.open("../myAccount.html", "_self");
         });
-        $("#confirm").click(function () {
+        $("#confirm").click(function() {
             let messages = $(".messages");
             messages.empty();
             let oldScreenName = $("#oldScreenName").val();
-            let newScreenName = $("#newScreenName").val();
-            let confirmNewScreenName = $("#confirmNewScreenName").val();
-            let confirmUpdate = $("#confirmUpdate").val();
+            let newScreenName = $("#newScreenName").val().trim();
+            let confirmNewScreenName = $("#confirmNewScreenName").val().trim();
+            let confirmUpdate = $("#confirmUpdate").val().trim();
             if (newScreenName.length > 50 || newScreenName.length === 0) {
                 messages.append("<div>Veuillez entrer un nom n'excédant pas 50 caractères.</div><br><hr>");
             } else if (newScreenName === oldScreenName) {
@@ -78,14 +77,14 @@
                     "ne concorde pas avec votre mot de passe!</div><br><hr>");
             } else {
                 $.ajax({
-                    url:"../../../management/updateScreenName.php",
-                    type:"POST",
+                    url: "../../../management/updateScreenName.php",
+                    type: "POST",
                     data: {
-                            'email': sessionStorage.getItem("emailAccount"),
-                            'screenName': newScreenName
-                        },
-                    dataType:"json",
-                    success: function (result) {
+                        'email': sessionStorage.getItem("emailAccount"),
+                        'screenName': newScreenName
+                    },
+                    dataType: "json",
+                    success: function(result) {
                         let answer = result["item"];
                         if (answer === "ok") {
                             sessionStorage.setItem("screenNameAccount", newScreenName);
@@ -93,7 +92,7 @@
                         } else if (answer === "error") {
                             messages.append("<div>Il est impossible de compléter " +
                                 "votre requête présentement.<br>Veuillez réessayer plus tard.</div><br><hr>");
-                        }  else if (answer === "used") {
+                        } else if (answer === "used") {
                             messages.append("<div>Le nouveau nom d'utilisateur est déja utilisé. " +
                                 "Nous sommes vraiment désolé.</div><br><hr>");
                         } else if (answer === "empty") {
@@ -103,7 +102,7 @@
                                 "votre requête présentement.<br>Veuillez réessayer plus tard.</div><br><hr>");
                         }
                     },
-                    error: function (message, error) {
+                    error: function(message, error) {
                         messages.append("<div>Erreur lors de votre requête. " +
                             "Veuillez réessayer plus tard.</div><br><hr>");
                         console.log(message, error);
@@ -111,7 +110,7 @@
                 });
             }
         });
-        $("#cancel").click(function () {
+        $("#cancel").click(function() {
             window.open("../myAccount.html", "_self");
         });
     });
@@ -121,6 +120,7 @@
         display: flex;
         flex-direction: row;
     }
+    
     #back {
         cursor: pointer;
         width: 30px;
@@ -128,7 +128,14 @@
         text-align: center;
         margin: auto
     }
-    #back:hover {transform: scale(1.2);}
-    #back:active {transform: scale(0.98);}
+    
+    #back:hover {
+        transform: scale(1.2);
+    }
+    
+    #back:active {
+        transform: scale(0.98);
+    }
 </style>
+
 </htmL>
