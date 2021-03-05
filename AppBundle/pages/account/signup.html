@@ -23,12 +23,12 @@
             <div class="messages"></div>
             <div class="center-block">
                 <h2>Inscripton</h2>
-                <input id="screenName" type="text" name="screenName" placeholder="Nom d'utilisateur" required max="50"><br>
-                <input id="email" type="email" name="email" placeholder="Courriel" required max="150"><br>
-                <input id="emailConfirm" type="email" name="emailConfirm" placeholder="Confirmer le courriel" required max="150"><br>
-                <input id="phone" type="tel" name="phone" placeholder="Téléphone" max="18"><br>
-                <input id="password" type="password" name="password" placeholder="Mot de passe" required max="250"><br>
-                <input id="passwordConfirm" type="password" name="passwordConfirm" placeholder="Confirmer le mot de passe" required max="250"><br>
+                <input id="screenName" type="text" name="screenName" placeholder="Nom d'utilisateur" required maxlength="50"><br>
+                <input id="email" type="email" name="email" placeholder="Courriel" required maxlength="150"><br>
+                <input id="emailConfirm" type="email" name="emailConfirm" placeholder="Confirmer le courriel" required maxlength="150"><br>
+                <input id="phone" type="tel" name="phone" placeholder="Téléphone" maxlength="18"><br>
+                <input id="password" type="password" name="password" placeholder="Mot de passe" required maxlength="250"><br>
+                <input id="passwordConfirm" type="password" name="passwordConfirm" placeholder="Confirmer le mot de passe" required maxlength="250"><br>
                 <button class="confirmButtons" id="signup">S'inscrire</button><br>
                 <p>Vous possedez deja un compte ?
                     <a href="login.html">Se connecter maintenant !</a>
@@ -40,17 +40,17 @@
 <script>
     $(document).ready(function() {
         $("#signup").click(function(e) {
-            let screenName = $("#screenName").val();
-            let email = $("#email").val();
-            let phone = $("#phone").val().replace(/\D/g, '');
-            let password = $("#password").val();
+            let screenName = $("#screenName").val().trim();
+            let email = $("#email").val().trim();
+            let phone = $("#phone").val().trim().replace(/\D/g, '');
+            let password = $("#password").val().trim();
             let messages = $(".messages");
             messages.empty();
             if (!email.match(/^[\w-\\.]+@([\w-]+\.)+[\w-]{2,4}$/g)) {
                 messages.append("<div>Veuillez entrer un courriel valide.</div><br><hr>");
             } else if (email !== $("#emailConfirm").val()) {
                 messages.append("<div>La confirmation de votre courriel ne concorde pas.</div><br><hr>");
-            } else if (phone.length !== 10 && phone.length !== 0) {
+            } else if (phone.length !== 10) {
                 messages.append("<div>Veuillez entrer un téléphone valide.</div><br><hr>");
             } else if (password !== $("#passwordConfirm").val()) {
                 messages.append("<div>La confirmation de votre mot de passe ne concorde pas.</div><br><hr>");
