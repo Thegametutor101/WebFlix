@@ -109,22 +109,15 @@ $(document).ready(function() {
             alert("Le champ titre ne peut pas exceder 250 caracteres !");
         } else if (description.length == 0) {
             alert("Le champ description ne peut pas etre vide !");
-        } else if (movieimage == "") {
-            alert("Aucun fichier d'image n'a ete selectionner dans le champs image du film");
-        } else if (moviefile == "") {
-            alert("Aucun fichier video n'a ete selectionner dans le champs fichier du film");
         } else if (releasedate.length == 0) {
             alert("Aucune date n'a ete specifier dans le champs date de sortie");
         } else if (classification == "") {
             alert("Aucune classification n'a ete selectionner pour le film");
         } else {
+
             console.log("ok");
-            moviefile = $("#moviefile").prop('files')[0];
-            movieimage = $("#movieimage").prop('files')[0];
             form_data.append('title', title);
             form_data.append('description', description);
-            form_data.append('movieimage', movieimage);
-            form_data.append('moviefile', moviefile);
             form_data.append('releasedate', releasedate);
             form_data.append('visible', visible);
             form_data.append('type', type);
@@ -132,6 +125,29 @@ $(document).ready(function() {
             form_data.append('classificiations', classification);
             form_data.append('id', sessionStorage.getItem("idMovie"));
 
+
+            if(movieimage == "" && moviefile == ""){
+                form_data.append('req', "no_file");
+
+
+            } else if (movieimage == ""){
+                form_data.append('req', "no_image");
+                moviefile = $("#moviefile").prop('files')[0];
+                form_data.append('moviefile', moviefile);
+
+            } else if (moviefile == ""){
+                form_data.append('req', "no_video");
+                movieimage = $("#movieimage").prop('files')[0];
+                form_data.append('movieimage', movieimage);
+
+            } else {
+                form_data.append('req', "all");
+                moviefile = $("#moviefile").prop('files')[0];
+                movieimage = $("#movieimage").prop('files')[0];
+                form_data.append('movieimage', movieimage);
+                form_data.append('moviefile', moviefile);
+
+            }
             $.ajax({
                 //Process the form using $.ajax()
                 type: 'POST', //Method type
@@ -149,32 +165,33 @@ $(document).ready(function() {
                 }
 
             });
+
         }
     });
 
-    $("#confirmdeletemovie").click(function() {
-        let form_data = new FormData();
-        let id = sessionStorage.getItem("idMovie");
-        form_data.append('id', id);
+    // $("#confirmdeletemovie").click(function() {
+    //     let form_data = new FormData();
+    //     let id = sessionStorage.getItem("idMovie");
+    //     form_data.append('id', id);
 
-        $.ajax({
-            //Process the form using $.ajax()
-            type: 'POST', //Method type
-            url: '../../management/deletevideo.php', //Your form processing file URL
-            data: form_data, //Forms name
-            processData: false,
-            contentType: false,
-            dataType: 'JSON',
-            success: function(data) {
-                console.log(data);
-                window.open("adminMenu.html", "_self");
-            },
-            error: function(message) {
-                console.log(message);
-            }
+    //     $.ajax({
+    //         //Process the form using $.ajax()
+    //         type: 'POST', //Method type
+    //         url: '../../management/deletevideo.php', //Your form processing file URL
+    //         data: form_data, //Forms name
+    //         processData: false,
+    //         contentType: false,
+    //         dataType: 'JSON',
+    //         success: function(data) {
+    //             console.log(data);
+    //             window.open("adminMenu.html", "_self");
+    //         },
+    //         error: function(message) {
+    //             console.log(message);
+    //         }
 
-        });
-    });
+    //     });
+    // });
 
     function getGenres() {
         let genrefilm = [];
