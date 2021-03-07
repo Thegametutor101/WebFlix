@@ -42,46 +42,67 @@
 </body>
 <script src="../ressources/javascript/mainJavaScript.js"></script>
 <script>
+    let nbrButtons = 0, nbrIntervals = 0;
+
     checkConnection();
     console.log(sessionStorage.getItem("adminAccount"));
     if (sessionStorage.getItem("adminAccount") === "1") {
         $(".adminSection").css("visibility", "visible");
     }
-    $(document).ready(function(){
+
+    $(document).ready(async function(){
+
         if (sessionStorage.getItem("profile") !== null) {
             $("#profilePicture").attr("src", "../" + sessionStorage.getItem("profile"));
         }
+
         getGenres();
-        $(".profileBubble").click(function(e) {
+
+        $(".profileBubble").click(function() {
             window.open("account/myAccount.html", "_self");
         });
 
-        $(".webflixhelp").click(function(e) {
+        $(".webflixhelp").click(function() {
             window.open("aide/tutorialWebflix.html", "_self");
         });
+
         $(window).scroll(function() {
             $('header').css("background-color", 'rgba(17, 17, 17, ' + (0.3 + (0.7 * $(window).scrollTop() / 200)) + ')');
         });
-        $(document).on('click', '#idCreerProfil', function(e) {
+
+
+
+        $(".adminSection").click(function() {
+            window.open("admin/adminMenu.html", "_self");
+        });
+
+        $(document).on('click', '#idCreerProfil', function() {
             $("#idVideo").html("<video id='idVideo' width='1000' height='500' controls autoplay>");
             $("#idSource").html("<source id='idSource' src='' type='video/mp4'></video>");
         });
-        $(".right").click(function() {
-            $(this).parent().parent().stop().animate({
-                scrollLeft: "+=750"
-            }, 800);
-            return false;
-        });
-        $(".left").on('click', function(event) {
-            $(this).parent().parent().stop().animate({
-                scrollLeft: "-=750"
-            }, 800);
-            return false;
-        });
-        $(".adminSection").click(function(e) {
-            window.open("admin/adminMenu.html", "_self");
-        });
+
     });
+
+
+    var checkExist = setInterval(function() {
+        if ($('.left').length > nbrButtons) {
+            nbrButtons = $('.left').length;
+            $(".right").click(function() {
+                $(this).parent().parent().stop().animate({scrollLeft: "+=750"}, 800);
+            });
+            $(".left").click(function() {
+                $(this).parent().parent().stop().animate({scrollLeft: "-=750"}, 800);
+            });
+        } else {
+            nbrIntervals ++;
+            if (nbrIntervals >= 10){
+                clearInterval(checkExist);
+            }
+        }
+    }, 10); // check every 100ms
+
+
+
     $(document).on("click", ".favStar-active", function(event) {
         $(this).addClass("favStar-non-active");
         $(this).removeClass("favStar-active");
@@ -106,6 +127,7 @@
         });
         window.open("index.html", "_self");
     });
+
     $(document).on("click", ".favStar-non-active", function(event) {
         $(this).addClass("favStar-active");
         $(this).removeClass("favStar-non-active");
@@ -131,14 +153,14 @@
         window.open("index.html", "_self");
     });
 
-    function getGenres() {
+    async function getGenres() {
         let listeGenres = [];
         $.ajax({
             //Process the form using $.ajax()
             type: 'POST', //Method type
             url: '../management/getGenresFromCards.php', //Your form processing file URL
             dataType: 'JSON',
-            success: function(data) {
+            success: async function(data) {
                 let currGenres;
                 for (ctr = 0; ctr < data.length; ctr++) {
                     currGenres = JSON.parse(data[ctr][0]);
@@ -149,7 +171,7 @@
                         }
                     }
                 }
-                getVideosByGenre(listeGenres);
+                await getVideosByGenre(listeGenres);
             },
             error: function(erreur, message) {
                 console.log(erreur, message);
@@ -211,11 +233,22 @@
         }
     }
 
+
+
     function Details(file, ID) {
         sessionStorage.setItem("VideoPath", file);
         sessionStorage.setItem("idCard", ID);
         window.open("video.html", "_self");
     }
+
+    async function setscrollclicks(){
+            await getGenres();
+            await getVideosByGenre();
+
+
+
+        }
+
 </script>
 
 </html>
