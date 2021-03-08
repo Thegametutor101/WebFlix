@@ -146,6 +146,23 @@
         });
     });
 
+    var checkExist = setInterval(function() {
+        if ($('.left').length > nbrButtons) {
+            nbrButtons = $('.left').length;
+            $(".right").click(function() {
+                $(this).parent().parent().stop().animate({scrollLeft: "+=750"}, 800);
+            });
+            $(".left").click(function() {
+                $(this).parent().parent().stop().animate({scrollLeft: "-=750"}, 800);
+            });
+        } else {
+            nbrIntervals ++;
+            if (nbrIntervals >= 10){
+                clearInterval(checkExist);
+            }
+        }
+    }, 100); // check every 100ms
+
 
     function Details(file, ID) {
         sessionStorage.setItem("VideoPath", file);
