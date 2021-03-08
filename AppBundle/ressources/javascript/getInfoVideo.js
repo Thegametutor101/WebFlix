@@ -289,6 +289,7 @@ $(document).ready(function() {
                 dataType: 'JSON',
                 success: function(data) {
                     console.log(data);
+                    alert("Vidéo ajoutée avec succès");
                     window.open("adminMenu.html", "_self");
                 },
                 error: function(message) {

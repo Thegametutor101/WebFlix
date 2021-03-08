@@ -22,6 +22,7 @@ function login(email, password) {
                 sessionStorage.setItem("phoneAccount", answer["Phone"]);
                 sessionStorage.setItem("screenNameAccount", answer["ScreenName"]);
                 sessionStorage.setItem("passwordAccount", answer["Password"]);
+                sessionStorage.setItem("profile", answer["Profile"]);
                 sessionStorage.setItem("adminAccount", answer["Admin"]);
                 window.open("../index.html", "_self");
             } else {

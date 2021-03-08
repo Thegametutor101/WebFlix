@@ -12,13 +12,11 @@ if (!empty($_POST["title"]) &&
 //    $type = $_POST["type"];
     $genre = $_POST["genre"];
     $classificiations = $_POST["classificiations"];
-    //DAN remet pas ton __DIR__ pour le dossier
     $dossier = '../ressources/assets/images/videoImages/';
     $chemin = $dossier . basename($_FILES['movieimage']['name']);
     // $duration = $_FILES['moviefile'];
     // $duration = $_FILES['moviefile']['playtime_string'];
     if (move_uploaded_file($_FILES['movieimage']['tmp_name'], $chemin)) {
-        //DAN remet pas ton __DIR__ pour le dossier
         $dossier = '../ressources/assets/videos/';
         $chemin2 = $dossier . basename($_FILES['moviefile']['name']);
     }

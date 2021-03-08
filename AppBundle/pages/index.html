@@ -45,14 +45,18 @@
     let nbrButtons = 0, nbrIntervals = 0;
 
     checkConnection();
-    console.log(sessionStorage.getItem("adminAccount"));
     if (sessionStorage.getItem("adminAccount") === "1") {
         $(".adminSection").css("visibility", "visible");
     }
 
-    $(document).ready(async function(){
+    $(document).ready(function(){
 
         if (sessionStorage.getItem("profile") !== null) {
+            let profilepic = sessionStorage.getItem("profile");
+            result = profilepic.split("/../");
+            if (result.length > 1){
+                sessionStorage.setItem("profile", result[1]);
+            }
             $("#profilePicture").attr("src", "../" + sessionStorage.getItem("profile"));
         }
 
@@ -153,7 +157,7 @@
         window.open("index.html", "_self");
     });
 
-    async function getGenres() {
+    function getGenres() {
         let listeGenres = [];
         $.ajax({
             //Process the form using $.ajax()
@@ -171,7 +175,7 @@
                         }
                     }
                 }
-                await getVideosByGenre(listeGenres);
+                getVideosByGenre(listeGenres);
             },
             error: function(erreur, message) {
                 console.log(erreur, message);
@@ -240,14 +244,6 @@
         sessionStorage.setItem("idCard", ID);
         window.open("video.html", "_self");
     }
-
-    async function setscrollclicks(){
-            await getGenres();
-            await getVideosByGenre();
-
-
-
-        }
 
 </script>
 
