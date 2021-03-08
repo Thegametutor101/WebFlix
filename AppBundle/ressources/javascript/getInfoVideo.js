@@ -105,6 +105,8 @@ $(document).ready(function() {
 
         if (title.length == 0) {
             alert("Le champ titre est vide !");
+        } else if (genrefilm.length == 0) {
+            alert("Aucun genre n'a ete selectionner pour le film");
         } else if (title.length > 250) {
             alert("Le champ titre ne peut pas exceder 250 caracteres !");
         } else if (description.length == 0) {
@@ -215,6 +217,8 @@ $(document).ready(function() {
             return "16+";
         else if (ID == "c18")
             return "18+";
+        else
+            return "";
     }
 
 
@@ -228,6 +232,8 @@ $(document).ready(function() {
             return "16+";
         else if (ID == "c18")
             return "18+";
+        else
+            return "";
     }
 
     $("#confirmaddmovie").click(function(e) {

@@ -84,7 +84,6 @@ $(document).ready(function() {
         let form_data = new FormData();
         let id = sessionStorage.getItem("idMovie");
         form_data.append('id', id);
-        alert($("#selectedvideo").val());
         if($("#selectedvideo").val() == null){
             alert("aucun film selectionner");
         } else {
