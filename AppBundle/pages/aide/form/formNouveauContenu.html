@@ -14,12 +14,41 @@
           crossorigin="anonymous"></script>
   <link rel="stylesheet" type="text/css" href="../../../ressources/css/cssProjetSGBD.css">
 
+
+
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <!--    Custom style sheets  -->
+  <link rel="stylesheet" type="text/css" href="../../../ressources/css/main.css">
+  <link rel="stylesheet" type="text/css" href="../../../ressources/css/index.css">
 </head>
 
 <body>
+<header>
+  <div class="logo">
+    <img src="../../../ressources/assets/images/webflix_orig.png">
+  </div>
+  <button class="adminSection" style="visibility: hidden">admin</button>
+  <button class="profileBubble">
+    <img src="../../../ressources/assets/images/defaultUserProfile.png"
+         alt="../../../ressources/assets/images/defaultUserProfile.png"
+         style="display: block;border-radius: 50%">
+  </button>
+  <button class="webflixhelp">
+    <img src="../../../ressources/assets/images/help.png"
+         alt="../../../ressources/assets/images/help.png"
+         style="display: block;border-radius: 50%" color= "white" width="40px" height="40px">
+  </button>
+</header>
 
+<br>
+<br>
+<br>
+<br>
 <div style="width:80%; margin:0 auto;">
-
+  <br>
+  <h2>Demander un nouveau contenu</h2>
 <form>
     <div class="form-group" style="">
 <br>
@@ -36,10 +65,10 @@
 <br>
   <div class="form-group">
     <label class="titre" >Type de contenue*</label>
-    <select name="typeVideo" id="typeVideo" >
-      <option value="video">Video</option>
-      <option value="film">Film</option>
-      <option value="Serie">Serie-télévisé</option>r
+    <select name="typeVideo" id="typeVideo" style="color: #111111">
+      <option style="color: #111111" value="video">Video</option>
+      <option style="color: #111111" value="film">Film</option>
+      <option style="color: #111111" value="Serie">Serie-télévisé</option>r
     </select>
   </div>
   <br>
@@ -73,12 +102,10 @@
 
     $("#IdButtonSoumettre").click(function (e) {
 e.preventDefault();
-      alert($("#idTitre").val());
-      console.log($("#idPlatform").val());
-      console.log($("#typeVideo").val());
-      console.log($("#idLien").val());
+
+
       $.ajax({
-        url:"Webflix/AppBundle/management/formNouveauContenuAdd.php",
+        url:"http://localhost/Webflix/AppBundle/management/formNouveauContenuAdd.php",
         type:"POST",
         data: {
           'titre': $("#idTitre").val(),
@@ -88,6 +115,7 @@ e.preventDefault();
         },
         dataType:"JSON",
         success: function (result) {
+          alert("La demande a été acheminer")
           location.reload();
         // console.log(result["item"]);
          console.log(result);
