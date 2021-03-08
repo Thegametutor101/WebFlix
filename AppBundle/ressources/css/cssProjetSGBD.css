@@ -127,11 +127,11 @@ header {
   background-color: rgba(17, 17, 17, 0.3);
 }
 
-header img {
-  z-index: 4;
-  width: 150px;
-  height: 90px;
-}
+/*header img {*/
+/*  z-index: 4;*/
+/*  width: 150px;*/
+/*  height: 90px;*/
+/*}*/
 
 #menuOptions {
   width: 275px;
