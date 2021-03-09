@@ -12,10 +12,32 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
           integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
           crossorigin="anonymous"></script>
-  <link rel="stylesheet" type="text/css" href="../../../ressources/css/cssProjetSGBD.css">
 
+  <link rel="stylesheet" type="text/css" href="../../../ressources/css/main.css">
+  <link rel="stylesheet" type="text/css" href="../../../ressources/css/cssProjetSGBD.css">
+  <link rel="stylesheet" type="text/css" href="../../../ressources/css/index.css">
+
+  <script src="../../../ressources/javascript/mainJavaScript.js"></script>
 </head>
 <body>
+<header>
+  <div class="logo">
+    <img src="../../../ressources/assets/images/webflix_orig.png">
+  </div>
+  <button class="adminSection" style="visibility: hidden">admin</button>
+  <button class="profileBubble" onclick="window.open('http://localhost/Webflix/AppBundle/pages/account/myAccount.html')">
+    <img src="../../../ressources/assets/images/defaultUserProfile.png"
+         alt="../../../ressources/assets/images/defaultUserProfile.png">
+  </button>
+  <button class="webflixhelp" onclick="window.open('http://localhost/Webflix/AppBundle/pages/aide/tutorialWebflix.html')">
+
+    <img src="../../../ressources/assets/images/help.png"
+         alt="../../../ressources/assets/images/help.png">
+  </button>
+</header>
+<br>
+<br>
+<br>
 
 <div style="width:80%; margin:0 auto;">
 
@@ -36,19 +58,20 @@
     <div class="form-group">
       <label class="titre">Raison*</label>
       <br>
-      <select name="raisonContacter" id="idraisonContacter">
-        <option value="besoin dassitance">Besoin d'assitance</option>
-        <option value="un code derreur qui affiche">Il y a un code d'erreur qui affiche</option>
-        <option value="Question général">Question général</option>
-        <option value="Autre">Autre</option>
+      <select style="color:black" name="raisonContacter" id="idraisonContacter">
+        <option style="color:black" value="besoin dassitance">Besoin d'assitance</option>
+        <option style="color:black" value="un code derreur qui affiche">Il y a un code d'erreur qui affiche</option>
+        <option style="color:black" value="Question général">Question général</option>
+        <option style="color:black" value="Autre">Autre</option>
       </select>
+
     </div>
     <br>
-
+<br>
     <div class="form-group">
       <label class="titre">Description*</label>
       <br>
-      <textarea id="idDescription" name="description" rows="4" cols="60%"></textarea>
+      <textarea style="color:black" id="idDescription" name="description" rows="4" cols="60%"></textarea>
     </div>
     <br>
     <p style="color: white">Vous allez être redirigé vers votre application de courriel
@@ -56,17 +79,16 @@
     <br>
     <button type="submit">Envoyer</button>
   </form>
+  <br>
+
 </div>
 
-<script src="../../../ressources/javascript/mainJavaScript.js"></script>
-<div w3-include-html="../basDePage.html"></div>
+
+<div w3-include-html="http://localhost/Webflix/AppBundle/pages/aide/basDePage.html"></div>
 <script>
   includeHTML();
 </script>
 
 </body>
-<footer>
 
-
-</footer>
 </html>

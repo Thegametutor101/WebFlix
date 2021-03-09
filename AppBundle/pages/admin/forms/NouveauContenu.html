@@ -23,7 +23,7 @@
         {
             width: 100%;
             margin: 0px;
-            text-align: center;
+            text-align: left;
 
         }
     </style>
@@ -33,9 +33,9 @@
 <body>
 
 <!--class="m-3"-->
-</script>
+
 <h3 style="position: center">Traitement des demandes de nouveau contenue</h3>
-<form id="formComplet"  ><br>
+<form id="formComplet" style="margin: 0px;width:80%;"  ><br>
     <table id="idNouveauContenuDiv"  class="table table-striped table-bordered">
         <thead>
         <tr style="text-align: left";>
@@ -44,8 +44,8 @@
             <th>Platform</th>
             <th>LienDirect</th>
             <th>DateSoumis</th>
-            <th>Supprimer</th>
-            <th>Approuver</th>
+            <th style="text-align: center">Action </th>
+            <th style="text-align: center"  >Action </th>
         </tr>
         </thead>
         <tbody id="idBodyNouveau" style="text-align: center">
@@ -84,7 +84,7 @@
 
 
             $.ajax({
-                url: "http://localhost/Webflix/AppBundle/management/updateNouveauContenu.php",
+                url: "../../management/updateNouveauContenu.php",
                 type: "POST",
                 data: {
                     'idNouveauContenu': idNouveauContenu
@@ -107,7 +107,7 @@
     }
     function DeleteNouveauContenu(idNouveauContenu)
     {        $.ajax({
-        url: "http://localhost/Webflix/AppBundle/management/deleteNouveauContenu.php",
+        url: "../../management/deleteNouveauContenu.php",
         type: "POST",
         data: {
             'idNouveauContenu':idNouveauContenu
@@ -134,15 +134,15 @@
                 //  console.log(data);
 
                 for (let ctr = 0; ctr < data.length; ctr++) {
-                    $("#idBodyNouveau").append(`
-                    <tr>
-                    <td>${data[ctr].idNouveauContenu}</td>
-                    <td >${data[ctr].Titre}</td>
-                    <td>${data[ctr].Platform}</td>
-                    <td>${data[ctr].LienDirect}</td>
-                    <td>${data[ctr].DateSoumis}</td>
-                    <td><button type="button" style="width: 150px;color:red;"   onclick="DeleteNouveauContenu(${data[ctr].idNouveauContenu})">Supprimer</button></td>
-                     <td><button type="button" style="width: 150px;color:green;"  onclick="ApprouverNouveauContenu(${data[ctr].idNouveauContenu})" >Approuver</button></td>
+                        $("#idBodyNouveau").append(`
+                    <tr style="text-align: left;">
+                    <td style="width: 15px;">${data[ctr].idNouveauContenu}</td>
+                    <td style="width: 15px;">${data[ctr].Titre}</td>
+                    <td style="width: 15px;">${data[ctr].Platform}</td>
+                    <td style="width: 15px;">${data[ctr].LienDirect}</td>
+                    <td style="width: 15px">${data[ctr].DateSoumis}</td>
+                    <td style="width: 50px;"><button type="button" style="width: auto;color:red"   onclick="DeleteNouveauContenu(${data[ctr].idNouveauContenu})">Refuser</button></td>
+                     <td style="text-align: center; "><button type="button" style="width: auto;color:green;"  onclick="ApprouverNouveauContenu(${data[ctr].idNouveauContenu})" >Accepter</button></td>
                     </tr>
                     `)
                 }

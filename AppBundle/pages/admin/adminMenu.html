@@ -89,6 +89,22 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="accordion-item">
+                    <h2 class="accordion-header" id="flush-headingSeven">
+                        <button style="text-align: left" class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseSeven" aria-expanded="false" aria-controls="flush-collapseSeven">
+                           Demande contenu
+                        </button>
+                    </h2>
+                    <div id="flush-collapseSeven" class="accordion-collapse collapse" aria-labelledby="flush-headingSeven" data-bs-parent="#accordionFlushExample">
+                        <div class="accordion-body">
+                            <ul>
+                                <li id="linkNouveauContenueAttente">Demande en attente</li>
+                                <li id="linkNouveauContenueApprouve">Demande approuvé</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
 
         </section>
@@ -184,8 +200,18 @@
         $("#linkGenre").click(function(e) {
             changePage("forms/viewGenre.html");
         });
-        $("#topLeftLogo").click(function (e) {
-            window.open("../index.html", "_self");
+        $("#linkNouveauContenueAttente").click(function(e) {
+            changePage("forms/NouveauContenu.html");
+            InsertInTd();
+
+        });
+        $("#linkNouveauContenueApprouve").click(function(e) {
+            changePage("forms/NouveauContenuApprouve.html");
+            InsertInTdApprouve();
+        });
+
+        $("#topLeftLogo").click(function(e) {
+            window.open("../index.html");
         });
 
         $("#lupdatevideo").click(function(e) {
@@ -257,12 +283,116 @@
                 success: function(response) {
                     let body = response.replace(/^.*?<body>(.*?)<\/body>.*?$/s, "$1");
                     $("#formSpace").html(body)
+
                 }
             });
         }
 
     });
+
+
+
+        function ApprouverNouveauContenu(idNouveauContenu)
+        {
+
+
+            $.ajax({
+                url: "../../management/updateNouveauContenu.php",
+                type: "POST",
+                data: {
+                    'idNouveauContenu': idNouveauContenu
+                },
+                dataType: "JSON",
+                success: function (result) {
+                    console.log("Succes reload soon");
+                    location.reload();
+                    // console.log(result);
+                    alert("Le contenu a été approuvé");
+                },
+                error: function (message, error) {
+                    ///TODO add message during error or non valid connection
+                    // console.log(message, error);
+                    console.log("Erreur lors de l'approbation");
+                    alert("Une erreur c'est produite, veuillez réessayer ou contacter un administrateur");
+                }
+            });
+        }
+        function DeleteNouveauContenu(idNouveauContenu)
+        {        $.ajax({
+            url: "../../management/deleteNouveauContenu.php",
+            type: "POST",
+            data: {
+                'idNouveauContenu':idNouveauContenu
+            },
+            dataType: "JSON",
+            success: function (result) {
+                console.log("Succes reload soon");
+                location.reload();
+            },
+            error: function (message, error) {
+                ///TODO add message during error or non valid connection
+            }
+        });}
+   function InsertInTd() {
+       $.ajax({
+           //Process the form using $.ajax()
+           type: 'get', //Method type
+           url: '../../management/SelectNouveauContenu.php', //Your form processing file URL
+           dataType: 'JSON',
+           success: function (data) {
+               //  console.log(data);
+               for (let ctr = 0; ctr < data.length; ctr++) {
+                   $("#idBodyNouveau").append(`
+                    <tr style="text-align: left;">
+                    <td>${data[ctr].idNouveauContenu}</td>
+                    <td>${data[ctr].Titre}</td>
+                    <td>${data[ctr].Platform}</td>
+                    <td>${data[ctr].LienDirect}</td>
+                    <td>${data[ctr].DateSoumis}</td>
+                    <td><button type="button" style="width: 150px;color:red;" onclick="DeleteNouveauContenu(${data[ctr].idNouveauContenu})">Supprimer</button></td>
+                     <td><button type="button" style="width: 150px;color:green;"  onclick="ApprouverNouveauContenu(${data[ctr].idNouveauContenu})" >Approuver</button></td>
+                    </tr>
+                    `)
+               }
+           },
+           error: function (erreur, message) {
+               console.log(erreur, message);
+               console.log("erreur chargmeent selectnouveaucontenu");
+           }
+
+       });
+   }
+    function InsertInTdApprouve() {
+        $.ajax({
+            //Process the form using $.ajax()
+            type: 'get', //Method type
+            url: '../../management/SelectNouveauContenuApprouve.php', //Your form processing file URL
+            dataType: 'JSON',
+            success: function (data) {
+                //  console.log(data);
+                for (let ctr = 0; ctr < data.length; ctr++) {
+                    $("#idBodyNouveau").append(`
+                    <tr style="text-align: left;">
+                    <td>${data[ctr].idNouveauContenu}</td>
+                    <td>${data[ctr].Titre}</td>
+                    <td>${data[ctr].Platform}</td>
+                    <td>${data[ctr].LienDirect}</td>
+                    <td>${data[ctr].DateSoumis}</td>
+                     <td><button type="button" style="width: 150px;color:green;"  onclick="ApprouverNouveauContenu(${data[ctr].idNouveauContenu})" >Traité</button></td>
+                    </tr>
+                    `)
+                }
+            },
+            error: function (erreur, message) {
+                console.log(erreur, message);
+                console.log("erreur chargmeent selectnouveaucontenu");
+            }
+
+        });
+    }
+
 </script>
+
 
 
 

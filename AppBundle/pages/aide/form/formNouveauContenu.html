@@ -13,13 +13,41 @@
           integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
           crossorigin="anonymous"></script>
   <link rel="stylesheet" type="text/css" href="../../../ressources/css/cssProjetSGBD.css">
+  <link rel="stylesheet" type="text/css" href="../../../ressources/css/main.css">
+  <link rel="stylesheet" type="text/css" href="../../../ressources/css/cssProjetSGBD.css">
+  <link rel="stylesheet" type="text/css" href="../../../ressources/css/index.css">
 
+
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <!--    Custom style sheets  -->
 </head>
 
 <body>
+<header>
+  <div class="logo">
+    <img src="../../../ressources/assets/images/webflix_orig.png">
+  </div>
+  <button class="adminSection" style="visibility: hidden">admin</button>
+  <button class="profileBubble" onclick="window.open('http://localhost/Webflix/AppBundle/pages/account/myAccount.html')">
+    <img src="../../../ressources/assets/images/defaultUserProfile.png"
+         alt="../../../ressources/assets/images/defaultUserProfile.png">
+  </button>
+  <button class="webflixhelp" onclick="window.open('http://localhost/Webflix/AppBundle/pages/aide/tutorialWebflix.html')">
 
+    <img src="../../../ressources/assets/images/help.png"
+         alt="../../../ressources/assets/images/help.png">
+  </button>
+</header>
+
+<br>
+<br>
+<br>
+<br>
 <div style="width:80%; margin:0 auto;">
-
+  <br>
+  <h2>Demander un nouveau contenu</h2>
 <form>
     <div class="form-group" style="">
 <br>
@@ -36,10 +64,10 @@
 <br>
   <div class="form-group">
     <label class="titre" >Type de contenue*</label>
-    <select name="typeVideo" id="typeVideo" >
-      <option value="video">Video</option>
-      <option value="film">Film</option>
-      <option value="Serie">Serie-télévisé</option>r
+    <select name="typeVideo" id="typeVideo" style="color: #111111">
+      <option style="color: #111111" value="video">Video</option>
+      <option style="color: #111111" value="film">Film</option>
+      <option style="color: #111111" value="Serie">Serie-télévisé</option>r
     </select>
   </div>
   <br>
@@ -49,7 +77,7 @@
   </div>
 <br>
   <div class="form-check">
-    <input type="checkbox" class="form-check-input" id="exampleCheck1" >
+    <input type="checkbox"  class="form-check-input" id="exampleCheck1" name="checkboxReq">
     <label class="form-check-label" for="exampleCheck1" style="color:white">J'ai lu et accepte que Webflix n'a aucune obligation d'ajouter le contenue. Ceci n'est qu'une suggestion.Chaque publication sera révisé par l'équipe et ajouter si tous nos critères sont respectés </label>
   </div>
 <h2>
@@ -69,35 +97,41 @@
 </body>
 
 <script>
-  $(document).ready(function (e) {
+  function checkBox()
+  {
+    return document.getElementById("exampleCheck1").checked;
+  }
 
+
+  $(document).ready(function (e) {
     $("#IdButtonSoumettre").click(function (e) {
-e.preventDefault();
-      alert($("#idTitre").val());
-      console.log($("#idPlatform").val());
-      console.log($("#typeVideo").val());
-      console.log($("#idLien").val());
-      $.ajax({
-        url:"Webflix/AppBundle/management/formNouveauContenuAdd.php",
-        type:"POST",
-        data: {
-          'titre': $("#idTitre").val(),
-          'platform': $("#idPlatform").val(),
-          'typeVideo': $("#typeVideo").val(),
-          'lien': $("#idLien").val()
-        },
-        dataType:"JSON",
-        success: function (result) {
-          location.reload();
-        // console.log(result["item"]);
-         console.log(result);
-        },
-        error: function (message, error) {
-          ///TODO add message during error or non valid connection
-          console.log(message, error);
-          alert("Une erreur est survenu veuillez réessayer")
-        }
-      });
+      e.preventDefault();
+      if (checkBox()) {
+        $.ajax({
+          url: "http://localhost/Webflix/AppBundle/management/formNouveauContenuAdd.php",
+          type: "POST",
+          data: {
+            'titre': $("#idTitre").val(),
+            'platform': $("#idPlatform").val(),
+            'typeVideo': $("#typeVideo").val(),
+            'lien': $("#idLien").val()
+          },
+          dataType: "JSON",
+          success: function (result) {
+            alert("La demande a été acheminer")
+            location.reload();
+            // console.log(result["item"]);
+            console.log(result);
+          },
+          error: function (message, error) {
+            ///TODO add message during error or non valid connection
+            console.log(message, error);
+            alert("Une erreur est survenu veuillez réessayer")
+          }
+        });
+      } else {
+        alert("Veuillez cocher la case et réessayer");
+      }
     });
   });
 </script>
