@@ -26,7 +26,7 @@
   </div>
   <button class="adminSection" style="visibility: hidden">admin</button>
   <button class="profileBubble" onclick="window.open('http://localhost/Webflix/AppBundle/pages/account/myAccount.html')">
-    <img src="../../../ressources/assets/images/defaultUserProfile.png"
+    <img id="profilePicture" src="../../../ressources/assets/images/defaultUserProfile.png"
          alt="../../../ressources/assets/images/defaultUserProfile.png">
   </button>
   <button class="webflixhelp" onclick="window.open('http://localhost/Webflix/AppBundle/pages/aide/tutorialWebflix.html')">
@@ -42,10 +42,9 @@
 <div style="width:80%; margin:0 auto;">
 
   <form action="mailto:support@Webflix.com" method="post">
-    <div class="form-group" style="">
+    <div class="form-group">
       <br>
       <label >Nom*</label>
-      <div/>
       <input style="width:60%;" type="text" class="form-control" id="idEmail" aria-describedby="emailHelp" placeholder="Titre">
       <small id="emailHelp" class="form-text text-muted"></small>
     </div>
@@ -86,7 +85,27 @@
 
 <div w3-include-html="http://localhost/Webflix/AppBundle/pages/aide/basDePage.html"></div>
 <script>
+
+checkConnection();
+    if (sessionStorage.getItem("adminAccount") === "1") {
+        $(".adminSection").css("visibility", "visible");
+    }
+
   includeHTML();
+
+
+  $(document).ready(function() {
+
+if (sessionStorage.getItem("profile") !== null) {
+        let profilepic = sessionStorage.getItem("profile");
+        result = profilepic.split("/../");
+        if (result.length > 1){
+            sessionStorage.setItem("profile", result[1]);
+        }
+        $("#profilePicture").attr("src", "../../../" + sessionStorage.getItem("profile"));
+    }
+  });
+
 </script>
 
 </body>
