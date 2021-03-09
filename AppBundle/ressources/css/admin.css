@@ -14,9 +14,6 @@ body {
     height: 100%;
 }
 
-#formSpace {
-    height: 100%;
-}
 
 .AccountStats {
     margin-top: 2%;
@@ -122,6 +119,10 @@ header img {
     max-width: 100%;
     max-height: 90%;
     overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100%;
 }
 #formSpace::-webkit-scrollbar {
     display: none;
@@ -318,3 +319,4 @@ input {
 width: 15px;
 height: 15px;
 }
+

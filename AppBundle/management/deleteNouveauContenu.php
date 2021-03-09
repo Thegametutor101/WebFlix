@@ -1,7 +1,7 @@
 <?php
 
 
-$connection = new PDO("mysql:host=localhost;dbname=netflix_projet;port=3306",
+$connection = new PDO("mysql:host=localhost;dbname=netflix_projet;port=3308",
     "root",
     "");
 $connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

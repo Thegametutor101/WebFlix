@@ -127,12 +127,11 @@
       <div id="flush-collapseSix" class="accordion-collapse collapse" aria-labelledby="flush-headingSix" data-bs-parent="#accordionFlushExample">
         <div class="accordion-body">
           <ul>
-            <li>Regarder les stats</li>
+            <li><a id="idStats">Regarder les stats</a></li>
           </ul>
         </div>
       </div>
     </div>
-
   </div>
   <p>Ceci est a titre educatif seulement, si vous avez besoin d'aide supplémentaire <br> Utiliser la section nous rejoindre <br> au bas de la page.</p>
 </section>
@@ -174,45 +173,49 @@
 
     $("#idCreerProfil").click(function (e) {
       //sessionStorage.setItem("urlVideo","mp4test.mp4");
-      $("#idSource").attr("src", "video/mp4test.mp4");
+      $("#idSource").attr("src", "../../ressources/assets/videos/Inscription.mp4");
       $("#idVideo").get(0).load();
     });
 
     $("#idModifInfo").click(function (e) {
       //sessionStorage.setItem("urlVideo","mp4test.mp4");
-      $("#idSource").attr("src", "video/filemp4.mp4");
+      $("#idSource").attr("src", "../../ressources/assets/videos/GestionCompte.mp4");
       $("#idVideo").get(0).load();
     });
 
     $("#idNavigation").click(function (e) {
       //sessionStorage.setItem("urlVideo","mp4test.mp4");
-      $("#idSource").attr("src", "video/mp4test2.mp4");
+      $("#idSource").attr("src", "../../ressources/assets/videos/Navigation.mp4");
       $("#idVideo").get(0).load();
     });
     $("#idVisionner").click(function (e) {
       //sessionStorage.setItem("urlVideo","mp4test.mp4");
-      $("#idSource").attr("src", "Visionner.mp4");
+      $("#idSource").attr("src", "../../ressources/assets/videos/VisionnerContenu.mp4");
       $("#idVideo").get(0).load();
     });
 
     $("#idAjouterFavoris").click(function (e) {
       //sessionStorage.setItem("urlVideo","mp4test.mp4");
-      $("#idSource").attr("src", "AjouterFavoris.mp4");
+      $("#idSource").attr("src", "../../ressources/assets/videos/Favoris.mp4");
       $("#idVideo").get(0).load();
     });
 
     $("#idNouveauContenu").click(function (e) {
       //sessionStorage.setItem("urlVideo","mp4test.mp4");
-      $("#idSource").attr("src", "NouveauContenu.mp4");
+      $("#idSource").attr("src", "../../ressources/assets/videos/nouveauContenu.mp4");
       $("#idVideo").get(0).load();
     });
 
     $("#idContacterEquipe").click(function (e) {
       //sessionStorage.setItem("urlVideo","mp4test.mp4");
-      $("#idSource").attr("src", "ContacterEquipe.mp4");
+      $("#idSource").attr("src", "../../ressources/assets/videos/nousRejoindre.mp4");
       $("#idVideo").get(0).load();
     });
-
+    $("#idStats").click(function (e) {
+      //sessionStorage.setItem("urlVideo","mp4test.mp4");
+      $("#idSource").attr("src", "../../ressources/assets/videos/stats.mp4");
+      $("#idVideo").get(0).load();
+    });
   });
 
 

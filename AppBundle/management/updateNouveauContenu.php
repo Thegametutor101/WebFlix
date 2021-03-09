@@ -1,6 +1,6 @@
 <?php
 
-$connexion = new PDO("mysql:host=localhost;dbname=netflix_projet;port=3306",
+$connexion = new PDO("mysql:host=localhost;dbname=netflix_projet;port=3308",
     "root",
     "");
 $connexion->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
