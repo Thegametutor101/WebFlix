@@ -147,7 +147,7 @@ class EntityCards
     {
         $genres = array();
         try {
-            $request = "SELECT Genre FROM cards";
+            $request = "SELECT Genre FROM cards where Available = 1";
             $result = $this->connection->query($request);
             $genres = $result->fetchAll();
 
@@ -167,7 +167,7 @@ class EntityCards
     {
         $card = array();
         try {
-            $request = "SELECT *, (select count(*) from favorites f where f.CardID = c.ID and f.Email = '$email') as FAVORIS from cards c WHERE Genre like '%$genre%'";
+            $request = "SELECT *, (select count(*) from favorites f where f.CardID = c.ID and f.Email = '$email') as FAVORIS from cards c WHERE Genre like '%$genre%' and Available = 1";
             $result = $this->connection->query($request);
             $card = $result->fetchAll();
 
@@ -183,7 +183,7 @@ class EntityCards
     {
         $card = array();
         try {
-            $request = "SELECT * from cards c INNER JOIN favorites f on c.ID = f.CardID WHERE email = '$email'";
+            $request = "SELECT * from cards c INNER JOIN favorites f on c.ID = f.CardID WHERE email = '$email' and Available = 1";
             $result = $this->connection->query($request);
             $card = $result->fetchAll();
 

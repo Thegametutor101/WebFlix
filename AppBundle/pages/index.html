@@ -196,6 +196,7 @@
                 },
                 dataType: 'JSON',
                 success: function(data) {
+                    let Desc;
                     // header de categorie
                     $("#categoryList").append('<h4 class="catTitle">' + listeGenres[ctrAjax] + '</h4>' +
                         '<hr><div class="category" id="' + listeGenres[ctrAjax] + '""></div>');
@@ -204,6 +205,11 @@
                         '<i class="material-icons md-36">arrow_back_ios</i></div></ul>');
                     // cards de la liste
                     for (ctrVid = 0; ctrVid < data.length; ctrVid++) {
+                        if (data[ctrVid].Resume.length >= 100){
+                                Desc = data[ctrVid].Resume.substr(0, 100) + "...";
+                            } else {
+                                Desc = data[ctrVid].Resume + "";
+                            }
                         if (data[ctrVid][11] != 0) {
                             $("#" + listeGenres[ctrAjax] + "> .videoList").append(`
                                 <div onclick = "Details('${data[ctrVid].File}', '${data[ctrVid][0]}')" class="card ${data[ctrVid][0]}">
@@ -211,7 +217,7 @@
                                 <div class="card-body">
                                 <h5 class="card-title" id="card1Title">${data[ctrVid].Title}</h5>
                                 <i class="material-icons favStar-active">star</i>
-                                <p class="card-text">${data[ctrVid].Resume}</p>
+                                <p class="card-text">${Desc}</p>
                                 </div>
                                 </div>`);
                         } else {
@@ -221,7 +227,7 @@
                                 <div class="card-body">
                                 <h5 class="card-title" id="card1Title">${data[ctrVid].Title}</h5>
                                 <i class="material-icons favStar-non-active">star</i>
-                                <p class="card-text">${data[ctrVid].Resume}</p>
+                                <p class="card-text">${Desc}</p>
                                 </div>
                                 </div>`);
                         }

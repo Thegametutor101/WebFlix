@@ -20,13 +20,13 @@
               </select><br>
             <div class=" mb-3 ">
                 <h5 class="form-label ">Titre du film</h5>
-                <input id="movietitle" type="text" class="form-control">
+                <input id="movietitle" type="text" class="form-control" maxlength="250">
             </div>
             <h5>A quel genre le film sera t-il associe ?</h5>
             <div class="form-check" id="listeGenres"></div><br>
             <div class=" mb-3 ">
                 <h5 for="exampleFormControlTextarea1 " class="form-label ">Description du film</h5>
-                <textarea class="form-control " id="moviedescription" rows="3 "></textarea>
+                <textarea class="form-control " id="moviedescription" rows="3" maxlength="250"></textarea>
             </div><br>
             <div class="mb-3">
                 <h5 for="formFile" class="form-label">Image du film</h5>
@@ -76,8 +76,12 @@
             </div><br>
             <div class="edit"><button id="confirmupdatemovie" type="button" style="margin-right: 10px;">Confirmer</button> <button id="canceladdmovie" type="button">Annuler</button></div>
         </div>
+        <div class="spinner-border" role="status"><span class="visually-hidden">Loading...</span></div>
     </form>
 <script>
+
+    $(".spinner-border").hide();
+
     $.ajax({
         url: "../../management/getGenres.php",
         type: "post",

@@ -11,6 +11,7 @@ if (!empty($_POST["req"]) && !empty($_POST["title"]) && !empty($_POST["descripti
     $id = $_POST["id"];
     $genre = $_POST["genre"];
     $classificiations = $_POST["classificiations"];
+    $date = date_timestamp_get(new DateTime());
 
     if ($req == "no_file"){
 
@@ -20,7 +21,7 @@ if (!empty($_POST["req"]) && !empty($_POST["title"]) && !empty($_POST["descripti
     } elseif ($req == "no_image" && ($_FILES['moviefile']['tmp_name'] != "" || $_FILES['moviefile']['size'] != 0)){
 
         $dossier2 = '../ressources/assets/videos/';
-        $chemin2 = $dossier2 . basename($_FILES['moviefile']['name']);
+        $chemin2 = $dossier2 . $date . basename($_FILES['moviefile']['name']);
 
         if (move_uploaded_file($_FILES['moviefile']['tmp_name'], $chemin2)) {
             updateVideo_noImage($title, $genre, $description, $releasedate, $visible, $type, $classificiations, $chemin2, $id, $connexion);
@@ -32,7 +33,7 @@ if (!empty($_POST["req"]) && !empty($_POST["title"]) && !empty($_POST["descripti
     } elseif ($req == "no_video" && ($_FILES['movieimage']['tmp_name'] != "" || $_FILES['movieimage']['size'] != 0)){
 
         $dossier = '../ressources/assets/images/videoImages/';
-        $chemin = $dossier . basename($_FILES['movieimage']['name']);
+        $chemin = $dossier . $date . basename($_FILES['movieimage']['name']);
 
         if (move_uploaded_file($_FILES['movieimage']['tmp_name'], $chemin)) {
             updateVideo_noVideo($title, $genre, $description, $releasedate, $visible, $type, $classificiations, $chemin, $id, $connexion);
@@ -44,11 +45,11 @@ if (!empty($_POST["req"]) && !empty($_POST["title"]) && !empty($_POST["descripti
     } elseif (($_FILES['movieimage']['tmp_name'] != "" || $_FILES['movieimage']['size'] != 0) && ($_FILES['moviefile']['tmp_name'] != "" || $_FILES['moviefile']['size'] != 0)){
 
         $dossier = '../ressources/assets/images/videoImages/';
-        $chemin = $dossier . basename($_FILES['movieimage']['name']);
+        $chemin = $dossier . $date . basename($_FILES['movieimage']['name']);
 
         if (move_uploaded_file($_FILES['movieimage']['tmp_name'], $chemin)) {
             $dossier2 = '../ressources/assets/videos/';
-            $chemin2 = $dossier2 . basename($_FILES['moviefile']['name']);
+            $chemin2 = $dossier2 . $date . basename($_FILES['moviefile']['name']);
         }
         if (move_uploaded_file($_FILES['moviefile']['tmp_name'], $chemin2)) {
             updatevideo($title, $genre, $description, $releasedate, $visible, $type, $classificiations, $chemin, $chemin2, $id, $connexion);

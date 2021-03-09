@@ -84,8 +84,10 @@ $(document).ready(function() {
         let form_data = new FormData();
         let title, description, movieimage, moviefile, releasedate, visible, type, classification;
         let genrefilm = getGenres();
-        title = $("#movietitle").val();
-        description = $("#moviedescription").val();
+        title = $("#movietitle").val().trim();
+        title = title.replace("'", "");
+        description = $("#moviedescription").val().trim();
+        description = description.replace("'", "");
         movieimage = $("#movieimage").val();
         moviefile = $("#moviefile").val();
         releasedate = $("#moviereleasedate").val();
@@ -103,12 +105,13 @@ $(document).ready(function() {
             type = "Serie";
         }
 
+
         if (title.length == 0) {
             alert("Le champ titre est vide !");
-        } else if (genrefilm.length == 0) {
-            alert("Aucun genre n'a ete selectionner pour le film");
         } else if (title.length > 250) {
             alert("Le champ titre ne peut pas exceder 250 caracteres !");
+        } else if (genrefilm.length == 0) {
+            alert("Aucun genre n'a ete selectionner pour le film");
         } else if (description.length == 0) {
             alert("Le champ description ne peut pas etre vide !");
         } else if (releasedate.length == 0) {
@@ -117,6 +120,9 @@ $(document).ready(function() {
             alert("Aucune classification n'a ete selectionner pour le film");
         } else {
 
+            $(".spinner-border").show();
+            $("#confirmupdatemovie").attr("disabled", true);
+            $("#canceladdmovie").attr("disabled", true);
             console.log("ok");
             form_data.append('title', title);
             form_data.append('description', description);
@@ -240,12 +246,15 @@ $(document).ready(function() {
         let form_data = new FormData();
         let title, description, movieimage, moviefile, releasedate, visible, type, classification;
         let genrefilm = getGenres();
-        title = $("#addmovietitle").val();
-        description = $("#addmoviedescription").val();
+        title = $("#addmovietitle").val().trim();
+        title = title.replace("'", "");
+        description = $("#addmoviedescription").val().trim();
+        description = description.replace("'", "");
         movieimage = $("#addmovieimage").val();
         moviefile = $("#addmoviefile").val();
         releasedate = $("#addmoviereleasedate").val();
         classification = getClassification2();
+        type = "Movie";
 
         if ($("#addmovievisibleyes").is(":checked")) {
             visible = 1;
@@ -253,16 +262,12 @@ $(document).ready(function() {
             visible = 0;
         }
 
-        if ($("#addmovietypemovie").is(":checked")) {
-            type = "Movie";
-        } else {
-            type = "Serie";
-        }
-
         if (title.length == 0) {
             alert("Le champ titre est vide !");
         } else if (title.length > 250) {
             alert("Le champ titre ne peut pas exceder 250 caracteres !");
+        } else if (genrefilm.length == 0) {
+            alert("Aucun genre n'a ete selectionner pour le film");
         } else if (description.length == 0) {
             alert("Le champ description ne peut pas etre vide !");
         } else if (movieimage == "") {
@@ -274,6 +279,9 @@ $(document).ready(function() {
         } else if (classification == "") {
             alert("Aucune classification n'a ete selectionner pour le film");
         } else {
+            $(".spinner-border").show();
+            $("#confirmaddmovie").attr("disabled", true);
+            $("#canceladdmovie").attr("disabled", true);
             moviefile = $("#addmoviefile").prop('files')[0];
             movieimage = $("#addmovieimage").prop('files')[0];
             form_data.append('title', title);
