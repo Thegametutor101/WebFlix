@@ -135,7 +135,7 @@
 
   $(document).ready(function() {
 
-if (sessionStorage.getItem("profile") !== null) {
+if (sessionStorage.getItem("profile") !== null && sessionStorage.getItem("profile") !== "") {
         let profilepic = sessionStorage.getItem("profile");
         result = profilepic.split("/../");
         if (result.length > 1){

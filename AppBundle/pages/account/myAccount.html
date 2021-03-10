@@ -59,9 +59,10 @@
 <script src="../../ressources/javascript/mainJavaScript.js"></script>
 <script src="../../ressources/javascript/account.js"></script>
 <script>
+    let nbrButtons = 0, nbrIntervals = 0;
     checkConnection();
     $(document).ready(function (e) {
-        if (sessionStorage.getItem("profile") !== null) {
+        if (sessionStorage.getItem("profile") !== null && sessionStorage.getItem("profile") !== "") {
             $("#profilePicture").attr("src", "../../" + sessionStorage.getItem("profile"));
         }
         $("#screenNameShow").text("Nom d'affichage : " + sessionStorage.getItem("screenNameAccount"));
@@ -144,9 +145,10 @@
             })
             window.open("myAccount.html", "_self");
         });
-    });
 
-    var checkExist = setInterval(function() {
+
+
+        var checkExist = setInterval(function() {
         if ($('.left').length > nbrButtons) {
             nbrButtons = $('.left').length;
             $(".right").click(function() {
@@ -162,6 +164,9 @@
             }
         }
     }, 100); // check every 100ms
+    });
+
+
 
 
     function Details(file, ID) {

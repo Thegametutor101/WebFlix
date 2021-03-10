@@ -157,7 +157,7 @@
   $(document).ready(function() {
 
 
-    if (sessionStorage.getItem("profile") !== null) {
+    if (sessionStorage.getItem("profile") !== null && sessionStorage.getItem("profile") !== "") {
             let profilepic = sessionStorage.getItem("profile");
             result = profilepic.split("/../");
             if (result.length > 1){
@@ -173,47 +173,47 @@
 
     $("#idCreerProfil").click(function (e) {
       //sessionStorage.setItem("urlVideo","mp4test.mp4");
-      $("#idSource").attr("src", "../../ressources/assets/videos/Inscription.mp4");
+      $("#idSource").attr("src", "../../ressources/assets/videos/tutoriels/Inscription.mp4");
       $("#idVideo").get(0).load();
     });
 
     $("#idModifInfo").click(function (e) {
       //sessionStorage.setItem("urlVideo","mp4test.mp4");
-      $("#idSource").attr("src", "../../ressources/assets/videos/GestionCompte.mp4");
+      $("#idSource").attr("src", "../../ressources/assets/videos/tutoriels/GestionCompte.mp4");
       $("#idVideo").get(0).load();
     });
 
     $("#idNavigation").click(function (e) {
       //sessionStorage.setItem("urlVideo","mp4test.mp4");
-      $("#idSource").attr("src", "../../ressources/assets/videos/Navigation.mp4");
+      $("#idSource").attr("src", "../../ressources/assets/videos/tutoriels/Navigation.mp4");
       $("#idVideo").get(0).load();
     });
     $("#idVisionner").click(function (e) {
       //sessionStorage.setItem("urlVideo","mp4test.mp4");
-      $("#idSource").attr("src", "../../ressources/assets/videos/VisionnerContenu.mp4");
+      $("#idSource").attr("src", "../../ressources/assets/videos/tutoriels/VisionnerContenu.mp4");
       $("#idVideo").get(0).load();
     });
 
     $("#idAjouterFavoris").click(function (e) {
       //sessionStorage.setItem("urlVideo","mp4test.mp4");
-      $("#idSource").attr("src", "../../ressources/assets/videos/Favoris.mp4");
+      $("#idSource").attr("src", "../../ressources/assets/videos/tutoriels/Favoris.mp4");
       $("#idVideo").get(0).load();
     });
 
     $("#idNouveauContenu").click(function (e) {
       //sessionStorage.setItem("urlVideo","mp4test.mp4");
-      $("#idSource").attr("src", "../../ressources/assets/videos/nouveauContenu.mp4");
+      $("#idSource").attr("src", "../../ressources/assets/videos/tutoriels/nouveauContenu.mp4");
       $("#idVideo").get(0).load();
     });
 
     $("#idContacterEquipe").click(function (e) {
       //sessionStorage.setItem("urlVideo","mp4test.mp4");
-      $("#idSource").attr("src", "../../ressources/assets/videos/nousRejoindre.mp4");
+      $("#idSource").attr("src", "../../ressources/assets/videos/tutoriels/nousRejoindre.mp4");
       $("#idVideo").get(0).load();
     });
     $("#idStats").click(function (e) {
       //sessionStorage.setItem("urlVideo","mp4test.mp4");
-      $("#idSource").attr("src", "../../ressources/assets/videos/stats.mp4");
+      $("#idSource").attr("src", "../../ressources/assets/videos/tutoriels/stats.mp4");
       $("#idVideo").get(0).load();
     });
   });

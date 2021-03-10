@@ -52,7 +52,6 @@
     <div class="form-group" style="">
 <br>
     <label >Titre du contenu*</label>
-        <div/>
     <input style="width:60%;" type="text" class="form-control" id="idTitre"  placeholder="Titre" >
     <small id="emailHelp" class="form-text text-muted"></small>
   </div>
@@ -110,7 +109,7 @@ checkConnection();
 
 
   $(document).ready(function (e) {
-    if (sessionStorage.getItem("profile") !== null) {
+    if (sessionStorage.getItem("profile") !== null && sessionStorage.getItem("profile") !== "") {
         let profilepic = sessionStorage.getItem("profile");
         result = profilepic.split("/../");
         if (result.length > 1){
